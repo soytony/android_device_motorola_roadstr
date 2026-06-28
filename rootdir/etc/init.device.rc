@@ -1,0 +1,17 @@
+#
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Device-specific init for roadstr (Motorola Edge 70)
+
+on init
+    # Set platform properties
+    setprop ro.board.platform sun
+
+on boot
+    # Display
+    setprop vendor.display.lcd_density 480
+
+    # NFC - STMicro ST54L
+    setprop persist.vendor.nfc.st54l true
