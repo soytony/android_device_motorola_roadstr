@@ -14,8 +14,9 @@ TARGET_BOOTLOADER_BOARD_NAME := roadstr
 TARGET_SCREEN_DENSITY := 480
 
 # Kernel
-# Prebuilt kernel will be configured in Phase 2
-# TARGET_KERNEL_CONFIG += vendor/ext_config/roadstr-default.config
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 21474836480
