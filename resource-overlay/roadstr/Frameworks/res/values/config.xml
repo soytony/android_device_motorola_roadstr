@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Vibrator pattern for feedback about a long screen/key press -->
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>67</item>
+    </integer-array>
+
+    <!-- Vibrator pattern for feedback about touching a virtual key -->
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>67</item>
+    </integer-array>
+
+    <!-- Indicates whether device has a power button fingerprint sensor -->
+    <bool name="config_is_powerbutton_fps">true</bool>
+
+    <!-- The bounding path of the cutout region of the main built-in display.
+         Center punch-hole camera on roadstr (1220x2712 display) -->
+    <string name="config_mainBuiltInDisplayCutout" translatable="false">M 0,0 h 120 v 120 h -120 Z</string>
+</resources>
