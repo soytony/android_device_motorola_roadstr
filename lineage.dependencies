@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_device_motorola_sun-common",
+    "target_path": "device/motorola/sun-common"
+  },
+  {
+    "repository": "android_hardware_motorola",
+    "target_path": "hardware/motorola"
+  }
+]

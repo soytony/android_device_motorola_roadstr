@@ -1,0 +1,5 @@
+*.mk.bak
+*.orig
+*.rej
+*~
+.DS_Store
