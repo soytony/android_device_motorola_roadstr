@@ -1,7 +1,7 @@
 [
   {
-    "repository": "android_device_motorola_sun-common",
-    "target_path": "device/motorola/sun-common"
+    "repository": "android_device_motorola_sm7750-common",
+    "target_path": "device/motorola/sm7750-common"
   },
   {
     "repository": "android_hardware_motorola",
