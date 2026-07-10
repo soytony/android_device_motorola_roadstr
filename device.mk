@@ -26,16 +26,26 @@ $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    $(LOCAL_PATH)/overlay
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
     FrameworksResRoadstr \
     SettingsResRoadstr \
-    SystemUIResRoadstr
+    SystemUIResRoadstr \
+    FrameworkAutoProductRoadstr \
+    MotoFrameworkDualSimRoadstr \
+    MotoFrameworkQcomCommonRoadstr \
+    MotoFrameworkTrueAodIndiaRoadstr \
+    NetworkStackMcc460Roadstr \
+    NfcRoadstr \
+    NfcStRoadstr \
+    SystemUIAutoProductRoadstr \
+    WifiCommonRoadstr
 
 # Audio
 PRODUCT_COPY_FILES += \

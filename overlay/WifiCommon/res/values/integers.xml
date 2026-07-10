@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <integer name="config_wifiDelayDisconnectOnImsLostMs">1000</integer>
+    <integer name="config_wifiDisableReasonAssociationRejectionDurationMs">180000</integer>
+    <integer name="config_wifiDisableReasonAuthenticationFailureDurationMs">180000</integer>
+    <integer name="config_wifiDisableReasonConsecutiveFailuresDurationMs">180000</integer>
+    <integer name="config_wifiDisableReasonDhcpFailureDurationMs">180000</integer>
+    <integer name="config_wifiDisableReasonNetworkNotFoundDurationMs">180000</integer>
+    <integer name="config_wifiHardwareSoftapMaxClientCount">10</integer>
+</resources>

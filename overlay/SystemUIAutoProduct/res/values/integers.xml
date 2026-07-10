@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <integer name="config_lockScreenDisplayTimeout">8000</integer>
+    <integer name="doze_pulse_duration_visible">5000</integer>
+    <integer name="starting_window_app_reveal_anim_duration">50</integer>
+</resources>

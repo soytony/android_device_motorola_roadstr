@@ -25,6 +25,19 @@ PRODUCT_BRAND := motorola
 PRODUCT_MODEL := Edge 70
 PRODUCT_MANUFACTURER := motorola
 
+# Keep telephony and CamX policy in sync with stock.  The radio framework uses
+# this property before carrier configuration is loaded; without it it falls
+# back to the legacy 3G mode.  CamX hides auxiliary cameras from packages not
+# present in these allowlists.
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.telephony.default_network=26,26
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    vendor.camera.aux.packagelist=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
+    vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings,com.motorola.motointelligence \
+    persist.vendor.camera.privapp.list=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
+    ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera3,com.motorola.camera5,com.motorola.actions
+
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="roadstr_g-user 16 W1WRS36.39-25-2-1 aa3747-f1b0b release-keys" \

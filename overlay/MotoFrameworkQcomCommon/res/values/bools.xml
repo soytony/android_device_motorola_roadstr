@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <bool name="config_enhanced_iwlan_handover_check">false</bool>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <integer name="config_activeTaskDurationHours">24</integer>
+    <integer name="config_bg_current_drain_exempted_types">25</integer>
+    <integer name="config_bg_current_drain_types_to_restricted_bucket">28</integer>
+    <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
+    <integer name="config_doublePressOnPowerBehavior">6</integer>
+    <integer name="config_extraFreeKbytesAbsolute">100000</integer>
+    <integer name="config_minimumScreenOffTimeout">8000</integer>
+    <integer name="config_pinnerHomePinBytes">0</integer>
+    <integer name="config_pinnerWebviewPinBytes">0</integer>
+    <integer name="config_screenBrightnessDoze">17</integer>
+    <integer name="device_idle_idle_after_inactive_to_ms">15000</integer>
+    <integer name="device_idle_idle_pending_to_ms">60000</integer>
+    <integer name="device_idle_idle_to_ms">3600000</integer>
+    <integer name="device_idle_inactive_to_ms">15000</integer>
+    <integer name="device_idle_light_after_inactive_to_ms">60000</integer>
+    <integer name="device_idle_locating_to_ms">15000</integer>
+    <integer name="device_idle_max_idle_pending_to_ms">60000</integer>
+    <integer name="device_idle_min_time_to_alarm_ms">600000</integer>
+    <integer name="device_idle_sensing_to_ms">15000</integer>
+</resources>

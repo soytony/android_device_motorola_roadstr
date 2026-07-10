@@ -19,6 +19,28 @@
     <!-- Allow the framework refresh-rate policy to use the panel's high modes. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
+    <!-- Keep 60 Hz as baseline while allowing framework policy to switch the
+         panel between its seamless 90 Hz and 120 Hz modes. -->
+    <integer name="config_defaultRefreshRate">60</integer>
+    <bool name="config_supportsSeamlessRefreshRateSwitching">true</bool>
+
+    <!-- The ALS is exposed by the vendor sensors HAL.  Framework auto
+         brightness was enabled without a brightness curve, so it had no
+         usable mapping from lux to panel luminance. -->
+    <string name="config_displayLightSensorType">android.sensor.light</string>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>1</item><item>2</item><item>5</item><item>10</item>
+        <item>29</item><item>50</item><item>90</item><item>150</item>
+        <item>300</item><item>500</item><item>800</item><item>1300</item>
+        <item>2000</item><item>4000</item><item>8000</item>
+    </integer-array>
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>3</item><item>10</item><item>20</item><item>35</item>
+        <item>55</item><item>75</item><item>105</item><item>145</item>
+        <item>190</item><item>250</item><item>330</item><item>450</item>
+        <item>650</item><item>900</item><item>1300</item><item>1850</item>
+    </array>
+
     <!-- Indicates whether device has a power button fingerprint sensor -->
     <bool name="config_is_powerbutton_fps">true</bool>
 

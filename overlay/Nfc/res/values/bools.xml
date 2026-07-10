@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <bool name="enable_notify_dispatch_failed">true</bool>
+    <bool name="enable_oem_extension">false</bool>
+    <bool name="enable_secure_nfc_support">true</bool>
+</resources>

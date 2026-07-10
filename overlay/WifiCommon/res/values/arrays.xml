@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string-array name="config_wifiCharsetsForSsidTranslation">
+        <item>zh,GBK</item>
+    </string-array>
+    <integer-array name="config_wifiDisconnectedScanIntervalScheduleSec">
+        <item>20</item>
+        <item>40</item>
+        <item>80</item>
+        <item>80</item>
+    </integer-array>
+    <string-array name="config_wifiEapFailureConfig">
+        <item>1915, 16385, 0, 3, 1</item>
+    </string-array>
+    <integer-array name="config_wifiRssiLevelThresholds">
+        <item>-88</item>
+        <item>-82</item>
+        <item>-75</item>
+        <item>-65</item>
+    </integer-array>
+</resources>
