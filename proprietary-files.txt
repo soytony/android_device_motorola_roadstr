@@ -119,6 +119,22 @@ vendor/etc/camera/mot_engine_config.bin
 vendor/etc/camera/vidhance.lic
 vendor/etc/camera/vidhance_calibration
 
+# Camera app
+product/priv-app/MotCamera5/MotCamera5.apk;PRESIGNED
+product/etc/MotoDesktopAppConfig/com.motorola.camera5.desktop-config.xml
+product/etc/init/init.motcamera5.lens.rc
+product/etc/permissions/com.motorola.camera5.adobe_scan.xml
+product/etc/permissions/com.motorola.camera5.lens.xml
+product/etc/permissions/com.motorola.camera5.roadstr.xml
+product/etc/permissions/com.motorola.camera5.xml
+product/etc/permissions/deviceowner-configuration-com.motorola.camera5.xml
+product/etc/permissions/privapp-permissions-com.motorola.camera5.xml
+product/etc/sysconfig/hiddenapi-whitelist-com.motorola.camera5.xml
+product/etc/sysconfig/initial-package-stopped-states-com.motorola.camera5.xml
+product/media/audio/ui/camera_click.ogg
+product/media/audio/ui/camera_focus.ogg
+product/overlay/MotoSettingsProviderOverlayDPPCamera.apk;PRESIGNED
+
 # Display
 vendor/etc/display/qdcm_calib_data_Sharp_qhd_cmd_mode_dsi_panel.json
 vendor/etc/display/qdcm_calib_data_Sharp_qhd_video_mode_dsi_panel.json
@@ -301,6 +317,11 @@ system_ext/etc/vintf/manifest/motorola.hardware.tcmdaidl-service.xml
 # System_ext framework
 system_ext/framework/com.motorola.hardware.camera.desktop.jar
 
+# System framework
+system/system/framework/com.motorola.motosignature.jar:system/framework/com.motorola.motosignature.jar
+system/system/framework/moto-core_services.jar:system/framework/moto-core_services.jar
+system/system/framework/moto-settings.jar:system/framework/moto-settings.jar
+
 # System_ext init
 system_ext/etc/init/motorola.hardware.tcmd@1.0-service.rc
 system_ext/etc/init/motorola.hardware.tcmdaidl-service.rc
@@ -317,6 +338,11 @@ system_ext/lib64/motorola.hardware.tcmd@1.0.so;MAKE_COPY_RULE_ONLY
 # System_ext permissions
 system_ext/etc/permissions/com.dolby.daxservice.xml
 system_ext/etc/permissions/com.motorola.hardware.display_refresh_rate_v3.xml
+
+# System permissions
+system/system/etc/permissions/com.motorola.motosignature.xml:system/etc/permissions/com.motorola.motosignature.xml
+system/system/etc/permissions/moto-core_services.xml:system/etc/permissions/moto-core_services.xml
+system/system/etc/permissions/moto-settings.xml:system/etc/permissions/moto-settings.xml
 
 # Thermal
 vendor/etc/thermal-engine-roadstr-aifastc.conf
