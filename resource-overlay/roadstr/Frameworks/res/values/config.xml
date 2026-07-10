@@ -7,14 +7,17 @@
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
-        <item>67</item>
+        <item>30</item>
     </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>0</item>
-        <item>67</item>
+        <item>20</item>
     </integer-array>
+
+    <!-- Allow the framework refresh-rate policy to use the panel's high modes. -->
+    <integer name="config_defaultPeakRefreshRate">120</integer>
 
     <!-- Indicates whether device has a power button fingerprint sensor -->
     <bool name="config_is_powerbutton_fps">true</bool>

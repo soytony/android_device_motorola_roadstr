@@ -16,6 +16,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     FrameworksResRoadstr \
+    SettingsResRoadstr \
     SystemUIResRoadstr
 
 # Audio
