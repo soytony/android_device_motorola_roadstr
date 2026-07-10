@@ -26,4 +26,4 @@ Kernel: GKI Linux 6.6.82-android15-8
 - Build target: `lineage_roadstr-bp4a-userdebug`
 - Stock Motorola MotCamera5 is included from product blobs and coexists with Lineage Aperture.
 - Latest flashed test booted on slot `a`; both `com.motorola.camera5` and `org.lineageos.aperture` launch.
-- Known remaining post-boot issue: `org.codeaurora.ims` crashes because Moto/QTI IMS shared library wiring is incomplete.
+- Stock Moto/QTI IMS shared libraries are included; `org.codeaurora.ims` starts without the previous missing `QtiCarrierConfigHelper` crash.
