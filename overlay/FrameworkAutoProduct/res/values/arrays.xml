@@ -22,7 +22,4 @@
         <item>2440</item>
         <item>102</item>
     </integer-array>
-    <integer-array name="non_removable_euicc_slots">
-        <item>1</item>
-    </integer-array>
     </resources>
