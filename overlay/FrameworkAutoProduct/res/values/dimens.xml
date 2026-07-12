@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <dimen name="config_dialogCornerRadius">24.0dp</dimen>
-    <dimen name="config_wallpaperMaxScale">1.0</dimen>
-    <dimen name="rounded_corner_radius">100.0px</dimen>
-    <dimen name="status_bar_height_landscape">28.0dp</dimen>
-    <dimen name="status_bar_height_portrait">125.0px</dimen>
-    </resources>

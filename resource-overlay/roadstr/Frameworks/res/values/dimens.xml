@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-     SPDX-FileCopyrightText: The LineageOS Project
-     SPDX-License-Identifier: Apache-2.0
--->
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <!-- Height of the status bar -->
-    <dimen name="status_bar_height">120px</dimen>
+    <dimen name="config_dialogCornerRadius">24.0dp</dimen>
+    <dimen name="config_wallpaperMaxScale">1.0</dimen>
+    <dimen name="rounded_corner_radius">100.0px</dimen>
+    <dimen name="status_bar_height_landscape">28.0dp</dimen>
+    <dimen name="status_bar_height_portrait">95.0px</dimen>
+    <!-- the padding on the top of the statusbar, should be added to the overlay
+    for SystemUI as well. -->
+    <dimen name="status_bar_padding_top">30.0px</dimen>
 
-    <!-- Default radius of the software rounded corners -->
-    <dimen name="rounded_corner_radius">112px</dimen>
 </resources>

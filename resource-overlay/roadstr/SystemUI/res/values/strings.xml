@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="config_frontBuiltInDisplayCutoutProtection">M 572,79 a 37,37 0 1 0 74,0 a 37,37 0 1 0 -74,0 Z</string>
+    <string name="config_preferredEmergencySosPackage">com.google.android.apps.safetyhub</string>
+    <string name="config_protectedCameraId">1</string>
+</resources>

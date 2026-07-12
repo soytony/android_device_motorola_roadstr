@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string-array name="config_captive_portal_fallback_urls">
+        <item>http://one.lenovo.com/generate_204</item>
+        <item>http://www.googleapis.cn/generate_204</item>
+    </string-array>
+    <string-array name="config_captive_portal_http_urls">
+        <item>http://one.lenovo.com/generate_204</item>
+        <item>http://www.googleapis.cn/generate_204</item>
+    </string-array>
+    <string-array name="config_captive_portal_https_urls">
+        <item>https://one.lenovo.com/generate_204</item>
+        <item>https://www.googleapis.cn/generate_204</item>
+    </string-array>
+</resources>

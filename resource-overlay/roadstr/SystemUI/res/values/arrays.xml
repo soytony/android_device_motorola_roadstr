@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string-array name="config_controlsPreferredPackages">
+        <item>com.google.android.apps.chromecast.app</item>
+    </string-array>
+    <integer-array name="config_face_auth_props">
+        <item>610</item>
+        <item>74</item>
+        <item>0</item>
+    </integer-array>
+</resources>

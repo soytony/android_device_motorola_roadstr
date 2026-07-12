@@ -34,18 +34,13 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
+    FrameworksResQcomCommon \
     FrameworksResRoadstr \
     SettingsResRoadstr \
     SystemUIResRoadstr \
-    FrameworkAutoProductRoadstr \
-    MotoFrameworkDualSimRoadstr \
-    MotoFrameworkQcomCommonRoadstr \
-    MotoFrameworkTrueAodIndiaRoadstr \
-    NetworkStackMcc460Roadstr \
-    NfcRoadstr \
-    NfcStRoadstr \
-    SystemUIAutoProductRoadstr \
-    WifiCommonRoadstr
+    NetworkStackResMcc460Roadstr \
+    NetworkStackGoogleResMcc460Roadstr \
+    NfcResRoadstr
 
 # Audio
 PRODUCT_COPY_FILES += \

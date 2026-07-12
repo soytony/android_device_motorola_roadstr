@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.motorola.android.networkstack.overlay.mcc460">
+    <overlay android:targetPackage="com.google.android.networkstack" android:isStatic="true" android:priority="500" android:targetName="GoogleNetworkStackConfig" />
+</manifest>
