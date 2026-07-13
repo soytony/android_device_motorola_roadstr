@@ -1,5 +1,17 @@
 # All unpinned blobs below are extracted from roadstr W1WRS36.39-25-2-1
 
+# Carrier settings
+product/priv-app/CarrierSettings/CarrierSettings.apk;PRESIGNED
+product/priv-app/CarrierSettingsExt/CarrierSettingsExt.apk;PRESIGNED
+product/etc/default-permissions/default-permissions-com.motorola.carriersettingsext.xml
+product/etc/enable-disable-packages/enable-disable-com.motorola.carriersettingsext.unlock.xml
+product/etc/motorola/bgintents/com.motorola.carriersettingsext.bgintents.xml
+product/etc/permissions/carriersettings.xml
+product/etc/permissions/privapp-permissions-com.motorola.carriersettingsext.xml
+product/etc/sysconfig/carriersettings.xml
+product/etc/sysconfig/com.motorola.carriersettingsext.powersave.xml
+product/etc/sysconfig/hiddenapi-whitelist-com.motorola.carriersettingsext.xml
+
 # Audio
 vendor/lib64/libcodec2_store_dolby.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/vendor.dolby.dms-V1-ndk.so;MAKE_COPY_RULE_ONLY

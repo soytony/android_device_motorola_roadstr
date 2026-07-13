@@ -17,6 +17,7 @@ module = ExtractUtilsModule(
     'roadstr',
     'motorola',
     namespace_imports=namespace_imports,
+    add_generated_carriersettings_file=True,
 )
 
 if __name__ == '__main__':
