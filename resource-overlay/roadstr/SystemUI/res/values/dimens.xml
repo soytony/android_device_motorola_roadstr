@@ -4,6 +4,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- Status bar clock size -->
+    <dimen name="status_bar_clock_size">15.0sp</dimen>
+
     <!-- Padding on the start of the statusbar -->
     <dimen name="status_bar_padding_start">6dp</dimen>
 
@@ -15,6 +18,12 @@
 
     <dimen name="physical_power_button_center_screen_location_y">1100.0px</dimen>
     <dimen name="rounded_corner_content_padding">27.0px</dimen>
+
+    <!-- Stock RoadSTR value used to size the physical UDFPS icon correctly. -->
+    <item name="pixel_pitch" format="float" type="dimen">38</item>
+
+    <!-- Keep charging and trust indications below the UDFPS sensor bounds. -->
+    <dimen name="keyguard_indication_margin_bottom">16dp</dimen>
 
     <!-- Margin on the left side of the carrier text on Keyguard -->
     <dimen name="keyguard_carrier_text_margin">@dimen/status_bar_padding_start</dimen>

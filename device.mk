@@ -34,6 +34,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
+    roadstr-udfps-hbm \
     ApertureResRoadstr \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \

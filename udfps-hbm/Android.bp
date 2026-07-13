@@ -1,0 +1,15 @@
+cc_binary {
+    name: "roadstr-udfps-hbm",
+    vendor: true,
+    srcs: ["UdfpsHbm.cpp"],
+    init_rc: ["roadstr-udfps-hbm.rc"],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "liblog",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
