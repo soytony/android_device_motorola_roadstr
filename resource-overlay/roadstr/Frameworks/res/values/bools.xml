@@ -22,7 +22,7 @@
     <bool name="config_supportsSeamlessRefreshRateSwitching">true</bool>
     <!-- Goodix firmware exposes a hardware double-tap wake gesture. -->
     <bool name="config_supportDoubleTapWake">true</bool>
-    <!-- Indicates whether device has a power button fingerprint sensor -->
-    <bool name="config_is_powerbutton_fps">true</bool>
+    <!-- RoadSTR uses an optical under-display fingerprint sensor. -->
+    <bool name="config_is_powerbutton_fps">false</bool>
 
 </resources>
