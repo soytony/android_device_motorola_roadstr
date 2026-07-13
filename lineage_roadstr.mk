@@ -33,10 +33,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.telephony.default_network=26,26
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    vendor.camera.aux.packagelist=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
+    persist.vendor.camera.expose.aux=1 \
+    vendor.camera.aux.packagelist=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit,org.lineageos.aperture \
     vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings,com.motorola.motointelligence \
-    persist.vendor.camera.privapp.list=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
+    persist.vendor.camera.privapp.list=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit,org.lineageos.aperture \
     ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera3,com.motorola.camera5,com.motorola.actions
+
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.camera.physical.num=3
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \

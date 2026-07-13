@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- RoadSTR publishes its ultrawide sensor as auxiliary camera ID 2. -->
+    <bool name="config_enableAuxCameras">true</bool>
+</resources>
