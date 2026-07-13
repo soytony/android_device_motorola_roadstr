@@ -37,6 +37,7 @@ PRODUCT_PACKAGES += \
     ApertureResRoadstr \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \
+    SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
     SystemUIResRoadstr \
     NetworkStackResMcc460Roadstr \

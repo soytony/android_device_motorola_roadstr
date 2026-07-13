@@ -11,5 +11,8 @@
          brightness was enabled without a brightness curve, so it had no
          usable mapping from lux to panel luminance. -->
     <string name="config_displayLightSensorType">android.sensor.light</string>
+    <!-- String type published by the rear STK6B9X RGB/CCT sensor. -->
+    <string name="config_displayWhiteBalanceColorTemperatureSensorName"
+            translatable="false">com.motorola.sensor.alternate_rgb</string>
 
 </resources>

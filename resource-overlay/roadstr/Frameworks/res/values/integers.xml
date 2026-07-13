@@ -27,4 +27,13 @@
          panel between its seamless 90 Hz and 120 Hz modes. -->
     <integer name="config_defaultRefreshRate">60</integer>
 
+    <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->
+    <integer name="config_displayWhiteBalanceColorTemperatureMin">4500</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureMax">7500</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureDefault">6500</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureSensorRate">250</integer>
+    <integer name="config_displayWhiteBalanceColorTemperatureFilterHorizon">10000</integer>
+    <integer name="config_displayWhiteBalanceIncreaseDebounce">5000</integer>
+    <integer name="config_displayWhiteBalanceDecreaseDebounce">5000</integer>
+
 </resources>

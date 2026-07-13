@@ -35,4 +35,36 @@
         <item>20</item>
     </integer-array>
 
+    <!-- Compress a wide ambient CCT range into a restrained panel range for
+         the first adaptive white-balance validation. -->
+    <integer-array name="config_displayWhiteBalanceAmbientColorTemperatures">
+        <item>2500</item>
+        <item>3500</item>
+        <item>4500</item>
+        <item>5500</item>
+        <item>6500</item>
+        <item>8000</item>
+        <item>10000</item>
+    </integer-array>
+    <integer-array name="config_displayWhiteBalanceDisplayColorTemperatures">
+        <item>4500</item>
+        <item>5000</item>
+        <item>5600</item>
+        <item>6350</item>
+        <item>6500</item>
+        <item>7000</item>
+        <item>7500</item>
+    </integer-array>
+
+    <!-- Ignore ambient CCT changes below five percent to avoid oscillation. -->
+    <array name="config_displayWhiteBalanceBaseThresholds">
+        <item>0</item>
+    </array>
+    <array name="config_displayWhiteBalanceIncreaseThresholds">
+        <item>0.05</item>
+    </array>
+    <array name="config_displayWhiteBalanceDecreaseThresholds">
+        <item>0.05</item>
+    </array>
+
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">적응형 색상</string>
+    <string name="display_white_balance_summary">주변 조명에 맞게 화면 색상을 조정합니다</string>
+</resources>

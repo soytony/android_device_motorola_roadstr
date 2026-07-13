@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">Couleurs adaptatives</string>
+    <string name="display_white_balance_summary">Ajuste les couleurs de l’écran à la lumière ambiante</string>
+</resources>

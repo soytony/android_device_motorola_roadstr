@@ -24,5 +24,7 @@
     <bool name="config_supportDoubleTapWake">true</bool>
     <!-- RoadSTR uses an optical under-display fingerprint sensor. -->
     <bool name="config_is_powerbutton_fps">false</bool>
+    <!-- Use the rear STK6B9X CCT stream for adaptive display white balance. -->
+    <bool name="config_displayWhiteBalanceAvailable">true</bool>
 
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">Colori adattivi</string>
+    <string name="display_white_balance_summary">Regola i colori dello schermo in base alla luce ambientale</string>
+</resources>

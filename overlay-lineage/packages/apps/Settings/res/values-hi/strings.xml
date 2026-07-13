@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">अनुकूल रंग</string>
+    <string name="display_white_balance_summary">आस-पास की रोशनी के अनुसार स्क्रीन के रंग समायोजित करता है</string>
+</resources>

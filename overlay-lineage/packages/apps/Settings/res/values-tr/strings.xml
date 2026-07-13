@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">Uyarlanabilir renkler</string>
+    <string name="display_white_balance_summary">Ekran renklerini ortam ışığına göre ayarlar</string>
+</resources>

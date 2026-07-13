@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="display_white_balance_title">環境色彩自動調整</string>
+    <string name="display_white_balance_summary">根據環境光線自動調整螢幕色彩</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="display_white_balance_title">环境色自适应</string>
+    <string name="display_white_balance_summary">根据环境光线自动调整屏幕色彩</string>
+</resources>
