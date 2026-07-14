@@ -3,3 +3,4 @@ type udfps_hbm_service, service_manager_type;
 add_service(hal_fingerprint_default, udfps_hbm_service)
 binder_call(system_app, hal_fingerprint_default)
 allow system_app udfps_hbm_service:service_manager find;
+allow platform_app udfps_hbm_service:service_manager find;
