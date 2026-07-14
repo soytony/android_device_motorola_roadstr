@@ -2,8 +2,8 @@
 <resources>
     <string name="config_clockFontFamily">moto_time</string>
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-    <!-- Sensor type published by the stock Motorola sensors HAL. -->
-    <string name="config_dozeDoubleTapSensorType">com.motorola.sensor.double_tap</string>
+    <!-- Sysfs-backed one-shot sensor provided by sensors.moto_ext. -->
+    <string name="config_dozeDoubleTapSensorType">org.lineageos.sensor.double_tap</string>
     <string name="config_mainBuiltInDisplayCutout">M -56,0 L 56,0 L 56,125 L -56,125 Z</string>
     <string name="config_mms_user_agent">motorolaedge70</string>
     <string name="config_mms_user_agent_profile_url">http://uaprof.motorola.com/phoneconfig/motov1/Profile/motov1.rdf</string>
