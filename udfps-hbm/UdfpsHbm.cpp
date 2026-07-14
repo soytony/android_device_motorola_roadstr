@@ -5,31 +5,32 @@
 
 #define LOG_TAG "RoadstrUdfpsHbm"
 
-#include <android-base/unique_fd.h>
+#include <aidl/vendor/lineage/biometrics/udfps/BnUdfpsHbm.h>
 #include <android/binder_auto_utils.h>
 #include <android/binder_ibinder.h>
 #include <android/binder_manager.h>
 #include <android/binder_parcel.h>
+#include <android/binder_process.h>
 #include <android/binder_status.h>
 #include <android/log.h>
-#include <dirent.h>
-#include <fcntl.h>
-#include <linux/input.h>
-#include <limits.h>
-#include <poll.h>
-#include <sys/ioctl.h>
-#include <unistd.h>
 
-#include <cstring>
-#include <utility>
+#include <chrono>
+#include <condition_variable>
+#include <cstdint>
+#include <memory>
+#include <mutex>
+#include <thread>
 
 namespace {
 
+using aidl::vendor::lineage::biometrics::udfps::BnUdfpsHbm;
+
+constexpr char kServiceName[] =
+        "vendor.lineage.biometrics.udfps.IUdfpsHbm/default";
 constexpr char kPanelService[] =
         "com.motorola.hardware.display.panel.IDisplayPanel/default";
 constexpr char kPanelDescriptor[] =
         "com.motorola.hardware.display.panel.IDisplayPanel";
-constexpr char kTouchDeviceName[] = "goodix_ts";
 
 // Stable NDK AIDL transaction number for IDisplayPanel.setMode(PanelMode).
 constexpr transaction_code_t kSetModeTransaction = FIRST_CALL_TRANSACTION + 4;
@@ -38,10 +39,7 @@ constexpr uint32_t kPrivateVendorFlag = 0x10000000;
 // Values from Motorola's PanelMode enum, confirmed against the running stock service.
 constexpr int32_t kPanelModeNormal = 0;
 constexpr int32_t kPanelModeHighBrightFod = 4;
-
-// The stock keylayout documents these Goodix events as FOD finger down and finger up.
-constexpr uint16_t kFingerDownCode = BTN_TRIGGER_HAPPY;
-constexpr uint16_t kFingerUpCode = BTN_TRIGGER_HAPPY2;
+constexpr auto kHbmWatchdogTimeout = std::chrono::seconds(10);
 
 ndk::SpAIBinder gPanel;
 
@@ -103,67 +101,88 @@ bool setPanelMode(int32_t mode) {
     return true;
 }
 
-android::base::unique_fd openTouchDevice() {
-    DIR* inputDir = opendir("/dev/input");
-    if (inputDir == nullptr) {
-        return {};
+class UdfpsHbm : public BnUdfpsHbm {
+  public:
+    UdfpsHbm() : mWatchdog(&UdfpsHbm::watchdogLoop, this) {}
+
+    ~UdfpsHbm() override {
+        {
+            std::lock_guard lock(mMutex);
+            mStopping = true;
+            mEnabled = false;
+            ++mGeneration;
+        }
+        mCondition.notify_all();
+        mWatchdog.join();
+        setPanelMode(kPanelModeNormal);
     }
 
-    android::base::unique_fd touchFd;
-    while (dirent* entry = readdir(inputDir)) {
-        if (strncmp(entry->d_name, "event", 5) != 0) {
-            continue;
+    ndk::ScopedAStatus setEnabled(bool enabled, bool* result) override {
+        std::lock_guard lock(mMutex);
+
+        if (enabled == mEnabled && enabled) {
+            *result = true;
+            return ndk::ScopedAStatus::ok();
         }
 
-        char path[PATH_MAX];
-        snprintf(path, sizeof(path), "/dev/input/%s", entry->d_name);
-        android::base::unique_fd candidate(open(path, O_RDONLY | O_CLOEXEC));
-        if (candidate.get() < 0) {
-            continue;
+        // Always send disable so stale panel state is repaired after a client failure.
+        const bool success = setPanelMode(enabled ? kPanelModeHighBrightFod : kPanelModeNormal);
+        if (success) {
+            mEnabled = enabled;
+            ++mGeneration;
+            mCondition.notify_all();
         }
+        *result = success;
+        return ndk::ScopedAStatus::ok();
+    }
 
-        char name[128] = {};
-        if (ioctl(candidate.get(), EVIOCGNAME(sizeof(name)), name) >= 0 &&
-            strcmp(name, kTouchDeviceName) == 0) {
-            touchFd = std::move(candidate);
-            break;
+  private:
+    void watchdogLoop() {
+        std::unique_lock lock(mMutex);
+        while (!mStopping) {
+            mCondition.wait(lock, [this] { return mStopping || mEnabled; });
+            if (mStopping) {
+                break;
+            }
+
+            const uint64_t generation = mGeneration;
+            const bool changed = mCondition.wait_for(lock, kHbmWatchdogTimeout, [this, generation] {
+                return mStopping || !mEnabled || mGeneration != generation;
+            });
+            if (!changed && mEnabled) {
+                __android_log_print(ANDROID_LOG_ERROR, LOG_TAG,
+                                    "HBM watchdog expired; restoring normal panel mode");
+                if (setPanelMode(kPanelModeNormal)) {
+                    mEnabled = false;
+                    ++mGeneration;
+                }
+            }
         }
     }
 
-    closedir(inputDir);
-    return touchFd;
-}
+    std::mutex mMutex;
+    std::condition_variable mCondition;
+    bool mEnabled = false;
+    bool mStopping = false;
+    uint64_t mGeneration = 0;
+    std::thread mWatchdog;
+};
 
 }  // namespace
 
 int main() {
-    // Recover from a daemon restart while a previous HBM request was active.
     setPanelMode(kPanelModeNormal);
 
-    for (;;) {
-        android::base::unique_fd touchFd = openTouchDevice();
-        if (touchFd.get() < 0) {
-            __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Goodix input device is unavailable");
-            sleep(1);
-            continue;
-        }
-
-        pollfd pfd = {.fd = touchFd.get(), .events = POLLIN, .revents = 0};
-        while (poll(&pfd, 1, -1) > 0) {
-            input_event event;
-            if (read(touchFd.get(), &event, sizeof(event)) != sizeof(event)) {
-                break;
-            }
-
-            // Only act on the key-down edge; each dedicated FOD code also emits a key-up edge.
-            if (event.type != EV_KEY || event.value != 1) {
-                continue;
-            }
-            if (event.code == kFingerDownCode) {
-                setPanelMode(kPanelModeHighBrightFod);
-            } else if (event.code == kFingerUpCode) {
-                setPanelMode(kPanelModeNormal);
-            }
-        }
+    ABinderProcess_setThreadPoolMaxThreadCount(1);
+    const std::shared_ptr<UdfpsHbm> service = ndk::SharedRefBase::make<UdfpsHbm>();
+    const binder_status_t status =
+            AServiceManager_addService(service->asBinder().get(), kServiceName);
+    if (status != STATUS_OK) {
+        __android_log_print(ANDROID_LOG_FATAL, LOG_TAG,
+                            "Failed to register %s: status=%d", kServiceName, status);
+        return 1;
     }
+
+    ABinderProcess_joinThreadPool();
+    return 1;
 }

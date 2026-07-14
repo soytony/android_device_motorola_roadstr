@@ -3,10 +3,11 @@ cc_binary {
     vendor: true,
     srcs: ["UdfpsHbm.cpp"],
     init_rc: ["roadstr-udfps-hbm.rc"],
+    vintf_fragments: ["roadstr-udfps-hbm.xml"],
     shared_libs: [
-        "libbase",
         "libbinder_ndk",
         "liblog",
+        "vendor.lineage.biometrics.udfps-V1-ndk",
     ],
     cflags: [
         "-Wall",

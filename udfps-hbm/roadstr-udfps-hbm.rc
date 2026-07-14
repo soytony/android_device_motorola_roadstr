@@ -1,6 +1,4 @@
 service vendor.roadstr-udfps-hbm /vendor/bin/roadstr-udfps-hbm
     class late_start
     user system
-    group input
     seclabel u:r:hal_fingerprint_default:s0
-
