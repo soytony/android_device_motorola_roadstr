@@ -24,6 +24,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
+# The stock touch driver reports double tap as KEY_F4 and uses the gesture
+# command ABI instead of Lineage's double_tap_* sysfs attributes.
+$(call soong_config_set_bool,moto_sensors,legacy_double_tap,true)
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
