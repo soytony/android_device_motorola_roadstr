@@ -31,17 +31,33 @@ constexpr char kPanelService[] =
         "com.motorola.hardware.display.panel.IDisplayPanel/default";
 constexpr char kPanelDescriptor[] =
         "com.motorola.hardware.display.panel.IDisplayPanel";
+constexpr char kMotoFingerprintService[] =
+        "com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint/default";
+constexpr char kMotoFingerprintDescriptor[] =
+        "com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint";
 
 // Stable NDK AIDL transaction number for IDisplayPanel.setMode(PanelMode).
 constexpr transaction_code_t kSetModeTransaction = FIRST_CALL_TRANSACTION + 4;
-constexpr uint32_t kPrivateVendorFlag = 0x10000000;
+// RoadSTR exposes this vendor fingerprint endpoint through the stable AIDL
+// binder manager despite sharing the Motorola interface name with older HIDL.
+// RoadSTR's deployed service routes sendFodEvent through transaction 1.
+// Other transaction numbers crash the vendor HAL, so keep this isolated from
+// the older Motorola interface ordering used by Rtwo.
+constexpr transaction_code_t kSendFodEventTransaction = FIRST_CALL_TRANSACTION;
+// Use a normal synchronous Binder call; the panel-specific private flag is
+// rejected by this Motorola AIDL endpoint.
+constexpr uint32_t kBinderFlags = 0;
+constexpr uint32_t kPanelBinderFlags = 0x10000000;
 
 // Values from Motorola's PanelMode enum, confirmed against the running stock service.
 constexpr int32_t kPanelModeNormal = 0;
 constexpr int32_t kPanelModeHighBrightFod = 4;
+constexpr int32_t kMotoFodFingerDown = 1;
+constexpr int32_t kMotoFodFingerUp = 0;
 constexpr auto kHbmWatchdogTimeout = std::chrono::seconds(10);
 
 ndk::SpAIBinder gPanel;
+ndk::SpAIBinder gMotoFingerprint;
 
 void* onBinderCreate(void* args) {
     return args;
@@ -51,6 +67,71 @@ void onBinderDestroy(void*) {}
 
 binder_status_t onBinderTransact(AIBinder*, transaction_code_t, const AParcel*, AParcel*) {
     return STATUS_UNKNOWN_TRANSACTION;
+}
+
+const AIBinder_Class* getMotoFingerprintClass() {
+    static const AIBinder_Class* clazz =
+            AIBinder_Class_define(kMotoFingerprintDescriptor, onBinderCreate, onBinderDestroy,
+                                  onBinderTransact);
+    return clazz;
+}
+
+bool sendFodEvent(int32_t event) {
+    if (!gMotoFingerprint.get()) {
+        gMotoFingerprint = ndk::SpAIBinder(AServiceManager_waitForService(kMotoFingerprintService));
+        if (!gMotoFingerprint.get()) {
+            gMotoFingerprint = nullptr;
+        } else if (!AIBinder_associateClass(gMotoFingerprint.get(), getMotoFingerprintClass())) {
+            __android_log_print(ANDROID_LOG_ERROR, LOG_TAG,
+                                "Motorola fingerprint service has an unexpected interface");
+            gMotoFingerprint = nullptr;
+        }
+    }
+    if (!gMotoFingerprint.get()) {
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG,
+                            "Motorola fingerprint service is unavailable");
+        return false;
+    }
+
+    AParcel* rawIn = nullptr;
+    binder_status_t status = AIBinder_prepareTransaction(gMotoFingerprint.get(), &rawIn);
+    ndk::ScopedAParcel in(rawIn);
+    if (status == STATUS_OK) status = AParcel_writeInt32(in.get(), event);
+    // The vendor method takes an optional byte[] event ID.  Encode it as null,
+    // not an empty vector; the RoadSTR implementation rejects the latter.
+    if (status == STATUS_OK) status = AParcel_writeInt32(in.get(), -1);
+    AParcel* rawOut = nullptr;
+    if (status == STATUS_OK) {
+        rawIn = in.release();
+        status = AIBinder_transact(gMotoFingerprint.get(), kSendFodEventTransaction, &rawIn,
+                                   &rawOut, kBinderFlags);
+        __android_log_print(ANDROID_LOG_INFO, LOG_TAG,
+                            "Motorola FOD transact event=%d status=%d", event, status);
+    }
+    ndk::ScopedAParcel out(rawOut);
+    if (status == STATUS_OK) {
+        const binder_status_t transportStatus = status;
+        AStatus* replyStatus = nullptr;
+        const binder_status_t headerStatus = AParcel_readStatusHeader(out.get(), &replyStatus);
+        const bool replyOk = headerStatus == STATUS_OK && replyStatus != nullptr &&
+                AStatus_isOk(replyStatus);
+        int32_t result = -1;
+        if (replyStatus != nullptr) AStatus_delete(replyStatus);
+        if (replyOk && AParcel_readInt32(out.get(), &result) != STATUS_OK) result = -1;
+        __android_log_print(ANDROID_LOG_INFO, LOG_TAG,
+                            "Motorola FOD event %d transport=%d header=%d vendor result=%d",
+                            event, transportStatus, headerStatus, result);
+        // The vendor implementation may return a non-standard AIDL reply
+        // header. A completed synchronous Binder transaction is authoritative;
+        // do not reject it solely because the optional result cannot be read.
+        status = transportStatus;
+    }
+    const bool success = status == STATUS_OK;
+    if (!success) gMotoFingerprint = nullptr;
+    __android_log_print(success ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR, LOG_TAG,
+                        "Motorola FOD event %d: %s", event,
+                        success ? "ok" : "error");
+    return success;
 }
 
 const AIBinder_Class* getPanelClass() {
@@ -86,7 +167,7 @@ bool setPanelMode(int32_t mode) {
     if (status == STATUS_OK) {
         rawIn = in.release();
         status = AIBinder_transact(gPanel.get(), kSetModeTransaction, &rawIn, &rawOut,
-                                   kPrivateVendorFlag);
+                                   kPanelBinderFlags);
     }
     ndk::ScopedAParcel out(rawOut);
 
@@ -125,8 +206,15 @@ class UdfpsHbm : public BnUdfpsHbm {
             return ndk::ScopedAStatus::ok();
         }
 
-        // Always send disable so stale panel state is repaired after a client failure.
-        const bool success = setPanelMode(enabled ? kPanelModeHighBrightFod : kPanelModeNormal);
+        // The vendor service expects the panel transition before the matching event.
+        // FINGER_DOWN (0) follows HBM enable; FINGER_UP (1) follows HBM disable.
+        const bool panelSuccess =
+                setPanelMode(enabled ? kPanelModeHighBrightFod : kPanelModeNormal);
+        const bool eventSuccess = sendFodEvent(enabled ? kMotoFodFingerDown : kMotoFodFingerUp);
+        const bool success = panelSuccess && eventSuccess;
+        if (enabled && !eventSuccess) {
+            setPanelMode(kPanelModeNormal);
+        }
         if (success) {
             mEnabled = enabled;
             ++mGeneration;
