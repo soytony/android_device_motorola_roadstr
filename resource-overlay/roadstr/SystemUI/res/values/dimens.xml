@@ -11,7 +11,7 @@
     <dimen name="status_bar_padding_start">6dp</dimen>
 
     <!-- Padding on the top of the statusbar -->
-    <dimen name="status_bar_padding_top">30.0px</dimen>
+    <dimen name="status_bar_padding_top">19.0px</dimen>
 
     <!-- Height of the status bar header bar when on Keyguard -->
     <dimen name="status_bar_header_height_keyguard">@*android:dimen/status_bar_height</dimen>
@@ -30,7 +30,8 @@
     <!-- Min height of the QS header row, which contains the clock and date,
     when the QS is expanded. This is used to determine how much to scale the
     clock and date when the QS is expanded.
-    95px + 2 * 30 px = 155px -->
-    <dimen name="qs_header_row_min_height">155.0px</dimen>
+    the center of the camera hole is at y = 79 px
+    120px + 2 * 19 px = 158px -->
+    <dimen name="qs_header_row_min_height">158.0px</dimen>
 
 </resources>
