@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">മനസ്സിൽ സൂക്ഷിക്കുക</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">സജ്ജീകരിക്കുന്നതിന് മുമ്പ് സൺഗ്ലാസുകളോ നിങ്ങളുടെ മുഖം മറയ്ക്കുന്ന മറ്റെന്തെങ്കിലുമോ നീക്കം ചെയ്യുക.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">സജ്ജീകരിക്കുന്നതിന് മുമ്പ് സൺഗ്ലാസുകളോ നിങ്ങളുടെ മുഖം മറയ്ക്കുന്ന മറ്റെന്തെങ്കിലുമോ നീക്കം ചെയ്യുക.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">നിങ്ങളുടെ ഫോണിലേക്ക് നോക്കുന്നത് അത് അൺലോക്ക് ചെയ്തേക്കാം. നിങ്ങളുമായി വളരെ സാമ്യമുള്ള ഒരാൾക്ക് ഇത് അൺലോക്ക് ചെയ്യാനും കഴിഞ്ഞേക്കും.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">അൺലോക്ക് ചെയ്യുമ്പോൾ നിങ്ങളുടെ കണ്ണുകൾ തുറന്ന് സ്ക്രീനിലേക്ക് നോക്കുക.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ശക്തമായ പിൻ, പാറ്റേൺ അല്ലെങ്കിൽ പാസ്‌വേഡ് എന്നിവയേക്കാൾ ഫെയ്‌സ് അൺലോക്ക് സുരക്ഷിതം കുറവായിരിക്കാം.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു</string>
+    <string name="security_settings_face_enroll_introduction_how_message">നിങ്ങളുടെ മുഖ ഡാറ്റ ഈ ഉപകരണത്തിൽ സുരക്ഷിതമായി സംഭരിച്ചിരിക്കുന്നതിനാൽ അപ്‌ലോഡ് ചെയ്തിട്ടില്ല.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">നിങ്ങൾ നിയന്ത്രണത്തിലാണ്</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">നിങ്ങൾ നിയന്ത്രണത്തിലാണ്</string>
+    <string name="security_settings_face_enroll_introduction_control_message">നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും ക്രമീകരണത്തിൽ നിങ്ങളുടെ മുഖ ഡാറ്റ ഇല്ലാതാക്കാം.</string>
+</resources>

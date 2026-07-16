@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Ter em mente</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Remova os óculos de sol ou qualquer outra coisa que cubra seu rosto antes da configuração.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Remova os óculos de sol ou qualquer outra coisa que cubra seu rosto antes da configuração.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Olhar para o seu telefone pode desbloqueá-lo. Alguém que se pareça muito com você também poderá desbloqueá-lo.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Mantenha os olhos abertos e olhe para a tela enquanto desbloqueia.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">O desbloqueio facial pode ser menos seguro do que um PIN, padrão ou senha forte.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Como funciona</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Seus dados faciais são armazenados com segurança neste dispositivo e não são carregados.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Você está no controle</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Você está no controle</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Você pode excluir seus dados faciais a qualquer momento nas Configurações.</string>
+</resources>

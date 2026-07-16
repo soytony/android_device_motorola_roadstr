@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Pitää mielessä</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Poista aurinkolasit tai mikä tahansa muu, joka peittää kasvosi ennen asennusta.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Poista aurinkolasit tai mikä tahansa muu, joka peittää kasvosi ennen asennusta.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Puhelimeen katsominen voi avata sen lukituksen. Joku, joka näyttää hyvin samanlaiselta kuin sinä, saattaa myös pystyä avaamaan sen lukituksen.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Pidä silmäsi auki ja katso näyttöä lukituksen avaamisen aikana.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Face Unlock voi olla vähemmän turvallinen kuin vahva PIN-koodi, kuvio tai salasana.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Miten se toimii</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Kasvotietosi tallennetaan turvallisesti tälle laitteelle, eikä niitä ladata.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Sinä hallitset</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Sinä hallitset</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Voit poistaa kasvotietosi milloin tahansa asetuksista.</string>
+</resources>

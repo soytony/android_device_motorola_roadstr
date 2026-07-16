@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Hafðu í huga</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Fjarlægðu sólgleraugu eða eitthvað annað sem hylur andlit þitt fyrir uppsetningu.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Fjarlægðu sólgleraugu eða eitthvað annað sem hylur andlit þitt fyrir uppsetningu.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ef þú horfir á símann þinn gæti hann opnað hann. Einhver sem lítur mjög út og þú gætir líka opnað hana.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Hafðu augun opin og horfðu á skjáinn á meðan þú opnar þig.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Andlitsopnun gæti verið óöruggari en sterkt PIN-númer, mynstur eða lykilorð.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hvernig það virkar</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Andlitsgögnin þín eru geymd á öruggan hátt á þessu tæki og er ekki hlaðið upp.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Þú ert við stjórnvölinn</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Þú ert við stjórnvölinn</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Þú getur eytt andlitsgögnum þínum hvenær sem er í stillingum.</string>
+</resources>

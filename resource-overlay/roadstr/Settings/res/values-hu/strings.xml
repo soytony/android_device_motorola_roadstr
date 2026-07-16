@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Tartsd szem előtt</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">A beállítás előtt távolítsa el a napszemüveget vagy bármi mást, ami eltakarja az arcát.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">A beállítás előtt távolítsa el a napszemüveget vagy bármi mást, ami eltakarja az arcát.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ha ránéz a telefonjára, feloldhatja a zárolást. Valaki, aki nagyon hasonlít rád, szintén fel tudja oldani.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Feloldás közben tartsa nyitva a szemét, és nézze a képernyőt.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Az arcalapú feloldás kevésbé biztonságos, mint az erős PIN, minta vagy jelszó.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hogyan működik</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Az arcadatait biztonságosan tárolja ezen az eszközön, és nem tölti fel.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Te irányítod</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Te irányítod</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Az arcadatait bármikor törölheti a Beállításokban.</string>
+</resources>

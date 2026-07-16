@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Denken Sie daran</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Nehmen Sie vor der Einrichtung die Sonnenbrille oder alles andere ab, was Ihr Gesicht bedeckt.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Nehmen Sie vor der Einrichtung die Sonnenbrille oder alles andere ab, was Ihr Gesicht bedeckt.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Wenn Sie auf Ihr Telefon schauen, wird es möglicherweise entsperrt. Jemand, der Ihnen sehr ähnlich sieht, kann es möglicherweise auch entsperren.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Halten Sie beim Entsperren die Augen offen und schauen Sie auf den Bildschirm.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Die Gesichtsentsperrung ist möglicherweise weniger sicher als eine sichere PIN, ein sicheres Muster oder ein sicheres Passwort.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Wie es funktioniert</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Ihre Gesichtsdaten werden sicher auf diesem Gerät gespeichert und nicht hochgeladen.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Sie haben die Kontrolle</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Sie haben die Kontrolle</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Sie können Ihre Gesichtsdaten jederzeit in den Einstellungen löschen.</string>
+</resources>

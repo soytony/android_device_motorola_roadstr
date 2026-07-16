@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Imati na umu</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Skinite sunčane naočale ili bilo što drugo što vam prekriva lice prije postavljanja.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Skinite sunčane naočale ili bilo što drugo što vam prekriva lice prije postavljanja.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Pogled na vaš telefon može ga otključati. Netko tko vam je vrlo sličan možda ga također može otključati.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Držite oči otvorene i gledajte u ekran dok otključavate.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Otključavanje licem može biti manje sigurno od jakog PIN-a, uzorka ili lozinke.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Kako radi</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Podaci o vašem licu sigurno su pohranjeni na ovom uređaju i ne prenose se.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Vi imate kontrolu</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Vi imate kontrolu</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Podatke o svom licu možete izbrisati u bilo kojem trenutku u Postavkama.</string>
+</resources>

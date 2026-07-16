@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Imejte v mislih</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Pred namestitvijo odstranite sončna očala ali karkoli drugega, kar prekriva vaš obraz.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Pred namestitvijo odstranite sončna očala ali karkoli drugega, kar prekriva vaš obraz.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Pogled na vaš telefon ga lahko odklene. Morda ga bo lahko odklenil tudi nekdo, ki vam je zelo podoben.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Med odklepanjem imejte odprte oči in glejte zaslon.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Odklepanje z obrazom je lahko manj varno kot močna koda PIN, vzorec ali geslo.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Kako deluje</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Podatki o vašem obrazu so varno shranjeni v tej napravi in ​​se ne nalagajo.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Vi imate nadzor</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Vi imate nadzor</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Podatke o obrazu lahko kadar koli izbrišete v nastavitvah.</string>
+</resources>

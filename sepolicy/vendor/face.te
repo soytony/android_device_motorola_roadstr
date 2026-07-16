@@ -1,0 +1,18 @@
+# The stock vendor policy labels vendor.faceauth.* with this private type.
+# Declare the equivalent local type because the precompiled Motorola policy is
+# not part of the source policy compilation.
+type vendor_tetras_prop, vendor_property_type;
+
+# The stock Tetras face HAL asks CameraService for its single camera stream
+# while Settings owns only the preview Surface.  Keep this permission scoped to
+# the RoadSTR vendor face domain; generic framework policy must not grant it to
+# every biometric provider.
+allow vendor_biometricsface fwk_camera_service:service_manager find;
+
+# Stock Tetras publishes vendor.faceauth.* state through its private property
+# type. Keep the grant typed and limited to this provider domain.
+allow vendor_biometricsface vendor_tetras_prop:property_service set;
+
+# Tetras reads its own state/version properties while starting enrollment.
+# Keep the read grant limited to the RoadSTR face provider and typed property.
+get_prop(vendor_biometricsface, vendor_tetras_prop)

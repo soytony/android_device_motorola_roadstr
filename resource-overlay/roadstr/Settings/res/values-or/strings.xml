@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ମନେରଖନ୍ତୁ |</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ଚଷମା କିମ୍ବା ଅନ୍ୟ କ anything ଣସି ଜିନିଷ ଅପସାରଣ କରନ୍ତୁ ଯାହା ସେଟଅପ୍ ପୂର୍ବରୁ ଆପଣଙ୍କ ଚେହେରାକୁ ଘୋଡାଇଥାଏ |</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ଚଷମା କିମ୍ବା ଅନ୍ୟ କ anything ଣସି ଜିନିଷ ଅପସାରଣ କରନ୍ତୁ ଯାହା ସେଟଅପ୍ ପୂର୍ବରୁ ଆପଣଙ୍କ ଚେହେରାକୁ ଘୋଡାଇଥାଏ |</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ଆପଣଙ୍କ ଫୋନକୁ ଦେଖିଲେ ଏହା ଅନଲକ୍ ହୋଇପାରେ | ତୁମ ସହିତ ବହୁତ ସମାନ ଦେଖାଯାଉଥିବା ବ୍ୟକ୍ତି ମଧ୍ୟ ଏହାକୁ ଅନଲକ୍ କରିବାକୁ ସମର୍ଥ ହୋଇପାରନ୍ତି |</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">ଅନଲକ୍ କରିବା ସମୟରେ ଆଖିକୁ ଖୋଲା ରଖନ୍ତୁ ଏବଂ ପରଦାକୁ ଦେଖନ୍ତୁ |</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ଏକ ଶକ୍ତିଶାଳୀ PIN, pattern ାଞ୍ଚା, କିମ୍ବା ପାସୱାର୍ଡ ଅପେକ୍ଷା ଫେସ୍ ଅନଲକ୍ କମ୍ ସୁରକ୍ଷିତ ହୋଇପାରେ |</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ଏହା କିପରି କାମ କରେ |</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ଆପଣଙ୍କର ଚେହେରା ତଥ୍ୟ ଏହି ଡିଭାଇସରେ ସୁରକ୍ଷିତ ଭାବରେ ଗଚ୍ଛିତ ହୋଇଛି ଏବଂ ଅପଲୋଡ୍ ହୋଇନାହିଁ |</string>
+    <string name="security_settings_face_enroll_introduction_control_title">ଆପଣ ନିୟନ୍ତ୍ରଣରେ ଅଛନ୍ତି |</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">ଆପଣ ନିୟନ୍ତ୍ରଣରେ ଅଛନ୍ତି |</string>
+    <string name="security_settings_face_enroll_introduction_control_message">ଆପଣ ସେଟିଂସମୂହରେ ଯେକ time ଣସି ସମୟରେ ଆପଣଙ୍କର ଚେହେରା ତଥ୍ୟ ବିଲୋପ କରିପାରିବେ |</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Эсиңизде болсун</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Орнотуудан мурун көз айнекти же бетиңизди жаап турган башка нерселерди алып салыңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Орнотуудан мурун көз айнекти же бетиңизди жаап турган башка нерселерди алып салыңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Телефонуңузду карасаңыз, анын кулпусу ачылат. Сизге абдан окшош бирөө да анын кулпусун ачышы мүмкүн.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Кулпуну ачып жатканда көзүңүздү ачып, экранды караңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Жүзүнөн таанып ачуу күчтүү PIN кодго, графикалык ачкычка же сырсөзгө караганда коопсузураак болушу мүмкүн.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Бул кантип иштейт</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Жүзүңүздүн дайындары бул түзмөктө коопсуз сакталып, жүктөлүп берилбейт.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Сиз көзөмөлдөп турасыз</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Сиз көзөмөлдөп турасыз</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Жүзүңүздүн дайындарын каалаган убакта Жөндөөлөрдөн өчүрө аласыз.</string>
+</resources>

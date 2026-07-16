@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">စိတ်ထဲထားပါ။</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">မတပ်ဆင်မီ သင့်မျက်နှာကို ဖုံးအုပ်ထားသည့် နေကာမျက်မှန် သို့မဟုတ် အခြားအရာများကို ဖယ်ရှားပါ။</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">မတပ်ဆင်မီ သင့်မျက်နှာကို ဖုံးအုပ်ထားသည့် နေကာမျက်မှန် သို့မဟုတ် အခြားအရာများကို ဖယ်ရှားပါ။</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">သင့်ဖုန်းကို ကြည့်ခြင်းဖြင့် ၎င်းကို လော့ခ်ဖွင့်နိုင်ပါသည်။ သင်နှင့် အလွန်ဆင်တူသော တစ်စုံတစ်ဦးသည် ၎င်းကို လော့ခ်ဖွင့်နိုင်သည်။</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">လော့ခ်ဖွင့်နေစဉ် သင့်မျက်လုံးများကို ဖွင့်ထားပြီး မျက်နှာပြင်ကို ကြည့်ပါ။</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">မျက်နှာလော့ခ်ဖွင့်ခြင်းသည် ခိုင်မာသော PIN၊ ပုံစံ သို့မဟုတ် စကားဝှက်ထက် လုံခြုံမှုနည်းပါသည်။</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ဘယ်လိုအလုပ်လုပ်လဲ။</string>
+    <string name="security_settings_face_enroll_introduction_how_message">သင့်မျက်နှာဒေတာကို ဤစက်ပစ္စည်းတွင် လုံခြုံစွာသိမ်းဆည်းထားပြီး အပ်လုဒ်မတင်ပါ။</string>
+    <string name="security_settings_face_enroll_introduction_control_title">သင်ထိန်းချုပ်မှုတွင်ရှိသည်။</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">သင်ထိန်းချုပ်မှုတွင်ရှိသည်။</string>
+    <string name="security_settings_face_enroll_introduction_control_message">ဆက်တင်များတွင် သင့်မျက်နှာဒေတာကို အချိန်မရွေး ဖျက်နိုင်ပါသည်။</string>
+</resources>

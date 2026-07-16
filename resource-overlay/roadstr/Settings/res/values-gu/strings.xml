@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ધ્યાનમાં રાખો</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">સેટઅપ પહેલાં સનગ્લાસ અથવા તમારા ચહેરાને આવરી લેતી અન્ય કોઈપણ વસ્તુ દૂર કરો.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">સેટઅપ પહેલાં સનગ્લાસ અથવા તમારા ચહેરાને આવરી લેતી અન્ય કોઈપણ વસ્તુ દૂર કરો.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">તમારા ફોનને જોતા તે અનલોક થઈ શકે છે. તમારા જેવી જ દેખાતી વ્યક્તિ પણ તેને અનલૉક કરવામાં સક્ષમ બની શકે છે.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">અનલોક કરતી વખતે તમારી આંખો ખુલ્લી રાખો અને સ્ક્રીન તરફ જુઓ.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ફેસ અનલૉક મજબૂત PIN, પેટર્ન અથવા પાસવર્ડ કરતાં ઓછું સુરક્ષિત હોઈ શકે છે.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">તે કેવી રીતે કામ કરે છે</string>
+    <string name="security_settings_face_enroll_introduction_how_message">તમારા ચહેરાનો ડેટા આ ઉપકરણ પર સુરક્ષિત રીતે સંગ્રહિત છે અને અપલોડ થતો નથી.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">તમે નિયંત્રણમાં છો</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">તમે નિયંત્રણમાં છો</string>
+    <string name="security_settings_face_enroll_introduction_control_message">તમે સેટિંગ્સમાં કોઈપણ સમયે તમારા ચહેરાનો ડેટા ડિલીટ કરી શકો છો.</string>
+</resources>

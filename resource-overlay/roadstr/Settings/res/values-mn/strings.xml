@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Санаж байгаарай</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Тохируулахын өмнө нарны шил эсвэл нүүрээ бүрхсэн бусад зүйлийг арилга.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Тохируулахын өмнө нарны шил эсвэл нүүрээ бүрхсэн бусад зүйлийг арилга.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Утсаа харвал түгжээг нь тайлж магадгүй. Чамтай маш төстэй хэн нэгэн үүнийг тайлж магадгүй юм.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Түгжээг тайлахдаа нүдээ нээгээд дэлгэц рүү хараарай.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Царайгаар түгжээ тайлах нь хүчтэй ПИН, хээ, нууц үгээс хамгаалалт муутай байж магадгүй.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Энэ нь хэрхэн ажилладаг</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Таны царайны мэдээллийг энэ төхөөрөмжид найдвартай хадгалсан бөгөөд байршуулаагүй.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Та хяналтанд байна</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Та хяналтанд байна</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Та хүссэн үедээ Тохиргоо хэсгээс нүүрнийхээ мэдээллээ устгах боломжтой.</string>
+</resources>

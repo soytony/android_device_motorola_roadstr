@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Майте на увазі</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Перед налаштуванням зніміть сонцезахисні окуляри або щось інше, що закриває ваше обличчя.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Перед налаштуванням зніміть сонцезахисні окуляри або щось інше, що закриває ваше обличчя.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Дивлячись на свій телефон, можна розблокувати його. Хтось, хто дуже схожий на вас, також може його розблокувати.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Під час розблокування тримайте очі відкритими та дивіться на екран.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Фейсконтроль може бути менш безпечним, ніж надійний PIN-код, ключ або пароль.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Як це працює</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Дані вашого обличчя безпечно зберігаються на цьому пристрої та не завантажуються.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Ви під контролем</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Ви під контролем</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Ви можете будь-коли видалити дані свого обличчя в налаштуваннях.</string>
+</resources>

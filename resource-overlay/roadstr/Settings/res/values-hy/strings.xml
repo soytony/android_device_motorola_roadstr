@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Նկատի ունեցեք</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Հեռացրեք արևային ակնոցները կամ ցանկացած այլ բան, որը ծածկում է ձեր դեմքը նախքան տեղադրումը:</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Հեռացրեք արևային ակնոցները կամ ցանկացած այլ բան, որը ծածկում է ձեր դեմքը նախքան տեղադրումը:</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Հեռախոսին նայելը կարող է ապակողպել այն: Ինչ-որ մեկը, ով շատ նման է ձեզ, կարող է նաև այն բացել:</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Բաց պահեք ձեր աչքերը և ապակողպելիս նայեք էկրանին:</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Դեմքով ապակողպումը կարող է ավելի քիչ անվտանգ լինել, քան ուժեղ PIN-ը, նախշը կամ գաղտնաբառը:</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Ինչպես է այն աշխատում</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Ձեր դեմքի տվյալները ապահով կերպով պահվում են այս սարքում և չեն վերբեռնվում:</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Դուք վերահսկում եք</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Դուք վերահսկում եք</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Դուք ցանկացած ժամանակ կարող եք ջնջել ձեր դեմքի տվյալները Կարգավորումներում:</string>
+</resources>

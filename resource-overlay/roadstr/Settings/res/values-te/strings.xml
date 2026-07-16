@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">గుర్తుంచుకోండి</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">సెటప్ చేయడానికి ముందు సన్ గ్లాసెస్ లేదా మీ ముఖాన్ని కప్పి ఉంచే మరేదైనా తీసివేయండి.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">సెటప్ చేయడానికి ముందు సన్ గ్లాసెస్ లేదా మీ ముఖాన్ని కప్పి ఉంచే మరేదైనా తీసివేయండి.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">మీ ఫోన్‌ని చూస్తే దాన్ని అన్‌లాక్ చేయవచ్చు. మీకు చాలా సారూప్యంగా కనిపించే ఎవరైనా కూడా దీన్ని అన్‌లాక్ చేయగలరు.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">అన్‌లాక్ చేస్తున్నప్పుడు మీ కళ్ళు తెరిచి స్క్రీన్ వైపు చూడండి.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">బలమైన PIN, నమూనా లేదా పాస్‌వర్డ్ కంటే ఫేస్ అన్‌లాక్ తక్కువ సురక్షితమైనది కావచ్చు.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ఇది ఎలా పనిచేస్తుంది</string>
+    <string name="security_settings_face_enroll_introduction_how_message">మీ ముఖ డేటా ఈ పరికరంలో సురక్షితంగా నిల్వ చేయబడుతుంది మరియు అప్‌లోడ్ చేయబడదు.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">మీరు నియంత్రణలో ఉన్నారు</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">మీరు నియంత్రణలో ఉన్నారు</string>
+    <string name="security_settings_face_enroll_introduction_control_message">మీరు సెట్టింగ్‌లలో ఎప్పుడైనా మీ ముఖ డేటాను తొలగించవచ్చు.</string>
+</resources>

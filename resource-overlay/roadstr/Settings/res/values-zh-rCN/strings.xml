@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">注意事项</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">设置前，请摘下太阳镜或其他遮挡面部的物品。</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">设置前，请摘下太阳镜或其他遮挡面部的物品。</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">注视手机可能会将其解锁。与您长相非常相似的人也可能解锁此设备。</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">解锁时请睁开眼睛并注视屏幕。</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">面孔解锁的安全性可能不及高强度 PIN、图案或密码。</string>
+    <string name="security_settings_face_enroll_introduction_how_title">工作原理</string>
+    <string name="security_settings_face_enroll_introduction_how_message">您的面孔数据会安全地存储在此设备上，不会上传。</string>
+    <string name="security_settings_face_enroll_introduction_control_title">一切由您掌控</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">一切由您掌控</string>
+    <string name="security_settings_face_enroll_introduction_control_message">您可以随时在“设置”中删除面孔数据。</string>
+</resources>

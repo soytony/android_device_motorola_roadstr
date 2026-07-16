@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Tandaan</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Alisin ang mga salaming pang-araw o anumang bagay na tumatakip sa iyong mukha bago mag-setup.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Alisin ang mga salaming pang-araw o anumang bagay na tumatakip sa iyong mukha bago mag-setup.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ang pagtingin sa iyong telepono ay maaaring ma-unlock ito. Maaaring ma-unlock din ito ng isang taong halos kamukha mo.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Panatilihing nakabukas ang iyong mga mata at tumingin sa screen habang ina-unlock.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Maaaring hindi gaanong secure ang face unlock kaysa sa isang malakas na PIN, pattern, o password.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Paano ito gumagana</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Ang iyong data ng mukha ay secure na naka-store sa device na ito at hindi ina-upload.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Ikaw ang may kontrol</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Ikaw ang may kontrol</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Maaari mong i-delete ang iyong data ng mukha anumang oras sa Mga Setting.</string>
+</resources>

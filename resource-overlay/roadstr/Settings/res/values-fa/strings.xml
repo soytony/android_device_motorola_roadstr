@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">در نظر داشته باشید</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">قبل از نصب، عینک آفتابی یا هر چیز دیگری را که صورت شما را می پوشاند بردارید.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">قبل از نصب، عینک آفتابی یا هر چیز دیگری را که صورت شما را می پوشاند بردارید.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">نگاه کردن به گوشی ممکن است قفل آن را باز کند. ممکن است شخصی که بسیار شبیه شما به نظر می رسد نیز بتواند قفل آن را باز کند.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">هنگام باز کردن قفل، چشمان خود را باز نگه دارید و به صفحه نگاه کنید.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">باز کردن قفل با چهره ممکن است از یک پین، الگو یا رمز عبور قوی کمتر ایمن باشد.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">چگونه کار می کند</string>
+    <string name="security_settings_face_enroll_introduction_how_message">داده های چهره شما به طور ایمن در این دستگاه ذخیره می شود و آپلود نمی شود.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">شما در کنترل هستید</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">شما در کنترل هستید</string>
+    <string name="security_settings_face_enroll_introduction_control_message">هرزمان خواستید می‌توانید داده‌های چهره‌تان را در تنظیمات حذف کنید.</string>
+</resources>

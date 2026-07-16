@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Cadwch mewn cof</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Tynnwch sbectol haul neu unrhyw beth arall sy\'n gorchuddio\'ch wyneb cyn gosod.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Tynnwch sbectol haul neu unrhyw beth arall sy\'n gorchuddio\'ch wyneb cyn gosod.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Efallai y bydd edrych ar eich ffôn yn ei ddatgloi. Efallai y bydd rhywun sy\'n edrych yn debyg iawn i chi hefyd yn gallu ei ddatgloi.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Cadwch eich llygaid ar agor ac edrychwch ar y sgrin wrth ddatgloi.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Gall datgloi wynebau fod yn llai diogel na PIN cryf, patrwm neu gyfrinair.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Sut mae\'n gweithio</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Mae eich data wyneb yn cael ei storio\'n ddiogel ar y ddyfais hon ac nid yw\'n cael ei uwchlwytho.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Chi sy\'n rheoli</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Chi sy\'n rheoli</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Gallwch ddileu eich data wyneb ar unrhyw adeg yn y Gosodiadau.</string>
+</resources>

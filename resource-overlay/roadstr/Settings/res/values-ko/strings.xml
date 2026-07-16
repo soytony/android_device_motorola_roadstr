@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">명심하세요</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">설정하기 전에 선글라스나 얼굴을 가리고 있는 모든 것을 제거하세요.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">설정하기 전에 선글라스나 얼굴을 가리고 있는 모든 것을 제거하세요.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">휴대전화를 보면 잠금이 해제될 수 있습니다. 당신과 매우 비슷한 사람이 잠금을 해제할 수도 있습니다.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">잠금을 해제하는 동안 눈을 뜨고 화면을 바라보세요.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">얼굴 인식 잠금 해제는 강력한 PIN, 패턴, 비밀번호보다 보안 수준이 낮을 수 있습니다.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">작동 원리</string>
+    <string name="security_settings_face_enroll_introduction_how_message">귀하의 얼굴 데이터는 이 기기에 안전하게 저장되며 업로드되지 않습니다.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">당신은 통제할 수 있습니다</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">당신은 통제할 수 있습니다</string>
+    <string name="security_settings_face_enroll_introduction_control_message">설정에서 언제든지 얼굴 데이터를 삭제할 수 있습니다.</string>
+</resources>

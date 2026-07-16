@@ -50,6 +50,12 @@ PRODUCT_PACKAGES += \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
 
+# Face unlock
+# Stock provides an AIDL v4 RGB face HAL; advertise it so Settings and
+# BiometricService expose face enrollment and authentication.
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/sku_sun_audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/audio_effects.xml \

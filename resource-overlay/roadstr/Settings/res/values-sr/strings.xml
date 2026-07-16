@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Имајте на уму</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Скините наочаре за сунце или било шта друго што вам покрива лице пре подешавања.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Скините наочаре за сунце или било шта друго што вам покрива лице пре подешавања.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ако погледате свој телефон, можете га откључати. Неко ко изгледа веома сличан вама можда ће такође моћи да га откључа.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Држите очи отворене и гледајте у екран док откључавате.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Откључавање лицем може бити мање безбедно од јаког ПИН-а, шаблона или лозинке.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Како то ради</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Подаци о лицу се безбедно чувају на овом уређају и не отпремају се.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Ви имате контролу</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Ви имате контролу</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Податке о лицу можете да избришете у било ком тренутку у подешавањима.</string>
+</resources>

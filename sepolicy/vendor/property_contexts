@@ -1,0 +1,3 @@
+# Stock Tetras face-provider state and version properties.
+vendor.faceauth.                         u:object_r:vendor_tetras_prop:s0
+vendor.faceauth.cli.lidstate             u:object_r:vendor_tetras_prop:s0

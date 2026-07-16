@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">மனதில் இருங்கள்</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">அமைப்பதற்கு முன் சன்கிளாஸ்கள் அல்லது உங்கள் முகத்தை மறைக்கும் வேறு எதையும் அகற்றவும்.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">அமைப்பதற்கு முன் சன்கிளாஸ்கள் அல்லது உங்கள் முகத்தை மறைக்கும் வேறு எதையும் அகற்றவும்.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">உங்கள் மொபைலைப் பார்த்தால், அதைத் திறக்கலாம். உங்களைப் போலவே தோற்றமளிக்கும் ஒருவரால் அதைத் திறக்க முடியும்.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">திறக்கும் போது கண்களைத் திறந்து திரையைப் பார்க்கவும்.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ஃபேஸ் அன்லாக் வலுவான பின், பேட்டர்ன் அல்லது கடவுச்சொல்லைக் காட்டிலும் குறைவான பாதுகாப்புடன் இருக்கலாம்.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">இது எப்படி வேலை செய்கிறது</string>
+    <string name="security_settings_face_enroll_introduction_how_message">உங்கள் முகத் தரவு இந்தச் சாதனத்தில் பாதுகாப்பாகச் சேமிக்கப்பட்டு, பதிவேற்றப்படவில்லை.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">நீங்கள் கட்டுப்பாட்டில் இருக்கிறீர்கள்</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">நீங்கள் கட்டுப்பாட்டில் இருக்கிறீர்கள்</string>
+    <string name="security_settings_face_enroll_introduction_control_message">அமைப்புகளில் எந்த நேரத்திலும் உங்கள் முகத் தரவை நீக்கலாம்.</string>
+</resources>

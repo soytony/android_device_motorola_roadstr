@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Mějte na paměti</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Před nastavením si sundejte sluneční brýle nebo cokoli jiného, ​​co vám zakrývá obličej.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Před nastavením si sundejte sluneční brýle nebo cokoli jiného, ​​co vám zakrývá obličej.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Pohled na telefon jej může odemknout. Někdo, kdo vypadá velmi podobně jako vy, může být také schopen jej odemknout.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Při odemykání mějte oči otevřené a dívejte se na obrazovku.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Odemknutí obličejem může být méně bezpečné než silný PIN, gesto nebo heslo.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Jak to funguje</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Data vaší tváře jsou v tomto zařízení bezpečně uložena a nenahrávají se.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Jste pod kontrolou</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Jste pod kontrolou</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Údaje o obličeji můžete kdykoli smazat v Nastavení.</string>
+</resources>

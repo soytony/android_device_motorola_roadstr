@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Husk</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Fjern solbriller eller andet, der dækker dit ansigt før opsætning.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Fjern solbriller eller andet, der dækker dit ansigt før opsætning.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Hvis du kigger på din telefon, kan du låse den op. En person, der ligner dig meget, kan muligvis også låse den op.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Hold øjnene åbne og se på skærmen, mens du låser op.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Ansigtslås kan være mindre sikker end en stærk pinkode, et mønster eller en adgangskode.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hvordan det virker</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Dine ansigtsdata gemmes sikkert på denne enhed og uploades ikke.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Du er i kontrol</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Du er i kontrol</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Du kan til enhver tid slette dine ansigtsdata i Indstillinger.</string>
+</resources>

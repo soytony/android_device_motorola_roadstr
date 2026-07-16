@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Gogoan izan</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Kendu eguzkitako betaurrekoak edo aurpegia estaltzen duen beste edozein gauza konfiguratu aurretik.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Kendu eguzkitako betaurrekoak edo aurpegia estaltzen duen beste edozein gauza konfiguratu aurretik.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Zure telefonoa begiratuz gero, baliteke desblokeatzea. Zure antzeko itxura duen norbaitek ere desblokeatu ahal izango du.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Mantendu begiak zabalik eta begiratu pantaila desblokeatzen duzun bitartean.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Baliteke aurpegia desblokeatzea PIN, eredu edo pasahitz sendo bat baino seguruagoa izatea.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Nola funtzionatzen duen</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Zure aurpegiko datuak modu seguruan gordetzen dira gailu honetan eta ez dira kargatzen.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Kontrolean zaude</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Kontrolean zaude</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Zure aurpegiko datuak edonoiz ezaba ditzakezu Ezarpenak atalean.</string>
+</resources>

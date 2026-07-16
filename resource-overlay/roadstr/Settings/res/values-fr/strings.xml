@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Gardez à l\'esprit</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Retirez les lunettes de soleil ou tout autre objet qui couvre votre visage avant l\'installation.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Retirez les lunettes de soleil ou tout autre objet qui couvre votre visage avant l\'installation.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Regarder votre téléphone peut le déverrouiller. Une personne qui vous ressemble beaucoup pourra peut-être également le déverrouiller.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Gardez les yeux ouverts et regardez l\'écran pendant le déverrouillage.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Le déverrouillage par reconnaissance faciale peut être moins sécurisé qu\'un code PIN, un schéma ou un mot de passe fort.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Comment ça marche</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Les données de votre visage sont stockées en toute sécurité sur cet appareil et ne sont pas téléchargées.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Vous êtes en contrôle</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Vous êtes en contrôle</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Vous pouvez supprimer vos données faciales à tout moment dans Paramètres.</string>
+</resources>

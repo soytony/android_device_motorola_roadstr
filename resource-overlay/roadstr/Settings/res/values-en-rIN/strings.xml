@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Keep in mind</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Remove sunglasses or anything else that covers your face before setup.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Remove sunglasses or anything else that covers your face before setup.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Looking at your phone may unlock it. Someone who looks very similar to you may also be able to unlock it.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Keep your eyes open and look at the screen while unlocking.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Face unlock may be less secure than a strong PIN, pattern, or password.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">How it works</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Your face data is stored securely on this device and is not uploaded.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">You are in control</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">You are in control</string>
+    <string name="security_settings_face_enroll_introduction_control_message">You can delete your face data at any time in Settings.</string>
+</resources>

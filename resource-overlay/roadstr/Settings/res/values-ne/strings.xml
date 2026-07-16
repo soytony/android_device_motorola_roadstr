@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ध्यानमा राख्नुहोस्</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">सेटअप गर्नु अघि धूपको चश्मा वा तपाईंको अनुहार छोप्ने अन्य चीजहरू हटाउनुहोस्।</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">सेटअप गर्नु अघि धूपको चश्मा वा तपाईंको अनुहार छोप्ने अन्य चीजहरू हटाउनुहोस्।</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">तपाईको फोन हेर्दा अनलक हुन सक्छ। तपाईंसँग धेरै मिल्दोजुल्दो देखिने व्यक्तिले पनि यसलाई अनलक गर्न सक्षम हुन सक्छ।</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">अनलक गर्दा आफ्नो आँखा खुला राख्नुहोस् र स्क्रिनमा हेर्नुहोस्।</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">अनुहार अनलक बलियो PIN, ढाँचा वा पासवर्ड भन्दा कम सुरक्षित हुन सक्छ।</string>
+    <string name="security_settings_face_enroll_introduction_how_title">यसले कसरी काम गर्छ</string>
+    <string name="security_settings_face_enroll_introduction_how_message">तपाईंको अनुहारको डेटा यस डिभाइसमा सुरक्षित रूपमा भण्डारण गरिन्छ र अपलोड गरिँदैन।</string>
+    <string name="security_settings_face_enroll_introduction_control_title">तपाईं नियन्त्रणमा हुनुहुन्छ</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">तपाईं नियन्त्रणमा हुनुहुन्छ</string>
+    <string name="security_settings_face_enroll_introduction_control_message">तपाईं सेटिङहरूमा गई जुनसुकै बेला आफ्नो अनुहारको डेटा मेटाउन सक्नुहुन्छ।</string>
+</resources>

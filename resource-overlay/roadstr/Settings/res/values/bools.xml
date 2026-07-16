@@ -9,4 +9,9 @@
 
     <!-- Whether to show min refresh rate in display settings -->
     <bool name="config_show_min_refresh_rate_switch">true</bool>
+
+    <!-- Let Tetras own camera ID 1 while rendering into Settings' preview surface. -->
+    <bool name="config_face_enroll_use_camera_preview">true</bool>
+    <bool name="config_face_enroll_hal_owns_camera">true</bool>
+
 </resources>

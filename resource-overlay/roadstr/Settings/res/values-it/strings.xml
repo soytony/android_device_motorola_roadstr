@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Tienilo a mente</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Togli gli occhiali da sole o qualsiasi altra cosa che copra il viso prima della configurazione.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Togli gli occhiali da sole o qualsiasi altra cosa che copra il viso prima della configurazione.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Guardare il telefono potrebbe sbloccarlo. Anche qualcuno che ti assomiglia molto potrebbe essere in grado di sbloccarlo.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Tieni gli occhi aperti e guarda lo schermo durante lo sblocco.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Lo sblocco col sorriso potrebbe essere meno sicuro di un PIN, una sequenza o una password complessi.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Come funziona</string>
+    <string name="security_settings_face_enroll_introduction_how_message">I dati del tuo viso vengono archiviati in modo sicuro su questo dispositivo e non vengono caricati.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Hai il controllo</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Hai il controllo</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Puoi eliminare i dati del tuo viso in qualsiasi momento nelle Impostazioni.</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Yadda saxlayın</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Quraşdırmazdan əvvəl gün eynəklərini və ya üzünüzü örtən hər şeyi çıxarın.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Quraşdırmazdan əvvəl gün eynəklərini və ya üzünüzü örtən hər şeyi çıxarın.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Telefonunuza baxmaq onun kilidini aça bilər. Sizə çox bənzəyən biri də onun kilidini aça bilər.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Kilidi açarkən gözlərinizi açıq saxlayın və ekrana baxın.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Üz ilə kiliddən çıxarma güclü PIN, model və ya paroldan daha az təhlükəsiz ola bilər.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Necə işləyir</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Üz datanız bu cihazda təhlükəsiz şəkildə saxlanılır və yüklənmir.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Nəzarət sizdədir</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Nəzarət sizdədir</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Üz datanızı istənilən vaxt Ayarlarda silə bilərsiniz.</string>
+</resources>

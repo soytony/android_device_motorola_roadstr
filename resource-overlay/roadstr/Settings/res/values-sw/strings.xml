@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Kumbuka</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Ondoa miwani ya jua au kitu kingine chochote kinachofunika uso wako kabla ya kuweka mipangilio.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Ondoa miwani ya jua au kitu kingine chochote kinachofunika uso wako kabla ya kuweka mipangilio.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Kuangalia simu yako kunaweza kuifungua. Mtu anayefanana nawe sana anaweza pia kuifungua.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Weka macho yako wazi na uangalie skrini wakati unafungua.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Kufungua kwa uso kunaweza kuwa salama kidogo kuliko PIN, mchoro au nenosiri thabiti.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Jinsi inavyofanya kazi</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Data ya uso wako imehifadhiwa kwa usalama kwenye kifaa hiki na haijapakiwa.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Wewe ni katika udhibiti</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Wewe ni katika udhibiti</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Unaweza kufuta data ya uso wako wakati wowote katika Mipangilio.</string>
+</resources>

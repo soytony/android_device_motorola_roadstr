@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Komma ihåg</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Ta bort solglasögon eller något annat som täcker ditt ansikte innan installationen.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Ta bort solglasögon eller något annat som täcker ditt ansikte innan installationen.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Att titta på din telefon kan låsa upp den. Någon som är väldigt lik dig kanske också kan låsa upp den.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Håll ögonen öppna och titta på skärmen medan du låser upp.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Ansiktsupplåsning kan vara mindre säkert än en stark PIN-kod, ett mönster eller ett lösenord.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hur det fungerar</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Din ansiktsdata lagras säkert på den här enheten och laddas inte upp.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Du har kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Du har kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Du kan ta bort din ansiktsdata när som helst i Inställningar.</string>
+</resources>

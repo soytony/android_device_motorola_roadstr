@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Ține minte</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Scoateți ochelarii de soare sau orice altceva care vă acoperă fața înainte de instalare.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Scoateți ochelarii de soare sau orice altceva care vă acoperă fața înainte de instalare.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Privind la telefon, îl poate debloca. Cineva care arată foarte asemănător cu tine ar putea, de asemenea, să îl deblocheze.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Țineți ochii deschiși și priviți ecranul în timp ce deblocați.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Deblocarea facială poate fi mai puțin sigură decât un PIN puternic, un model sau o parolă.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Cum funcționează</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Datele feței dvs. sunt stocate în siguranță pe acest dispozitiv și nu sunt încărcate.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Ești în control</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Ești în control</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Puteți șterge oricând datele feței din Setări.</string>
+</resources>

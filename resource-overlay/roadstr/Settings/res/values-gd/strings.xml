@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Cùm ann an inntinn</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Thoir air falbh speuclairean-grèine no rud sam bith eile a tha a’ còmhdach d’ aghaidh mus cuir thu air dòigh.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Thoir air falbh speuclairean-grèine no rud sam bith eile a tha a’ còmhdach d’ aghaidh mus cuir thu air dòigh.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ma choimheadas tu air an fhòn agad dh’ fhaodadh e fhuasgladh. Is dòcha gum bi e comasach dha cuideigin a tha a’ coimhead glè choltach riut fhuasgladh.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Cùm do shùilean fosgailte agus coimhead air an sgrion fhad ‘s a tha thu a’ fosgladh.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Faodaidh fuasgladh aghaidh a bhith cho tèarainte ri PIN làidir, pàtran no facal-faire.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Mar a tha e ag obair</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Tha an dàta aghaidh agad air a stòradh gu tèarainte air an inneal seo agus chan eil e air a luchdachadh suas.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Tha thu fo smachd</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Tha thu fo smachd</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Faodaidh tu an dàta aghaidh agad a dhubhadh às aig àm sam bith ann an Settings.</string>
+</resources>

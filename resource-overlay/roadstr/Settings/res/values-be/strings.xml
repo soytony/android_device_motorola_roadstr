@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Майце на ўвазе</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Перад устаноўкай зніміце сонцаахоўныя акуляры або што-небудзь яшчэ, што закрывае ваш твар.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Перад устаноўкай зніміце сонцаахоўныя акуляры або што-небудзь яшчэ, што закрывае ваш твар.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Паглядзеўшы на свой тэлефон, вы можаце разблакіраваць яго. Той, хто вельмі падобны на вас, таксама можа разблакіраваць яго.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Падчас разблакіроўкі трымайце вочы адкрытымі і глядзіце на экран.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Распазнаванне тварам можа быць менш бяспечным, чым надзейны PIN-код, шаблон або пароль.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Як гэта працуе</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Даныя вашага твару бяспечна захоўваюцца на гэтай прыладзе і не загружаюцца.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Вы ўсё кантралюеце</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Вы ўсё кантралюеце</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Вы можаце выдаліць даныя твару ў любы час у наладах.</string>
+</resources>

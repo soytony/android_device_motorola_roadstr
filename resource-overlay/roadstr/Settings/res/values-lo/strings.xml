@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ຮັກສາຢູ່ໃນໃຈ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ເອົາແວ່ນຕາກັນແດດອອກ ຫຼືອັນອື່ນທີ່ປົກໜ້າເຈົ້າອອກກ່ອນຕັ້ງຄ່າ.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ເອົາແວ່ນຕາກັນແດດອອກ ຫຼືອັນອື່ນທີ່ປົກໜ້າເຈົ້າອອກກ່ອນຕັ້ງຄ່າ.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ການເບິ່ງໂທລະສັບຂອງທ່ານອາດຈະປົດລັອກມັນ. ບາງ​ຄົນ​ທີ່​ເບິ່ງ​ຄື​ກັນ​ກັບ​ທ່ານ​ຫຼາຍ​ອາດ​ຈະ​ສາ​ມາດ​ປົດ​ລັອກ​ມັນ​.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">ເປີດຕາຂອງເຈົ້າ ແລະເບິ່ງໜ້າຈໍໃນຂະນະທີ່ປົດລັອກ.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ການປົດລັອກດ້ວຍໜ້າອາດມີຄວາມປອດໄພໜ້ອຍກວ່າ PIN, ຮູບແບບ ຫຼື ລະຫັດຜ່ານທີ່ແຂງແຮງ.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ມັນເຮັດວຽກແນວໃດ</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ຂໍ້​ມູນ​ໃບ​ຫນ້າ​ຂອງ​ທ່ານ​ໄດ້​ຖືກ​ເກັບ​ຮັກ​ສາ​ໄວ້​ຢ່າງ​ປອດ​ໄພ​ໃນ​ອຸ​ປະ​ກອນ​ນີ້​ແລະ​ບໍ່​ໄດ້​ອັບ​ໂຫຼດ​.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">ເຈົ້າຢູ່ໃນການຄວບຄຸມ</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">ເຈົ້າຢູ່ໃນການຄວບຄຸມ</string>
+    <string name="security_settings_face_enroll_introduction_control_message">ທ່ານສາມາດລຶບຂໍ້ມູນໃບໜ້າຂອງທ່ານໄດ້ຕະຫຼອດເວລາໃນການຕັ້ງຄ່າ.</string>
+</resources>

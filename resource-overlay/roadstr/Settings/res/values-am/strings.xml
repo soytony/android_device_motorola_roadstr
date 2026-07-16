@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ልብ ይበሉ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ከማዋቀርዎ በፊት የፀሐይ መነፅርን ወይም ፊትዎን የሚሸፍነውን ማንኛውንም ነገር ያስወግዱ።</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ከማዋቀርዎ በፊት የፀሐይ መነፅርን ወይም ፊትዎን የሚሸፍነውን ማንኛውንም ነገር ያስወግዱ።</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ስልክዎን መመልከት ሊከፍተው ይችላል። ካንተ ጋር በጣም የሚመሳሰል ሰው መክፈት ይችል ይሆናል።</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">በሚከፍቱበት ጊዜ ዓይኖችዎን ክፍት ያድርጉ እና ማያ ገጹን ይመልከቱ።</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">በመልክ መክፈት ከጠንካራ ፒን፣ ስርዓተ-ጥለት ወይም የይለፍ ቃል ያነሰ ደህንነቱ የተጠበቀ ሊሆን ይችላል።</string>
+    <string name="security_settings_face_enroll_introduction_how_title">እንዴት እንደሚሰራ</string>
+    <string name="security_settings_face_enroll_introduction_how_message">የእርስዎ የፊት ውሂብ ደህንነቱ በተጠበቀ ሁኔታ በዚህ መሣሪያ ላይ ተከማችቷል እና አልተሰቀለም።</string>
+    <string name="security_settings_face_enroll_introduction_control_title">እርስዎ ተቆጣጠሩት።</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">እርስዎ ተቆጣጠሩት።</string>
+    <string name="security_settings_face_enroll_introduction_control_message">በማንኛውም ጊዜ የመልክ ውሂብዎን በቅንብሮች ውስጥ መሰረዝ ይችላሉ።</string>
+</resources>

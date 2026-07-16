@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Pamiętać o</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Przed konfiguracją zdejmij okulary przeciwsłoneczne lub cokolwiek innego, co zakrywa twarz.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Przed konfiguracją zdejmij okulary przeciwsłoneczne lub cokolwiek innego, co zakrywa twarz.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Spojrzenie na telefon może go odblokować. Ktoś, kto wygląda bardzo podobnie do Ciebie, może również być w stanie go odblokować.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Podczas odblokowywania miej oczy szeroko otwarte i patrz na ekran.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Odblokowanie twarzą może być mniej bezpieczne niż silny kod PIN, wzór lub hasło.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Jak to działa</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Dane Twojej twarzy są bezpiecznie przechowywane na tym urządzeniu i nie są przesyłane.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Masz kontrolę</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Masz kontrolę</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Dane swojej twarzy możesz w każdej chwili usunąć w Ustawieniach.</string>
+</resources>

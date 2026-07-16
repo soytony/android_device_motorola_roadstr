@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Perlu diingat</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Tanggalkan cermin mata hitam atau apa-apa lagi yang menutup muka anda sebelum persediaan.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Tanggalkan cermin mata hitam atau apa-apa lagi yang menutup muka anda sebelum persediaan.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Melihat telefon anda mungkin membuka kuncinya. Seseorang yang kelihatan sangat serupa dengan anda mungkin juga boleh membuka kuncinya.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Pastikan mata anda terbuka dan lihat skrin semasa membuka kunci.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Buka kunci muka mungkin kurang selamat berbanding PIN, corak atau kata laluan yang kukuh.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Bagaimana ia berfungsi</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Data wajah anda disimpan dengan selamat pada peranti ini dan tidak dimuat naik.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Anda berada dalam kawalan</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Anda berada dalam kawalan</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Anda boleh memadamkan data wajah anda pada bila-bila masa dalam Tetapan.</string>
+</resources>

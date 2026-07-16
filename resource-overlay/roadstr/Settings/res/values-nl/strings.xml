@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Houd er rekening mee</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Verwijder vóór het opzetten uw zonnebril of iets anders dat uw gezicht bedekt.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Verwijder vóór het opzetten uw zonnebril of iets anders dat uw gezicht bedekt.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Als u naar uw telefoon kijkt, wordt deze mogelijk ontgrendeld. Iemand die erg op jou lijkt, kan deze mogelijk ook ontgrendelen.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Houd uw ogen open en kijk naar het scherm tijdens het ontgrendelen.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Gezichtsontgrendeling is mogelijk minder veilig dan een sterke pincode, patroon of wachtwoord.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hoe het werkt</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Je gezichtsgegevens worden veilig op dit apparaat opgeslagen en niet geüpload.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Jij hebt de controle</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Jij hebt de controle</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Je kunt je gezichtsgegevens op elk gewenst moment verwijderen via Instellingen.</string>
+</resources>

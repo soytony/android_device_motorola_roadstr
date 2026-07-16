@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Есіңізде болсын</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Орнату алдында күннен қорғайтын көзілдірікті немесе бетіңізді жауып тұрған кез келген нәрсені алыңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Орнату алдында күннен қорғайтын көзілдірікті немесе бетіңізді жауып тұрған кез келген нәрсені алыңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Телефонға қарасаңыз, оның құлпын ашуы мүмкін. Сізге өте ұқсас біреу де оның құлпын ашуы мүмкін.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Құлыпты ашу кезінде көзіңізді ашық ұстаңыз және экранға қараңыз.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Бет тану функциясы күшті PIN коды, өрнек немесе құпия сөзге қарағанда қауіпсіз емес болуы мүмкін.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Ол қалай жұмыс істейді</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Бет деректеріңіз осы құрылғыда қауіпсіз сақталады және жүктеп салынбайды.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Сіз бақылаудасыз</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Сіз бақылаудасыз</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Бет деректерін кез келген уақытта &quot;Параметрлер&quot; бөлімінен жоя аласыз.</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">เก็บไว้ในใจ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ถอดแว่นกันแดดหรือสิ่งอื่นใดที่บังใบหน้าออกก่อนตั้งค่า</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ถอดแว่นกันแดดหรือสิ่งอื่นใดที่บังใบหน้าออกก่อนตั้งค่า</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">การดูโทรศัพท์ของคุณอาจปลดล็อคได้ คนที่หน้าตาคล้ายกับคุณอาจปลดล็อคมันได้เช่นกัน</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">ให้ลืมตาและมองไปที่หน้าจอขณะปลดล็อค</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">การปลดล็อกด้วยใบหน้าอาจมีความปลอดภัยน้อยกว่า PIN, รูปแบบ หรือรหัสผ่านที่รัดกุม</string>
+    <string name="security_settings_face_enroll_introduction_how_title">มันทำงานอย่างไร</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ข้อมูลใบหน้าของคุณจะถูกเก็บไว้อย่างปลอดภัยในอุปกรณ์นี้และไม่ได้อัปโหลด</string>
+    <string name="security_settings_face_enroll_introduction_control_title">คุณอยู่ในการควบคุม</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">คุณอยู่ในการควบคุม</string>
+    <string name="security_settings_face_enroll_introduction_control_message">คุณสามารถลบข้อมูลใบหน้าของคุณได้ตลอดเวลาในการตั้งค่า</string>
+</resources>

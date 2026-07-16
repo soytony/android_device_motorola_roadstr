@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Mbani parasysh</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Hiqni syzet e diellit ose çdo gjë tjetër që mbulon fytyrën tuaj përpara se të vendosni.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Hiqni syzet e diellit ose çdo gjë tjetër që mbulon fytyrën tuaj përpara se të vendosni.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Shikimi i telefonit tuaj mund ta zhbllokojë atë. Dikush që duket shumë i ngjashëm me ju mund të jetë gjithashtu në gjendje ta zhbllokojë atë.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Mbani sytë hapur dhe shikoni ekranin gjatë zhbllokimit.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Shkyçja me fytyrë mund të jetë më pak e sigurt se një kod PIN, model ose fjalëkalim i fortë.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Si funksionon</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Të dhënat tuaja të fytyrës ruhen në mënyrë të sigurt në këtë pajisje dhe nuk ngarkohen.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Ju jeni në kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Ju jeni në kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Mund t\'i fshish të dhënat e fytyrës në çdo kohë te &quot;Cilësimet&quot;.</string>
+</resources>

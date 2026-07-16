@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Tingues en compte</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Traieu-vos les ulleres de sol o qualsevol altra cosa que us cobreixi la cara abans de la instal·lació.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Traieu-vos les ulleres de sol o qualsevol altra cosa que us cobreixi la cara abans de la instal·lació.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Mirar el telèfon pot ser que el desbloquegis. És possible que algú que sembli molt a tu també pugui desbloquejar-lo.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Mantingueu els ulls oberts i mireu la pantalla mentre desbloquegeu.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">El desbloqueig facial pot ser menys segur que un PIN, un patró o una contrasenya forts.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Com funciona</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Les dades de la teva cara s\'emmagatzemen de manera segura en aquest dispositiu i no es pengen.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Tu tens el control</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Tu tens el control</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Pots suprimir les dades de la teva cara en qualsevol moment a Configuració.</string>
+</resources>

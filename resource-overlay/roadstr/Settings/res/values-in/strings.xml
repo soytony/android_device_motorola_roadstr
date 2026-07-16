@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Mengingat</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Lepaskan kacamata hitam atau apa pun yang menutupi wajah Anda sebelum pemasangan.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Lepaskan kacamata hitam atau apa pun yang menutupi wajah Anda sebelum pemasangan.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Melihat ponsel Anda mungkin membuka kuncinya. Seseorang yang terlihat sangat mirip dengan Anda mungkin juga dapat membukanya.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Buka mata Anda dan lihat layar saat membuka kunci.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Buka kunci dengan wajah mungkin kurang aman dibandingkan PIN, pola, atau kata sandi yang kuat.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Bagaimana cara kerjanya</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Data wajah Anda disimpan dengan aman di perangkat ini dan tidak diunggah.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Anda memegang kendali</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Anda memegang kendali</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Anda dapat menghapus data wajah Anda kapan saja di Pengaturan.</string>
+</resources>

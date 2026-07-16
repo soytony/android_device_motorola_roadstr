@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Yodda tuting</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">O\'rnatishdan oldin quyoshdan saqlaydigan ko\'zoynakni yoki yuzingizni qoplaydigan boshqa narsalarni olib tashlang.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">O\'rnatishdan oldin quyoshdan saqlaydigan ko\'zoynakni yoki yuzingizni qoplaydigan boshqa narsalarni olib tashlang.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Telefoningizga qarash uni qulfdan chiqarishi mumkin. Sizga juda o\'xshash kimdir uni qulfdan chiqarishi mumkin.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Qulfni ochayotganda ko\'zingizni oching va ekranga qarang.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Yuz bilan ochish kuchli PIN kod, grafik kalit yoki parolga qaraganda xavfsizroq boʻlishi mumkin.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Bu qanday ishlaydi</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Yuzingiz haqidagi maʼlumotlar ushbu qurilmada xavfsiz saqlanadi va yuklanmaydi.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Siz nazorat qilasiz</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Siz nazorat qilasiz</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Yuz maʼlumotlarini istalgan vaqtda Sozlamalar orqali oʻchirib tashlashingiz mumkin.</string>
+</resources>

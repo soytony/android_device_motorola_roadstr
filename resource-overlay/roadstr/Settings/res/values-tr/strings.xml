@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Aklında tut</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Kurulumdan önce güneş gözlüklerini veya yüzünüzü kapatan herhangi bir şeyi çıkarın.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Kurulumdan önce güneş gözlüklerini veya yüzünüzü kapatan herhangi bir şeyi çıkarın.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Telefonunuza bakmak kilidi açabilir. Size çok benzeyen biri de kilidi açabilir.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Kilidi açarken gözlerinizi açık tutun ve ekrana bakın.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Yüzle kilit açma, güçlü bir PIN, desen veya şifreye göre daha az güvenli olabilir.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Nasıl çalışır?</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Yüz verileriniz bu cihazda güvenli bir şekilde saklanır ve yüklenmez.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Kontrol sizde</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Kontrol sizde</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Yüz verilerinizi istediğiniz zaman Ayarlar\'dan silebilirsiniz.</string>
+</resources>

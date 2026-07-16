@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Turėkite omenyje</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Prieš nustatydami nuimkite akinius nuo saulės ar bet ką kitą, dengiantį veidą.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Prieš nustatydami nuimkite akinius nuo saulės ar bet ką kitą, dengiantį veidą.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Pažvelgus į telefoną jis gali būti atrakintas. Kažkas, kuris atrodo labai panašus į jus, taip pat gali jį atrakinti.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Atrakinkite akis ir žiūrėkite į ekraną.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Atrakinimas pagal veidą gali būti mažiau saugus nei stiprus PIN kodas, atrakinimo piešinys ar slaptažodis.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Kaip tai veikia</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Jūsų veido duomenys saugiai saugomi šiame įrenginyje ir neįkeliami.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Jūs kontroliuojate</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Jūs kontroliuojate</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Nustatymuose galite bet kada ištrinti veido duomenis.</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Имайте предвид</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Свалете слънчевите очила или нещо друго, което покрива лицето ви преди настройка.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Свалете слънчевите очила или нещо друго, което покрива лицето ви преди настройка.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Гледането на телефона ви може да го отключи. Някой, който изглежда много подобен на вас, също може да успее да го отключи.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Дръжте очите си отворени и гледайте екрана, докато отключвате.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Отключването с лице може да е по-малко сигурно от силен ПИН, фигура или парола.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Как работи</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Данните за вашето лице се съхраняват сигурно на това устройство и не се качват.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Вие контролирате</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Вие контролирате</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Можете да изтриете данните за лицето си по всяко време в Настройки.</string>
+</resources>

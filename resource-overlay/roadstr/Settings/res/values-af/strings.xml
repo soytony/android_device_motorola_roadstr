@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Hou in gedagte</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Verwyder sonbrille of enigiets anders wat jou gesig bedek voor opstelling.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Verwyder sonbrille of enigiets anders wat jou gesig bedek voor opstelling.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">As jy na jou foon kyk, kan dit dalk ontsluit word. Iemand wat baie soos jy lyk, kan dit dalk ook ontsluit.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Hou jou oë oop en kyk na die skerm terwyl jy ontsluit.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Gesigslot is dalk minder veilig as \'n sterk PIN, patroon of wagwoord.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Hoe dit werk</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Jou gesigdata word veilig op hierdie toestel gestoor en word nie opgelaai nie.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Jy is in beheer</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Jy is in beheer</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Jy kan jou gesigdata enige tyd in Instellings uitvee.</string>
+</resources>

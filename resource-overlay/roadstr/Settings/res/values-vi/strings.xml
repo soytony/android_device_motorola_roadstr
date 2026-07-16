@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Hãy ghi nhớ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Tháo kính râm hoặc bất cứ thứ gì che mặt bạn trước khi thiết lập.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Tháo kính râm hoặc bất cứ thứ gì che mặt bạn trước khi thiết lập.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Nhìn vào điện thoại của bạn có thể mở khóa nó. Một người nào đó trông rất giống bạn cũng có thể mở khóa được.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Hãy mở mắt và nhìn vào màn hình trong khi mở khóa.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Mở khóa bằng khuôn mặt có thể kém an toàn hơn mã PIN, hình mở khóa hoặc mật khẩu mạnh.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Nó hoạt động như thế nào</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Dữ liệu khuôn mặt của bạn được lưu trữ an toàn trên thiết bị này và không được tải lên.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Bạn đang kiểm soát</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Bạn đang kiểm soát</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Bạn có thể xóa dữ liệu khuôn mặt của mình bất cứ lúc nào trong Cài đặt.</string>
+</resources>

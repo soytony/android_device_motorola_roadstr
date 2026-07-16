@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ذہن میں رکھیں</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">سیٹ اپ سے پہلے دھوپ کے چشمے یا کوئی اور چیز ہٹا دیں جو آپ کے چہرے کو ڈھانپے۔</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">سیٹ اپ سے پہلے دھوپ کے چشمے یا کوئی اور چیز ہٹا دیں جو آپ کے چہرے کو ڈھانپے۔</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">آپ کے فون کو دیکھنے سے یہ غیر مقفل ہو سکتا ہے۔ کوئی شخص جو آپ سے بہت ملتا جلتا نظر آتا ہے وہ بھی اسے غیر مقفل کر سکتا ہے۔</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">اپنی آنکھیں کھلی رکھیں اور ان لاک کرتے وقت اسکرین کو دیکھیں۔</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">فیس انلاک مضبوط پن، پیٹرن یا پاس ورڈ سے کم محفوظ ہو سکتا ہے۔</string>
+    <string name="security_settings_face_enroll_introduction_how_title">یہ کیسے کام کرتا ہے۔</string>
+    <string name="security_settings_face_enroll_introduction_how_message">آپ کے چہرے کا ڈیٹا اس ڈیوائس پر محفوظ طریقے سے اسٹور کیا جاتا ہے اور اپ لوڈ نہیں ہوتا ہے۔</string>
+    <string name="security_settings_face_enroll_introduction_control_title">آپ کنٹرول میں ہیں۔</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">آپ کنٹرول میں ہیں۔</string>
+    <string name="security_settings_face_enroll_introduction_control_message">آپ ترتیبات میں کسی بھی وقت اپنے چہرے کا ڈیٹا حذف کر سکتے ہیں۔</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">រក្សាទុកក្នុងចិត្ត</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ដកវ៉ែនតា ឬអ្វីផ្សេងទៀតដែលគ្របមុខរបស់អ្នកមុនពេលដំឡើង។</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ដកវ៉ែនតា ឬអ្វីផ្សេងទៀតដែលគ្របមុខរបស់អ្នកមុនពេលដំឡើង។</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ការសម្លឹងមើលទូរស័ព្ទរបស់អ្នកអាចដោះសោវាបាន។ នរណាម្នាក់ដែលមើលទៅស្រដៀងនឹងអ្នកក៏អាចដោះសោវាបានដែរ។</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">បើកភ្នែករបស់អ្នក ហើយមើលអេក្រង់ពេលកំពុងដោះសោ។</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ការដោះសោដោយមុខអាចមានសុវត្ថិភាពតិចជាងកូដ PIN លំនាំ ឬពាក្យសម្ងាត់ខ្លាំង។</string>
+    <string name="security_settings_face_enroll_introduction_how_title">របៀបដែលវាដំណើរការ</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ទិន្នន័យមុខរបស់អ្នកត្រូវបានរក្សាទុកដោយសុវត្ថិភាពនៅលើឧបករណ៍នេះ ហើយមិនត្រូវបានបង្ហោះទេ។</string>
+    <string name="security_settings_face_enroll_introduction_control_title">អ្នកស្ថិតក្នុងការគ្រប់គ្រង</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">អ្នកស្ថិតក្នុងការគ្រប់គ្រង</string>
+    <string name="security_settings_face_enroll_introduction_control_message">អ្នកអាចលុបទិន្នន័យមុខរបស់អ្នកបានគ្រប់ពេលនៅក្នុងការកំណត់។</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Bese ukhumbula</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Susa izibuko zelanga nanoma yini enye evala ubuso bakho ngaphambi kokusetha.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Susa izibuko zelanga nanoma yini enye evala ubuso bakho ngaphambi kokusetha.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Ukubheka ifoni yakho kungase kuyivule. Umuntu ofana nawe kakhulu angakwazi futhi ukuyivula.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Gcina amehlo akho evulekile futhi ubheke isikrini ngenkathi uvula.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Ukuvula ngobuso kungase kungavikeleki kancane kunephinikhodi eqinile, iphethini, noma iphasiwedi.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Isebenza kanjani</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Idatha yobuso bakho igcinwe ngokuvikelekile kule divayisi futhi ayilayishwa.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Uwena olawulayo</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Uwena olawulayo</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Ungasusa idatha yobuso bakho noma kunini kokuthi Izilungiselelo.</string>
+</resources>

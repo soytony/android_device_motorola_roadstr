@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">გაითვალისწინეთ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">დაყენებამდე ამოიღეთ სათვალე ან ნებისმიერი სხვა რამ, რაც თქვენს სახეს ფარავს.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">დაყენებამდე ამოიღეთ სათვალე ან ნებისმიერი სხვა რამ, რაც თქვენს სახეს ფარავს.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">თქვენი ტელეფონის დათვალიერებამ შეიძლება განბლოკოს იგი. ვინმემ, რომელიც ძალიან გგავს, შესაძლოა ასევე შეძლოს მისი განბლოკვა.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">განბლოკვისას თვალები გაახილეთ და შეხედეთ ეკრანს.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">სახით განბლოკვა შეიძლება ნაკლებად უსაფრთხო იყოს, ვიდრე ძლიერი PIN, ნიმუში ან პაროლი.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">როგორ მუშაობს</string>
+    <string name="security_settings_face_enroll_introduction_how_message">თქვენი სახის მონაცემები უსაფრთხოდ ინახება ამ მოწყობილობაზე და არ აიტვირთება.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">თქვენ აკონტროლებთ</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">თქვენ აკონტროლებთ</string>
+    <string name="security_settings_face_enroll_introduction_control_message">თქვენი სახის მონაცემების წაშლა ნებისმიერ დროს შეგიძლიათ პარამეტრებიდან.</string>
+</resources>

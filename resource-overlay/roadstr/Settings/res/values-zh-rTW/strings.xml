@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">記住</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">在設置前摘下太陽眼鏡或任何遮蓋臉部的物品。</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">在設置前摘下太陽眼鏡或任何遮蓋臉部的物品。</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">查看您的手機可能會將其解鎖。與您看起來非常相似的人也可能能夠解鎖它。</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">解鎖時睜大眼睛並看著螢幕。</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">臉部解鎖可能不如強 PIN、圖案或密碼安全。</string>
+    <string name="security_settings_face_enroll_introduction_how_title">它是如何運作的</string>
+    <string name="security_settings_face_enroll_introduction_how_message">您的臉部資料安全地儲存在此裝置上並且不會上傳。</string>
+    <string name="security_settings_face_enroll_introduction_control_title">你盡在掌控</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">你盡在掌控</string>
+    <string name="security_settings_face_enroll_introduction_control_message">您可以隨時在「設定」中刪除您的臉部資料。</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Tignî cont</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Cjape vie i ocjai di soreli o cualsisei altre robe che e cuvierç la muse prime di configurâ.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Cjape vie i ocjai di soreli o cualsisei altre robe che e cuvierç la muse prime di configurâ.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Cjalant il telefonin al pues disblocâlu. Ancje cualchidun che al somee une vore a te al pues jessi bon di disblocâlu.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Mantignî i vôi vierts e cjalâ il schermi intant che si disbloche.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Il disbloc de muse al pues jessi mancul sigûr di un PIN, un model o une clâf di cjase fuarts.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Come che al funzione</string>
+    <string name="security_settings_face_enroll_introduction_how_message">I dâts de muse a son archiviâts in mût sigûr su chest dispositîf e no son cjapâts sù.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Tu âs il control</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Tu âs il control</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Tu puedis cancelâ i dâts de tô muse in cualsisei moment intes Impostazions.</string>
+</resources>

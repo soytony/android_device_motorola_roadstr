@@ -1,3 +1,8 @@
-# Stub file_contexts for roadstr
-# Device-specific sepolicy rules will be added as needed
+# Device-specific labels for vendor daemons.
+# Use the existing Qualcomm/Motorola face-HAL domain. It includes access to
+# Tetras' camera properties and persistent enrollment data.
+/vendor/bin/hw/android\.hardware\.biometrics\.face-service\.face-isv u:object_r:vendor_biometricsface_exec:s0
+
+/data/vendor/tetras_data(/.*)? u:object_r:vendor_biometricsface_data_file:s0
+
 /vendor/bin/roadstr-udfps-hbm          u:object_r:hal_fingerprint_default_exec:s0

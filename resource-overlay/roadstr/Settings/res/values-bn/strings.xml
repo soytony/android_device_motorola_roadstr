@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">মনে রাখবেন</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">সেটআপ করার আগে সানগ্লাস বা অন্য কিছু যা আপনার মুখ ঢেকে রাখে তা সরিয়ে ফেলুন।</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">সেটআপ করার আগে সানগ্লাস বা অন্য কিছু যা আপনার মুখ ঢেকে রাখে তা সরিয়ে ফেলুন।</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">আপনার ফোনের দিকে তাকালে তা আনলক হতে পারে। আপনার মতো দেখতে এমন কেউও এটিকে আনলক করতে সক্ষম হতে পারে৷</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">আপনার চোখ খোলা রাখুন এবং আনলক করার সময় স্ক্রিনের দিকে তাকান।</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ফেস আনলক একটি শক্তিশালী পিন, প্যাটার্ন বা পাসওয়ার্ডের চেয়ে কম নিরাপদ হতে পারে।</string>
+    <string name="security_settings_face_enroll_introduction_how_title">এটা কিভাবে কাজ করে</string>
+    <string name="security_settings_face_enroll_introduction_how_message">আপনার মুখের ডেটা এই ডিভাইসে নিরাপদে সংরক্ষণ করা হয় এবং আপলোড করা হয় না।</string>
+    <string name="security_settings_face_enroll_introduction_control_title">আপনি নিয়ন্ত্রণে আছেন</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">আপনি নিয়ন্ত্রণে আছেন</string>
+    <string name="security_settings_face_enroll_introduction_control_message">আপনি সেটিংস থেকে যেকোনো সময় আপনার মুখের ডেটা মুছে ফেলতে পারেন।</string>
+</resources>

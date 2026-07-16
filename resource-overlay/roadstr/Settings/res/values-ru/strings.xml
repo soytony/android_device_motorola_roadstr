@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Иметь в виду</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Перед установкой снимите солнцезащитные очки или что-либо еще, закрывающее лицо.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Перед установкой снимите солнцезащитные очки или что-либо еще, закрывающее лицо.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Взглянув на свой телефон, вы можете его разблокировать. Кто-то, кто очень похож на вас, также может разблокировать его.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Держите глаза открытыми и смотрите на экран во время разблокировки.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Разблокировка лицом может быть менее безопасной, чем надежный PIN-код, графический ключ или пароль.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Как это работает</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Данные о вашем лице надежно хранятся на этом устройстве и не загружаются.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Вы все контролируете</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Вы все контролируете</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Вы можете удалить данные о своем лице в любое время в настройках.</string>
+</resources>

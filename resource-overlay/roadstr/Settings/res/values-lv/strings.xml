@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Paturiet prātā</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Pirms iestatīšanas noņemiet saulesbrilles vai jebko citu, kas aizsedz seju.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Pirms iestatīšanas noņemiet saulesbrilles vai jebko citu, kas aizsedz seju.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Skatoties uz tālruni, tas var atbloķēt. Kāds, kurš izskatās ļoti līdzīgs jums, var arī to atbloķēt.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Atbloķēšanas laikā turiet acis atvērtas un skatieties ekrānā.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Atbloķēšana pēc sejas var būt mazāk droša nekā spēcīgs PIN, kombinācija vai parole.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Kā tas darbojas</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Jūsu sejas dati tiek droši glabāti šajā ierīcē un netiek augšupielādēti.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Jūs kontrolējat</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Jūs kontrolējat</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Jebkurā laikā varat dzēst savus sejas datus sadaļā Iestatījumi.</string>
+</resources>

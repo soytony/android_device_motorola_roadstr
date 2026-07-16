@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ನೆನಪಿನಲ್ಲಿಡಿ</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ಸೆಟಪ್ ಮಾಡುವ ಮೊದಲು ಸನ್ಗ್ಲಾಸ್ ಅಥವಾ ನಿಮ್ಮ ಮುಖವನ್ನು ಆವರಿಸುವ ಯಾವುದನ್ನಾದರೂ ತೆಗೆದುಹಾಕಿ.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ಸೆಟಪ್ ಮಾಡುವ ಮೊದಲು ಸನ್ಗ್ಲಾಸ್ ಅಥವಾ ನಿಮ್ಮ ಮುಖವನ್ನು ಆವರಿಸುವ ಯಾವುದನ್ನಾದರೂ ತೆಗೆದುಹಾಕಿ.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ನೋಡುವುದರಿಂದ ಅದನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಬಹುದು. ನಿಮ್ಮಂತೆಯೇ ಕಾಣುವ ಯಾರಾದರೂ ಅದನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಲು ಸಹ ಸಾಧ್ಯವಾಗುತ್ತದೆ.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">ಅನ್‌ಲಾಕ್ ಮಾಡುವಾಗ ನಿಮ್ಮ ಕಣ್ಣುಗಳನ್ನು ತೆರೆಯಿರಿ ಮತ್ತು ಪರದೆಯನ್ನು ನೋಡಿ.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ಪ್ರಬಲವಾದ ಪಿನ್, ಪ್ಯಾಟರ್ನ್ ಅಥವಾ ಪಾಸ್‌ವರ್ಡ್‌ಗಿಂತ ಫೇಸ್ ಅನ್‌ಲಾಕ್ ಕಡಿಮೆ ಸುರಕ್ಷಿತವಾಗಿರಬಹುದು.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">ಇದು ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ನಿಮ್ಮ ಮುಖದ ಡೇಟಾವನ್ನು ಈ ಸಾಧನದಲ್ಲಿ ಸುರಕ್ಷಿತವಾಗಿ ಸಂಗ್ರಹಿಸಲಾಗಿದೆ ಮತ್ತು ಅಪ್‌ಲೋಡ್ ಮಾಡಲಾಗಿಲ್ಲ.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">ನೀವು ನಿಯಂತ್ರಣದಲ್ಲಿದ್ದೀರಿ</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">ನೀವು ನಿಯಂತ್ರಣದಲ್ಲಿದ್ದೀರಿ</string>
+    <string name="security_settings_face_enroll_introduction_control_message">ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಮುಖದ ಡೇಟಾವನ್ನು ಅಳಿಸಬಹುದು.</string>
+</resources>

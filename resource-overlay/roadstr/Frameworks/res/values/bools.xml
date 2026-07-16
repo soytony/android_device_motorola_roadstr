@@ -26,5 +26,7 @@
     <bool name="config_is_powerbutton_fps">false</bool>
     <!-- Use the rear STK6B9X CCT stream for adaptive display white balance. -->
     <bool name="config_displayWhiteBalanceAvailable">true</bool>
+    <!-- Let SystemUI render protection and face-scanning animation around the exact cutout path. -->
+    <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
 
 </resources>

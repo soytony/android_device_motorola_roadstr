@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">মনত ৰাখিব</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">ছেটআপ কৰাৰ আগতে ছানগ্লাছ বা মুখখন ঢাকি ৰখা আন যিকোনো বস্তু আঁতৰাই পেলাওক।</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">ছেটআপ কৰাৰ আগতে ছানগ্লাছ বা মুখখন ঢাকি ৰখা আন যিকোনো বস্তু আঁতৰাই পেলাওক।</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">আপোনাৰ ফোনটো চাই ইয়াৰ আনলক হ’ব পাৰে। আপোনাৰ লগত বহুত মিল থকা কোনোবাইও হয়তো ইয়াক আনলক কৰিব পাৰিব।</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">চকু মেলি ৰাখক আৰু আনলক কৰাৰ সময়ত পৰ্দালৈ চাওক।</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">এটা শক্তিশালী পিন, আৰ্হি, বা পাছৱৰ্ডতকৈ ফেচ আনলক কম সুৰক্ষিত হ\'ব পাৰে।</string>
+    <string name="security_settings_face_enroll_introduction_how_title">কেনেকৈ কাম কৰে</string>
+    <string name="security_settings_face_enroll_introduction_how_message">আপোনাৰ মুখৰ তথ্য এই ডিভাইচত সুৰক্ষিতভাৱে সংৰক্ষণ কৰা হয় আৰু আপলোড কৰা নহয়।</string>
+    <string name="security_settings_face_enroll_introduction_control_title">আপুনি নিয়ন্ত্ৰণত আছে</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">আপুনি নিয়ন্ত্ৰণত আছে</string>
+    <string name="security_settings_face_enroll_introduction_control_message">আপুনি ছেটিংছত যিকোনো সময়তে আপোনাৰ মুখৰ ডাটা মচি পেলাব পাৰে।</string>
+</resources>

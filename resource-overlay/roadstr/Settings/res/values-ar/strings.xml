@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">ضع في اعتبارك</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">قم بإزالة النظارات الشمسية أو أي شيء آخر يغطي وجهك قبل الإعداد.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">قم بإزالة النظارات الشمسية أو أي شيء آخر يغطي وجهك قبل الإعداد.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">قد يؤدي النظر إلى هاتفك إلى فتحه. قد يتمكن أيضًا شخص يشبهك كثيرًا من فتحه.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">أبقِ عينيك مفتوحتين وانظر إلى الشاشة أثناء فتح القفل.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">قد يكون فتح القفل بالوجه أقل أمانًا من رقم التعريف الشخصي أو النمط أو كلمة المرور القوية.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">كيف يعمل</string>
+    <string name="security_settings_face_enroll_introduction_how_message">يتم تخزين بيانات وجهك بشكل آمن على هذا الجهاز ولا يتم تحميلها.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">أنت في السيطرة</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">أنت في السيطرة</string>
+    <string name="security_settings_face_enroll_introduction_control_message">يمكنك حذف بيانات وجهك في أي وقت من خلال الإعدادات.</string>
+</resources>

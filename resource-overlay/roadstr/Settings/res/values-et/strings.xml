@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Pidage meeles</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Enne seadistamist eemaldage päikeseprillid või kõik muu, mis katab teie nägu.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Enne seadistamist eemaldage päikeseprillid või kõik muu, mis katab teie nägu.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Telefoni vaatamine võib selle avada. Keegi, kes näeb välja teiega väga sarnane, võib ka selle avada.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Hoidke silmad lahti ja vaadake avamise ajal ekraani.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Näoga avamine võib olla vähem turvaline kui tugev PIN-kood, muster või parool.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Kuidas see toimib</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Teie näoandmed salvestatakse sellesse seadmesse turvaliselt ja neid ei laadita üles.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Teie käes on kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Teie käes on kontroll</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Saate oma näoandmed igal ajal menüüs Seaded kustutada.</string>
+</resources>

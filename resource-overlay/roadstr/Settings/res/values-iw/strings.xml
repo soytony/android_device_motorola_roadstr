@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">לִזכּוֹר</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">הסר משקפי שמש או כל דבר אחר שמכסה את הפנים שלך לפני ההתקנה.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">הסר משקפי שמש או כל דבר אחר שמכסה את הפנים שלך לפני ההתקנה.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">הסתכלות בטלפון שלך עשויה לבטל את נעילתו. מישהו שנראה מאוד דומה לך אולי גם יוכל לפתוח אותו.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">פקח עיניים והסתכל על המסך בזמן ביטול הנעילה.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">פתיחת נעילה על ידי פנים עשויה להיות פחות מאובטחת מאשר PIN חזק, דפוס או סיסמה.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">איך זה עובד</string>
+    <string name="security_settings_face_enroll_introduction_how_message">נתוני הפנים שלך מאוחסנים בצורה מאובטחת במכשיר זה ואינם מועלים.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">אתה בשליטה</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">אתה בשליטה</string>
+    <string name="security_settings_face_enroll_introduction_control_message">אתה יכול למחוק את נתוני הפנים שלך בכל עת בהגדרות.</string>
+</resources>

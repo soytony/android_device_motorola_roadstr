@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">මතක තබා ගන්න</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">පිහිටුවීමට පෙර අව් කණ්ණාඩි හෝ ඔබේ මුහුණ ආවරණය වන වෙනත් ඕනෑම දෙයක් ඉවත් කරන්න.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">පිහිටුවීමට පෙර අව් කණ්ණාඩි හෝ ඔබේ මුහුණ ආවරණය වන වෙනත් ඕනෑම දෙයක් ඉවත් කරන්න.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">ඔබගේ දුරකථනය දෙස බැලීමෙන් එය අගුලු හැරිය හැක. ඔබට බොහෝ සමාන පෙනුමක් ඇති කෙනෙකුට එය අගුළු ඇරීමට ද හැකි විය හැක.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">අගුලු හරින අතරතුර ඔබේ ඇස් විවෘතව තබාගෙන තිරය දෙස බලන්න.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">මුහුණෙන් අගුලු හැරීම ශක්තිමත් PIN අංකයක්, රටාවක් හෝ මුරපදයකට වඩා අඩු ආරක්ෂිත විය හැක.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">එය ක්රියා කරන ආකාරය</string>
+    <string name="security_settings_face_enroll_introduction_how_message">ඔබගේ මුහුණු දත්ත මෙම උපාංගයේ ආරක්ෂිතව ගබඩා කර ඇති අතර උඩුගත නොකෙරේ.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">ඔබ පාලනයේ සිටී</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">ඔබ පාලනයේ සිටී</string>
+    <string name="security_settings_face_enroll_introduction_control_message">ඔබට සැකසීම් තුළ ඕනෑම වේලාවක ඔබේ මුහුණු දත්ත මැකීමට හැකිය.</string>
+</resources>

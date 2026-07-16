@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">لەبیرت بێت</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">پێش دانانی چاویلکەی خۆر یان هەر شتێکی تر کە دەموچاوت داپۆشێت دەربهێنە.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">پێش دانانی چاویلکەی خۆر یان هەر شتێکی تر کە دەموچاوت داپۆشێت دەربهێنە.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">سەیرکردنی مۆبایلەکەت لەوانەیە قفڵی بکاتەوە. ڕەنگە کەسێک کە زۆر لە تۆ دەچێت بتوانێت قفڵی بکاتەوە.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">چاوەکانت بە کراوەیی بهێڵەرەوە و لە کاتی کردنەوەی قفڵەکەدا سەیری شاشەکە بکە.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">ڕەنگە قفڵی دەموچاو کەمتر پارێزراو بێت لە PIN، نەخش، یان وشەی نهێنی بەهێز.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">چۆن کاردەکات</string>
+    <string name="security_settings_face_enroll_introduction_how_message">داتاکانی دەموچاوت بە شێوەیەکی پارێزراو لەسەر ئەم ئامێرە هەڵدەگیرێن و بارناکرێت.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">تۆ کۆنتڕۆڵی دەکەیت</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">تۆ کۆنتڕۆڵی دەکەیت</string>
+    <string name="security_settings_face_enroll_introduction_control_message">دەتوانیت لە هەر کاتێکدا لە ڕێکخستنەکاندا داتای دەموچاوت بسڕیتەوە.</string>
+</resources>

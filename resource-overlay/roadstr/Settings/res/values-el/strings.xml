@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">Έχετε υπόψη σας</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">Αφαιρέστε τα γυαλιά ηλίου ή οτιδήποτε άλλο καλύπτει το πρόσωπό σας πριν από τη ρύθμιση.</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">Αφαιρέστε τα γυαλιά ηλίου ή οτιδήποτε άλλο καλύπτει το πρόσωπό σας πριν από τη ρύθμιση.</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">Κοιτάζοντας το τηλέφωνό σας μπορεί να το ξεκλειδώσετε. Κάποιος που μοιάζει πολύ με εσάς μπορεί επίσης να μπορέσει να το ξεκλειδώσει.</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">Κρατήστε τα μάτια σας ανοιχτά και κοιτάξτε την οθόνη κατά το ξεκλείδωμα.</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">Το ξεκλείδωμα με το πρόσωπο μπορεί να είναι λιγότερο ασφαλές από ένα ισχυρό PIN, μοτίβο ή κωδικό πρόσβασης.</string>
+    <string name="security_settings_face_enroll_introduction_how_title">Πώς λειτουργεί</string>
+    <string name="security_settings_face_enroll_introduction_how_message">Τα δεδομένα προσώπου σας αποθηκεύονται με ασφάλεια σε αυτήν τη συσκευή και δεν μεταφορτώνονται.</string>
+    <string name="security_settings_face_enroll_introduction_control_title">Έχετε τον έλεγχο</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">Έχετε τον έλεγχο</string>
+    <string name="security_settings_face_enroll_introduction_control_message">Μπορείτε να διαγράψετε τα δεδομένα του προσώπου σας ανά πάσα στιγμή στις Ρυθμίσεις.</string>
+</resources>

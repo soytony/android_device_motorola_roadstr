@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="security_settings_face_enroll_introduction_info_title">覚えておいてください</string>
+    <string name="security_settings_face_enroll_introduction_info_glasses">セットアップの前にサングラスや顔を覆うものはすべて外してください。</string>
+    <string name="security_settings_face_enroll_introduction_info_consent_glasses">セットアップの前にサングラスや顔を覆うものはすべて外してください。</string>
+    <string name="security_settings_face_enroll_introduction_info_looking">携帯電話を見るとロックが解除される可能性があります。あなたによく似た人がロックを解除できる場合もあります。</string>
+    <string name="security_settings_face_enroll_introduction_info_gaze">ロックを解除するときは、目を開けたまま画面を見てください。</string>
+    <string name="security_settings_face_enroll_introduction_info_less_secure">顔認証によるロック解除は、強力な PIN、パターン、またはパスワードよりも安全性が劣る可能性があります。</string>
+    <string name="security_settings_face_enroll_introduction_how_title">仕組み</string>
+    <string name="security_settings_face_enroll_introduction_how_message">あなたの顔データはこのデバイスに安全に保存され、アップロードされません。</string>
+    <string name="security_settings_face_enroll_introduction_control_title">あなたがコントロールしています</string>
+    <string name="security_settings_face_enroll_introduction_control_consent_title">あなたがコントロールしています</string>
+    <string name="security_settings_face_enroll_introduction_control_message">顔データは「設定」でいつでも削除できます。</string>
+</resources>
