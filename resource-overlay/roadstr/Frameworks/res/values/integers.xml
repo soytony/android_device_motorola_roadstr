@@ -23,9 +23,14 @@
     <!-- Allow the framework refresh-rate policy to use the panel's high modes. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
-    <!-- Keep 60 Hz as baseline while allowing framework policy to switch the
-         panel between its seamless 90 Hz and 120 Hz modes. -->
-    <integer name="config_defaultRefreshRate">60</integer>
+    <!-- Do not install a global render-rate ceiling. The display policy uses
+         this panel's 60, 90, and 120 Hz modes according to user settings. -->
+    <integer name="config_defaultRefreshRate">0</integer>
+
+    <!-- The inherited brightness/lux-zone policy pins the panel to 90 Hz and
+         prevents switching. Keep the existing thresholds but leave the rate
+         unchanged so normal 60/90/120 Hz policy selection remains available. -->
+    <integer name="config_defaultRefreshRateInZone">0</integer>
 
     <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->
     <integer name="config_displayWhiteBalanceColorTemperatureMin">4500</integer>

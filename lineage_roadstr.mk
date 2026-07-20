@@ -40,7 +40,8 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera3,com.motorola.camera5,com.motorola.actions
 
 PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.physical.num=3
+    persist.vendor.camera.physical.num=3 \
+    ro.surface_flinger.touch_boost_across_groups=true
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
