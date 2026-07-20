@@ -12,6 +12,11 @@ product/etc/sysconfig/carriersettings.xml
 product/etc/sysconfig/com.motorola.carriersettingsext.powersave.xml
 product/etc/sysconfig/hiddenapi-whitelist-com.motorola.carriersettingsext.xml
 
+# China network location provider
+product/priv-app/BaiduNetworkLocation/BaiduNetworkLocation.apk;PRESIGNED
+product/etc/motorola/bgintents/com.baidu.map.location.bgintents.xml
+product/etc/permissions/privapp-permissions-com.baidu.map.location.xml
+
 # Audio
 vendor/lib64/libcodec2_store_dolby.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/vendor.dolby.dms-V1-ndk.so;MAKE_COPY_RULE_ONLY

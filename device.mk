@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
     SystemUIResRoadstr \
+    NetworkLocation460 \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr

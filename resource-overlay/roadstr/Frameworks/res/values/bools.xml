@@ -28,5 +28,8 @@
     <bool name="config_displayWhiteBalanceAvailable">true</bool>
     <!-- Let SystemUI render protection and face-scanning animation around the exact cutout path. -->
     <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
+    <!-- Select RoadSTR's default Qualcomm provider explicitly. The MCC 460
+         overlay replaces this package with the China-only Baidu provider. -->
+    <bool name="config_enableNetworkLocationOverlay">false</bool>
 
 </resources>
