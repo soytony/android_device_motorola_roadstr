@@ -3,5 +3,5 @@
 <resources>
     <!-- Pin the network provider to the China SKU implementation for MCC 460. -->
     <bool name="config_enableNetworkLocationOverlay">false</bool>
-    <string name="config_networkLocationProviderPackageName">com.baidu.map.location</string>
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.baidu.map.location</string>
 </resources>
