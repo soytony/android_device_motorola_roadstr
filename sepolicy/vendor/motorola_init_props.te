@@ -1,0 +1,6 @@
+# Property labels used solely by the Motorola early-boot USB helper.  Keep
+# these distinct so the helper does not gain access to unrelated properties.
+vendor_internal_prop(vendor_mot_factory_prop)
+vendor_internal_prop(vendor_mot_init_prop)
+vendor_internal_prop(vendor_mot_boot_prop)
+vendor_internal_prop(vendor_mot_tcmd_ctrl_adb_prop)

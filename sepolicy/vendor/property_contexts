@@ -1,3 +1,12 @@
 # Stock Tetras face-provider state and version properties.
 vendor.faceauth.                         u:object_r:vendor_tetras_prop:s0
 vendor.faceauth.cli.lidstate             u:object_r:vendor_tetras_prop:s0
+
+# Properties consumed by init.mmi.usb.sh during Motorola USB mode setup.
+persist.vendor.factory                   u:object_r:vendor_mot_factory_prop:s0
+vendor.boot_completed                    u:object_r:vendor_mot_init_prop:s0
+vendor.tcmd.ctrl_adb                     u:object_r:vendor_mot_tcmd_ctrl_adb_prop:s0
+ro.boot.adb_early                        u:object_r:vendor_mot_boot_prop:s0
+ro.boot.secure_hardware                  u:object_r:vendor_mot_boot_prop:s0
+ro.boot.usbcontroller                    u:object_r:vendor_mot_boot_prop:s0
+ro.vendor.boot.cid                       u:object_r:vendor_mot_boot_prop:s0

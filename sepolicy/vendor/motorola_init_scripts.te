@@ -48,11 +48,10 @@ allow init_block_perm block_device:dir search;
 allow init_block_perm self:capability { chown fowner };
 allow init_block_perm { vendor_utags_block_device cid_block_device kpan_block_device clogo_block_device }:blk_file setattr;
 
-set_prop(init_usb, vendor_mot_factory_prop)
-set_prop(init_usb, vendor_mot_init_prop)
 set_prop(init_usb, vendor_usb_prop)
+set_prop(init_usb, vendor_mot_factory_prop)
 get_prop(init_usb, vendor_mot_boot_prop)
-get_prop(init_usb, vendor_mot_tcmd_prop)
+get_prop(init_usb, vendor_mot_init_prop)
 get_prop(init_usb, vendor_mot_tcmd_ctrl_adb_prop)
 get_prop(init_usb, vendor_radio_prop)
 allow init_usb { sysfs sysfs_android_usb }:file { setattr w_file_perms };
@@ -70,11 +69,10 @@ allow init_wls sysfs_wls_dev:file rw_file_perms;
 allow init_wls self:capability { chown fowner fsetid };
 
 set_prop(init_display, vendor_mot_hw_prop)
-set_prop(init_display, vendor_mot_init_prop)
 allow init_display kmsg_device:chr_file w_file_perms;
 
 allow stflashtool nfc_device:chr_file rw_file_perms;
-set_prop(stflashtool, vendor_mot_nfc_prop)
+set_prop(stflashtool, vendor_nfc_prop)
 get_prop(stflashtool, vendor_radio_prop)
 
 allow mbm_spy block_device:dir search;
