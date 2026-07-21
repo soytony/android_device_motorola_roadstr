@@ -29,7 +29,7 @@ type mbm_spy, domain;
 type mbm_spy_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(mbm_spy)
 
-type hwrev_data_file, file_type, data_file_type, vendor_data_file_type;
+type hwrev_data_file, file_type, data_file_type;
 type cid_block_device, dev_type;
 type kpan_block_device, dev_type;
 type clogo_block_device, dev_type;
@@ -41,8 +41,8 @@ allow { hardware_rev init_block_perm init_usb init_display } vendor_file:file ex
 allow { hardware_rev init_block_perm init_usb init_wls init_display } vendor_toolbox_exec:file rx_file_perms;
 
 rw_dir_file(hardware_rev, hwrev_data_file)
-allow hardware_rev { sysfs sysfs_touchclass }:dir search;
-allow hardware_rev { sysfs sysfs_touchclass }:file r_file_perms;
+allow hardware_rev { sysfs vendor_sysfs_touchpanel }:dir search;
+allow hardware_rev { sysfs vendor_sysfs_touchpanel }:file r_file_perms;
 
 allow init_block_perm block_device:dir search;
 allow init_block_perm self:capability { chown fowner };
