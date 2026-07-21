@@ -4,3 +4,8 @@ vendor_internal_prop(vendor_mot_factory_prop)
 vendor_internal_prop(vendor_mot_init_prop)
 vendor_internal_prop(vendor_mot_boot_prop)
 vendor_internal_prop(vendor_mot_tcmd_ctrl_adb_prop)
+
+# init writes vendor.boot_completed during Motorola's early boot sequence.
+# This matches the stock vendor policy and is restricted to its dedicated
+# property type.
+set_prop(vendor_init, vendor_mot_init_prop)

@@ -17,6 +17,13 @@ type init_wls, domain;
 type init_wls_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(init_wls)
 
+type init_capsensor, domain;
+type init_capsensor_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_capsensor)
+
+# Stock labels the capsensor driver separately from generic sysfs.
+type sysfs_capsense, fs_type, sysfs_type;
+
 type init_display, domain;
 type init_display_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(init_display)
@@ -63,10 +70,20 @@ allow init_usb kmsg_device:chr_file w_file_perms;
 
 allow init_wls kmsg_device:chr_file rw_file_perms;
 allow init_wls vendor_sysfs_battery_supply:dir search;
+allow init_wls vendor_sysfs_battery_supply:file rw_file_perms;
 allow init_wls vendor_sysfs_usb_supply:dir search;
 allow init_wls sysfs_wls_dev:dir search;
 allow init_wls sysfs_wls_dev:file rw_file_perms;
 allow init_wls self:capability { chown fowner fsetid };
+
+# The core capsensor setup service is a vendor shell script.  Match stock's
+# dedicated domain so it never runs its vendor-toolbox calls as init.
+allow init_capsensor kmsg_device:chr_file w_file_perms;
+allow init_capsensor sysfs_capsense:dir search;
+allow init_capsensor sysfs_capsense:file { getattr setattr };
+allow init_capsensor sysfs_capsense:lnk_file r_file_perms;
+allow init_capsensor vendor_toolbox_exec:file execute_no_trans;
+allow init_capsensor self:capability chown;
 
 set_prop(init_display, vendor_mot_hw_prop)
 allow init_display kmsg_device:chr_file w_file_perms;
