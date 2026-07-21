@@ -1,0 +1,85 @@
+# Motorola's stock vendor policy places these early-boot helpers in separate
+# domains.  Porting their labels avoids running vendor shell code as init.
+
+type hardware_rev, domain;
+type hardware_rev_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hardware_rev)
+
+type init_block_perm, domain;
+type init_block_perm_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_block_perm)
+
+type init_usb, domain;
+type init_usb_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_usb)
+
+type init_wls, domain;
+type init_wls_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_wls)
+
+type init_display, domain;
+type init_display_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init_display)
+
+type stflashtool, domain;
+type stflashtool_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(stflashtool)
+
+type mbm_spy, domain;
+type mbm_spy_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(mbm_spy)
+
+type hwrev_data_file, file_type, data_file_type, vendor_data_file_type;
+type cid_block_device, dev_type;
+type kpan_block_device, dev_type;
+type clogo_block_device, dev_type;
+
+# Scripts are interpreted by the vendor shell and invoke vendor toolbox
+# applets; they must execute these files without another domain transition.
+allow { hardware_rev init_block_perm init_usb init_display } vendor_shell_exec:file r_file_perms;
+allow { hardware_rev init_block_perm init_usb init_display } vendor_file:file execute_no_trans;
+allow { hardware_rev init_block_perm init_usb init_wls init_display } vendor_toolbox_exec:file rx_file_perms;
+
+rw_dir_file(hardware_rev, hwrev_data_file)
+allow hardware_rev { sysfs sysfs_touchclass }:dir search;
+allow hardware_rev { sysfs sysfs_touchclass }:file r_file_perms;
+
+allow init_block_perm block_device:dir search;
+allow init_block_perm self:capability { chown fowner };
+allow init_block_perm { vendor_utags_block_device cid_block_device kpan_block_device clogo_block_device }:blk_file setattr;
+
+set_prop(init_usb, vendor_mot_factory_prop)
+set_prop(init_usb, vendor_mot_init_prop)
+set_prop(init_usb, vendor_usb_prop)
+get_prop(init_usb, vendor_mot_boot_prop)
+get_prop(init_usb, vendor_mot_tcmd_prop)
+get_prop(init_usb, vendor_mot_tcmd_ctrl_adb_prop)
+get_prop(init_usb, vendor_radio_prop)
+allow init_usb { sysfs sysfs_android_usb }:file { setattr w_file_perms };
+allow init_usb sysfs_android_usb:dir search;
+allow init_usb self:capability { chown fowner };
+allow init_usb configfs:dir search;
+allow init_usb configfs:file w_file_perms;
+allow init_usb kmsg_device:chr_file w_file_perms;
+
+allow init_wls kmsg_device:chr_file rw_file_perms;
+allow init_wls vendor_sysfs_battery_supply:dir search;
+allow init_wls vendor_sysfs_usb_supply:dir search;
+allow init_wls sysfs_wls_dev:dir search;
+allow init_wls sysfs_wls_dev:file rw_file_perms;
+allow init_wls self:capability { chown fowner fsetid };
+
+set_prop(init_display, vendor_mot_hw_prop)
+set_prop(init_display, vendor_mot_init_prop)
+allow init_display kmsg_device:chr_file w_file_perms;
+
+allow stflashtool nfc_device:chr_file rw_file_perms;
+set_prop(stflashtool, vendor_mot_nfc_prop)
+get_prop(stflashtool, vendor_radio_prop)
+
+allow mbm_spy block_device:dir search;
+allow mbm_spy vendor_utags_block_device:blk_file rw_file_perms;
+allow mbm_spy rtc_device:chr_file r_file_perms;
+allow mbm_spy proc:dir search;
+allow mbm_spy proc:{ file lnk_file } r_file_perms;
+get_prop(mbm_spy, vendor_radio_prop)

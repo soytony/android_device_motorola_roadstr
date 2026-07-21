@@ -3,3 +3,5 @@ com.motorola.hardware.display.touch.IMotTouch/default        u:object_r:hal_mott
 motorola.hardware.wireless.wlc.IMotWlc/default               u:object_r:hal_motwlc_aidl_service:s0
 vendor.lineage.biometrics.udfps.IUdfpsHbm/default            u:object_r:udfps_hbm_service:s0
 android.hardware.media.c2.IComponentStore/default9            u:object_r:hal_codec2_service:s0
+# The low-power sensor service shares Motorola's SensorExt HAL policy.
+motorola.hardware.lpsensing.ILpSensing/default                u:object_r:hal_sensorext_service:s0

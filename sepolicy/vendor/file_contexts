@@ -6,3 +6,26 @@
 /data/vendor/tetras_data(/.*)? u:object_r:vendor_biometricsface_data_file:s0
 
 /vendor/bin/roadstr-udfps-hbm          u:object_r:hal_fingerprint_default_exec:s0
+
+# Motorola boot scripts need dedicated domains.  Without these labels init
+# executes them directly and inherits their vendor-specific access requests.
+/vendor/bin/init\.mmi\.usb\.sh                    u:object_r:init_usb_exec:s0
+/vendor/bin/init\.mmi\.wls\.sh                    u:object_r:init_wls_exec:s0
+/vendor/bin/init\.mmi\.display\.sh                u:object_r:init_display_exec:s0
+/vendor/bin/init\.mmi\.block_perm\.sh             u:object_r:init_block_perm_exec:s0
+/vendor/bin/hardware_revisions\.sh                 u:object_r:hardware_rev_exec:s0
+/vendor/bin/STFlashTool                             u:object_r:stflashtool_exec:s0
+/vendor/bin/mbm_spy                                 u:object_r:mbm_spy_exec:s0
+/vendor/bin/hw/motorola\.hardware\.lpsensing-service u:object_r:hal_sensors_default_exec:s0
+
+/data/vendor/hardware_revisions(/.*)?               u:object_r:hwrev_data_file:s0
+
+# These names are stable /dev/block symlinks on RoadSTR.  The block-permission
+# helper adjusts ownership and modes during early vendor initialization.
+/dev/block/bootdevice/by-name/cid                    u:object_r:cid_block_device:s0
+/dev/block/bootdevice/by-name/kpan                   u:object_r:kpan_block_device:s0
+/dev/block/bootdevice/by-name/clogo                  u:object_r:clogo_block_device:s0
+/dev/block/bootdevice/by-name/utags(Backup)?         u:object_r:utags_block_device:s0
+/dev/block/platform/soc/1d84000\.ufshc/by-name/cid   u:object_r:cid_block_device:s0
+/dev/block/platform/soc/1d84000\.ufshc/by-name/kpan  u:object_r:kpan_block_device:s0
+/dev/block/platform/soc/1d84000\.ufshc/by-name/utags(Backup)? u:object_r:utags_block_device:s0
