@@ -15,6 +15,10 @@ WITH_ADB_INSECURE := true
 # Inherit LineageOS common product config
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Roadstr does not have the FM tuner advertised by the shared vendor audio
+# configuration. This must be set before device.mk imports common.mk.
+ROADSTR_HAS_NO_FM_TUNER := true
+
 # Inherit from roadstr device
 $(call inherit-product, device/motorola/roadstr/device.mk)
 
