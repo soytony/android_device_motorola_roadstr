@@ -39,10 +39,14 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
+    moto-framework-roadstr \
+    moto-framework-roadstr-permissions \
     roadstr-udfps-hbm \
+    ReFra \
     ApertureResRoadstr \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \
+    SystemGalleryOverlayRoadstr \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
     SystemUIResRoadstr \
@@ -55,6 +59,7 @@ PRODUCT_PACKAGES += \
 # Stock provides an AIDL v4 RGB face HAL; advertise it so Settings and
 # BiometricService expose face enrollment and authentication.
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/default-permissions-refra.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-refra.xml \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
 
 # Audio

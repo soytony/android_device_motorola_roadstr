@@ -3,3 +3,5 @@
 *.rej
 *~
 .DS_Store
+BoardConfigPrivate.mk
+/keys/

@@ -1,0 +1,17 @@
+// SPDX-FileCopyrightText: 2026 Iacob Ionut
+// SPDX-License-Identifier: Apache-2.0
+
+android_app_import {
+    name: "ReFra",
+    apk: "ReFra.apk",
+    presigned: true,
+    // The APK targets a modern SDK and already carries an APK Signature
+    // Scheme v2/v3 signature. Do not unzip or realign it during the build.
+    preprocessed: true,
+    product_specific: true,
+    // Keep the upstream APK byte-identical and avoid creating stale odex files
+    // when the bundled app is updated independently of the platform build.
+    dex_preopt: {
+        enabled: false,
+    },
+}

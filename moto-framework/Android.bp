@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: Apache-2.0
+
+java_library {
+    name: "moto-framework-roadstr",
+    srcs: ["src/**/*.java"],
+    sdk_version: "system_current",
+    installable: true,
+    stem: "moto-framework",
+}
+
+prebuilt_etc {
+    name: "moto-framework-roadstr-permissions",
+    src: "permissions/moto-framework.xml",
+    sub_dir: "permissions",
+    filename: "moto-framework.xml",
+}

@@ -7,6 +7,10 @@ include device/motorola/sm7750-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/motorola/roadstr
 
+# Locally supplied release signing settings are deliberately optional so that
+# public device-tree builds continue to use the standard test keys.
+-include $(DEVICE_PATH)/BoardConfigPrivate.mk
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := roadstr
 
@@ -22,6 +26,21 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 21474836480
+
+# MindTheGapps patches the logical system partitions from recovery. Keep all
+# partitions it touches writable, and reserve enough free ext4 space for the
+# package and future updates. These RoadSTR-specific overrides deliberately do
+# not change the filesystem policy for other sm7750-common devices.
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+
+BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 536870912
+# Keep 2 GiB free in product for recovery-installed GApps and future updates.
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 2147483648
+BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 536870912
+BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 268435456
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2025-11-01
