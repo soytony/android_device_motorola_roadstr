@@ -46,6 +46,8 @@ PRODUCT_PACKAGES += \
     ApertureResRoadstr \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \
+    LineageSdkRoadstr \
+    LineagePartsActionButtonRoadstr \
     SystemGalleryOverlayRoadstr \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
@@ -54,6 +56,12 @@ PRODUCT_PACKAGES += \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
+
+# The kernel exposes the dedicated left-side GPIO button as KEY_SEARCH (217).
+# Map this input device to Android's assistant key so input policy owns its
+# wake, keyguard, single-press and multi-press behavior.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio-keys.kl
 
 # Face unlock
 # Stock provides an AIDL v4 RGB face HAL; advertise it so Settings and

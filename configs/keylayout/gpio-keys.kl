@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# The dedicated Action Button is emitted by the gpio-keys DT node as Linux
+# KEY_SEARCH (217). This device-specific mapping makes it KEYCODE_ASSIST.
+# ASSIST is not an Android built-in wake key; WAKE lets the policy apply the
+# user's Assist Button wake setting while the display is off.
+key 217   ASSIST    WAKE

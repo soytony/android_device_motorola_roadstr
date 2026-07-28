@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- The left-side key maps to KEYCODE_ASSIST and uses LineageParts' Assist Button controls. -->
+    <integer name="config_deviceHardwareKeys">72</integer>
+    <integer name="config_deviceHardwareWakeKeys">72</integer>
+</resources>

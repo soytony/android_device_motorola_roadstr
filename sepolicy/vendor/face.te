@@ -1,7 +1,7 @@
 # The stock vendor policy labels vendor.faceauth.* with this private type.
 # Declare the equivalent local type because the precompiled Motorola policy is
 # not part of the source policy compilation.
-type vendor_tetras_prop, vendor_property_type;
+type vendor_tetras_prop, property_type, vendor_property_type;
 
 # The stock Tetras face HAL asks CameraService for its single camera stream
 # while Settings owns only the preview Surface.  Keep this permission scoped to
