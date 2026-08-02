@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">သင်ထိန်းချုပ်မှုတွင်ရှိသည်။</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">သင်ထိန်းချုပ်မှုတွင်ရှိသည်။</string>
     <string name="security_settings_face_enroll_introduction_control_message">ဆက်တင်များတွင် သင့်မျက်နှာဒေတာကို အချိန်မရွေး ဖျက်နိုင်ပါသည်။</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"သဘာဝ"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"အရောင်တင်ထားသည်"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"ပြည့်ဝ အရောင်"</string>
 </resources>

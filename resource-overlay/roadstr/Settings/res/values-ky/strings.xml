@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Сиз көзөмөлдөп турасыз</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Сиз көзөмөлдөп турасыз</string>
     <string name="security_settings_face_enroll_introduction_control_message">Жүзүңүздүн дайындарын каалаган убакта Жөндөөлөрдөн өчүрө аласыз.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Табигый"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Күчөтүлгөн"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Каныккан"</string>
 </resources>

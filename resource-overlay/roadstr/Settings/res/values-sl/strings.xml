@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Vi imate nadzor</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Vi imate nadzor</string>
     <string name="security_settings_face_enroll_introduction_control_message">Podatke o obrazu lahko kadar koli izbrišete v nastavitvah.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Naravne"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Poudarjene"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Nasičene"</string>
 </resources>

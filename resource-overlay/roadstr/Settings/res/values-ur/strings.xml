@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">آپ کنٹرول میں ہیں۔</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">آپ کنٹرول میں ہیں۔</string>
     <string name="security_settings_face_enroll_introduction_control_message">آپ ترتیبات میں کسی بھی وقت اپنے چہرے کا ڈیٹا حذف کر سکتے ہیں۔</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"قدرتی"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"بڑھایا گیا"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"سیچوریٹ کردہ"</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Teie käes on kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Teie käes on kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_message">Saate oma näoandmed igal ajal menüüs Seaded kustutada.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Loomulikud"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Võimendatud"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Küllastatud"</string>
 </resources>

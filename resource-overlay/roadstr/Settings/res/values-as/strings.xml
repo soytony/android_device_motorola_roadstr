@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">আপুনি নিয়ন্ত্ৰণত আছে</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">আপুনি নিয়ন্ত্ৰণত আছে</string>
     <string name="security_settings_face_enroll_introduction_control_message">আপুনি ছেটিংছত যিকোনো সময়তে আপোনাৰ মুখৰ ডাটা মচি পেলাব পাৰে।</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"প্ৰাকৃতিক"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"বৃদ্ধি কৰা"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"সংপৃক্ত"</string>
 </resources>

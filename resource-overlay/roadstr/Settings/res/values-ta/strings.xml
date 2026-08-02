@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">நீங்கள் கட்டுப்பாட்டில் இருக்கிறீர்கள்</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">நீங்கள் கட்டுப்பாட்டில் இருக்கிறீர்கள்</string>
     <string name="security_settings_face_enroll_introduction_control_message">அமைப்புகளில் எந்த நேரத்திலும் உங்கள் முகத் தரவை நீக்கலாம்.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"இயற்கை வண்ணம்"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"பூஸ்ட் செய்யப்பட்டது"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"சாச்சுரேட் ஆனது"</string>
 </resources>

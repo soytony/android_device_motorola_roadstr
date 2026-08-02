@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Vous êtes en contrôle</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Vous êtes en contrôle</string>
     <string name="security_settings_face_enroll_introduction_control_message">Vous pouvez supprimer vos données faciales à tout moment dans Paramètres.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturelles"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Rehaussées"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Mode Saturé"</string>
 </resources>

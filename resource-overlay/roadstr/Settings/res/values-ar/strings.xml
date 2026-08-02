@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">أنت في السيطرة</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">أنت في السيطرة</string>
     <string name="security_settings_face_enroll_introduction_control_message">يمكنك حذف بيانات وجهك في أي وقت من خلال الإعدادات.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"طبيعية"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"مُحسنة"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"مُشبع"</string>
 </resources>

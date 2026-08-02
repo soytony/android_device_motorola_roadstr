@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Bạn đang kiểm soát</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Bạn đang kiểm soát</string>
     <string name="security_settings_face_enroll_introduction_control_message">Bạn có thể xóa dữ liệu khuôn mặt của mình bất cứ lúc nào trong Cài đặt.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Tự nhiên"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Tăng độ nét"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Bão hòa"</string>
 </resources>

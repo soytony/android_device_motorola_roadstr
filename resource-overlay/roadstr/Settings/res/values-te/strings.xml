@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">మీరు నియంత్రణలో ఉన్నారు</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">మీరు నియంత్రణలో ఉన్నారు</string>
     <string name="security_settings_face_enroll_introduction_control_message">మీరు సెట్టింగ్‌లలో ఎప్పుడైనా మీ ముఖ డేటాను తొలగించవచ్చు.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"సహజం"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"మెరుగుపరిచినవి"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"శాచురేటెడ్‌"</string>
 </resources>

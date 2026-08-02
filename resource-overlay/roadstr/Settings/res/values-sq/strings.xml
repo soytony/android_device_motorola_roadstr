@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Ju jeni në kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Ju jeni në kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_message">Mund t\'i fshish të dhënat e fytyrës në çdo kohë te &quot;Cilësimet&quot;.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Natyrale"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Të theksuara"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"E gjallë"</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Du har kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Du har kontroll</string>
     <string name="security_settings_face_enroll_introduction_control_message">Du kan slette ansiktsdataene dine når som helst i Innstillinger.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturlig"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Forsterket"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Mettet"</string>
 </resources>

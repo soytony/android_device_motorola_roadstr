@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Вие имате контрола</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Вие имате контрола</string>
     <string name="security_settings_face_enroll_introduction_control_message">Може да ги избришете податоците за вашето лице во секое време во „Поставки“.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Природни"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Нагласени"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Заситено"</string>
 </resources>

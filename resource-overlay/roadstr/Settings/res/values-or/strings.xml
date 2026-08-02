@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">ଆପଣ ନିୟନ୍ତ୍ରଣରେ ଅଛନ୍ତି |</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">ଆପଣ ନିୟନ୍ତ୍ରଣରେ ଅଛନ୍ତି |</string>
     <string name="security_settings_face_enroll_introduction_control_message">ଆପଣ ସେଟିଂସମୂହରେ ଯେକ time ଣସି ସମୟରେ ଆପଣଙ୍କର ଚେହେରା ତଥ୍ୟ ବିଲୋପ କରିପାରିବେ |</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"ପ୍ରାକୃତିକ"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"ବର୍ଦ୍ଧିତ"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"ସାଚୁରେଟେଡ୍"</string>
 </resources>

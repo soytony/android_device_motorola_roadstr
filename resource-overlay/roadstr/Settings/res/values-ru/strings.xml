@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Вы все контролируете</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Вы все контролируете</string>
     <string name="security_settings_face_enroll_introduction_control_message">Вы можете удалить данные о своем лице в любое время в настройках.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Натуральные"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Яркие"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Насыщенные"</string>
 </resources>

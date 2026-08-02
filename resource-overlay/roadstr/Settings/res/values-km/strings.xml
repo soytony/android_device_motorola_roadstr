@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">អ្នកស្ថិតក្នុងការគ្រប់គ្រង</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">អ្នកស្ថិតក្នុងការគ្រប់គ្រង</string>
     <string name="security_settings_face_enroll_introduction_control_message">អ្នកអាចលុបទិន្នន័យមុខរបស់អ្នកបានគ្រប់ពេលនៅក្នុងការកំណត់។</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"ធម្មជាតិ"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"បង្កើនពន្លឺ"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"ឆ្អែត"</string>
 </resources>

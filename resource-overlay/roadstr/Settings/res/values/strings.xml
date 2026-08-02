@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="color_mode_option_natural">Natural</string>
+    <string name="color_mode_option_boosted">Boosted</string>
+    <string name="color_mode_option_saturated">Saturated</string>
+
     <string name="security_settings_face_enroll_introduction_info_title">Keep in mind</string>
     <string name="security_settings_face_enroll_introduction_info_glasses">Remove sunglasses or anything else that covers your face before setup.</string>
     <string name="security_settings_face_enroll_introduction_info_consent_glasses">Remove sunglasses or anything else that covers your face before setup.</string>

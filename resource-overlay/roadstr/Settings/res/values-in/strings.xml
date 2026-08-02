@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Anda memegang kendali</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Anda memegang kendali</string>
     <string name="security_settings_face_enroll_introduction_control_message">Anda dapat menghapus data wajah Anda kapan saja di Pengaturan.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Alami"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Dipertajam"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Disaturasi"</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">شما در کنترل هستید</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">شما در کنترل هستید</string>
     <string name="security_settings_face_enroll_introduction_control_message">هرزمان خواستید می‌توانید داده‌های چهره‌تان را در تنظیمات حذف کنید.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"طبیعی"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"تقویت‌شده"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"اشباع‌شده"</string>
 </resources>

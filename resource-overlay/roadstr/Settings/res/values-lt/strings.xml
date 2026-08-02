@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Jūs kontroliuojate</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Jūs kontroliuojate</string>
     <string name="security_settings_face_enroll_introduction_control_message">Nustatymuose galite bet kada ištrinti veido duomenis.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Natūrali"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Suintensyvinta"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Sodri"</string>
 </resources>

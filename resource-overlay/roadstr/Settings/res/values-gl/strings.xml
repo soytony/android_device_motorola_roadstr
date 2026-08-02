@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Vostede está no control</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Vostede está no control</string>
     <string name="security_settings_face_enroll_introduction_control_message">Podes eliminar os datos da túa cara en calquera momento en Configuración.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Naturais"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Realzadas"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Saturadas"</string>
 </resources>

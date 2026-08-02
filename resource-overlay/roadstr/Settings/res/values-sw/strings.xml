@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Wewe ni katika udhibiti</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Wewe ni katika udhibiti</string>
     <string name="security_settings_face_enroll_introduction_control_message">Unaweza kufuta data ya uso wako wakati wowote katika Mipangilio.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Asili"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Imeongezwa Rangi"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Imekolezwa"</string>
 </resources>

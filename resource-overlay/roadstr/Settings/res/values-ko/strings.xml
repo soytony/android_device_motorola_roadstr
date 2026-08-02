@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">당신은 통제할 수 있습니다</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">당신은 통제할 수 있습니다</string>
     <string name="security_settings_face_enroll_introduction_control_message">설정에서 언제든지 얼굴 데이터를 삭제할 수 있습니다.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"자연스럽게"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"생생하게"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"강렬하게"</string>
 </resources>

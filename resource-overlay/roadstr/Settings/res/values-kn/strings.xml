@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">ನೀವು ನಿಯಂತ್ರಣದಲ್ಲಿದ್ದೀರಿ</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">ನೀವು ನಿಯಂತ್ರಣದಲ್ಲಿದ್ದೀರಿ</string>
     <string name="security_settings_face_enroll_introduction_control_message">ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನಿಮ್ಮ ಮುಖದ ಡೇಟಾವನ್ನು ಅಳಿಸಬಹುದು.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"ಸ್ವಾಭಾವಿಕ"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"ಬೂಸ್ಟ್ ಮಾಡಿರುವುದು"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"ಸ್ಯಾಚುರೇಟೆಡ್"</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">আপনি নিয়ন্ত্রণে আছেন</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">আপনি নিয়ন্ত্রণে আছেন</string>
     <string name="security_settings_face_enroll_introduction_control_message">আপনি সেটিংস থেকে যেকোনো সময় আপনার মুখের ডেটা মুছে ফেলতে পারেন।</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"স্বাভাবিক"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"বুস্ট করা"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"স্যাচুরেশন বাড়ানো"</string>
 </resources>

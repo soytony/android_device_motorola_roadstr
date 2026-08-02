@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">Jij hebt de controle</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">Jij hebt de controle</string>
     <string name="security_settings_face_enroll_introduction_control_message">Je kunt je gezichtsgegevens op elk gewenst moment verwijderen via Instellingen.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"Natuurlijk"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"Versterkt"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"Verzadigd"</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">ඔබ පාලනයේ සිටී</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">ඔබ පාලනයේ සිටී</string>
     <string name="security_settings_face_enroll_introduction_control_message">ඔබට සැකසීම් තුළ ඕනෑම වේලාවක ඔබේ මුහුණු දත්ත මැකීමට හැකිය.</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"ස්වභාවික"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"වැඩි කළ"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"සන්තෘප්ත"</string>
 </resources>

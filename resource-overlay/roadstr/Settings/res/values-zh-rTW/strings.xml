@@ -11,4 +11,10 @@
     <string name="security_settings_face_enroll_introduction_control_title">你盡在掌控</string>
     <string name="security_settings_face_enroll_introduction_control_consent_title">你盡在掌控</string>
     <string name="security_settings_face_enroll_introduction_control_message">您可以隨時在「設定」中刪除您的臉部資料。</string>
+
+    <string name="color_mode_option_natural" msgid="6192875655101283303">"自然"</string>
+
+    <string name="color_mode_option_boosted" msgid="4698797857766774289">"增強"</string>
+
+    <string name="color_mode_option_saturated" msgid="3413853820158447300">"飽和"</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Pair the panel-native vendor mode with Settings' translated visible labels. -->
+    <string-array name="config_color_mode_options_strings" translatable="false">
+        <item>@string/color_mode_option_natural</item>
+        <item>@string/color_mode_option_boosted</item>
+        <item>@string/color_mode_option_saturated</item>
+    </string-array>
+    <integer-array name="config_color_mode_options_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>300</item>
+    </integer-array>
+</resources>
