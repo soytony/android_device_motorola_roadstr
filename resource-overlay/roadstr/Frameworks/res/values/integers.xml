@@ -32,6 +32,26 @@
          unchanged so normal 60/90/120 Hz policy selection remains available. -->
     <integer name="config_defaultRefreshRateInZone">0</integer>
 
+    <!-- Both RoadSTR ALS devices are on-change sensors. Retain a stable valid sample rather than
+         treating its quiet period as a sensor failure. -->
+    <integer name="config_ambientLightFusionRearLuxCap">5500</integer>
+    <integer name="config_ambientLightFusionSampleMaxAgeMillis">0</integer>
+    <integer name="config_ambientLightFusionInitialSampleWaitMillis">1000</integer>
+    <integer name="config_ambientLightFusionCorrelationWindowMillis">1500</integer>
+    <integer name="config_ambientLightFusionSensorSmoothingTimeMillis">500</integer>
+    <integer name="config_ambientLightFusionNoiseMarginLux">5</integer>
+    <integer name="config_ambientLightFusionRearStabilityLux">5</integer>
+    <integer name="config_ambientLightFusionLeakageRiseTimeMillis">400</integer>
+    <integer name="config_ambientLightFusionLeakageDecayTimeMillis">8000</integer>
+    <integer name="config_ambientLightFusionLeakageMaxLux">1200</integer>
+    <integer name="config_ambientLightFusionLowAmbientLux">20</integer>
+    <integer name="config_ambientLightFusionModerateAmbientLux">100</integer>
+    <integer name="config_ambientLightFusionHighAmbientLux">500</integer>
+    <integer name="config_ambientLightFusionRearLowLuxThreshold">1</integer>
+    <integer name="config_ambientLightFusionRearOccludedFrontLuxThreshold">50</integer>
+    <integer name="config_ambientLightFusionRearReliabilityLossMillis">3000</integer>
+    <integer name="config_ambientLightFusionRearReliabilityRecoveryMillis">500</integer>
+
     <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->
     <integer name="config_displayWhiteBalanceColorTemperatureMin">4500</integer>
     <integer name="config_displayWhiteBalanceColorTemperatureMax">7500</integer>
