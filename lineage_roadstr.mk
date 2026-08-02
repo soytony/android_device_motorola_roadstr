@@ -44,6 +44,9 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera3,com.motorola.camera5,com.motorola.actions
 
 PRODUCT_VENDOR_PROPERTIES += \
+    # Stock Qualcomm C2 lacks the persistent input-surface interface; use the
+    # AIDL GraphicBufferSource fallback required by Moto Camera Motion Photo.
+    debug.stagefright.c2inputsurface=-1 \
     persist.vendor.camera.physical.num=3 \
     ro.surface_flinger.touch_boost_across_groups=true
 
