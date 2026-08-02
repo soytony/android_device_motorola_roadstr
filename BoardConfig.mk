@@ -15,7 +15,8 @@ DEVICE_PATH := device/motorola/roadstr
 TARGET_BOOTLOADER_BOARD_NAME := roadstr
 
 # Display
-TARGET_SCREEN_DENSITY := 480
+# 1220 px * 160 / 501 dpi = 389.6 dp minimum width.
+TARGET_SCREEN_DENSITY := 501
 
 # Kernel
 TARGET_KERNEL_VERSION := 6.6
