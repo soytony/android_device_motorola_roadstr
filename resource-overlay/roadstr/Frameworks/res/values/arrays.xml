@@ -23,6 +23,31 @@
         <item>102</item>
     </integer-array>
 
+    <!--
+         The shared panel curve was dim in normal indoor use. These sixteen values map to
+         the sixteen lux zones defined by the inherited config_autoBrightnessLevels array.
+         Lift 2-1250 lux; retain stock high-light and HBM behavior for readability,
+         panel safety, and a predictable first calibration pass.
+    -->
+    <integer-array name="config_autoBrightnessDisplayValuesNits">
+        <item>3</item>
+        <item>15</item>
+        <item>30</item>
+        <item>58</item>
+        <item>105</item>
+        <item>165</item>
+        <item>250</item>
+        <item>270</item>
+        <item>270</item>
+        <item>412</item>
+        <item>500</item>
+        <item>700</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>1850</item>
+    </integer-array>
+
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
