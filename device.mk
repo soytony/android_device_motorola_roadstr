@@ -40,7 +40,9 @@ PRODUCT_SOONG_NAMESPACES += \
 
 PRODUCT_PACKAGES += \
     moto-framework \
+    moto-res \
     moto-framework-roadstr-permissions \
+    MotoResRoadstr \
     roadstr-udfps-hbm \
     ReFra \
     ApertureResRoadstr \

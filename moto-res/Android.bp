@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: Apache-2.0
+
+android_app {
+    name: "moto-res",
+    manifest: "AndroidManifest.xml",
+    resource_dirs: ["res"],
+    certificate: "platform",
+    sdk_version: "system_current",
+    product_specific: true,
+}

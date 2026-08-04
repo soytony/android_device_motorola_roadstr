@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <string name="config_motoRearLightSensorType" translatable="false">com.motorola.sensor.alternate_light</string>
+    <string name="config_motoRearLightSampleMaxAgeMs" translatable="false">2000</string>
+    <string name="config_motoAmbientLuxMaxLeakageLux" translatable="false">1200</string>
+    <string name="config_motoAmbientLuxRearLowLux" translatable="false">10</string>
+    <!-- Delay is panel emission plus ALS integration time; noise values are lux squared. -->
+    <string name="config_motoAmbientLuxPostureSampleMaxAgeMs" translatable="false">1500</string>
+    <string name="config_motoAmbientLuxTargetHistoryMaxAgeMs" translatable="false">8000</string>
+    <string name="config_motoAmbientLuxTargetHistoryMaxSize" translatable="false">64</string>
+    <string name="config_motoAmbientLuxDisplayToAlsDelayMs" translatable="false">150</string>
+    <string name="config_motoAmbientLuxTargetTransitionPenaltyMs" translatable="false">1000</string>
+    <string name="config_motoAmbientLuxLeakageRelativeUncertainty" translatable="false">0.5</string>
+    <string name="config_motoAmbientLuxFrontMeasurementVariance" translatable="false">25</string>
+    <string name="config_motoAmbientLuxRearMeasurementVariance" translatable="false">25</string>
+    <string name="config_motoAmbientLuxTargetTransitionVariance" translatable="false">900</string>
+    <string name="config_motoAmbientLuxFrontProcessNoise" translatable="false">80</string>
+    <string name="config_motoAmbientLuxRearProcessNoise" translatable="false">80</string>
+    <!-- Positive Z means display-up/rear-down for this Android sensor coordinate system. -->
+    <string name="config_motoAmbientLuxRearDownGravityZ" translatable="false">8.5</string>
+    <string name="config_motoAmbientLuxStationaryMotionVariance" translatable="false">0.08</string>
+    <string name="config_motoAmbientLuxRearOcclusionDwellMs" translatable="false">3000</string>
+    <string name="config_motoAmbientLuxFusionGateSigma" translatable="false">3</string>
+    <!-- Measured in a dark enclosure against a fixed Settings surface. The front ALS leaks
+         considerably more panel light in light theme, so the two curves stay independent. -->
+    <integer-array name="config_motoAmbientLuxLeakageNits">
+        <item>0</item>
+        <item>65</item>
+        <item>130</item>
+        <item>257</item>
+        <item>497</item>
+        <item>669</item>
+        <item>703</item>
+        <item>740</item>
+    </integer-array>
+    <integer-array name="config_motoAmbientLuxLightThemeLeakageLux">
+        <item>0</item>
+        <item>10</item>
+        <item>30</item>
+        <item>65</item>
+        <item>120</item>
+        <item>200</item>
+        <item>340</item>
+        <item>460</item>
+    </integer-array>
+    <integer-array name="config_motoAmbientLuxDarkThemeLeakageLux">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
+</resources>

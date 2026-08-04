@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- Defaults make the resource package reusable before a product RRO supplies calibration. -->
+    <string name="config_motoRearLightSensorType" translatable="false">com.motorola.sensor.alternate_light</string>
+    <string name="config_motoRearLightSampleMaxAgeMs" translatable="false">2000</string>
+    <string name="config_motoAmbientLuxMaxLeakageLux" translatable="false">1200</string>
+    <string name="config_motoAmbientLuxRearLowLux" translatable="false">10</string>
+    <!-- Contextual Ambient Lux Fusion defaults. Product RROs tune these per panel and sensors. -->
+    <string name="config_motoAmbientLuxPostureSampleMaxAgeMs" translatable="false">1500</string>
+    <string name="config_motoAmbientLuxTargetHistoryMaxAgeMs" translatable="false">8000</string>
+    <string name="config_motoAmbientLuxTargetHistoryMaxSize" translatable="false">64</string>
+    <string name="config_motoAmbientLuxDisplayToAlsDelayMs" translatable="false">150</string>
+    <string name="config_motoAmbientLuxTargetTransitionPenaltyMs" translatable="false">1000</string>
+    <string name="config_motoAmbientLuxLeakageRelativeUncertainty" translatable="false">0.5</string>
+    <string name="config_motoAmbientLuxFrontMeasurementVariance" translatable="false">25</string>
+    <string name="config_motoAmbientLuxRearMeasurementVariance" translatable="false">25</string>
+    <string name="config_motoAmbientLuxTargetTransitionVariance" translatable="false">900</string>
+    <string name="config_motoAmbientLuxFrontProcessNoise" translatable="false">80</string>
+    <string name="config_motoAmbientLuxRearProcessNoise" translatable="false">80</string>
+    <string name="config_motoAmbientLuxRearDownGravityZ" translatable="false">8.5</string>
+    <string name="config_motoAmbientLuxStationaryMotionVariance" translatable="false">0.08</string>
+    <string name="config_motoAmbientLuxRearOcclusionDwellMs" translatable="false">3000</string>
+    <string name="config_motoAmbientLuxFusionGateSigma" translatable="false">3</string>
+    <!-- Product RROs supply panel-specific measurements. A zero curve is a safe fallback. -->
+    <integer-array name="config_motoAmbientLuxLeakageNits">
+        <item>0</item>
+    </integer-array>
+    <integer-array name="config_motoAmbientLuxLightThemeLeakageLux">
+        <item>0</item>
+    </integer-array>
+    <integer-array name="config_motoAmbientLuxDarkThemeLeakageLux">
+        <item>0</item>
+    </integer-array>
+    <overlayable name="MotoResourcesConfig">
+        <policy type="product">
+            <item type="string" name="config_motoRearLightSensorType" />
+            <item type="string" name="config_motoRearLightSampleMaxAgeMs" />
+            <item type="string" name="config_motoAmbientLuxMaxLeakageLux" />
+            <item type="string" name="config_motoAmbientLuxRearLowLux" />
+            <item type="string" name="config_motoAmbientLuxPostureSampleMaxAgeMs" />
+            <item type="string" name="config_motoAmbientLuxTargetHistoryMaxAgeMs" />
+            <item type="string" name="config_motoAmbientLuxTargetHistoryMaxSize" />
+            <item type="string" name="config_motoAmbientLuxDisplayToAlsDelayMs" />
+            <item type="string" name="config_motoAmbientLuxTargetTransitionPenaltyMs" />
+            <item type="string" name="config_motoAmbientLuxLeakageRelativeUncertainty" />
+            <item type="string" name="config_motoAmbientLuxFrontMeasurementVariance" />
+            <item type="string" name="config_motoAmbientLuxRearMeasurementVariance" />
+            <item type="string" name="config_motoAmbientLuxTargetTransitionVariance" />
+            <item type="string" name="config_motoAmbientLuxFrontProcessNoise" />
+            <item type="string" name="config_motoAmbientLuxRearProcessNoise" />
+            <item type="string" name="config_motoAmbientLuxRearDownGravityZ" />
+            <item type="string" name="config_motoAmbientLuxStationaryMotionVariance" />
+            <item type="string" name="config_motoAmbientLuxRearOcclusionDwellMs" />
+            <item type="string" name="config_motoAmbientLuxFusionGateSigma" />
+            <item type="array" name="config_motoAmbientLuxLeakageNits" />
+            <item type="array" name="config_motoAmbientLuxLightThemeLeakageLux" />
+            <item type="array" name="config_motoAmbientLuxDarkThemeLeakageLux" />
+        </policy>
+    </overlayable>
+</resources>
