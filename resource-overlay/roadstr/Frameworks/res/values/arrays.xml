@@ -48,6 +48,39 @@
         <item>1850</item>
     </integer-array>
 
+    <!-- Near-dark, fixed-Settings-surface calibration. The front ALS sees substantially
+         more panel light in light theme; the framework interpolates these values by target nits. -->
+    <integer-array name="config_ambientLightFusionLeakageNits">
+        <item>0</item>
+        <item>65</item>
+        <item>130</item>
+        <item>257</item>
+        <item>497</item>
+        <item>669</item>
+        <item>703</item>
+        <item>740</item>
+    </integer-array>
+    <integer-array name="config_ambientLightFusionLightThemeLeakageLux">
+        <item>0</item>
+        <item>10</item>
+        <item>30</item>
+        <item>65</item>
+        <item>120</item>
+        <item>200</item>
+        <item>340</item>
+        <item>460</item>
+    </integer-array>
+    <integer-array name="config_ambientLightFusionDarkThemeLeakageLux">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+    </integer-array>
+
     <!-- Vibrator pattern for feedback about a long screen/key press -->
     <integer-array name="config_longPressVibePattern">
         <item>0</item>
