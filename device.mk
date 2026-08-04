@@ -39,7 +39,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
-    moto-framework-roadstr \
+    moto-framework \
     moto-framework-roadstr-permissions \
     roadstr-udfps-hbm \
     ReFra \
@@ -56,6 +56,10 @@ PRODUCT_PACKAGES += \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
+
+# Load the optional ambient-lux provider in system_server. The common framework
+# invokes only the generic hook; all rear-sensor and leakage policy stays here.
+PRODUCT_SYSTEM_SERVER_JARS_EXTRA += moto-framework
 
 # The kernel exposes the dedicated left-side GPIO button as KEY_SEARCH (217).
 # Map this input device to Android's assistant key so input policy owns its
