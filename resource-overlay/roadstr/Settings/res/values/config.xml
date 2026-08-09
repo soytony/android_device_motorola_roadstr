@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Expose AOSP's Low, Medium, and High vibration controls in Settings. -->
+    <integer name="config_vibration_supported_intensity_levels">3</integer>
+
     <!-- Pair the panel-native vendor mode with Settings' translated visible labels. -->
     <string-array name="config_color_mode_options_strings" translatable="false">
         <item>@string/color_mode_option_natural</item>
