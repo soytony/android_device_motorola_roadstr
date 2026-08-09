@@ -50,6 +50,13 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.physical.num=3 \
     ro.surface_flinger.touch_boost_across_groups=true
 
+# Roadstr's OLED exhibits a small visible luminance step when SurfaceFlinger
+# switches the physical panel mode between 120 Hz and 90 Hz. Keep the panel at
+# the interactive mode for two seconds after activity, reducing distracting
+# mode switches without disabling adaptive refresh-rate behavior.
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.surface_flinger.set_idle_timer_ms=2000
+
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="roadstr_g-user 16 W1WRS36.39-25-2-1 aa3747-f1b0b release-keys" \
