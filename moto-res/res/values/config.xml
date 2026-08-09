@@ -50,6 +50,7 @@
     <!-- Region sampling is opt-in; zero leakage scale preserves the calibrated table by default. -->
     <bool name="config_motoAmbientLuxRoiEnabled">false</bool>
     <string name="config_motoAmbientLuxRoiSampleMaxAgeMs" translatable="false">500</string>
+    <string name="config_motoAmbientLuxRoiFutureSampleToleranceMs" translatable="false">0</string>
     <string name="config_motoAmbientLuxRoiLeakageScale" translatable="false">0</string>
     <string name="config_motoAmbientLuxRoiLeakageReferenceLuma" translatable="false">0.5</string>
     <string name="config_motoAmbientLuxRoiLeft" translatable="false">0</string>
@@ -64,6 +65,10 @@
         <item>0</item>
     </integer-array>
     <integer-array name="config_motoAmbientLuxDarkThemeLeakageLux">
+        <item>0</item>
+    </integer-array>
+    <!-- Pure-white local-surface calibration used only while a fresh composition ROI exists. -->
+    <integer-array name="config_motoAmbientLuxRoiWhiteLeakageLux">
         <item>0</item>
     </integer-array>
     <overlayable name="MotoResourcesConfig">
@@ -111,6 +116,7 @@
             <item type="string" name="config_motoAmbientLuxRearConstraintMaxFallLuxPerSecond" />
             <item type="bool" name="config_motoAmbientLuxRoiEnabled" />
             <item type="string" name="config_motoAmbientLuxRoiSampleMaxAgeMs" />
+            <item type="string" name="config_motoAmbientLuxRoiFutureSampleToleranceMs" />
             <item type="string" name="config_motoAmbientLuxRoiLeakageScale" />
             <item type="string" name="config_motoAmbientLuxRoiLeakageReferenceLuma" />
             <item type="string" name="config_motoAmbientLuxRoiLeft" />
@@ -120,6 +126,7 @@
             <item type="array" name="config_motoAmbientLuxLeakageNits" />
             <item type="array" name="config_motoAmbientLuxLightThemeLeakageLux" />
             <item type="array" name="config_motoAmbientLuxDarkThemeLeakageLux" />
+            <item type="array" name="config_motoAmbientLuxRoiWhiteLeakageLux" />
         </policy>
     </overlayable>
 </resources>

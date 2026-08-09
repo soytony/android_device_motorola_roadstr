@@ -91,6 +91,7 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
     private float mRearConstraintMaxRelativeDelta = 0.8f;
     private float mRearConstraintMaxFallLuxPerSecond = 160f;
     private long mRoiSampleMaxAgeMs = 500;
+    private long mRoiFutureSampleToleranceMs;
     private float mRoiLeakageScale = 0f;
     private float mRoiLeakageReferenceLuma = 0.5f;
     private boolean mRoiEnabled;
@@ -102,6 +103,7 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
     private int[] mLeakageNits = {0};
     private int[] mLightThemeLeakageLux = {0};
     private int[] mDarkThemeLeakageLux = {0};
+    private int[] mRoiWhiteLeakageLux = {0};
 
     private final ArrayDeque<TargetState> mTargetHistory = new ArrayDeque<>();
     private final ScalarEstimate mFrontEstimate = new ScalarEstimate();
@@ -211,12 +213,25 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
             }
         }
         mLeakageHoldActive = false;
-        final float baseLeakageLux = target == null ? 0 : getLeakageWithTargetDropHold(
-                timestampMillis, target);
-        // Scale the reference-surface curve for brighter light-theme content. The value is
-        // device-tunable and remains bounded by the maximum calibrated leakage.
-        final float scaledLeakage = target != null && !target.darkTheme
-                ? baseLeakageLux * mLightThemeLeakageScale : baseLeakageLux;
+        final boolean roiFresh = isRoiFresh(timestampMillis);
+        // A fresh composition sample supersedes theme as the content proxy. Its calibration
+        // curve represents a pure-white surface, while the static theme curves remain a safe
+        // fallback when SurfaceFlinger sampling is unavailable or stale.
+        final float baseLeakageLux;
+        final float scaledLeakage;
+        if (target == null) {
+            baseLeakageLux = 0;
+            scaledLeakage = 0;
+        } else if (roiFresh) {
+            baseLeakageLux = getLeakageWithTargetDropHold(timestampMillis, target,
+                    mRoiWhiteLeakageLux, false);
+            scaledLeakage = baseLeakageLux;
+        } else {
+            baseLeakageLux = getLeakageWithTargetDropHold(timestampMillis, target,
+                    target.darkTheme ? mDarkThemeLeakageLux : mLightThemeLeakageLux, true);
+            scaledLeakage = target.darkTheme ? baseLeakageLux
+                    : baseLeakageLux * mLightThemeLeakageScale;
+        }
         final float leakageLux = Math.min(mMaxLeakageLux, Math.max(0, scaledLeakage
                 + getRoiLeakageAdjustment(timestampMillis, scaledLeakage)));
         final float correctedFrontLux = Math.max(0, primaryLux - leakageLux);
@@ -260,7 +275,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
             rememberOutput(timestampMillis, stableFront,
                     mLastOutputRearAssisted && stableFront > frontLux + EPSILON);
             log(timestampMillis, primaryLux, target, leakageLux, frontLux, frontEstimateVariance,
-                    Float.NaN, Float.NaN, rearFresh, rearOccluded, 0, "front", stableFront);
+                    Float.NaN, Float.NaN, rearFresh, rearOccluded, 0, "front", stableFront,
+                    roiFresh ? "roi-white" : "theme-fallback");
             return stableFront;
         }
 
@@ -317,7 +333,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
                 && stableResult > frontLux + EPSILON;
         rememberOutput(timestampMillis, stableResult, rearAssisted);
         log(timestampMillis, primaryLux, target, leakageLux, frontLux, frontEstimateVariance, rearLux,
-                rearVariance, rearFresh, rearOccluded, rearConfidence, mode, stableResult);
+                rearVariance, rearFresh, rearOccluded, rearConfidence, mode, stableResult,
+                roiFresh ? "roi-white" : "theme-fallback");
         return stableResult;
     }
 
@@ -661,10 +678,18 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
         }
     }
 
+    private boolean isRoiFresh(long timestampMillis) {
+        final long sampleAgeMs = timestampMillis - mRoiTimestampMs;
+        return mRoiLeakageScale != 0 && Float.isFinite(mRoiFilteredLuma)
+                // SurfaceFlinger and ALS callbacks share elapsed-realtime timestamps but are
+                // dispatched independently. A product may opt into a small future tolerance
+                // for an ROI callback that arrives just after its paired hardware sample.
+                && sampleAgeMs >= -mRoiFutureSampleToleranceMs
+                && sampleAgeMs <= mRoiSampleMaxAgeMs;
+    }
+
     private float getRoiLeakageAdjustment(long timestampMillis, float baseLeakageLux) {
-        if (mRoiLeakageScale == 0 || !Float.isFinite(mRoiFilteredLuma)
-                || timestampMillis < mRoiTimestampMs
-                || timestampMillis - mRoiTimestampMs > mRoiSampleMaxAgeMs) {
+        if (!isRoiFresh(timestampMillis)) {
             return 0;
         }
         // Region sampling reports composition luma, not physical lux. It only scales a measured
@@ -695,8 +720,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
      * this hold, the residual screen light is misclassified as ambient light and can sustain a
      * needlessly high automatic-brightness level in a dark room.
      */
-    private float getLeakageWithTargetDropHold(long timestampMillis, TargetState target) {
-        final int[] table = target.darkTheme ? mDarkThemeLeakageLux : mLightThemeLeakageLux;
+    private float getLeakageWithTargetDropHold(long timestampMillis, TargetState target,
+            int[] table, boolean requireSameTheme) {
         float leakage = interpolateLeakage(target.targetNits, table);
         TargetState previous = null;
         for (TargetState state : mTargetHistory) {
@@ -705,7 +730,7 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
             }
             previous = state;
         }
-        if (previous != null && previous.darkTheme == target.darkTheme
+        if (previous != null && (!requireSameTheme || previous.darkTheme == target.darkTheme)
                 && previous.targetNits > target.targetNits
                 && timestampMillis >= target.timestampMillis
                 && timestampMillis - target.timestampMillis <= mLeakageHoldAfterTargetDropMs) {
@@ -833,6 +858,9 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
             mRoiEnabled = getBoolean(resources, "config_motoAmbientLuxRoiEnabled", mRoiEnabled);
             mRoiSampleMaxAgeMs = getLong(resources, "config_motoAmbientLuxRoiSampleMaxAgeMs",
                     mRoiSampleMaxAgeMs);
+            mRoiFutureSampleToleranceMs = getLong(resources,
+                    "config_motoAmbientLuxRoiFutureSampleToleranceMs",
+                    mRoiFutureSampleToleranceMs);
             mRoiLeakageScale = getFloat(resources, "config_motoAmbientLuxRoiLeakageScale",
                     mRoiLeakageScale);
             mRoiLeakageReferenceLuma = getFloat(resources,
@@ -847,6 +875,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
                     "config_motoAmbientLuxLightThemeLeakageLux", mLightThemeLeakageLux);
             mDarkThemeLeakageLux = getIntArray(resources,
                     "config_motoAmbientLuxDarkThemeLeakageLux", mDarkThemeLeakageLux);
+            mRoiWhiteLeakageLux = getIntArray(resources,
+                    "config_motoAmbientLuxRoiWhiteLeakageLux", mRoiWhiteLeakageLux);
             sanitizeConfiguration();
         } catch (PackageManager.NameNotFoundException ignored) {
             // The provider remains usable with safe defaults when the optional resource APK is
@@ -864,6 +894,7 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
         mTargetHistoryMaxSize = Math.max(2, mTargetHistoryMaxSize);
         mLeakageHoldAfterTargetDropMs = Math.max(0, mLeakageHoldAfterTargetDropMs);
         mRoiSampleMaxAgeMs = Math.max(100, mRoiSampleMaxAgeMs);
+        mRoiFutureSampleToleranceMs = Math.max(0, mRoiFutureSampleToleranceMs);
         mRoiLeakageReferenceLuma = clamp01(mRoiLeakageReferenceLuma);
         mFusionGateSigma = Math.max(0.1f, mFusionGateSigma);
         mRearAssistConfirmDwellMs = Math.max(0, mRearAssistConfirmDwellMs);
@@ -880,11 +911,13 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
         mRearConstraintMaxDeltaLux = Math.max(0, mRearConstraintMaxDeltaLux);
         mRearConstraintMaxRelativeDelta = Math.max(0, mRearConstraintMaxRelativeDelta);
         if (!isValidLeakageTable(mLeakageNits, mLightThemeLeakageLux)
-                || !isValidLeakageTable(mLeakageNits, mDarkThemeLeakageLux)) {
+                || !isValidLeakageTable(mLeakageNits, mDarkThemeLeakageLux)
+                || !isValidLeakageTable(mLeakageNits, mRoiWhiteLeakageLux)) {
             // No correction is safer than applying a malformed calibration table.
             mLeakageNits = new int[] {0};
             mLightThemeLeakageLux = new int[] {0};
             mDarkThemeLeakageLux = new int[] {0};
+            mRoiWhiteLeakageLux = new int[] {0};
         }
     }
 
@@ -966,7 +999,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
     private void log(long timestampMillis, float rawFront, TargetState target, float leakageLux,
             float frontLux,
             float frontVariance, float rearLux, float rearVariance, boolean rearFresh,
-            boolean rearOccluded, float rearConfidence, String mode, float outputLux) {
+            boolean rearOccluded, float rearConfidence, String mode, float outputLux,
+            String leakageSource) {
         if (SystemProperties.getBoolean(DEBUG_PROPERTY, false)) {
             Slog.d(TAG, "time=" + timestampMillis + " targetNits="
                     + (target == null ? "NaN" : target.targetNits) + " darkTheme="
@@ -975,6 +1009,8 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
                     + " rear=" + rearLux + "/" + rearVariance + " rearFresh=" + rearFresh
                     + " rearOccluded=" + rearOccluded + " rearConfidence=" + rearConfidence
                     + " roiLuma=" + mRoiLuma + " filteredRoiLuma=" + mRoiFilteredLuma
+                    + " roiAgeMs=" + getSampleAge(timestampMillis, mRoiTimestampMs)
+                    + " leakageSource=" + leakageSource
                     + " leakageHold=" + mLeakageHoldActive
                     + " rearAssistDwell=" + getCandidateDwell(timestampMillis,
                             mRearAssistCandidateStartMs)
@@ -987,6 +1023,11 @@ public final class ContextualAmbientLuxProcessor implements AmbientLuxProcessor 
     private static long getCandidateDwell(long timestampMillis, long candidateStartMs) {
         return candidateStartMs == Long.MIN_VALUE ? 0
                 : Math.max(0, timestampMillis - candidateStartMs);
+    }
+
+    private static String getSampleAge(long timestampMillis, long sampleTimestampMillis) {
+        return sampleTimestampMillis == Long.MIN_VALUE ? "?"
+                : Long.toString(timestampMillis - sampleTimestampMillis);
     }
 
     private final SensorEventListener mRearListener = new SensorEventListener() {

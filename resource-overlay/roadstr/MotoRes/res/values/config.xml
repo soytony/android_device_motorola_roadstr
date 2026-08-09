@@ -61,16 +61,24 @@
     <string name="config_motoAmbientLuxRearConstraintMaxDeltaLux" translatable="false">1200</string>
     <string name="config_motoAmbientLuxRearConstraintMaxRelativeDelta" translatable="false">1.0</string>
     <string name="config_motoAmbientLuxRearConstraintMaxFallLuxPerSecond" translatable="false">300</string>
-    <bool name="config_motoAmbientLuxRoiEnabled">false</bool>
-    <string name="config_motoAmbientLuxRoiSampleMaxAgeMs" translatable="false">500</string>
-    <string name="config_motoAmbientLuxRoiLeakageScale" translatable="false">0</string>
-    <string name="config_motoAmbientLuxRoiLeakageReferenceLuma" translatable="false">0.5</string>
-    <string name="config_motoAmbientLuxRoiLeft" translatable="false">0</string>
-    <string name="config_motoAmbientLuxRoiTop" translatable="false">0</string>
-    <string name="config_motoAmbientLuxRoiRight" translatable="false">0</string>
-    <string name="config_motoAmbientLuxRoiBottom" translatable="false">0</string>
-    <!-- Measured in a dark enclosure against a fixed Settings surface. The front ALS leaks
-         considerably more panel light in light theme, so the two curves stay independent. -->
+    <!-- Temporary diagnostic: measured front-ALS optical footprint, no brightness correction. -->
+    <bool name="config_motoAmbientLuxRoiEnabled">true</bool>
+    <!-- Front ALS is on-change while composition sampling only updates on a composed frame.
+         Retain a stable sampled surface briefly so an ambient transition does not needlessly
+         fall back to theme-only calibration. -->
+    <string name="config_motoAmbientLuxRoiSampleMaxAgeMs" translatable="false">5000</string>
+    <!-- SurfaceFlinger can dispatch the matching ROI frame just after the ALS callback. -->
+    <string name="config_motoAmbientLuxRoiFutureSampleToleranceMs" translatable="false">100</string>
+    <!-- The leakage table is calibrated against a white surface. Scale it by the sampled
+         front-ALS surface luma for a bounded first-pass content correction. -->
+    <string name="config_motoAmbientLuxRoiLeakageScale" translatable="false">1</string>
+    <string name="config_motoAmbientLuxRoiLeakageReferenceLuma" translatable="false">1</string>
+    <string name="config_motoAmbientLuxRoiLeft" translatable="false">680</string>
+    <string name="config_motoAmbientLuxRoiTop" translatable="false">20</string>
+    <string name="config_motoAmbientLuxRoiRight" translatable="false">760</string>
+    <string name="config_motoAmbientLuxRoiBottom" translatable="false">80</string>
+    <!-- Static fallbacks measured against a variable Settings surface. They are used only if
+         the optional SurfaceFlinger ROI is stale or unavailable. -->
     <integer-array name="config_motoAmbientLuxLeakageNits">
         <item>0</item>
         <item>65</item>
@@ -89,7 +97,6 @@
         <item>170</item>
         <item>320</item>
         <item>440</item>
-        <!-- Worst-case light-theme reference surface measured at 741 nits. -->
         <item>621</item>
     </integer-array>
     <integer-array name="config_motoAmbientLuxDarkThemeLeakageLux">
@@ -101,5 +108,18 @@
         <item>3</item>
         <item>5</item>
         <item>7</item>
+    </integer-array>
+    <!-- Dark-room measurement with an explicit pure-white rectangle covering the physical
+         front-ALS footprint. This table is independent of theme when the sampled ROI is fresh;
+         its entries must remain aligned with config_motoAmbientLuxLeakageNits. -->
+    <integer-array name="config_motoAmbientLuxRoiWhiteLeakageLux">
+        <item>0</item>
+        <item>24</item>
+        <item>49</item>
+        <item>87</item>
+        <item>167</item>
+        <item>252</item>
+        <item>398</item>
+        <item>558</item>
     </integer-array>
 </resources>
