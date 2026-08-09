@@ -1,0 +1,7 @@
+android_app {
+    name: "FrontAlsRoiScanner",
+    manifest: "AndroidManifest.xml",
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    certificate: "platform",
+}

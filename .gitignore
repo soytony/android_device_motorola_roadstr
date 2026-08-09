@@ -5,3 +5,5 @@
 .DS_Store
 BoardConfigPrivate.mk
 /keys/
+__pycache__/
+*.pyc
