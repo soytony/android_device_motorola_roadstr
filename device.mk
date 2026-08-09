@@ -42,6 +42,7 @@ PRODUCT_PACKAGES += \
     moto-framework \
     moto-res \
     moto-framework-roadstr-permissions \
+    RefreshRateDefaults \
     MotoResRoadstr \
     roadstr-udfps-hbm \
     ReFra \
@@ -73,6 +74,7 @@ PRODUCT_COPY_FILES += \
 # Stock provides an AIDL v4 RGB face HAL; advertise it so Settings and
 # BiometricService expose face enrollment and authentication.
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/privapp-permissions-org.lineageos.refreshdefaults.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-org.lineageos.refreshdefaults.xml \
     $(LOCAL_PATH)/permissions/default-permissions-refra.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-refra.xml \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
 

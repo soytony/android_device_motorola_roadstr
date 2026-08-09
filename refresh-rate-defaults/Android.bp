@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: Apache-2.0
+
+android_app {
+    name: "RefreshRateDefaults",
+    manifest: "AndroidManifest.xml",
+    srcs: ["src/**/*.java"],
+    certificate: "platform",
+    sdk_version: "system_current",
+    privileged: true,
+    product_specific: true,
+}
