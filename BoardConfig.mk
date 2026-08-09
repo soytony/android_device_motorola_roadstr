@@ -46,6 +46,10 @@ BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 268435456
 # Security patch level
 VENDOR_SECURITY_PATCH := 2025-11-01
 
+# RoadSTR's bootloader has a root vbmeta rollback floor of 1. Leaving this unset emits zero,
+# which is rejected. Keep the known device floor instead of permanently advancing it.
+BOARD_AVB_ROLLBACK_INDEX := 1
+
 # SEPolicy
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
