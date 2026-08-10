@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The variable emphasized face is too thin at roadstr's status-bar density. -->
+    <string name="config_status_bar_clock_font_family">sans-serif-medium</string>
+</resources>
