@@ -50,12 +50,14 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.physical.num=3 \
     ro.surface_flinger.touch_boost_across_groups=true
 
-# Roadstr's OLED exhibits a small visible luminance step when SurfaceFlinger
-# switches the physical panel mode between 120 Hz and 90 Hz. Keep the panel at
-# the interactive mode for two seconds after activity, reducing distracting
-# mode switches without disabling adaptive refresh-rate behavior.
+# Keep the Visionox OLED's brightness and 60/90/120 Hz mode commits in sync.
+# The DRM connector brightness property makes the Composer include pending
+# brightness in the matching atomic commit, while DPPS receives the panel's
+# current FPS to update its dimming policy across refresh-rate transitions.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=2000
+    ro.surface_flinger.set_idle_timer_ms=2000 \
+    vendor.display.enable_brightness_drm_prop=1 \
+    vendor.display.enable_dpps_dynamic_fps=1
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
