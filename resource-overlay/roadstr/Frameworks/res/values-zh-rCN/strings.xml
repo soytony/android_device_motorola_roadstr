@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keep dual-SIM carrier names compact and unambiguous on the Chinese keyguard. -->
+    <string name="kg_text_message_separator" translatable="false"> | </string>
+</resources>
