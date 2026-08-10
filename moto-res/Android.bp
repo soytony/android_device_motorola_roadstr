@@ -6,5 +6,12 @@ android_app {
     resource_dirs: ["res"],
     certificate: "platform",
     sdk_version: "system_current",
-    product_specific: true,
+
+    // This is a base resource package, while per-device calibration remains
+    // in the product RRO targeting it.
+    install_in_system_framework: true,
+    enforce_uses_libs: false,
+    dex_preopt: {
+        enabled: false,
+    },
 }
