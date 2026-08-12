@@ -48,16 +48,21 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2inputsurface=-1 \
     persist.vendor.camera.physical.num=3 \
-    ro.surface_flinger.touch_boost_across_groups=true
+    ro.surface_flinger.touch_boost_across_groups=true \
+    ro.surface_flinger.touch_boost_refresh_rate=90
 
 # Keep the Visionox OLED's brightness and 60/90/120 Hz mode commits in sync.
 # The DRM connector brightness property makes the Composer include pending
 # brightness in the matching atomic commit, while DPPS receives the panel's
 # current FPS to update its dimming policy across refresh-rate transitions.
+# The stock display stack disables STC digital dimming: on this Visionox OLED,
+# keeping it enabled changes the emitted luminance when the idle policy moves
+# between 120 and 90 Hz even when Android's requested brightness is unchanged.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=2000 \
+    ro.surface_flinger.set_idle_timer_ms=1000 \
     vendor.display.enable_brightness_drm_prop=1 \
-    vendor.display.enable_dpps_dynamic_fps=1
+    vendor.display.enable_dpps_dynamic_fps=1 \
+    vendor.display.disable_stc_dimming=1
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \

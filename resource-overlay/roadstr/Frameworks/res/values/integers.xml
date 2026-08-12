@@ -27,10 +27,12 @@
          this panel's 60, 90, and 120 Hz modes according to user settings. -->
     <integer name="config_defaultRefreshRate">0</integer>
 
-    <!-- The inherited brightness/lux-zone policy pins the panel to 90 Hz and
-         prevents switching. Keep the existing thresholds but leave the rate
-         unchanged so normal 60/90/120 Hz policy selection remains available. -->
-    <integer name="config_defaultRefreshRateInZone">0</integer>
+    <!-- Visionox uses distinct low-end gamma curves at 90 and 120 Hz.  Keep
+         the panel at 90 Hz in the inherited dark/low-brightness zone so a
+         touch cannot raise it to 120 Hz and then visibly dim on the idle
+         transition.  Outside that zone, the normal 60/90/120 Hz policy is
+         unchanged. -->
+    <integer name="config_defaultRefreshRateInZone">90</integer>
 
     <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->
     <integer name="config_displayWhiteBalanceColorTemperatureMin">4500</integer>
