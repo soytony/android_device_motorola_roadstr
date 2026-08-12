@@ -24,10 +24,15 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
-# The stock touch driver reports double tap as KEY_F4 and uses the gesture
-# command ABI instead of Lineage's double_tap_* sysfs attributes.
+# The stock touch driver uses the Motorola gesture command ABI. RoadSTR's
+# Goodix gesture input reports BTN_TRIGGER_HAPPY6; map it as a wake key in the
+# device-specific keylayout below.
 $(call soong_config_set_bool,moto_sensors,legacy_double_tap,true)
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH)/lineagehw/touch:libperfmgr-ext-roadstr)
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/idc/double-tap.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/double-tap.idc \
+    $(LOCAL_PATH)/configs/keylayout/double-tap.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/double-tap.kl
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \

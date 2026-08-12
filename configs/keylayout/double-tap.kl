@@ -1,0 +1,6 @@
+# RoadSTR Goodix touchscreen gesture input.
+# The gesture ABI has reported KEY_F4 (62) in the open driver and
+# BTN_TRIGGER_HAPPY6 (709) in the stock Goodix firmware. Both are wake keys.
+# WAKEUP lets Android's input policy wake the display without Doze/AOD.
+key 62 WAKEUP WAKE
+key 709 WAKEUP WAKE
