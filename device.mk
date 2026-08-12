@@ -51,7 +51,6 @@ PRODUCT_PACKAGES += \
     MotoResRoadstr \
     roadstr-udfps-hbm \
     ReFra \
-    ApertureResRoadstr \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \
     LineageSdkRoadstr \

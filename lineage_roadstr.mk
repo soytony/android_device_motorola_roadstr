@@ -12,6 +12,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Keep normal-system ADB authorization-free while boot debugging.
 WITH_ADB_INSECURE := true
 
+# Stock MotCamera5 is bundled for RoadSTR, so do not inherit Lineage Aperture.
+PRODUCT_NO_CAMERA := true
+
 # Inherit LineageOS common product config
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
@@ -38,9 +41,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.vendor.camera.expose.aux=1 \
-    vendor.camera.aux.packagelist=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit,org.lineageos.aperture \
+    vendor.camera.aux.packagelist=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
     vendor.camera.aux.packagelist2=com.motorola.ccc,com.android.settings,com.motorola.motointelligence \
-    persist.vendor.camera.privapp.list=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit,org.lineageos.aperture \
+    persist.vendor.camera.privapp.list=com.motorola.camera3,com.motorola.camera5,com.motorola.motocit \
     ro.camera.cfa.packagelist=com.motorola.coresettingsext,com.motorola.camera3,com.motorola.camera5,com.motorola.actions
 
 # Stock Qualcomm C2 lacks the persistent input-surface interface; use the

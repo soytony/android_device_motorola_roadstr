@@ -137,7 +137,7 @@ vendor/etc/camera/vidhance.lic
 vendor/etc/camera/vidhance_calibration
 
 # Camera app
-product/priv-app/MotCamera5/MotCamera5.apk;PRESIGNED
+product/priv-app/MotCamera5/MotCamera5.apk;PRESIGNED;OVERRIDES=Camera2
 product/etc/MotoDesktopAppConfig/com.motorola.camera5.desktop-config.xml
 product/etc/init/init.motcamera5.lens.rc
 product/etc/permissions/com.motorola.camera5.adobe_scan.xml
