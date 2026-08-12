@@ -3,4 +3,6 @@
 # KEY_SEARCH (217). This device-specific mapping makes it KEYCODE_ASSIST.
 # ASSIST is not an Android built-in wake key; WAKE lets the policy apply the
 # user's Assist Button wake setting while the display is off.
+key 114   VOLUME_DOWN
+key 115   VOLUME_UP
 key 217   ASSIST    WAKE
