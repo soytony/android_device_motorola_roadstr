@@ -1,0 +1,4 @@
+app_domain(moto_cqa_app)
+
+# CQATest is a platform-signed system_ext app and uses the normal framework API surface.
+allow moto_cqa_app app_api_service:service_manager find;

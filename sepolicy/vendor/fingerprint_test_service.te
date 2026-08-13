@@ -1,6 +1,6 @@
 # Motorola's fingerprint HAL exposes these vendor-only diagnostic interfaces.
 # Match the stock protected service type so only the fingerprint server may
 # register them; clients still require an explicit, evidence-backed grant.
-type hal_fingerprint_test_service, protected_service, service_manager_type;
+type hal_fingerprint_test_service, hal_service_type, protected_service, service_manager_type;
 
 add_service(hal_fingerprint_default, hal_fingerprint_test_service)
