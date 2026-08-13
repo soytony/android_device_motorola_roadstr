@@ -1,0 +1,8 @@
+;; Device-specific system_ext types introduced after the 30.0 policy.
+;; These types have no analogue in the older compatibility policy.
+(type new_objects)
+(typeattribute new_objects)
+(typeattributeset new_objects
+  ( new_objects
+    moto_cqa_app
+  ))

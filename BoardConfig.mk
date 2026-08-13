@@ -54,6 +54,7 @@ BOARD_AVB_ROLLBACK_INDEX := 1
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
+BOARD_SYSTEM_EXT_SEPOLICY_PREBUILT_DIRS += $(DEVICE_PATH)/sepolicy/system_ext
 
 # Inherit from the proprietary version
 -include vendor/motorola/roadstr/BoardConfigVendor.mk
