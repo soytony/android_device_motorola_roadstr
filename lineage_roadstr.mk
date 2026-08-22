@@ -50,9 +50,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # AIDL GraphicBufferSource fallback required by Moto Camera Motion Photo.
 PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2inputsurface=-1 \
-    persist.vendor.camera.physical.num=3 \
-    ro.surface_flinger.touch_boost_across_groups=true \
-    ro.surface_flinger.touch_boost_refresh_rate=90
+    persist.vendor.camera.physical.num=3
 
 # Keep the Visionox OLED's brightness and 60/90/120 Hz mode commits in sync.
 # The DRM connector brightness property makes the Composer include pending
