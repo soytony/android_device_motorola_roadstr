@@ -125,7 +125,3 @@ PRODUCT_COPY_FILES += \
 
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/motorola/roadstr/roadstr-vendor.mk)
-
-# Keep stock tinyxml private to poweropt; do not install it as the global
-# /vendor/lib64/libtinyxml2.so, which belongs to the common source build.
-PRODUCT_PACKAGES -= libtinyxml2_vendor
