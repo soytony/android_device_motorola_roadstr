@@ -1,0 +1,49 @@
+From 0d9dd943ced8eb033f553a6dd9cbe8132db6ca74 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 21 Jul 2026 16:14:59 +0800
+Subject: [PATCH] surfaceflinger: permit opted-in touch boost across groups
+
+---
+ .../Scheduler/RefreshRateSelector.cpp             | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/services/surfaceflinger/Scheduler/RefreshRateSelector.cpp b/services/surfaceflinger/Scheduler/RefreshRateSelector.cpp
+index c2baf76cde1be0e45cda2256096afc2e65a4e980..6f23ba26a1e4480800d9fc4cbc9efb327a4e71ca 100644
+--- a/services/surfaceflinger/Scheduler/RefreshRateSelector.cpp
++++ b/services/surfaceflinger/Scheduler/RefreshRateSelector.cpp
+@@ -771,11 +771,21 @@ auto RefreshRateSelector::getRankedFrameRatesLocked(const std::vector<LayerRequi
+     const auto anchorGroup =
+             seamedFocusedLayers > 0 ? activeMode.getGroup() : defaultMode->getGroup();
+ 
++    // Some panels expose their low-power mode in a separate config group. Normally a touch
++    // boost stays in the default group to avoid a non-seamless switch. Products that explicitly
++    // opt in can use their already-allowed cross-group switch to reach the high refresh mode.
++    const auto touchBoostAnchorGroup =
++            policy->allowGroupSwitching &&
++                    base::GetBoolProperty("ro.surface_flinger.touch_boost_across_groups", false)
++            ? std::optional<int>{}
++            : std::optional<int>{anchorGroup};
++
+     // Consider the touch event if there are no Explicit* layers. Otherwise wait until after we've
+     // selected a refresh rate to see if we should apply touch boost.
+     if (signals.touch && !hasExplicitVoteLayers) {
+         ALOGV("Touch Boost");
+-        const auto ranking = rankFrameRates(anchorGroup, RefreshRateOrder::Descending);
++        const auto ranking = rankFrameRates(touchBoostAnchorGroup,
++                                            RefreshRateOrder::Descending);
+         SFTRACE_FORMAT_INSTANT("%s (Touch Boost)",
+                                to_string(ranking.front().frameRateMode.fps).c_str());
+         return {ranking, GlobalSignals{.touch = true}};
+@@ -1052,7 +1062,8 @@ auto RefreshRateSelector::getRankedFrameRatesLocked(const std::vector<LayerRequi
+     const bool isLateGlobalTouchBoost = signals.touch && explicitDefaultVoteLayers == 0;
+     const bool isLateTouchBoost = isLateGlobalTouchBoost || isAppTouchBoost;
+     if (isLateTouchBoost && isTouchBoostForExplicitExact() && isTouchBoostForCategory()) {
+-        const auto touchRefreshRates = rankFrameRates(anchorGroup, RefreshRateOrder::Descending);
++        const auto touchRefreshRates = rankFrameRates(touchBoostAnchorGroup,
++                                                       RefreshRateOrder::Descending);
+         using fps_approx_ops::operator<;
+ 
+         if (scores.front().frameRateMode.fps <= touchRefreshRates.front().frameRateMode.fps) {
+-- 
+2.34.1
+

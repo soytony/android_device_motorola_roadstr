@@ -1,0 +1,62 @@
+From 9ead09d45de3c9e5723b810789bc350f6fb3c169 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sat, 11 Jul 2026 21:21:52 +0800
+Subject: [PATCH] primary-hal: fix QTI audio service integration
+
+---
+ configs/sun/manifest_audio_qti_services.xml | 8 ++++++++
+ hal/default/Android.bp                      | 3 ---
+ hal/service/Service.cpp                     | 4 ----
+ 3 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/configs/sun/manifest_audio_qti_services.xml b/configs/sun/manifest_audio_qti_services.xml
+index ddc4824befd4e91071da4fc2b31dc440583cda0c..7f8d42bf252219f4a71c72ae358b0c7510a25d03 100644
+--- a/configs/sun/manifest_audio_qti_services.xml
++++ b/configs/sun/manifest_audio_qti_services.xml
+@@ -24,6 +24,14 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ -->
+ <manifest version="1.0" type="device">
++    <hal format="aidl">
++        <name>android.hardware.audio.core</name>
++        <version>2</version>
++        <fqname>IConfig/default</fqname>
++        <fqname>IModule/default</fqname>
++        <fqname>IModule/r_submix</fqname>
++        <fqname>IModule/usb</fqname>
++    </hal>
+     <!-- AGM service-->
+     <hal format="aidl">
+         <name>vendor.qti.hardware.agm</name>
+diff --git a/hal/default/Android.bp b/hal/default/Android.bp
+index b2241f973ebb6152fb1b068f938f2c1e1c9fa5ba..e3daf163eaa785dfcf338362bdcd34006e7afda6 100644
+--- a/hal/default/Android.bp
++++ b/hal/default/Android.bp
+@@ -41,9 +41,6 @@ cc_library_shared {
+         "libxml2",
+     ],
+ 
+-    required: [
+-        "manifest_audiocorehal_default.xml",
+-    ],
+ }
+ 
+ prebuilt_etc {
+diff --git a/hal/service/Service.cpp b/hal/service/Service.cpp
+index 851bf7b973112430e1e1e287534c9d925bf2d0dd..ee1bdd16aafaa7e787bd5d1e341be0eabd342b06 100644
+--- a/hal/service/Service.cpp
++++ b/hal/service/Service.cpp
+@@ -97,10 +97,6 @@ void registerDefaultInterfaces() {
+              .libraryName = "libaudioeffecthal.qti.so",
+              .method = "registerService",
+              .mandatory = true},
+-            {.name = "bthal",
+-             .libraryName = "android.hardware.bluetooth.audio_sw.so",
+-             .method = "registerIModuleBluetoothSWQti",
+-             .mandatory = false},
+     };
+ 
+     registerInterfaces(defaultInterfaces);
+-- 
+2.34.1
+

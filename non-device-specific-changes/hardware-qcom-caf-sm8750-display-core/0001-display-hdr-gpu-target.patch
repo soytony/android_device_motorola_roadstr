@@ -1,0 +1,56 @@
+From 99fe5d2cf66403449810dfccc189ac798712bcdc Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 14 Jul 2026 23:10:19 +0800
+Subject: [PATCH] display-core: honor HDR GPU target property
+
+---
+ sdmclient/sdm_display.cpp | 13 +++++++++++++
+ sdmclient/sdm_display.h   |  1 +
+ 2 files changed, 14 insertions(+)
+
+diff --git a/sdmclient/sdm_display.cpp b/sdmclient/sdm_display.cpp
+index ed1cd1b6f3f3e7420dc50b1c5920986d24caa3bb..57fee1be2a1fd686519b8ea5966b467a227b628f 100644
+--- a/sdmclient/sdm_display.cpp
++++ b/sdmclient/sdm_display.cpp
+@@ -574,6 +574,8 @@ DisplayError SDMDisplay::Init() {
+   if (disable_hdr_handling_) {
+     DLOGI("HDR Handling disabled");
+   }
++  SDMDebugHandler::Get()->GetProperty(ENABLE_HDR10_GPU_TARGET,
++                                      &enable_hdr10_gpu_target_);
+ 
+   int property_swap_interval = 1;
+   SDMDebugHandler::Get()->GetProperty(ZERO_SWAP_INTERVAL,
+@@ -915,6 +917,17 @@ void SDMDisplay::BuildLayerStack() {
+       // Dont honor HDR when its handling is disabled
+       layer->input_buffer.flags.hdr = true;
+       layer_stack_.flags.hdr_present = true;
++
++      // The property name predates FP16 extended-range HDR. Apply it to every
++      // HDR layer recognized above so affected panels use RenderEngine output.
++      if (enable_hdr10_gpu_target_) {
++        layer->flags.skip = true;
++        DLOGV_IF(kTagClient,
++                 "Layer [%" PRIu64
++                 "] marked as skip because HDR GPU target is enabled "
++                 "for display [%" PRIu64 "]-[%" PRIu32 "]",
++                 sdm_layer->GetId(), id_, type_);
++      }
+     }
+ 
+     if (game_supported_ && (sdm_layer->GetType() == kLayerGame) && !hdr_layer) {
+diff --git a/sdmclient/sdm_display.h b/sdmclient/sdm_display.h
+index 2a01d3f173e49fb80dbad95e5faa7a8b4730cc6d..ec1e146810c90a9138343a692a967e15c9a11948 100644
+--- a/sdmclient/sdm_display.h
++++ b/sdmclient/sdm_display.h
+@@ -645,6 +645,7 @@ public:
+   SDMColorModeMgr *color_mode_ = NULL;
+   uint32_t num_configs_ = 0;
+   int disable_hdr_handling_ = 0;  // disables HDR handling.
++  int enable_hdr10_gpu_target_ = 0;  // routes HDR layers through the client target.
+   int disable_sdr_histogram_ = 0; // disables handling of SDR histogram data.
+   bool pending_commit_ = false;
+   bool is_cmd_mode_ = false;
+-- 
+2.34.1
+

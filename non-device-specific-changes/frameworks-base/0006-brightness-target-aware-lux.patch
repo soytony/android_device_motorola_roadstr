@@ -1,0 +1,136 @@
+From e9fdc7201c4d6622ee6439916de5833e45a1e3f9 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Wed, 5 Aug 2026 03:27:52 +0800
+Subject: [PATCH] feat(display): add target-aware lux hook
+
+---
+ .../hardware/display/AmbientLuxProcessor.java | 25 +++++++++--
+ .../AutomaticBrightnessController.java        | 44 +++++++++++++------
+ 2 files changed, 52 insertions(+), 17 deletions(-)
+
+diff --git a/core/java/android/hardware/display/AmbientLuxProcessor.java b/core/java/android/hardware/display/AmbientLuxProcessor.java
+index 5e08e572f8361f758599f493db4c71cb21ab72d5..901837f20549a2bbf26677650a9f4b255a70c754 100644
+--- a/core/java/android/hardware/display/AmbientLuxProcessor.java
++++ b/core/java/android/hardware/display/AmbientLuxProcessor.java
+@@ -9,7 +9,11 @@ import android.content.Context;
+ import android.hardware.SensorManager;
+ import android.os.Handler;
+ 
+-/** @hide Optional in-process device-specific ambient-lux processor. */
++/**
++ * Optional in-process device-specific ambient-lux processor.
++ *
++ * @hide
++ */
+ public interface AmbientLuxProcessor {
+     /**
+      * Initializes the processor with opaque device configuration from the framework RRO.
+@@ -24,9 +28,22 @@ public interface AmbientLuxProcessor {
+     /** Stops device-specific listeners while automatic brightness is inactive. */
+     void stop();
+ 
+-    /** Returns processed lux, or NaN to use the primary sensor sample unchanged. */
+-    float process(long timestampMillis, float primaryLux, float targetNits, boolean dozing,
+-            boolean darkTheme);
++    /**
++     * Records an auto-brightness target that the controller has accepted for the display.
++     *
++     * <p>The timestamp uses the same elapsed-realtime sensor-event time base supplied to
++     * {@link #process}. Implementations can use this as a generic delayed-output signal, for
++     * example to compensate sensor measurements affected by panel output.</p>
++     */
++    void onTargetNitsChanged(long timestampMillis, float targetNits);
++
++    /**
++     * Returns processed lux, or {@link Float#NaN} to use the primary sensor sample unchanged.
++     *
++     * <p>The primary sample is passed synchronously so an implementation does not need to create
++     * a second listener for the same sensor, whose callback ordering would be undefined.</p>
++     */
++    float process(long timestampMillis, float primaryLux, boolean dozing);
+ 
+     void reset();
+ }
+diff --git a/services/core/java/com/android/server/display/AutomaticBrightnessController.java b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+index 4738642d1e75cfadc2c5b8b7e9da52b5b6f153a5..26699e7f0e13318bb7a748953b407ae7a8a9fd72 100644
+--- a/services/core/java/com/android/server/display/AutomaticBrightnessController.java
++++ b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+@@ -766,6 +766,7 @@ public class AutomaticBrightnessController {
+                 registerForegroundAppUpdater();
+                 if (mAmbientLuxProcessor != null) {
+                     mAmbientLuxProcessor.start();
++                    notifyAmbientLuxProcessorTargetChanged();
+                 }
+                 mSensorManager.registerListener(mLightSensorListener, mLightSensor,
+                         mCurrentLightSensorRate * 1000, mHandler);
+@@ -800,20 +801,12 @@ public class AutomaticBrightnessController {
+         if (mAmbientLuxProcessor != null) {
+             try {
+                 final float processedLux = mAmbientLuxProcessor.process(time, lux,
+-                        getCurrentTargetNits(),
+-                        mCurrentBrightnessMapper.getMode() == AUTO_BRIGHTNESS_MODE_DOZE,
+-                        isNightModeActive());
++                        mCurrentBrightnessMapper.getMode() == AUTO_BRIGHTNESS_MODE_DOZE);
+                 if (Float.isFinite(processedLux) && processedLux >= 0) {
+                     lux = processedLux;
+                 }
+             } catch (Throwable t) {
+-                Slog.w(TAG, "Disabling failing ambient-lux processor", t);
+-                try {
+-                    mAmbientLuxProcessor.stop();
+-                } catch (Throwable stopError) {
+-                    Slog.w(TAG, "Ambient-lux processor failed while stopping", stopError);
+-                }
+-                mAmbientLuxProcessor = null;
++                disableAmbientLuxProcessor(t);
+             }
+         }
+ 
+@@ -832,9 +825,31 @@ public class AutomaticBrightnessController {
+         return mCurrentBrightnessMapper.convertToNits(mScreenAutoBrightness);
+     }
+ 
+-    private boolean isNightModeActive() {
+-        return (mContext.getResources().getConfiguration().uiMode
+-                & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
++    /** Records the controller's accepted target on the sensor-event time scale. */
++    private void notifyAmbientLuxProcessorTargetChanged() {
++        if (mAmbientLuxProcessor == null) {
++            return;
++        }
++        final float targetNits = getCurrentTargetNits();
++        if (!Float.isFinite(targetNits) || targetNits < 0) {
++            return;
++        }
++        try {
++            mAmbientLuxProcessor.onTargetNitsChanged(mClock.getSensorEventScaleTime(), targetNits);
++        } catch (Throwable t) {
++            disableAmbientLuxProcessor(t);
++        }
++    }
++
++    /** Disables only the optional provider so the standard primary-ALS path remains available. */
++    private void disableAmbientLuxProcessor(Throwable error) {
++        Slog.w(TAG, "Disabling failing ambient-lux processor", error);
++        try {
++            mAmbientLuxProcessor.stop();
++        } catch (Throwable stopError) {
++            Slog.w(TAG, "Ambient-lux processor failed while stopping", stopError);
++        }
++        mAmbientLuxProcessor = null;
+     }
+ 
+     private void applyLightSensorMeasurement(long time, float lux) {
+@@ -1112,6 +1127,9 @@ public class AutomaticBrightnessController {
+             mPreThresholdBrightness = mScreenAutoBrightness;
+         }
+         mScreenAutoBrightness = newScreenAutoBrightness;
++        // Notify after committing the target so the optional processor can align a later ALS
++        // sample with the panel output that actually produced any measured leakage.
++        notifyAmbientLuxProcessorTargetChanged();
+         if (isInIdleMode()) {
+             mScreenBrighteningThreshold = clampScreenBrightness(
+                     mScreenBrightnessThresholdsIdle.getBrighteningThreshold(
+-- 
+2.34.1
+

@@ -1,0 +1,28 @@
+From 3caaebc3243b36bed644dc37c0af95784116d58b Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 21 Jul 2026 16:14:59 +0800
+Subject: [PATCH] sensors: export current sensor manager instance
+
+Change-Id: I09a052668ef15ba38bab890968b410b922339a23
+---
+ sensorservice/libsensorndkbridge/ASensorManager.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sensorservice/libsensorndkbridge/ASensorManager.cpp b/sensorservice/libsensorndkbridge/ASensorManager.cpp
+index 2438700e836a5055c35b88819e632fd7add87921..7919f319f694072856ec557f81baf348708ec697 100644
+--- a/sensorservice/libsensorndkbridge/ASensorManager.cpp
++++ b/sensorservice/libsensorndkbridge/ASensorManager.cpp
+@@ -201,6 +201,10 @@ ASensorManager *ASensorManager_getInstance() {
+     return ASensorManager::getInstance();
+ }
+ 
++extern "C" ASensorManager *ASensorManager_getCurInstance() {
++    return ASensorManager::getInstance();
++}
++
+ ASensorManager *ASensorManager_getInstanceForPackage(
+         const char* /* packageName */) {
+     return ASensorManager::getInstance();
+-- 
+2.34.1
+

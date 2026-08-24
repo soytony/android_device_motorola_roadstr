@@ -1,0 +1,28 @@
+From 98f3a9a40d219a043b14540637bd2bf5d4a31de7 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 21 Jul 2026 16:14:59 +0800
+Subject: [PATCH] tinyxml2: disable CFI
+
+Change-Id: I1890f4170e10d43454045ece415b31252758ac1d
+---
+ Android.bp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Android.bp b/Android.bp
+index d8a3b4862036ab7d721170a71a05cf3800582098..08ca2d834559fe05079a27022b1c69f4d70a54d0 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -67,6 +67,10 @@ cc_library {
+         },
+     },
+ 
++    sanitize: {
++        cfi: false,
++    },
++
+     export_include_dirs: ["."],
+ 
+     min_sdk_version: "apex_inherit",
+-- 
+2.34.1
+

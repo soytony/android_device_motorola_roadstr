@@ -1,0 +1,196 @@
+From 175d2b317610b036f4a2e35952ff8c033c655f9e Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 21 Jul 2026 16:14:59 +0800
+Subject: [PATCH] display: add RoadSTR composer compatibility
+
+---
+ composer/AidlComposerClient.cpp               | 41 +++++++++++
+ ...r.qti.hardware.display.composer-service.rc |  5 ++
+ libvmmem/vmmem.cpp                            | 72 +++++++++++++++++++
+ libvmmem/vmmem.h                              | 14 ++++
+ 4 files changed, 132 insertions(+)
+
+diff --git a/composer/AidlComposerClient.cpp b/composer/AidlComposerClient.cpp
+index c00f2710f2a0823847e3512bc497fabe7b82d59f..80bb67beb99afc723303deed53f4c5988aa467da 100644
+--- a/composer/AidlComposerClient.cpp
++++ b/composer/AidlComposerClient.cpp
+@@ -1335,7 +1335,48 @@ void AidlComposerClient::CommandEngine::executeAcceptDisplayChanges(int64_t disp
+ Error AidlComposerClient::CommandEngine::presentDisplay(int64_t display,
+                                                         shared_ptr<Fence> *presentFence) {
+   auto err = mClient.drawcycle_->PresentDisplay(display, presentFence);
++  if (err == sdm::kErrorNeedsValidate || err == sdm::kErrorNotValidated) {
++    bool validateOnly = true;
++    bool needsCommit = false;
++    uint32_t typesCount = 0;
++    uint32_t reqsCount = 0;
++    shared_ptr<Fence> validateFence = nullptr;
++
++    ALOGW("%s: PresentDisplay needs validate display=%" PRId64 " sdm_err=%d; "
++          "running internal validate/accept retry", __FUNCTION__, display, err);
++    auto validateErr = mClient.drawcycle_->CommitOrPrepare(display, validateOnly, &validateFence,
++                                                           &typesCount, &reqsCount, &needsCommit);
++    ALOGW("%s: internal validate display=%" PRId64 " sdm_err=%d needsCommit=%d "
++          "types=%u reqs=%u", __FUNCTION__, display, validateErr, needsCommit,
++          typesCount, reqsCount);
++
++    if (validateErr == sdm::kErrorNone && !needsCommit) {
++      *presentFence = validateFence;
++      return postPresentDisplay(display, presentFence);
++    }
++
++    if (validateErr == sdm::kErrorNone || validateErr == sdm::kErrorNeedsCommit || needsCommit) {
++      auto acceptErr = mClient.drawcycle_->AcceptDisplayChanges(display);
++      ALOGW("%s: internal accept display=%" PRId64 " sdm_err=%d", __FUNCTION__,
++            display, acceptErr);
++      if (acceptErr == sdm::kErrorNone) {
++        err = mClient.drawcycle_->PresentDisplay(display, presentFence);
++        ALOGW("%s: internal present retry display=%" PRId64 " sdm_err=%d",
++              __FUNCTION__, display, err);
++      } else {
++        err = acceptErr;
++      }
++    } else {
++      err = validateErr;
++    }
++  }
++
+   if (err != sdm::kErrorNone) {
++    ALOGE("%s: PresentDisplay failed display=%" PRId64 " sdm_err=%d", __FUNCTION__,
++          display, err);
++    if (err == sdm::kErrorNeedsValidate || err == sdm::kErrorNotValidated) {
++      return Error::NotValidated;
++    }
+     return Error::BadConfig;
+   }
+ 
+diff --git a/composer/vendor.qti.hardware.display.composer-service.rc b/composer/vendor.qti.hardware.display.composer-service.rc
+index 55b011265ca59ffa21045f2925ea21e0d3f249c3..a44ea377753520370c7781b849ef8628472785cd 100644
+--- a/composer/vendor.qti.hardware.display.composer-service.rc
++++ b/composer/vendor.qti.hardware.display.composer-service.rc
+@@ -2,6 +2,11 @@ service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.
+     class hal animation
+     user system
+     group graphics drmrpc
++    interface aidl android.hardware.graphics.composer3.IComposer/default
++    interface aidl vendor.qti.hardware.display.color.IDisplayColor/default
++    interface aidl vendor.qti.hardware.display.postproc.IDisplayPostproc/default
++    interface aidl vendor.qti.hardware.display.config.IDisplayConfig/default
++    interface aidl vendor.qti.hardware.display.aiqe.IDisplayAiqe/default
+     capabilities SYS_NICE
+     onrestart restart surfaceflinger
+     socket pps stream 0660 system system
+diff --git a/libvmmem/vmmem.cpp b/libvmmem/vmmem.cpp
+index 084298a36cd38ba5c179fdd5bd434b471cb665f8..5aae54157af4c59202100247b25f4d51004f55b8 100644
+--- a/libvmmem/vmmem.cpp
++++ b/libvmmem/vmmem.cpp
+@@ -25,6 +25,29 @@ class StubVmMem : public VmMem {
+   int LendDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/) override {
+     return 0;
+   }
++
++  int LendDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/, long* mem_handle) override {
++    if (mem_handle != nullptr) {
++      *mem_handle = 0;
++    }
++    return 0;
++  }
++
++  int ShareDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/, long* mem_handle) override {
++    if (mem_handle != nullptr) {
++      *mem_handle = 0;
++    }
++    return 0;
++  }
++
++  int RetrieveDmabuf(int fd, const VmPerm& /*vm_perms*/, long /*mem_handle*/) override {
++    return fd;
++  }
++
++  int RemoteAllocDmabuf(size_t /*size*/, const VmPerm& /*vm_perms*/,
++                        const std::string& /*src_vm*/, const std::string& /*dst_vm*/) override {
++    return -ENOTSUP;
++  }
+ };
+ 
+ }  // namespace
+@@ -42,3 +65,52 @@ int VmMem::FindVmByName(const std::string& /*vm_name*/) {
+ int VmMem::LendDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/) {
+   return -ENOTSUP;
+ }
++
++int VmMem::LendDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/, long* /*mem_handle*/) {
++  return -ENOTSUP;
++}
++
++int VmMem::ShareDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/, long* /*mem_handle*/) {
++  return -ENOTSUP;
++}
++
++int VmMem::RetrieveDmabuf(int /*fd*/, const VmPerm& /*vm_perms*/, long /*mem_handle*/) {
++  return -ENOTSUP;
++}
++
++int VmMem::RemoteAllocDmabuf(size_t /*size*/, const VmPerm& /*vm_perms*/,
++                             const std::string& /*src_vm*/, const std::string& /*dst_vm*/) {
++  return -ENOTSUP;
++}
++
++extern "C" void* CreateVmMem() {
++  return new StubVmMem();
++}
++
++extern "C" void FreeVmMem(void* vm_mem) {
++  delete static_cast<VmMem*>(vm_mem);
++}
++
++extern "C" int FindVmByName(...) {
++  return -ENOENT;
++}
++
++extern "C" int LendDmabuf(...) {
++  return 0;
++}
++
++extern "C" int LendDmabufHandle(...) {
++  return 0;
++}
++
++extern "C" int RetrieveDmabuf(...) {
++  return -ENOTSUP;
++}
++
++extern "C" int ShareDmabufHandle(...) {
++  return 0;
++}
++
++extern "C" int ReclaimDmabuf(...) {
++  return 0;
++}
+diff --git a/libvmmem/vmmem.h b/libvmmem/vmmem.h
+index 86b6d0f4c128b12262ba96321a6c8d8e7b6cfc3b..c6c17104cfb1e1e26decbb4f6cffba807dd02f9a 100644
+--- a/libvmmem/vmmem.h
++++ b/libvmmem/vmmem.h
+@@ -20,6 +20,20 @@ class VmMem {
+   static std::unique_ptr<VmMem> CreateVmMem();
+   virtual int FindVmByName(const std::string& vm_name);
+   virtual int LendDmabuf(int fd, const VmPerm& vm_perms);
++  virtual int LendDmabuf(int fd, const VmPerm& vm_perms, long* mem_handle);
++  virtual int ShareDmabuf(int fd, const VmPerm& vm_perms, long* mem_handle);
++  virtual int RetrieveDmabuf(int fd, const VmPerm& vm_perms, long mem_handle);
++  virtual int RemoteAllocDmabuf(size_t size, const VmPerm& vm_perms, const std::string& src_vm,
++                                const std::string& dst_vm);
+ };
+ 
++extern "C" void* CreateVmMem();
++extern "C" void FreeVmMem(void* vm_mem);
++extern "C" int FindVmByName(...);
++extern "C" int LendDmabuf(...);
++extern "C" int LendDmabufHandle(...);
++extern "C" int RetrieveDmabuf(...);
++extern "C" int ShareDmabufHandle(...);
++extern "C" int ReclaimDmabuf(...);
++
+ #endif  // __VMMEM_H__
+-- 
+2.34.1
+

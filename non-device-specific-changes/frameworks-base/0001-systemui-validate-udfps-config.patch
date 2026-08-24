@@ -1,0 +1,76 @@
+From 31ed8311e532fc4c66203b971ff9b357b063991d Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 4 Aug 2026 16:43:10 +0800
+Subject: [PATCH] fix(systemui): handle invalid UDFPS config
+
+---
+ .../biometrics/dagger/BiometricsModule.kt     | 32 +++++++++++++++----
+ 1 file changed, 25 insertions(+), 7 deletions(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt b/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
+index b9c1dc9da01bdb1f04dd9973e58c0b1054cad4ab..21040115ceb0f504dfb64764aa401d58d148fb41 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
+@@ -18,6 +18,7 @@ package com.android.systemui.biometrics.dagger
+ 
+ import android.content.Context
+ import android.content.res.Resources
++import android.util.Log
+ import android.view.Display
+ import com.android.app.displaylib.PerDisplayRepository
+ import com.android.internal.R
+@@ -114,6 +115,8 @@ interface BiometricsModule {
+     @BindsOptionalOf fun deviceEntryUnlockTrackerViewBinder(): DeviceEntryUnlockTrackerViewBinder
+ 
+     companion object {
++        private const val TAG = "BiometricsModule"
++
+         @Provides
+         @SysUISingleton
+         fun displayStateRepository(
+@@ -141,20 +144,35 @@ interface BiometricsModule {
+                 Resources.getSystem().getInteger(R.integer.config_selected_udfps_touch_detection)
+             val values =
+                 Resources.getSystem()
+-                    .getStringArray(R.array.config_udfps_touch_detection_options)[selectedOption]
+-                    .split(",")
+-                    .map { it.toFloat() }
++                    .getStringArray(R.array.config_udfps_touch_detection_options)
++                    .getOrNull(selectedOption)
++                    ?.split(",")
++                    ?.map { it.toFloatOrNull() }
++
++            // Resource overlays are device supplied. Do not let an invalid option prevent SystemUI
++            // from starting; the standard detector works for every UDFPS shape.
++            if (
++                values == null ||
++                    values.size < 5 ||
++                    values.any { it == null } ||
++                    values[2]!! <= 0f ||
++                    (values[0] != 0f && values[0] != 1f) ||
++                    (values[0] == 1f && (values[3]!! !in 0f..1f || values[4]!! <= 0f))
++            ) {
++                Log.w(TAG, "Invalid UDFPS touch detection configuration; using bounding box")
++                return BoundingBoxOverlapDetector(1f)
++            }
+ 
+             return if (values[0] == 1f) {
+                 EllipseOverlapDetector(
+                     EllipseOverlapDetectorParams(
+-                        minOverlap = values[3],
+-                        targetSize = values[2],
+-                        stepSize = values[4].toInt(),
++                        minOverlap = values[3]!!,
++                        targetSize = values[2]!!,
++                        stepSize = values[4]!!.toInt(),
+                     )
+                 )
+             } else {
+-                BoundingBoxOverlapDetector(values[2])
++                BoundingBoxOverlapDetector(values[2]!!)
+             }
+         }
+ 
+-- 
+2.34.1
+

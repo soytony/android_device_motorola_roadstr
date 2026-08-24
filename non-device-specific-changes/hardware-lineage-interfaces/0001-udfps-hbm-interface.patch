@@ -1,0 +1,151 @@
+From bdcb6f711b3daf88e91a6cf0a91dd407561aeb10 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 14 Jul 2026 15:29:55 +0800
+Subject: [PATCH] interfaces: add UDFPS HBM service
+
+---
+ biometrics/udfps/aidl/Android.bp              | 33 +++++++++++++++++++
+ .../vendor.lineage.biometrics.udfps/1/.hash   |  1 +
+ .../lineage/biometrics/udfps/IUdfpsHbm.aidl   | 27 +++++++++++++++
+ .../lineage/biometrics/udfps/IUdfpsHbm.aidl   | 27 +++++++++++++++
+ .../lineage/biometrics/udfps/IUdfpsHbm.aidl   | 12 +++++++
+ 5 files changed, 100 insertions(+)
+ create mode 100644 biometrics/udfps/aidl/Android.bp
+ create mode 100644 biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/.hash
+ create mode 100644 biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+ create mode 100644 biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/current/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+ create mode 100644 biometrics/udfps/aidl/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+
+diff --git a/biometrics/udfps/aidl/Android.bp b/biometrics/udfps/aidl/Android.bp
+new file mode 100644
+index 0000000000000000000000000000000000000000..c32f9e9eea002eeac80bf23da633adba4d2228aa
+--- /dev/null
++++ b/biometrics/udfps/aidl/Android.bp
+@@ -0,0 +1,33 @@
++//
++// SPDX-FileCopyrightText: 2026 The LineageOS Project
++// SPDX-License-Identifier: Apache-2.0
++//
++
++aidl_interface {
++    name: "vendor.lineage.biometrics.udfps",
++    srcs: ["vendor/lineage/biometrics/udfps/*.aidl"],
++    stability: "vintf",
++    vendor_available: true,
++    owner: "lineage",
++
++    backend: {
++        java: {
++            enabled: true,
++            platform_apis: true,
++        },
++        ndk: {
++            enabled: true,
++        },
++        cpp: {
++            enabled: false,
++        },
++    },
++    frozen: true,
++    versions_with_info: [
++        {
++            version: "1",
++            imports: [],
++        },
++    ],
++
++}
+diff --git a/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/.hash b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/.hash
+new file mode 100644
+index 0000000000000000000000000000000000000000..8650d18282597e70d6d7796a8149b1bd5e43e731
+--- /dev/null
++++ b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/.hash
+@@ -0,0 +1 @@
++fbb843018ed589d0761277f30e1cc9436f092ee7
+diff --git a/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+new file mode 100644
+index 0000000000000000000000000000000000000000..90c87a837a17a3e705031b0d4fcec44ab6f89766
+--- /dev/null
++++ b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/1/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+@@ -0,0 +1,27 @@
++/*
++ * SPDX-FileCopyrightText: 2026 The LineageOS Project
++ * SPDX-License-Identifier: Apache-2.0
++ */
++///////////////////////////////////////////////////////////////////////////////
++// THIS FILE IS IMMUTABLE. DO NOT EDIT IN ANY CASE.                          //
++///////////////////////////////////////////////////////////////////////////////
++
++// This file is a snapshot of an AIDL file. Do not edit it manually. There are
++// two cases:
++// 1). this is a frozen version file - do not edit this in any case.
++// 2). this is a 'current' file. If you make a backwards compatible change to
++//     the interface (from the latest frozen version), the build system will
++//     prompt you to update this file with `m <name>-update-api`.
++//
++// You must not make a backward incompatible change to any AIDL file built
++// with the aidl_interface module type with versions property set. The module
++// type is used to build AIDL files in a way that they can be used across
++// independently updatable components of the system. If a device is shipped
++// with such a backward incompatible change, it has a high risk of breaking
++// later when a module using the interface is updated, e.g., Mainline modules.
++
++package vendor.lineage.biometrics.udfps;
++@VintfStability
++interface IUdfpsHbm {
++  boolean setEnabled(boolean enabled);
++}
+diff --git a/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/current/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/current/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+new file mode 100644
+index 0000000000000000000000000000000000000000..90c87a837a17a3e705031b0d4fcec44ab6f89766
+--- /dev/null
++++ b/biometrics/udfps/aidl/aidl_api/vendor.lineage.biometrics.udfps/current/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+@@ -0,0 +1,27 @@
++/*
++ * SPDX-FileCopyrightText: 2026 The LineageOS Project
++ * SPDX-License-Identifier: Apache-2.0
++ */
++///////////////////////////////////////////////////////////////////////////////
++// THIS FILE IS IMMUTABLE. DO NOT EDIT IN ANY CASE.                          //
++///////////////////////////////////////////////////////////////////////////////
++
++// This file is a snapshot of an AIDL file. Do not edit it manually. There are
++// two cases:
++// 1). this is a frozen version file - do not edit this in any case.
++// 2). this is a 'current' file. If you make a backwards compatible change to
++//     the interface (from the latest frozen version), the build system will
++//     prompt you to update this file with `m <name>-update-api`.
++//
++// You must not make a backward incompatible change to any AIDL file built
++// with the aidl_interface module type with versions property set. The module
++// type is used to build AIDL files in a way that they can be used across
++// independently updatable components of the system. If a device is shipped
++// with such a backward incompatible change, it has a high risk of breaking
++// later when a module using the interface is updated, e.g., Mainline modules.
++
++package vendor.lineage.biometrics.udfps;
++@VintfStability
++interface IUdfpsHbm {
++  boolean setEnabled(boolean enabled);
++}
+diff --git a/biometrics/udfps/aidl/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl b/biometrics/udfps/aidl/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+new file mode 100644
+index 0000000000000000000000000000000000000000..f73ec5a5be00d50737a834372fa7fa61ab3296c6
+--- /dev/null
++++ b/biometrics/udfps/aidl/vendor/lineage/biometrics/udfps/IUdfpsHbm.aidl
+@@ -0,0 +1,12 @@
++/*
++ * SPDX-FileCopyrightText: 2026 The LineageOS Project
++ * SPDX-License-Identifier: Apache-2.0
++ */
++
++package vendor.lineage.biometrics.udfps;
++
++@VintfStability
++interface IUdfpsHbm {
++    /** Enables or disables the display mode required for optical UDFPS capture. */
++    boolean setEnabled(boolean enabled);
++}
+-- 
+2.34.1
+

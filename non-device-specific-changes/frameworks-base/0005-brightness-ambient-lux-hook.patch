@@ -1,0 +1,235 @@
+From 9a9caba6fa2492e3d2c75d622d8a7ddffb3395ce Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Tue, 4 Aug 2026 21:47:28 +0800
+Subject: [PATCH] feat(display): add ambient lux processor hook
+
+---
+ .../hardware/display/AmbientLuxProcessor.java | 32 ++++++++
+ core/res/res/values/config.xml                |  4 +
+ core/res/res/values/symbols.xml               |  1 +
+ .../AutomaticBrightnessController.java        | 77 +++++++++++++++++++
+ 4 files changed, 114 insertions(+)
+ create mode 100644 core/java/android/hardware/display/AmbientLuxProcessor.java
+
+diff --git a/core/java/android/hardware/display/AmbientLuxProcessor.java b/core/java/android/hardware/display/AmbientLuxProcessor.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..5e08e572f8361f758599f493db4c71cb21ab72d5
+--- /dev/null
++++ b/core/java/android/hardware/display/AmbientLuxProcessor.java
+@@ -0,0 +1,32 @@
++/*
++ * Copyright (C) 2026 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ */
++package android.hardware.display;
++
++import android.content.Context;
++import android.hardware.SensorManager;
++import android.os.Handler;
++
++/** @hide Optional in-process device-specific ambient-lux processor. */
++public interface AmbientLuxProcessor {
++    /**
++     * Initializes the processor with opaque device configuration from the framework RRO.
++     * The framework deliberately does not interpret these values.
++     */
++    void initialize(Context context, SensorManager sensorManager, Handler handler,
++            String[] parameters);
++
++    /** Starts device-specific listeners while automatic brightness is active. */
++    void start();
++
++    /** Stops device-specific listeners while automatic brightness is inactive. */
++    void stop();
++
++    /** Returns processed lux, or NaN to use the primary sensor sample unchanged. */
++    float process(long timestampMillis, float primaryLux, float targetNits, boolean dozing,
++            boolean darkTheme);
++
++    void reset();
++}
+diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
+index fbe4c3280e492becaced309b4f94169c54f193a8..8ed45fc22a3c358e75ace686b61a33fb9cf500db 100644
+--- a/core/res/res/values/config.xml
++++ b/core/res/res/values/config.xml
+@@ -5964,6 +5964,10 @@
+          auto-brightness. If unset, then it just gets the default sensor of type TYPE_LIGHT. -->
+     <string name="config_displayLightSensorType" translatable="false" />
+ 
++    <!-- Optional in-process device-specific ambient-lux processor. The class name may be
++         followed by a pipe and opaque comma-separated parameters for that processor. -->
++    <string name="config_ambientLuxProcessorClass" translatable="false" />
++
+     <!-- Whether or not to enable automatic heap dumps for the system server on debuggable builds. -->
+     <bool name="config_debugEnableAutomaticSystemServerHeapDumps">false</bool>
+ 
+diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
+index c3ef357178cb2cbb556b5608a222a312387e0d60..44a4b1cf0b4c9b849ed1842937b71e386491fdf5 100644
+--- a/core/res/res/values/symbols.xml
++++ b/core/res/res/values/symbols.xml
+@@ -4633,6 +4633,7 @@
+ 
+   <!-- For Auto-Brightness -->
+   <java-symbol type="string" name="config_displayLightSensorType" />
++  <java-symbol type="string" name="config_ambientLuxProcessorClass" />
+ 
+   <java-symbol type="dimen" name="notification_min_height" />
+ 
+diff --git a/services/core/java/com/android/server/display/AutomaticBrightnessController.java b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+index b8b4758277b22c293c962fb5dad3e9392d585ed8..4738642d1e75cfadc2c5b8b7e9da52b5b6f153a5 100644
+--- a/services/core/java/com/android/server/display/AutomaticBrightnessController.java
++++ b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+@@ -29,12 +29,14 @@ import android.app.ActivityTaskManager.RootTaskInfo;
+ import android.app.IActivityTaskManager;
+ import android.app.TaskStackListener;
+ import android.content.Context;
++import android.content.res.Configuration;
+ import android.content.pm.ApplicationInfo;
+ import android.content.pm.PackageManager;
+ import android.hardware.Sensor;
+ import android.hardware.SensorEvent;
+ import android.hardware.SensorEventListener;
+ import android.hardware.SensorManager;
++import android.hardware.display.AmbientLuxProcessor;
+ import android.hardware.display.BrightnessConfiguration;
+ import android.hardware.display.DisplayManagerInternal.DisplayPowerRequest;
+ import android.os.Handler;
+@@ -53,10 +55,12 @@ import android.util.TimeUtils;
+ import android.view.Display;
+ 
+ import com.android.internal.annotations.VisibleForTesting;
++import com.android.internal.R;
+ import com.android.internal.display.BrightnessSynchronizer;
+ import com.android.internal.os.BackgroundThread;
+ import com.android.server.EventLogTags;
+ import com.android.server.display.brightness.BrightnessEvent;
++import com.android.server.display.brightness.BrightnessUtils;
+ import com.android.server.display.brightness.clamper.BrightnessClamperController;
+ import com.android.server.display.config.HysteresisLevels;
+ import com.android.server.display.feature.DisplayManagerFlags;
+@@ -121,6 +125,9 @@ public class AutomaticBrightnessController {
+     // The light sensor, or null if not available or needed.
+     private final Sensor mLightSensor;
+ 
++    @Nullable
++    private AmbientLuxProcessor mAmbientLuxProcessor;
++
+     // The mapper to translate ambient lux to screen brightness in the range [0, 1.0].
+     @NonNull
+     private BrightnessMappingStrategy mCurrentBrightnessMapper;
+@@ -364,6 +371,7 @@ public class AutomaticBrightnessController {
+         mHandler = new AutomaticBrightnessHandler(looper);
+         mAmbientLightRingBuffer =
+             new AmbientLightRingBuffer(mNormalLightSensorRate, mAmbientLightHorizonLong, mClock);
++        mAmbientLuxProcessor = createAmbientLuxProcessor();
+ 
+         if (!DEBUG_PRETEND_LIGHT_SENSOR_ABSENT) {
+             mLightSensor = lightSensor;
+@@ -387,6 +395,37 @@ public class AutomaticBrightnessController {
+         }
+     }
+ 
++    @Nullable
++    private AmbientLuxProcessor createAmbientLuxProcessor() {
++        final String declaration = mContext.getResources().getString(
++                R.string.config_ambientLuxProcessorClass);
++        if (declaration == null || declaration.isEmpty()) {
++            return null;
++        }
++        final String[] declarationParts = declaration.split("\\|", 2);
++        final String className = declarationParts[0].trim();
++        final String[] parameters = declarationParts.length == 2 && !declarationParts[1].isEmpty()
++                ? declarationParts[1].split(",") : new String[0];
++        if (className.isEmpty()) {
++            return null;
++        }
++        try {
++            final Object instance = Class.forName(className, true,
++                    AutomaticBrightnessController.class.getClassLoader())
++                    .getDeclaredConstructor().newInstance();
++            if (!(instance instanceof AmbientLuxProcessor)) {
++                throw new IllegalArgumentException("does not implement AmbientLuxProcessor");
++            }
++            final AmbientLuxProcessor processor = (AmbientLuxProcessor) instance;
++            processor.initialize(mContext, mSensorManager, mHandler, parameters);
++            Slog.i(TAG, "Loaded ambient-lux processor " + className);
++            return processor;
++        } catch (Throwable t) {
++            Slog.w(TAG, "Unable to load ambient-lux processor " + className, t);
++            return null;
++        }
++    }
++
+     /**
+      * Enable/disable logging.
+      *
+@@ -725,6 +764,9 @@ public class AutomaticBrightnessController {
+                 mLightSensorEnableTime = mClock.uptimeMillis();
+                 mCurrentLightSensorRate = mInitialLightSensorRate;
+                 registerForegroundAppUpdater();
++                if (mAmbientLuxProcessor != null) {
++                    mAmbientLuxProcessor.start();
++                }
+                 mSensorManager.registerListener(mLightSensorListener, mLightSensor,
+                         mCurrentLightSensorRate * 1000, mHandler);
+                 return true;
+@@ -742,6 +784,9 @@ public class AutomaticBrightnessController {
+             mAmbientLightRingBuffer.clear();
+             mCurrentLightSensorRate = -1;
+             mHandler.removeMessages(MSG_UPDATE_AMBIENT_LUX);
++            if (mAmbientLuxProcessor != null) {
++                mAmbientLuxProcessor.stop();
++            }
+             unregisterForegroundAppUpdater();
+             mSensorManager.unregisterListener(mLightSensorListener);
+         }
+@@ -752,6 +797,26 @@ public class AutomaticBrightnessController {
+         Trace.traceCounter(Trace.TRACE_TAG_POWER, "ALS", (int) lux);
+         mHandler.removeMessages(MSG_UPDATE_AMBIENT_LUX);
+ 
++        if (mAmbientLuxProcessor != null) {
++            try {
++                final float processedLux = mAmbientLuxProcessor.process(time, lux,
++                        getCurrentTargetNits(),
++                        mCurrentBrightnessMapper.getMode() == AUTO_BRIGHTNESS_MODE_DOZE,
++                        isNightModeActive());
++                if (Float.isFinite(processedLux) && processedLux >= 0) {
++                    lux = processedLux;
++                }
++            } catch (Throwable t) {
++                Slog.w(TAG, "Disabling failing ambient-lux processor", t);
++                try {
++                    mAmbientLuxProcessor.stop();
++                } catch (Throwable stopError) {
++                    Slog.w(TAG, "Ambient-lux processor failed while stopping", stopError);
++                }
++                mAmbientLuxProcessor = null;
++            }
++        }
++
+         if (mAmbientLightRingBuffer.size() == 0) {
+             // switch to using the steady-state sample rate after grabbing the initial light sample
+             adjustLightSensorRate(mNormalLightSensorRate);
+@@ -760,6 +825,18 @@ public class AutomaticBrightnessController {
+         updateAmbientLux(time);
+     }
+ 
++    private float getCurrentTargetNits() {
++        if (!BrightnessUtils.isValidBrightnessValue(mScreenAutoBrightness)) {
++            return Float.NaN;
++        }
++        return mCurrentBrightnessMapper.convertToNits(mScreenAutoBrightness);
++    }
++
++    private boolean isNightModeActive() {
++        return (mContext.getResources().getConfiguration().uiMode
++                & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
++    }
++
+     private void applyLightSensorMeasurement(long time, float lux) {
+         mRecentLightSamples++;
+         mAmbientLightRingBuffer.prune(time - mAmbientLightHorizonLong);
+-- 
+2.34.1
+

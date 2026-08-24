@@ -1,0 +1,76 @@
+From 49e34baf3bd558bf1ef8d3a4ad2f7f210dae1022 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Thu, 9 Jul 2026 15:35:56 +0800
+Subject: [PATCH] Codec2: disable AOSP vendor variants for roadstr blobs
+
+---
+ media/codec2/hal/aidl/Android.bp           | 4 ++--
+ media/codec2/hal/hidl/1.0/utils/Android.bp | 2 +-
+ media/codec2/hal/hidl/1.1/utils/Android.bp | 2 +-
+ media/codec2/hal/hidl/1.2/utils/Android.bp | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/media/codec2/hal/aidl/Android.bp b/media/codec2/hal/aidl/Android.bp
+index e294a316c802abf0ff1b1c4abb35d63947288b5c..b3bd85a1b28cbb1bd67e0cd4eaa3a71903e449e4 100644
+--- a/media/codec2/hal/aidl/Android.bp
++++ b/media/codec2/hal/aidl/Android.bp
+@@ -59,7 +59,7 @@ cc_library {
+ cc_library {
+     name: "libcodec2_aidl_noisurface",
+     min_sdk_version: "30",
+-    vendor_available: true,
++
+     apex_available: [
+         "//apex_available:platform",
+         "com.android.media.swcodec",
+@@ -147,7 +147,7 @@ cc_library {
+ cc_library {
+     name: "libcodec2_aidl",
+     min_sdk_version: "30",
+-    vendor_available: true,
++
+     apex_available: [
+         "//apex_available:platform",
+         "com.android.media.swcodec",
+diff --git a/media/codec2/hal/hidl/1.0/utils/Android.bp b/media/codec2/hal/hidl/1.0/utils/Android.bp
+index ba269ba97ddb1324068140717ca0010cc5ba0e2e..c542f5e3755393bc3ad175830e8f2cbeea10d3bf 100644
+--- a/media/codec2/hal/hidl/1.0/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.0/utils/Android.bp
+@@ -56,7 +56,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.0",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+diff --git a/media/codec2/hal/hidl/1.1/utils/Android.bp b/media/codec2/hal/hidl/1.1/utils/Android.bp
+index c5d16731bd7503bd801dad6b842109d64c51bf7f..eb824bea42d48a7ab0c1a2e503c34691a0e27c96 100644
+--- a/media/codec2/hal/hidl/1.1/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.1/utils/Android.bp
+@@ -58,7 +58,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.1",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+diff --git a/media/codec2/hal/hidl/1.2/utils/Android.bp b/media/codec2/hal/hidl/1.2/utils/Android.bp
+index 2cd58f7acd0ee6be46dcc03ee87a6649e49835aa..4bfc98cf1ddc2c150123da4610629210717fc217 100644
+--- a/media/codec2/hal/hidl/1.2/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.2/utils/Android.bp
+@@ -62,7 +62,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.2",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+-- 
+2.34.1
+

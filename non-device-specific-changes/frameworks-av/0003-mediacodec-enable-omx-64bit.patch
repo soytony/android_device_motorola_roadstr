@@ -1,0 +1,80 @@
+From aac6ba74b8e6745730fe1001f10d75bab8c5c6d1 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sat, 11 Jul 2026 23:23:29 +0800
+Subject: [PATCH] mediacodec: support OMX service on 64-bit-only targets
+
+---
+ services/mediacodec/Android.bp                |  5 +++--
+ .../seccomp_policy/mediacodec-arm64.policy    | 20 +++++++------------
+ 2 files changed, 10 insertions(+), 15 deletions(-)
+
+diff --git a/services/mediacodec/Android.bp b/services/mediacodec/Android.bp
+index 4b694093feebcf5bee2c8bc11a654455cf16868c..4feb8cafe95bab8fe9a44a8c6016aa11548726de 100644
+--- a/services/mediacodec/Android.bp
++++ b/services/mediacodec/Android.bp
+@@ -96,8 +96,9 @@ cc_binary {
+         "android.hidl.memory@1.0",
+     ],
+ 
+-    // OMX interfaces force this to stay in 32-bit mode;
+-    compile_multilib: "32",
++    // RoadSTR is a 64-bit-only target and ships the OMX compatibility
++    // interfaces as 64-bit libraries.
++    compile_multilib: "64",
+ 
+     init_rc: ["android.hardware.media.omx@1.0-service.rc"],
+ 
+diff --git a/services/mediacodec/seccomp_policy/mediacodec-arm64.policy b/services/mediacodec/seccomp_policy/mediacodec-arm64.policy
+index dc5a77423dd23bc83fc6b9d6148f3c21dbe0bab9..fa89e0546c089f9436a579bc39a01fd9f2133194 100644
+--- a/services/mediacodec/seccomp_policy/mediacodec-arm64.policy
++++ b/services/mediacodec/seccomp_policy/mediacodec-arm64.policy
+@@ -11,12 +11,11 @@ close: 1
+ writev: 1
+ dup: 1
+ ppoll: 1
+-mmap2: 1
++mmap: 1
+ getrandom: 1
+ memfd_create: 1
+ fsetxattr: 1
+ ftruncate: 1
+-ftruncate64: 1
+ 
+ # mremap: Ensure |flags| are (MREMAP_MAYMOVE | MREMAP_FIXED) TODO: Once minijail
+ # parser support for '<' is in this needs to be modified to also prevent
+@@ -32,9 +31,9 @@ openat: 1
+ sigaltstack: 1
+ clone: 1
+ setpriority: 1
+-getuid32: 1
+-fstat64: 1
+-fstatfs64: 1
++getuid: 1
++fstat: 1
++fstatfs: 1
+ pread64: 1
+ faccessat: 1
+ readlinkat: 1
+@@ -49,16 +48,11 @@ gettimeofday: 1
+ sched_yield: 1
+ nanosleep: 1
+ lseek: 1
+-_llseek: 1
+ sched_get_priority_max: 1
+ sched_get_priority_min: 1
+-statfs64: 1
++statfs: 1
+ sched_setscheduler: 1
+-fstatat64: 1
+-ugetrlimit: 1
++newfstatat: 1
++getrlimit: 1
+ getdents64: 1
+ getrandom: 1
+-
+-@include /system/etc/seccomp_policy/crash_dump.arm.policy
+-
+-@include /system/etc/seccomp_policy/code_coverage.arm.policy
+-- 
+2.34.1
+

@@ -1,0 +1,34 @@
+From 62bd1a7cea14c7b6389e7beaabff5294bba7dbd2 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Wed, 15 Jul 2026 12:54:04 +0800
+Subject: [PATCH] SystemUI: draw UDFPS illumination before ready callback
+
+---
+ .../android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt   | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt b/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
+index a7c9ffdec058bde34fbe14885cbda30d824363e4..f73cfef4cf9ff40d9518a06cd2cd6f0aa769bfa5 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
+@@ -32,7 +32,6 @@ import com.android.systemui.res.R
+ class UdfpsTouchOverlay(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+     private var ghbmView: UdfpsSurfaceView? = null
+     private var udfpsDisplayMode: UdfpsDisplayModeProvider? = null
+-
+     // sensorRect may be bigger than the sensor. True sensor dimensions are defined in
+     // overlayParams.sensorBounds
+     var sensorRect = Rect()
+@@ -63,8 +62,8 @@ class UdfpsTouchOverlay(context: Context, attrs: AttributeSet?) : FrameLayout(co
+ 
+     private fun doIlluminate(surface: Surface?, onDisplayConfigured: Runnable?) {
+         udfpsDisplayMode?.enable {
+-            onDisplayConfigured?.run()
+             ghbmView?.drawIlluminationDot(RectF(sensorRect))
++            onDisplayConfigured?.run()
+         }
+     }
+ 
+-- 
+2.34.1
+

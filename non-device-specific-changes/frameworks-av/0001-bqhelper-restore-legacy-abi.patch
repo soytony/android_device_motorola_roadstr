@@ -1,0 +1,59 @@
+From 290272d973c0b83a864c85cd54d1e23b190bb496 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Thu, 9 Jul 2026 15:35:56 +0800
+Subject: [PATCH] bqhelper: restore legacy HGraphicBufferProducer ABI
+
+---
+ .../bqhelper/flagged_files/DeprecatedGraphicBufferSource.inc | 5 +++++
+ media/module/bqhelper/flagged_files/GraphicBufferSource.inc  | 5 +++++
+ .../include/media/stagefright/bqhelper/GraphicBufferSource.h | 2 ++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/media/module/bqhelper/flagged_files/DeprecatedGraphicBufferSource.inc b/media/module/bqhelper/flagged_files/DeprecatedGraphicBufferSource.inc
+index 8d4c8c513f3b4f6052560f60069320403f4be3f3..82bb55d2f94cb7ffe4c60ee48ffaff32524b84e6 100644
+--- a/media/module/bqhelper/flagged_files/DeprecatedGraphicBufferSource.inc
++++ b/media/module/bqhelper/flagged_files/DeprecatedGraphicBufferSource.inc
+@@ -397,6 +397,11 @@ sp<IGraphicBufferProducer> GraphicBufferSource::getIGraphicBufferProducer() cons
+     return mProducer;
+ }
+ 
++sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
++GraphicBufferSource::getHGraphicBufferProducer() const {
++    return getHGraphicBufferProducer_V1_0();
++}
++
+ sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
+ GraphicBufferSource::getHGraphicBufferProducer_V1_0() const {
+     using TWGraphicBufferProducer = ::android::TWGraphicBufferProducer<
+diff --git a/media/module/bqhelper/flagged_files/GraphicBufferSource.inc b/media/module/bqhelper/flagged_files/GraphicBufferSource.inc
+index 368c97902ee911539d24159014e300a56459eb06..74cf9363e60c05fb3f6b112b10fe2e5b33602be5 100644
+--- a/media/module/bqhelper/flagged_files/GraphicBufferSource.inc
++++ b/media/module/bqhelper/flagged_files/GraphicBufferSource.inc
+@@ -320,6 +320,11 @@ sp<IGraphicBufferProducer> GraphicBufferSource::getIGraphicBufferProducer() cons
+     return mSurface->getIGraphicBufferProducer();
+ }
+ 
++sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
++GraphicBufferSource::getHGraphicBufferProducer() const {
++    return getHGraphicBufferProducer_V1_0();
++}
++
+ sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
+ GraphicBufferSource::getHGraphicBufferProducer_V1_0() const {
+     using TWGraphicBufferProducer = ::android::TWGraphicBufferProducer<
+diff --git a/media/module/bqhelper/include/media/stagefright/bqhelper/GraphicBufferSource.h b/media/module/bqhelper/include/media/stagefright/bqhelper/GraphicBufferSource.h
+index 1521ef31df70ed4128a6dcb2b8466da7a66b92e0..e5daf75e9aa11d23c314210917a30727d97598c7 100644
+--- a/media/module/bqhelper/include/media/stagefright/bqhelper/GraphicBufferSource.h
++++ b/media/module/bqhelper/include/media/stagefright/bqhelper/GraphicBufferSource.h
+@@ -101,6 +101,8 @@ public:
+ 
+     // Returns the handle to the bufferqueue HAL (V1_0) producer side of the BufferQueue.
+     // Buffers queued on this will be received by GraphicBufferSource.
++    sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
++        getHGraphicBufferProducer() const;
+     sp<::android::hardware::graphics::bufferqueue::V1_0::IGraphicBufferProducer>
+         getHGraphicBufferProducer_V1_0() const;
+ 
+-- 
+2.34.1
+

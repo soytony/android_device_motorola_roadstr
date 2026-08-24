@@ -1,0 +1,50 @@
+From df4707ecbd70b68a1416b64c19ce7978658dcb6c Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 12 Jul 2026 09:58:02 +0800
+Subject: [PATCH] EuiccPolicy: allow LPA without Google Play services
+
+---
+ src/org/lineageos/euicc/EuiccDisabler.kt | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/src/org/lineageos/euicc/EuiccDisabler.kt b/src/org/lineageos/euicc/EuiccDisabler.kt
+index e09b8180ab5af51aaf0fcb4d90d65c7b32748460..cb1e6fdae57c34e5a05eb8bedbd16b85dd426c36 100644
+--- a/src/org/lineageos/euicc/EuiccDisabler.kt
++++ b/src/org/lineageos/euicc/EuiccDisabler.kt
+@@ -9,13 +9,8 @@ import android.content.Context
+ import android.content.pm.ApplicationInfo
+ import android.content.pm.PackageManager
+ import android.content.pm.PackageManager.ApplicationInfoFlags
+-import android.util.Log
+ 
+ object EuiccDisabler {
+-    private const val TAG = "EuiccDisabler"
+-
+-    private val EUICC_DEPENDENCIES = listOf("com.google.android.gms")
+-
+     private val EUICC_PACKAGES = listOf("com.google.android.euicc")
+ 
+     private fun isInstalled(pm: PackageManager, pkgName: String) =
+@@ -25,18 +20,10 @@ object EuiccDisabler {
+             }
+             .getOrDefault(false)
+ 
+-    private fun isInstalledAndEnabled(pm: PackageManager, pkgName: String) =
+-        runCatching {
+-                val info = pm.getApplicationInfo(pkgName, ApplicationInfoFlags.of(0))
+-                Log.d(TAG, "package $pkgName installed, enabled = ${info.enabled}")
+-                info.enabled
+-            }
+-            .getOrDefault(false)
+-
+     fun enableOrDisableEuicc(context: Context) {
+         val pm = context.packageManager
+         val supportsEuicc = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY_EUICC)
+-        val disable = !supportsEuicc || EUICC_DEPENDENCIES.any { !isInstalledAndEnabled(pm, it) }
++        val disable = !supportsEuicc
+         val flag =
+             if (disable) {
+                 PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+-- 
+2.34.1
+

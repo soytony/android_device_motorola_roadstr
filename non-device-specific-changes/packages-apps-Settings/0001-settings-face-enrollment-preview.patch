@@ -1,0 +1,612 @@
+From 4b2f7d08a71befe5c840d9fc20a230f51ae1bd33 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Fri, 17 Jul 2026 01:21:19 +0800
+Subject: [PATCH] Settings: support HAL-owned face enrollment preview
+
+---
+ res/layout/face_enroll_enrolling.xml          |  30 +++--
+ res/values/colors.xml                         |   4 +
+ res/values/config.xml                         |   4 +
+ .../biometrics/face/FaceEnrollEnrolling.java  |  93 ++++++++++---
+ .../face/FaceEnrollPreviewFragment.java       |  87 +++++++++---
+ .../face/FaceEnrollProgressView.java          | 126 ++++++++++++++++++
+ .../biometrics/face/FaceEnrollSidecar.java    |   8 +-
+ 7 files changed, 304 insertions(+), 48 deletions(-)
+ create mode 100644 src/com/android/settings/biometrics/face/FaceEnrollProgressView.java
+
+diff --git a/res/layout/face_enroll_enrolling.xml b/res/layout/face_enroll_enrolling.xml
+index 7e1863b8b6a391cec1ae07bc695d6d304f36ed38..7616680c01cc8feb3e2e5050b2e21c4aef699127 100644
+--- a/res/layout/face_enroll_enrolling.xml
++++ b/res/layout/face_enroll_enrolling.xml
+@@ -37,6 +37,18 @@
+             android:gravity="center"
+             android:orientation="vertical">
+ 
++            <TextView
++                android:id="@+id/error_text"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:layout_marginBottom="16dp"
++                android:gravity="center"
++                android:paddingStart="24dp"
++                android:paddingEnd="24dp"
++                android:accessibilityLiveRegion="polite"
++                android:textColor="?android:textColorPrimary"
++                android:visibility="invisible" />
++
+             <com.android.settings.biometrics.face.FaceSquareFrameLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+@@ -48,25 +60,17 @@
+                     android:layout_height="wrap_content"
+                     android:contentDescription="@null" />
+ 
+-                <ImageView
+-                    android:id="@+id/circle_view"
++                <com.android.settings.biometrics.face.FaceEnrollProgressView
++                    android:id="@+id/progress_view"
+                     android:layout_width="match_parent"
+-                    android:layout_height="match_parent" />
++                    android:layout_height="match_parent"
++                    android:clickable="false" />
+ 
+             </com.android.settings.biometrics.face.FaceSquareFrameLayout>
+ 
+-            <TextView
+-                style="@style/TextAppearance.ErrorText"
+-                android:id="@+id/error_text"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
+-                android:layout_gravity="center_horizontal|bottom"
+-                android:accessibilityLiveRegion="polite"
+-                android:gravity="center"
+-                android:visibility="invisible"/>
+ 
+         </LinearLayout>
+ 
+     </LinearLayout>
+ 
+-</com.google.android.setupdesign.GlifLayout>
+\ No newline at end of file
++</com.google.android.setupdesign.GlifLayout>
+diff --git a/res/values/colors.xml b/res/values/colors.xml
+index d00bfe4ed10810b4d88597ba0a1d5e85fe8f982c..0d5bdf07007fc3f1b45a3e65dbe4f1c9c18359fd 100644
+--- a/res/values/colors.xml
++++ b/res/values/colors.xml
+@@ -128,6 +128,10 @@
+     <color name="face_anim_particle_color_3">#ff4caf50</color> <!-- Material Green 500 -->
+     <color name="face_anim_particle_color_4">#fffdd835</color> <!-- Material Yellow 600 -->
+     <color name="face_anim_particle_error">#ff9e9e9e</color> <!-- Material Gray 500 -->
++    <color name="face_enroll_progress">#5c6bc0</color>
++    <color name="face_enroll_success">#4caf50</color>
++    <color name="face_enroll_warning">#ff9800</color>
++    <color name="face_enroll_error">#f44336</color>
+ 
+     <!-- Face and fingerprint enrollment -->
+     <color name="biometric_enroll_intro_color_bar">#1e8e3e</color>
+diff --git a/res/values/config.xml b/res/values/config.xml
+index 3a8f8ab2a2c048bdf7514c76efafee55b3686b16..90637bc59d66cf7b3eb51bd10de61c6ca2076968 100644
+--- a/res/values/config.xml
++++ b/res/values/config.xml
+@@ -344,6 +344,10 @@
+     <!-- Whether to use the Lottie animation for the face education enrollment screen -->
+     <bool name="config_face_education_use_lottie">false</bool>
+ 
++    <!-- Whether Settings should open a separate camera preview during face enrollment. -->
++    <bool name="config_face_enroll_use_camera_preview">true</bool>
++    <bool name="config_face_enroll_hal_owns_camera">false</bool>
++
+     <!-- Whether to support enrollment during setup wizard flow -->
+     <bool name="config_suw_support_face_enroll">true</bool>
+ 
+diff --git a/src/com/android/settings/biometrics/face/FaceEnrollEnrolling.java b/src/com/android/settings/biometrics/face/FaceEnrollEnrolling.java
+index d520cd64f43e0d449a2d724d42fe5a6a9ca18e19..0bf0c3cb81544716928bd7038d94bd54670a967c 100644
+--- a/src/com/android/settings/biometrics/face/FaceEnrollEnrolling.java
++++ b/src/com/android/settings/biometrics/face/FaceEnrollEnrolling.java
+@@ -24,6 +24,7 @@ import static android.hardware.biometrics.BiometricFaceConstants.FEATURE_REQUIRE
+ import android.app.settings.SettingsEnums;
+ import android.content.Intent;
+ import android.os.Bundle;
++import android.os.Handler;
+ import android.text.TextUtils;
+ import android.util.Log;
+ import android.view.View;
+@@ -55,12 +56,16 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+     private TextView mErrorText;
+     private Interpolator mLinearOutSlowInInterpolator;
+     private FaceEnrollPreviewFragment mPreviewFragment;
++    private boolean mEnrollmentStarted;
++    private boolean mCompletionStarted;
++    private boolean mPromptVisible;
++    private final Handler mPromptHandler = new Handler();
+ 
+     private ArrayList<Integer> mDisabledFeatures = new ArrayList<>();
+     private ParticleCollection.Listener mListener = new ParticleCollection.Listener() {
+         @Override
+         public void onEnrolled() {
+-            FaceEnrollEnrolling.this.launchFinish(mToken);
++            // Completion is driven by the biometric callback, not the retired particle animation.
+         }
+     };
+ 
+@@ -136,6 +141,12 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+         super.onStop();
+     }
+ 
++    @Override
++    protected void onDestroy() {
++        mPromptHandler.removeCallbacksAndMessages(null);
++        super.onDestroy();
++    }
++
+     @Override
+     protected boolean shouldFinishWhenBackgrounded() {
+         // Prevent super.onStop() from finishing, since we handle this in our onStop().
+@@ -144,15 +155,34 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+ 
+     @Override
+     protected void startEnrollmentInternal() {
+-        super.startEnrollmentInternal();
+-        mPreviewFragment = (FaceEnrollPreviewFragment) getSupportFragmentManager()
+-                .findFragmentByTag(TAG_FACE_PREVIEW);
+-        if (mPreviewFragment == null) {
+-            mPreviewFragment = new FaceEnrollPreviewFragment();
+-            getSupportFragmentManager().beginTransaction().add(mPreviewFragment, TAG_FACE_PREVIEW)
+-                    .commitAllowingStateLoss();
++        if (getResources().getBoolean(R.bool.config_face_enroll_use_camera_preview)) {
++            mPreviewFragment = (FaceEnrollPreviewFragment) getSupportFragmentManager()
++                    .findFragmentByTag(TAG_FACE_PREVIEW);
++            if (mPreviewFragment == null) {
++                mPreviewFragment = new FaceEnrollPreviewFragment();
++                getSupportFragmentManager().beginTransaction()
++                        .add(mPreviewFragment, TAG_FACE_PREVIEW)
++                        .commitAllowingStateLoss();
++            }
++        }
++        if (mPreviewFragment != null) {
++            mPreviewFragment.setListener(mListener);
++        }
++        if (getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera)
++                && mPreviewFragment != null
++                && mPreviewFragment.getPreviewSurface() == null) {
++            mPreviewFragment.setSurfaceReadyListener(this::startEnrollmentWhenSurfaceReady);
++            return;
++        }
++        startEnrollmentWhenSurfaceReady();
++    }
++
++    private void startEnrollmentWhenSurfaceReady() {
++        if (mEnrollmentStarted) {
++            return;
+         }
+-        mPreviewFragment.setListener(mListener);
++        mEnrollmentStarted = true;
++        super.startEnrollmentInternal();
+     }
+ 
+     @Override
+@@ -167,7 +197,8 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+             disabledFeatures[i] = mDisabledFeatures.get(i);
+         }
+ 
+-        return new FaceEnrollSidecar(disabledFeatures, getIntent());
++        return new FaceEnrollSidecar(disabledFeatures, getIntent(),
++                mPreviewFragment != null ? mPreviewFragment.getPreviewSurface() : null);
+     }
+ 
+     @Override
+@@ -185,7 +216,9 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+         if (!TextUtils.isEmpty(helpString)) {
+             showError(helpString);
+         }
+-        mPreviewFragment.onEnrollmentHelp(helpMsgId, helpString);
++        if (mPreviewFragment != null) {
++            mPreviewFragment.onEnrollmentHelp(helpMsgId, helpString);
++        }
+     }
+ 
+     @Override
+@@ -199,7 +232,9 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+                 msgId = R.string.security_settings_face_enroll_error_generic_dialog_message;
+                 break;
+         }
+-        mPreviewFragment.onEnrollmentError(errMsgId, errString);
++        if (mPreviewFragment != null) {
++            mPreviewFragment.onEnrollmentError(errMsgId, errString);
++        }
+         showErrorDialog(getText(msgId), errMsgId);
+     }
+ 
+@@ -208,13 +243,13 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+         if (DEBUG) {
+             Log.v(TAG, "Steps: " + steps + " Remaining: " + remaining);
+         }
+-        mPreviewFragment.onEnrollmentProgressChange(steps, remaining);
+-
+-        // TODO: Update the actual animation
+-        showError("Steps: " + steps + " Remaining: " + remaining);
++        if (mPreviewFragment != null) {
++            mPreviewFragment.onEnrollmentProgressChange(steps, remaining);
++        }
+ 
+         // TODO: Have this match any animations that UX comes up with
+-        if (remaining == 0) {
++        if (remaining == 0 && !mCompletionStarted) {
++            mCompletionStarted = true;
+             // Force the reload of the FaceEnroll slice in case a user has enrolled,
+             // this will cause the slice to no longer appear.
+             getApplicationContext().getContentResolver().notifyChange(
+@@ -229,7 +264,29 @@ public class FaceEnrollEnrolling extends BiometricsEnrollEnrolling {
+     }
+ 
+     private void showError(CharSequence error) {
+-        mErrorText.setText(error);
++        // Keep one instruction visible for its full dwell time. Rapidly alternating HAL help
++        // messages are otherwise unreadable and make the guidance appear to flicker.
++        if (mPromptVisible) return;
++        mPromptVisible = true;
++        showPrompt(error);
++        mPromptHandler.postDelayed(() -> {
++            if (!mCompletionStarted) {
++                mErrorText.animate()
++                        .alpha(0f)
++                        .setDuration(200)
++                        .withEndAction(() -> {
++                            mErrorText.setVisibility(View.INVISIBLE);
++                            mPromptVisible = false;
++                        })
++                        .start();
++            }
++        }, 1800);
++    }
++
++    private void showPrompt(CharSequence prompt) {
++        if (mErrorText.getVisibility() == View.VISIBLE
++                && TextUtils.equals(mErrorText.getText(), prompt)) return;
++        mErrorText.setText(prompt);
+         if (mErrorText.getVisibility() == View.INVISIBLE) {
+             mErrorText.setVisibility(View.VISIBLE);
+             mErrorText.setTranslationY(getResources().getDimensionPixelSize(
+diff --git a/src/com/android/settings/biometrics/face/FaceEnrollPreviewFragment.java b/src/com/android/settings/biometrics/face/FaceEnrollPreviewFragment.java
+index 853ca7c40ccf88488e26c565b28f5f36beffed25..6282d558f36efdbed81c558ba49d31b185dd2fdf 100644
+--- a/src/com/android/settings/biometrics/face/FaceEnrollPreviewFragment.java
++++ b/src/com/android/settings/biometrics/face/FaceEnrollPreviewFragment.java
+@@ -36,7 +36,6 @@ import android.util.TypedValue;
+ import android.view.Surface;
+ import android.view.TextureView;
+ import android.view.View;
+-import android.widget.ImageView;
+ 
+ import com.android.settings.R;
+ import com.android.settings.biometrics.BiometricEnrollSidecar;
+@@ -65,12 +64,14 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+     private CaptureRequest mPreviewRequest;
+     private Size mPreviewSize;
+     private ParticleCollection.Listener mListener;
++    private Runnable mSurfaceReadyListener;
++    private Surface mPreviewSurface;
++    private boolean mHalOwnsCamera;
+ 
+     // View used to contain the circular cutout and enrollment animation drawable
+-    private ImageView mCircleView;
++    private FaceEnrollProgressView mProgressView;
+ 
+     // Drawable containing the circular cutout and enrollment animations
+-    private FaceEnrollAnimationDrawable mAnimationDrawable;
+ 
+     // Texture used for showing the camera preview
+     private FaceSquareTextureView mTextureView;
+@@ -90,7 +91,15 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+         @Override
+         public void onSurfaceTextureAvailable(
+                 SurfaceTexture surfaceTexture, int width, int height) {
+-            openCamera(width, height);
++            // In HAL-owned mode the provider opens the camera. Settings only
++            // creates the transport surface and must not become a second
++            // camera client.
++            if (mHalOwnsCamera) {
++                ensurePreviewSurface();
++            } else {
++                openCamera(width, height);
++            }
++            notifySurfaceReady();
+         }
+ 
+         @Override
+@@ -102,6 +111,12 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+ 
+         @Override
+         public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
++            // In HAL-owned mode the Surface is the enrollment transport. Drop our
++            // reference as soon as TextureView invalidates its backing buffer so a
++            // recreated view cannot accidentally reuse a stale Surface.
++            if (mHalOwnsCamera) {
++                releasePreviewSurface();
++            }
+             return true;
+         }
+ 
+@@ -187,14 +202,9 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
++        mHalOwnsCamera = getResources().getBoolean(R.bool.config_face_enroll_hal_owns_camera);
+         mTextureView = getActivity().findViewById(R.id.texture_view);
+-        mCircleView = getActivity().findViewById(R.id.circle_view);
+-
+-        // Must disable hardware acceleration for this view, otherwise transparency breaks
+-        mCircleView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+-
+-        mAnimationDrawable = new FaceEnrollAnimationDrawable(getContext(), mAnimationListener);
+-        mCircleView.setImageDrawable(mAnimationDrawable);
++        mProgressView = getActivity().findViewById(R.id.progress_view);
+ 
+         mCameraManager = (CameraManager) getContext().getSystemService(Context.CAMERA_SERVICE);
+     }
+@@ -208,7 +218,12 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+         // a camera and start preview from here (otherwise, we wait until the surface is ready in
+         // the SurfaceTextureListener).
+         if (mTextureView.isAvailable()) {
+-            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
++            if (mHalOwnsCamera) {
++                ensurePreviewSurface();
++                notifySurfaceReady();
++            } else {
++                openCamera(mTextureView.getWidth(), mTextureView.getHeight());
++            }
+         } else {
+             mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
+         }
+@@ -222,23 +237,60 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+ 
+     @Override
+     public void onEnrollmentError(int errMsgId, CharSequence errString) {
+-        mAnimationDrawable.onEnrollmentError(errMsgId, errString);
++        mProgressView.setErrorState();
+     }
+ 
+     @Override
+     public void onEnrollmentHelp(int helpMsgId, CharSequence helpString) {
+-        mAnimationDrawable.onEnrollmentHelp(helpMsgId, helpString);
++        mProgressView.setHelpState();
+     }
+ 
+     @Override
+     public void onEnrollmentProgressChange(int steps, int remaining) {
+-        mAnimationDrawable.onEnrollmentProgressChange(steps, remaining);
++        mProgressView.setProgress(steps, remaining);
++        if (remaining == 0) mProgressView.setCompleteState();
+     }
+ 
+     public void setListener(ParticleCollection.Listener listener) {
+         mListener = listener;
+     }
+ 
++    public void setSurfaceReadyListener(Runnable listener) {
++        mSurfaceReadyListener = listener;
++        if (mPreviewSurface != null) {
++            notifySurfaceReady();
++        }
++    }
++
++    /** Returns the surface the face HAL should use for its camera preview. */
++    public Surface getPreviewSurface() {
++        ensurePreviewSurface();
++        return mPreviewSurface;
++    }
++
++    private void ensurePreviewSurface() {
++        if (!mHalOwnsCamera || mTextureView == null || !mTextureView.isAvailable()) {
++            return;
++        }
++        if (mPreviewSurface == null) {
++            mPreviewSurface = new Surface(mTextureView.getSurfaceTexture());
++        }
++    }
++
++    private void notifySurfaceReady() {
++        ensurePreviewSurface();
++        if (mPreviewSurface != null && mSurfaceReadyListener != null) {
++            mSurfaceReadyListener.run();
++        }
++    }
++
++    private void releasePreviewSurface() {
++        if (mPreviewSurface != null) {
++            mPreviewSurface.release();
++            mPreviewSurface = null;
++        }
++    }
++
+     /**
+      * Sets up member variables related to camera.
+      */
+@@ -272,6 +324,10 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+      * @param height The height of the texture view
+      */
+     private void openCamera(int width, int height) {
++        if (mHalOwnsCamera) {
++            ensurePreviewSurface();
++            return;
++        }
+         try {
+             setUpCameraOutputs();
+             mCameraManager.openCamera(mCameraId, mCameraStateCallback, mHandler);
+@@ -341,5 +397,6 @@ public class FaceEnrollPreviewFragment extends InstrumentedPreferenceFragment
+             mCameraDevice.close();
+             mCameraDevice = null;
+         }
++        releasePreviewSurface();
+     }
+ }
+diff --git a/src/com/android/settings/biometrics/face/FaceEnrollProgressView.java b/src/com/android/settings/biometrics/face/FaceEnrollProgressView.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..24db1074f4c4b256930aebbe8a66261667d12581
+--- /dev/null
++++ b/src/com/android/settings/biometrics/face/FaceEnrollProgressView.java
+@@ -0,0 +1,126 @@
++package com.android.settings.biometrics.face;
++
++import android.animation.ValueAnimator;
++import android.content.Context;
++import android.graphics.Canvas;
++import android.graphics.Paint;
++import android.graphics.Path;
++import android.graphics.RectF;
++import android.os.Handler;
++import android.os.Looper;
++import android.util.AttributeSet;
++import android.util.TypedValue;
++import android.view.View;
++import android.view.animation.DecelerateInterpolator;
++
++import com.android.settings.R;
++
++/** Draws the enrollment state without the legacy particle animation. */
++public class FaceEnrollProgressView extends View {
++    private static final long PROGRESS_ANIMATION_DURATION_MS = 400;
++    private static final long COLOR_ANIMATION_DURATION_MS = 300;
++    private static final long HELP_STATE_DURATION_MS = 1800;
++
++    private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
++    private final Paint mMaskPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
++    private final Path mMaskPath = new Path();
++    private final RectF mBounds = new RectF();
++    private float mProgress;
++    private float mTargetProgress;
++    private int mColor;
++    private ValueAnimator mProgressAnimator;
++    private ValueAnimator mColorAnimator;
++    private final Handler mHandler = new Handler(Looper.getMainLooper());
++    private final Runnable mRestoreProgressState = this::animateToProgressColor;
++
++    public FaceEnrollProgressView(Context context, AttributeSet attrs) {
++        super(context, attrs);
++        mPaint.setStyle(Paint.Style.STROKE);
++        mPaint.setStrokeCap(Paint.Cap.ROUND);
++        mPaint.setStrokeWidth(getResources().getDisplayMetrics().density * 12f);
++        mColor = getResources().getColor(R.color.face_enroll_progress, context.getTheme());
++        TypedValue background = new TypedValue();
++        context.getTheme().resolveAttribute(android.R.attr.colorBackground, background, true);
++        mMaskPaint.setColor(background.data);
++        mMaskPaint.setStyle(Paint.Style.FILL);
++    }
++
++    public void setProgress(int steps, int remaining) {
++        int total = steps + remaining;
++        float target = total > 0 ? Math.max(0f, Math.min(1f, (float) steps / total)) : 0f;
++        // Some face HALs briefly report stale progress. Never animate the ring backwards.
++        target = Math.max(mTargetProgress, target);
++        if (target == mTargetProgress) return;
++        mTargetProgress = target;
++
++        if (mProgressAnimator != null) mProgressAnimator.cancel();
++        mProgressAnimator = ValueAnimator.ofFloat(mProgress, target);
++        mProgressAnimator.setDuration(PROGRESS_ANIMATION_DURATION_MS);
++        mProgressAnimator.setInterpolator(new DecelerateInterpolator());
++        mProgressAnimator.addUpdateListener(animation -> {
++            mProgress = (float) animation.getAnimatedValue();
++            invalidate();
++        });
++        mProgressAnimator.start();
++    }
++
++    public void setHelpState() {
++        mHandler.removeCallbacks(mRestoreProgressState);
++        animateToColor(R.color.face_enroll_warning);
++        // Progress callbacks may continue during help; only the sweep changes until this expires.
++        mHandler.postDelayed(mRestoreProgressState, HELP_STATE_DURATION_MS);
++    }
++
++    public void setErrorState() {
++        mHandler.removeCallbacks(mRestoreProgressState);
++        animateToColor(R.color.face_enroll_error);
++    }
++
++    public void setCompleteState() {
++        mHandler.removeCallbacks(mRestoreProgressState);
++        animateToColor(R.color.face_enroll_success);
++    }
++
++    private void animateToProgressColor() {
++        animateToColor(R.color.face_enroll_progress);
++    }
++
++    private void animateToColor(int colorRes) {
++        int target = getResources().getColor(colorRes, getContext().getTheme());
++        if (target == mColor) return;
++        if (mColorAnimator != null) mColorAnimator.cancel();
++        mColorAnimator = ValueAnimator.ofArgb(mColor, target);
++        mColorAnimator.setDuration(COLOR_ANIMATION_DURATION_MS);
++        mColorAnimator.addUpdateListener(animation -> {
++            mColor = (int) animation.getAnimatedValue();
++            invalidate();
++        });
++        mColorAnimator.start();
++    }
++
++    @Override
++    protected void onDetachedFromWindow() {
++        mHandler.removeCallbacks(mRestoreProgressState);
++        if (mProgressAnimator != null) mProgressAnimator.cancel();
++        if (mColorAnimator != null) mColorAnimator.cancel();
++        super.onDetachedFromWindow();
++    }
++
++    @Override protected void onDraw(Canvas canvas) {
++        // Match the legacy face preview cutout exactly: it used a 20 px inset.
++        float inset = 20f;
++        mBounds.set(inset, inset, getWidth() - inset, getHeight() - inset);
++
++        mMaskPath.reset();
++        mMaskPath.setFillType(Path.FillType.EVEN_ODD);
++        mMaskPath.addRect(0, 0, getWidth(), getHeight(), Path.Direction.CW);
++        mMaskPath.addCircle(getWidth() / 2f, getHeight() / 2f,
++                Math.min(getWidth(), getHeight()) / 2f - inset, Path.Direction.CW);
++        canvas.drawPath(mMaskPath, mMaskPaint);
++
++        mPaint.setColor(0x33000000 | (mColor & 0x00ffffff));
++        canvas.drawArc(mBounds, -90, 360, false, mPaint);
++        mPaint.setColor(mColor);
++        canvas.drawArc(mBounds, -90, 360f * mProgress, false, mPaint);
++    }
++}
+diff --git a/src/com/android/settings/biometrics/face/FaceEnrollSidecar.java b/src/com/android/settings/biometrics/face/FaceEnrollSidecar.java
+index b7ba1b52508cfece78199409c2adb66ca2cb8535..e64b3a5ca5b117657b311ae35c093281e81341e5 100644
+--- a/src/com/android/settings/biometrics/face/FaceEnrollSidecar.java
++++ b/src/com/android/settings/biometrics/face/FaceEnrollSidecar.java
+@@ -20,6 +20,7 @@ import android.app.Activity;
+ import android.app.settings.SettingsEnums;
+ import android.content.Intent;
+ import android.hardware.face.FaceManager;
++import android.view.Surface;
+ 
+ import com.android.settings.biometrics.BiometricEnrollSidecar;
+ 
+@@ -35,10 +36,12 @@ public class FaceEnrollSidecar extends BiometricEnrollSidecar {
+     private FaceUpdater mFaceUpdater;
+ 
+     private Intent mIntent;
++    private final Surface mPreviewSurface;
+ 
+-    public FaceEnrollSidecar(int[] disabledFeatures, Intent intent) {
++    public FaceEnrollSidecar(int[] disabledFeatures, Intent intent, Surface previewSurface) {
+         mDisabledFeatures = Arrays.copyOf(disabledFeatures, disabledFeatures.length);
+         mIntent = intent;
++        mPreviewSurface = previewSurface;
+     }
+ 
+     @Override
+@@ -51,7 +54,8 @@ public class FaceEnrollSidecar extends BiometricEnrollSidecar {
+     public void startEnrollment() {
+         super.startEnrollment();
+         mFaceUpdater.enroll(mUserId, mToken, mEnrollmentCancel,
+-                mEnrollmentCallback, mDisabledFeatures, mIntent);
++                mEnrollmentCallback, mDisabledFeatures, mPreviewSurface,
++                false /* debugConsent */, mIntent);
+     }
+ 
+     private FaceManager.EnrollmentCallback mEnrollmentCallback
+-- 
+2.34.1
+

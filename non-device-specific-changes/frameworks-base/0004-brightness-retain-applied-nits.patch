@@ -1,0 +1,64 @@
+From 00b4a8653d0c745a05fdbdb37143e0c3afe9eedf Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 9 Aug 2026 14:19:49 +0800
+Subject: [PATCH] fix(display): retain applied nits for lux hooks
+
+---
+ .../display/AutomaticBrightnessController.java | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/services/core/java/com/android/server/display/AutomaticBrightnessController.java b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+index 26699e7f0e13318bb7a748953b407ae7a8a9fd72..56edd02eb1b3c3ac1c25f0176117e421c987f4b4 100644
+--- a/services/core/java/com/android/server/display/AutomaticBrightnessController.java
++++ b/services/core/java/com/android/server/display/AutomaticBrightnessController.java
+@@ -243,6 +243,11 @@ public class AutomaticBrightnessController {
+     // available.
+     private float mScreenAutoBrightness = PowerManager.BRIGHTNESS_INVALID_FLOAT;
+ 
++    // The display may already be lit at a manual target when automatic brightness is enabled.
++    // Keep that target so an optional ambient-lux processor can compensate any panel-induced ALS
++    // leakage before the first automatic target has been calculated.
++    private float mLastConfiguredBrightness = PowerManager.BRIGHTNESS_INVALID_FLOAT;
++
+     // The screen brightness level before clamping and throttling. This value needs to be stored
+     // for concurrent displays mode and passed to the additional displays which will do their own
+     // clamping and throttling.
+@@ -498,6 +503,9 @@ public class AutomaticBrightnessController {
+             boolean userChangedAutoBrightnessAdjustment, int displayPolicy, int displayState,
+             boolean useNormalBrightnessForDoze, boolean shouldResetShortTermModel,
+             boolean autoBrightnessOneShot) {
++        if (BrightnessUtils.isValidBrightnessValue(brightness)) {
++            mLastConfiguredBrightness = brightness;
++        }
+         mState = state;
+         boolean changed = setBrightnessConfiguration(configuration, shouldResetShortTermModel);
+         changed |= setDisplayPolicy(displayPolicy);
+@@ -800,6 +808,10 @@ public class AutomaticBrightnessController {
+ 
+         if (mAmbientLuxProcessor != null) {
+             try {
++                // The processor needs the panel target that was already applied when this
++                // primary-ALS measurement was taken.  Reassert it here because the normal
++                // brightness update path may be held by hysteresis for an extended period.
++                notifyAmbientLuxProcessorTargetChanged();
+                 final float processedLux = mAmbientLuxProcessor.process(time, lux,
+                         mCurrentBrightnessMapper.getMode() == AUTO_BRIGHTNESS_MODE_DOZE);
+                 if (Float.isFinite(processedLux) && processedLux >= 0) {
+@@ -819,10 +831,12 @@ public class AutomaticBrightnessController {
+     }
+ 
+     private float getCurrentTargetNits() {
+-        if (!BrightnessUtils.isValidBrightnessValue(mScreenAutoBrightness)) {
++        final float brightness = BrightnessUtils.isValidBrightnessValue(mScreenAutoBrightness)
++                ? mScreenAutoBrightness : mLastConfiguredBrightness;
++        if (!BrightnessUtils.isValidBrightnessValue(brightness)) {
+             return Float.NaN;
+         }
+-        return mCurrentBrightnessMapper.convertToNits(mScreenAutoBrightness);
++        return mCurrentBrightnessMapper.convertToNits(brightness);
+     }
+ 
+     /** Records the controller's accepted target on the sensor-event time scale. */
+-- 
+2.34.1
+
