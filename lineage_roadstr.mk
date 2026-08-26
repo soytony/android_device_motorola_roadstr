@@ -15,8 +15,18 @@ WITH_ADB_INSECURE := true
 # Stock MotCamera5 is bundled for RoadSTR, so do not inherit Lineage Aperture.
 PRODUCT_NO_CAMERA := true
 
-# Inherit LineageOS common product config
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit Project Infinity X common product config
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
+
+# Infinity defaults userdebug builds to production adbd. Override that policy
+# after inheritance and preauthorize this workstation for headless diagnostics.
+PRODUCT_NOT_DEBUGGABLE_IN_USERDEBUG :=
+PRODUCT_ADB_KEYS := device/motorola/roadstr/adb_debug.pub
+
+# Infinity-X device configuration
+INFINITY_MAINTAINER := "soytony"
+TARGET_HAS_UDFPS := true
+WITH_GAPPS := true
 
 # Roadstr does not have the FM tuner advertised by the shared vendor audio
 # configuration. This must be set before device.mk imports common.mk.
@@ -26,7 +36,7 @@ ROADSTR_HAS_NO_FM_TUNER := true
 $(call inherit-product, device/motorola/roadstr/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_roadstr
+PRODUCT_NAME := infinity_roadstr
 PRODUCT_DEVICE := roadstr
 PRODUCT_BRAND := motorola
 PRODUCT_MODEL := Edge 70

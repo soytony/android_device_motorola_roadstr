@@ -23,7 +23,7 @@ Kernel: GKI Linux 6.6.82-android15-8
 
 ## Current status
 
-- Build target: `lineage_roadstr-bp4a-userdebug`
+- Build target: `infinity_roadstr-bp4a-userdebug`
 - Stock Motorola MotCamera5 is included from product blobs; Lineage Aperture is
   excluded from the RoadSTR product.
 - Stock Moto/QTI IMS shared libraries are included; `org.codeaurora.ims` starts without the previous missing `QtiCarrierConfigHelper` crash.

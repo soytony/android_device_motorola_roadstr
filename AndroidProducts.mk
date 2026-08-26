@@ -4,9 +4,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_roadstr.mk
+    $(LOCAL_DIR)/infinity_roadstr.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_roadstr-user \
-    lineage_roadstr-userdebug \
-    lineage_roadstr-eng
+    infinity_roadstr-user \
+    infinity_roadstr-userdebug \
+    infinity_roadstr-eng
