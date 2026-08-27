@@ -130,5 +130,4 @@ $(call inherit-product-if-exists, vendor/motorola/roadstr/roadstr-vendor.mk)
 $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
 
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.touch_boost_across_groups=true \
-    ro.surface_flinger.touch_boost_refresh_rate=120
+    ro.surface_flinger.touch_boost_across_groups=true

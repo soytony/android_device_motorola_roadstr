@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "SystemUIIconsRoadstr",
+    product_specific: true,
+}

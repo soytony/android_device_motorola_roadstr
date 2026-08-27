@@ -30,6 +30,22 @@ feature is explicitly required.
 was not shown to fix a reproducible RoadSTR issue. It is excluded. Re-add only
 with an A/B reproduction, measured failure, and clear rollback criteria.
 
+## Removed refresh-rate experiments
+
+The SurfaceFlinger touch-boost ceiling (`2ac140659ff3`) and rounded ceiling
+comparison (`9ea75bb86e91`) were removed. RoadSTR's ceiling was 120 Hz, already
+the panel maximum, so neither changed mode selection. The broad Qualcomm
+dynamic-refresh experiment (`3f8c1e52b66f`) was also removed: it mixed cleanup,
+retry, validation, forced-GPU, and per-frame logging changes; generated heavy
+SDM warning traffic; and did not exercise its proposed recovery paths.
+
+## Unrelated framework permissions
+
+The former `frameworks/base/0007-compat-unflag-permissions.patch` changed
+platform feature-flag policy for ranging, system preferences, and promoted
+notifications. RoadSTR has no device-specific consumer or demonstrated failure
+requiring it, so it is excluded.
+
 ## Visibility-only experiments
 
 XMP-Toolkit-SDK, google-highway, and Skia visibility changes had no live

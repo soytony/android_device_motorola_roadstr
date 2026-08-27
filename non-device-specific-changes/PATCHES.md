@@ -20,15 +20,19 @@ needs this because its 60 Hz mode and 90/120 Hz modes use different groups.
 Companion product properties:
 `ro.surface_flinger.touch_boost_across_groups=true`.
 
-### RETAIN: SurfaceFlinger touch-boost ceiling
+### RETAIN: Refresh-rate indicator cache invalidation
 
 **Source:** `frameworks/native`  
-**Original:** `1fdacd24c1d96126d3bfce9c924940a0f79a9377`  
-**Patch:** `frameworks-native/0002-surfaceflinger-touch-boost-cap.patch`
+**Validated:** RoadSTR live test on 2026-08-27
+**Patch:** `frameworks-native/0002-surfaceflinger-refresh-overlay-disable-cache.patch`
 
-Adds `ro.surface_flinger.touch_boost_refresh_rate`. RoadSTR uses 90 Hz to
-avoid a panel luminance discontinuity during transient boost. Zero or unset
-keeps prior behavior. Explicit layer or app votes remain uncapped.
+Disables composition caching for the Developer Options refresh-rate overlay
+regardless of whether updates come from an HWC callback or SurfaceFlinger's
+active-mode listener. Without this, the layer can accept new 60/90/120 buffers
+while composition continues displaying the old 60 Hz buffer. Live testing
+confirmed that one overlay instance then followed all three rates without the
+off/on service-call workaround. This developer-only layer does not alter panel
+mode selection.
 
 ## Media and graphics framework
 
@@ -163,7 +167,7 @@ Sets common product to add `libtinyxml2_vendor` only when
 
 Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
-### RETAIN: eUICC without GMS
+### OPTIONAL: eUICC without GMS
 
 **Source:** `packages/apps/EuiccPolicy`  
 **Original:** `df4707ecbd70b68a1416b64c19ce7978658dcb6c`  
@@ -171,3 +175,24 @@ Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
 Allows LPA policy when Google Play services are absent. Apply only for builds
 that ship and use eUICC without GMS.
+
+## Audit evidence
+
+Audited against the Infinity-X checkout on 2026-08-27. Clean reverse-apply
+checks confirmed current behavior for TinyXML2, all three `frameworks/av`
+patches, UDFPS validation/order, cross-group touch boost, UDFPS interface,
+audio integration, HDR GPU target, and eUICC policy. Current destination
+commits also contain the HBM, brightness, composer-memory, and face-preview
+ports where dependency or branch drift prevents an exact reverse check:
+
+- `frameworks/base`: `43f636d1b0ea`, `e9766e47ba33`, `25c41daf4a3f`,
+  `5d1d2c0b6973`
+- `hardware/qcom-caf/sm8750/display/hal`: `8b5551211f`
+- `packages/apps/Settings`: `f699d16`
+
+RoadSTR has live consumers for the HBM interface/service and ambient-lux hook.
+The stock `libmdmcutback.so` blob references `ASensorManager_getCurInstance`,
+confirming the sensor-manager export is also required. The
+`frameworks/base/0007-compat-unflag-permissions.patch`
+was absent from the current framework, still applied cleanly as a new change,
+and has no RoadSTR consumer; it was removed as unrelated product policy.

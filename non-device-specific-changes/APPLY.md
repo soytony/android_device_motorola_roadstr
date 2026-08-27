@@ -48,11 +48,15 @@ device-tree notes.
 2. Use committed common-tree tinyxml guard `0f37846` in
    `device/motorola/sm7750-common` together with `external-tinyxml2`; common
    tree is part of device-tree ownership and has no duplicate patch here.
-3. Set both SurfaceFlinger properties and keep RoadSTR `RefreshRateDefaults`
-   initialization when using the refresh patches.
-4. Use the audio patch only with a complete stock `audiohalservice.qti`
+3. Set `ro.surface_flinger.touch_boost_across_groups=true` with the cross-group
+   touch-boost patch. Do not restore the removed boost-cap property or
+   `RefreshRateDefaults` cap experiment.
+4. Keep RoadSTR's device overlay refresh policy separate from shared patches:
+   default 90-120 Hz, low-light thresholds `56, 67` / `-1, 70`, and 90 Hz zone
+   rate. Rebuild `product` after changing these resources.
+5. Use the audio patch only with a complete stock `audiohalservice.qti`
    implementation and matching blobs.
-5. Keep display-core and display-hal changes independently testable.
+6. Keep display-core and display-hal changes independently testable.
 
 ## Verification
 
@@ -61,6 +65,7 @@ git diff --check
 git log --oneline -n 1
 adb shell getprop sys.boot_completed
 adb shell dumpsys SurfaceFlinger
+adb shell dumpsys display
 adb shell ls -l /vendor/lib64/libtinyxml2*
 adb shell ls -l /vendor/lib64/poweropt/libtinyxml2.so
 ```
@@ -69,3 +74,7 @@ For tinyxml validation, RoadSTR should lack
 `/vendor/lib64/libtinyxml2_vendor.so`, retain global AOSP
 `/vendor/lib64/libtinyxml2.so`, and retain private
 `/vendor/lib64/poweropt/libtinyxml2.so`.
+
+For refresh-rate validation, compare SurfaceFlinger active mode and Qualcomm
+SDM current FPS with the Developer Options overlay. The overlay should follow
+60/90/120 without toggling after the cache-invalidation patch.

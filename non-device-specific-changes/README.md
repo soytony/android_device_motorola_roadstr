@@ -11,7 +11,8 @@ repository, then port the same intent when source context differs.
 
 ## Layout
 
-- `frameworks-native/` SurfaceFlinger touch-boost policy.
+- `frameworks-native/` SurfaceFlinger touch-boost policy and refresh-rate
+  indicator correctness.
 - `frameworks-av/` media ABI and vendor-variant compatibility.
 - `frameworks-base/` UDFPS and adaptive-brightness hooks.
 - `frameworks-hardware-interfaces/` sensor-manager export.

@@ -4,8 +4,8 @@
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
     <!-- Sysfs-backed one-shot sensor provided by sensors.moto_ext. -->
     <string name="config_dozeDoubleTapSensorType">org.lineageos.sensor.double_tap</string>
-    <!-- Physical front-camera hole: display center X, center Y 79 px, radius 32 px. -->
-    <string name="config_mainBuiltInDisplayCutout">M 32,79 A 32,32 0 0 1 0,111 A 32,32 0 0 1 -32,79 A 32,32 0 0 1 0,47 A 32,32 0 0 1 32,79 Z</string>
+    <!-- Physical front-camera hole: display center X, center Y 79 px, radius 33 px. -->
+    <string name="config_mainBuiltInDisplayCutout">M 33,79 A 33,33 0 0 1 0,111 A 33,33 0 0 1 -33,79 A 33,33 0 0 1 0,47 A 33,33 0 0 1 33,79 Z</string>
     <!-- Keep the larger logical exclusion area used to align status-bar content. -->
     <string name="config_mainBuiltInDisplayCutoutRectApproximation">M -56,0 L 56,0 L 56,139 L -56,139 Z</string>
     <string name="config_mms_user_agent">motorolaedge70</string>

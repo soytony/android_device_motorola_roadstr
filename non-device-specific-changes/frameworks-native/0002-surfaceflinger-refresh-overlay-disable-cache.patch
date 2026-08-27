@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Thu, 27 Aug 2026 00:00:00 +0800
+Subject: [PATCH] surfaceflinger: disable refresh overlay caching
+
+RefreshRateOverlay changes buffers for both HWC debug callbacks and
+SurfaceFlinger active-mode updates. Disable layer caching in both cases so
+composition does not retain an old refresh-rate buffer.
+
+---
+ services/surfaceflinger/RefreshRateOverlay.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/services/surfaceflinger/RefreshRateOverlay.cpp b/services/surfaceflinger/RefreshRateOverlay.cpp
+index 9fd1faf56b..e90e26f3d8 100644
+--- a/services/surfaceflinger/RefreshRateOverlay.cpp
++++ b/services/surfaceflinger/RefreshRateOverlay.cpp
+@@ -323,9 +323,9 @@ SurfaceComposerClient::Transaction RefreshRateOverlay::createTransaction() const
+     if (isSetByHwc()) {
+         transaction.setFlags(surface, layer_state_t::eLayerIsRefreshRateIndicator,
+                              layer_state_t::eLayerIsRefreshRateIndicator);
+-        // Disable overlay layer caching when refresh rate is updated by the HWC.
+-        transaction.setCachingHint(surface, gui::CachingHint::Disabled);
+     }
++    // Buffers change for both HWC callbacks and SurfaceFlinger mode changes.
++    transaction.setCachingHint(surface, gui::CachingHint::Disabled);
+     transaction.setFrameRate(surface, kFrameRate, kCompatibility, kSeamlessness);
+     return transaction;
+ }
+-- 
+2.34.1
+

@@ -8,7 +8,7 @@
     <dimen name="status_bar_clock_size">15.0sp</dimen>
 
     <!-- Padding on the start of the statusbar -->
-    <dimen name="status_bar_padding_start">6dp</dimen>
+    <dimen name="status_bar_padding_start">9dp</dimen>
 
     <!-- Padding on the top of the statusbar -->
     <dimen name="status_bar_padding_top">19.0px</dimen>
