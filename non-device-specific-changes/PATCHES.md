@@ -24,6 +24,7 @@ Companion product properties:
 
 **Source:** `frameworks/native`  
 **Validated:** RoadSTR live test on 2026-08-27
+
 **Patch:** `frameworks-native/0002-surfaceflinger-refresh-overlay-disable-cache.patch`
 
 Disables composition caching for the Developer Options refresh-rate overlay
@@ -33,6 +34,20 @@ while composition continues displaying the old 60 Hz buffer. Live testing
 confirmed that one overlay instance then followed all three rates without the
 off/on service-call workaround. This developer-only layer does not alter panel
 mode selection.
+
+## Telephony
+
+### RETAIN: Infer NR registration from cell identity
+
+**Source:** `frameworks/opt/telephony`
+
+**Original:** `31ebdead1e7db161eda407632aa2587406e114b0`
+
+**Patch:** `frameworks-opt-telephony/0001-telephony-infer-nr-from-cell-identity.patch`
+
+Treats an `UNKNOWN` registration data type as NR when Qualcomm supplies a
+valid `CellIdentityNr`. This fixes the missing 5G mobile-type icon and the
+`UNKNOWN` data type shown by Phone Information without changing SystemUI.
 
 ## Media and graphics framework
 

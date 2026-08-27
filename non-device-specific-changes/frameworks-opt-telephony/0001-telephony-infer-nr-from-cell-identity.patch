@@ -1,0 +1,28 @@
+From 31ebdead1e7db161eda407632aa2587406e114b0 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Thu, 27 Aug 2026 23:54:59 +0800
+Subject: [PATCH] fix(telephony): infer NR from cell identity
+
+Some Qualcomm responses report UNKNOWN data type with a valid NR cell identity, hiding the 5G indicator.
+---
+ .../android/internal/telephony/CellularNetworkService.java    | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/java/com/android/internal/telephony/CellularNetworkService.java b/src/java/com/android/internal/telephony/CellularNetworkService.java
+index bff1d41327..42b990804f 100644
+--- a/src/java/com/android/internal/telephony/CellularNetworkService.java
++++ b/src/java/com/android/internal/telephony/CellularNetworkService.java
+@@ -468,6 +468,10 @@ public class CellularNetworkService extends NetworkService {
+             if (networkType == TelephonyManager.NETWORK_TYPE_LTE_CA) {
+                 networkType = TelephonyManager.NETWORK_TYPE_LTE;
+             }
++            if (networkType == TelephonyManager.NETWORK_TYPE_UNKNOWN
++                    && cellIdentity instanceof CellIdentityNr) {
++                networkType = TelephonyManager.NETWORK_TYPE_NR;
++            }
+ 
+             // Conditional parameters for specific RANs
+             boolean cssSupported = false;
+-- 
+2.34.1
+

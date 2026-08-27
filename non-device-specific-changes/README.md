@@ -16,6 +16,7 @@ repository, then port the same intent when source context differs.
 - `frameworks-av/` media ABI and vendor-variant compatibility.
 - `frameworks-base/` UDFPS and adaptive-brightness hooks.
 - `frameworks-hardware-interfaces/` sensor-manager export.
+- `frameworks-opt-telephony/` Qualcomm NR registration compatibility.
 - `hardware-lineage-interfaces/` UDFPS HBM interface.
 - `hardware-qcom-caf-sm8750-audio-primary-hal/` QTI primary audio integration.
 - `hardware-qcom-caf-sm8750-display-core/` HDR GPU target handling.
