@@ -23,7 +23,9 @@ repository, then port the same intent when source context differs.
 - `hardware-qcom-caf-sm8750-display-hal/` composer memory compatibility.
 - `external-tinyxml2/` CFI workaround for the stock-linked library.
 - `packages-apps-Settings/` HAL-owned face enrollment preview.
+- `packages-apps-ThemePicker/` framework-wide adaptive icon shape projection.
 - `packages-apps-EuiccPolicy/` LPA without Google Play services.
+- `vendor-google-gms/` optional Google Wallpaper Picker exclusion.
 
 See [PATCHES.md](PATCHES.md) for the complete catalog and [APPLY.md](APPLY.md)
 for application and porting instructions.

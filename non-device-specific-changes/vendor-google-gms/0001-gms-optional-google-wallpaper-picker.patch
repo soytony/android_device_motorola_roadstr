@@ -1,0 +1,36 @@
+From 0523fe6328d70346269fd36b0fbb7cf57e53eb29 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sat, 29 Aug 2026 00:14:39 +0800
+Subject: [PATCH] build(gms): allow excluding wallpaper picker
+
+AOSP ThemePicker cannot run when Google Wallpaper Picker wins the
+shared com.android.wallpaper package. Let products retain ThemePicker
+while keeping other GApps.
+---
+ gms-vendor.mk | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/gms-vendor.mk b/gms-vendor.mk
+index 7bf042c..8fcdaca 100644
+--- a/gms-vendor.mk
++++ b/gms-vendor.mk
+@@ -114,7 +114,6 @@ PRODUCT_PACKAGES += \
+     GoogleRestore \
+     Phonesky \
+     PixelThemesStub2025_and_newer \
+-    WallpaperPickerGoogleRelease \
+     WallpaperEmojiPrebuilt-foldable-wallpaper \
+     SoundPickerPrebuilt \
+     DeskClockGoogle \
+@@ -123,4 +122,9 @@ PRODUCT_PACKAGES += \
+     GoogleServicesFramework \
+     SetupWizard \
+     com.google.android.apps.dialer.call_recording_audio.features \
+-    GoogleContacts
+\ No newline at end of file
++    GoogleContacts
++
++ifneq ($(EXCLUDE_GOOGLE_WALLPAPER_PICKER),true)
++PRODUCT_PACKAGES += \
++    WallpaperPickerGoogleRelease
++endif

@@ -57,6 +57,9 @@ device-tree notes.
 5. Use the audio patch only with a complete stock `audiohalservice.qti`
    implementation and matching blobs.
 6. Keep display-core and display-hal changes independently testable.
+7. With GApps, apply the ThemePicker and `vendor/google/gms` patches together.
+   Set `EXCLUDE_GOOGLE_WALLPAPER_PICKER := true` before common product
+   inheritance so PackageManager loads AOSP ThemePicker's shared package.
 
 ## Verification
 
@@ -68,6 +71,8 @@ adb shell dumpsys SurfaceFlinger
 adb shell dumpsys display
 adb shell ls -l /vendor/lib64/libtinyxml2*
 adb shell ls -l /vendor/lib64/poweropt/libtinyxml2.so
+adb shell pm path com.android.wallpaper
+adb shell cmd overlay list | grep lineage_launcher_icon_shape
 ```
 
 For tinyxml validation, RoadSTR should lack

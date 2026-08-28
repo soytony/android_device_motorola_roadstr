@@ -182,6 +182,35 @@ Sets common product to add `libtinyxml2_vendor` only when
 
 Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
+### RETAIN: Global icon shape projection
+
+**Source:** `packages/apps/ThemePicker`
+
+**Original:** `3f26e9cba1468e59f1e62fb58467f720d25310b5`
+
+**Patch:** `packages-apps-ThemePicker/0001-themepicker-global-icon-shape-overlay.patch`
+
+Projects ThemePicker's selected launcher shape into the framework adaptive-icon
+mask using a fabricated runtime resource overlay. This keeps launcher icons,
+system adaptive icons, and app starting windows on the same silhouette. A
+persisted toggle controls projection, while boot, package-replacement, and user
+unlock synchronization restore the overlay when needed.
+
+### COMPANION: Optional Google Wallpaper Picker exclusion
+
+**Source:** `vendor/google/gms`
+
+**Original:** `0523fe6328d70346269fd36b0fbb7cf57e53eb29`
+
+**Patch:** `vendor-google-gms/0001-gms-optional-google-wallpaper-picker.patch`
+
+Lets products omit `WallpaperPickerGoogleRelease` while retaining all other
+GApps. Google Wallpaper Picker and AOSP ThemePicker both declare
+`com.android.wallpaper`; when both APKs are installed, PackageManager selects
+Google's higher-version APK and the global icon-shape implementation never
+runs. RoadSTR sets `EXCLUDE_GOOGLE_WALLPAPER_PICKER := true` before inheriting
+Infinity's common product configuration.
+
 ### OPTIONAL: eUICC without GMS
 
 **Source:** `packages/apps/EuiccPolicy`  
@@ -204,6 +233,8 @@ ports where dependency or branch drift prevents an exact reverse check:
   `5d1d2c0b6973`
 - `hardware/qcom-caf/sm8750/display/hal`: `8b5551211f`
 - `packages/apps/Settings`: `f699d16`
+- `packages/apps/ThemePicker`: `3f26e9cba`
+- `vendor/google/gms`: `0523fe6`
 
 RoadSTR has live consumers for the HBM interface/service and ambient-lux hook.
 The stock `libmdmcutback.so` blob references `ASensorManager_getCurInstance`,

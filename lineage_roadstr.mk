@@ -15,6 +15,9 @@ WITH_ADB_INSECURE := true
 # Stock MotCamera5 is bundled for RoadSTR, so do not inherit Lineage Aperture.
 PRODUCT_NO_CAMERA := true
 
+# Keep AOSP ThemePicker: RoadSTR projects its selected icon shape globally.
+EXCLUDE_GOOGLE_WALLPAPER_PICKER := true
+
 # Inherit Project Infinity X common product config
 $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
