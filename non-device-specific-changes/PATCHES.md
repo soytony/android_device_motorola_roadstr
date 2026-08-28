@@ -182,6 +182,19 @@ Sets common product to add `libtinyxml2_vendor` only when
 
 Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
+### RETAIN: Infinity Suite native submenu navigation
+
+**Source:** `packages/apps/InfinitySuite`
+
+**Original:** `69e5d7cf0196e91ee3d3d2083cb57faac88d8473`
+
+**Patch:** `packages-apps-InfinitySuite/0001-fix-use-native-submenu-navigation.patch`
+
+Launches Infinity Suite cards through Settings' `SubSettingLauncher` instead
+of replacing fragments inside the parent activity. Submenus therefore use the
+standard Settings shared-axis and predictive-back activity transitions. Both
+toolbar Up and system Back close only the submenu and return to Infinity Suite.
+
 ### RETAIN: Global icon shape projection
 
 **Source:** `packages/apps/ThemePicker`
@@ -233,6 +246,7 @@ ports where dependency or branch drift prevents an exact reverse check:
   `5d1d2c0b6973`
 - `hardware/qcom-caf/sm8750/display/hal`: `8b5551211f`
 - `packages/apps/Settings`: `f699d16`
+- `packages/apps/InfinitySuite`: `69e5d7c`
 - `packages/apps/ThemePicker`: `3f26e9cba`
 - `vendor/google/gms`: `0523fe6`
 

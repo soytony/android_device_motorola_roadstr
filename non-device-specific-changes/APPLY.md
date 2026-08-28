@@ -60,6 +60,8 @@ device-tree notes.
 7. With GApps, apply the ThemePicker and `vendor/google/gms` patches together.
    Set `EXCLUDE_GOOGLE_WALLPAPER_PICKER := true` before common product
    inheritance so PackageManager loads AOSP ThemePicker's shared package.
+8. Apply the Infinity Suite navigation patch when submenus are hosted by
+   Settings. It depends on Settings' `SubSettingLauncher` and `SubSettings`.
 
 ## Verification
 
@@ -73,7 +75,12 @@ adb shell ls -l /vendor/lib64/libtinyxml2*
 adb shell ls -l /vendor/lib64/poweropt/libtinyxml2.so
 adb shell pm path com.android.wallpaper
 adb shell cmd overlay list | grep lineage_launcher_icon_shape
+adb shell dumpsys activity activities | grep -E 'InfinitySuite|SubSettings'
 ```
+
+For Infinity Suite navigation, open a card and confirm `SubSettings` is the
+resumed child activity. Toolbar Up and committed or predictive Back must reveal
+the existing Infinity Suite parent activity instead of exiting it.
 
 For tinyxml validation, RoadSTR should lack
 `/vendor/lib64/libtinyxml2_vendor.so`, retain global AOSP
