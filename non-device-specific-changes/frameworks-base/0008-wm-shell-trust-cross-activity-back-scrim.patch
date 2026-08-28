@@ -1,0 +1,25 @@
+From 4dbd518d6146480294a67e23200c29d60cc5c014 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sat, 29 Aug 2026 01:51:43 +0800
+Subject: [PATCH] fix(wm-shell): trust cross-activity scrim
+
+---
+ .../com/android/wm/shell/back/CrossActivityBackAnimation.kt    | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
+index 102ebe8be9a1..425d165ff79f 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
+@@ -423,6 +423,9 @@ abstract class CrossActivityBackAnimation(
+             .setAlpha(scrimLayer!!, maxScrimAlpha)
+             .setCrop(scrimLayer!!, scrimCrop)
+             .setRelativeLayer(scrimLayer!!, closingTarget!!.leash, -1)
++            // This system-owned surface has no input channel. Do not let it invalidate touches
++            // sent to the visible activity while the post-commit animation is running.
++            .setTrustedOverlay(scrimLayer!!, true)
+             .show(scrimLayer)
+     }
+ 
+-- 
+2.34.1

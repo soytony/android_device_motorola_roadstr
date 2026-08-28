@@ -62,6 +62,9 @@ device-tree notes.
    inheritance so PackageManager loads AOSP ThemePicker's shared package.
 8. Apply the Infinity Suite navigation patch when submenus are hosted by
    Settings. It depends on Settings' `SubSettingLauncher` and `SubSettings`.
+9. Apply the WM Shell trusted-scrim patch with predictive-back navigation.
+   Rebuild and flash `system_ext`; the affected library is packaged in
+   SystemUI on this branch.
 
 ## Verification
 
@@ -77,6 +80,10 @@ adb shell pm path com.android.wallpaper
 adb shell cmd overlay list | grep lineage_launcher_icon_shape
 adb shell dumpsys activity activities | grep -E 'InfinitySuite|SubSettings'
 ```
+
+For the trusted-scrim fix, exercise a cross-activity predictive-back gesture
+and confirm the revealed activity remains interactive after commit. Check that
+SystemUI stays alive and that logcat has no WM Shell or SystemUI fatal error.
 
 For Infinity Suite navigation, open a card and confirm `SubSettings` is the
 resumed child activity. Toolbar Up and committed or predictive Back must reveal

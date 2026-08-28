@@ -14,7 +14,7 @@ repository, then port the same intent when source context differs.
 - `frameworks-native/` SurfaceFlinger touch-boost policy and refresh-rate
   indicator correctness.
 - `frameworks-av/` media ABI and vendor-variant compatibility.
-- `frameworks-base/` UDFPS and adaptive-brightness hooks.
+- `frameworks-base/` UDFPS, adaptive-brightness, and predictive-back fixes.
 - `frameworks-hardware-interfaces/` sensor-manager export.
 - `frameworks-opt-telephony/` Qualcomm NR registration compatibility.
 - `hardware-lineage-interfaces/` UDFPS HBM interface.

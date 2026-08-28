@@ -131,6 +131,18 @@ VINTF declarations; omit both patches when HBM is not used.
 Retains applied-nits state and exposes ambient-lux and target-aware lux hooks
 for the RoadSTR brightness implementation.
 
+### RETAIN: Trusted cross-activity back scrim
+
+**Source:** `frameworks/base`
+
+**Original:** `4dbd518d6146480294a67e23200c29d60cc5c014`
+
+**Patch:** `frameworks-base/0008-wm-shell-trust-cross-activity-back-scrim.patch`
+
+Marks WM Shell's system-owned cross-activity back scrim as a trusted overlay.
+The color layer has no input channel and must not invalidate touches delivered
+to the visible activity while the predictive-back post-commit animation runs.
+
 ### RETAIN: Sensor manager export
 
 **Source:** `frameworks/hardware/interfaces`  
@@ -243,7 +255,7 @@ commits also contain the HBM, brightness, composer-memory, and face-preview
 ports where dependency or branch drift prevents an exact reverse check:
 
 - `frameworks/base`: `43f636d1b0ea`, `e9766e47ba33`, `25c41daf4a3f`,
-  `5d1d2c0b6973`
+  `5d1d2c0b6973`, `4dbd518d6146`
 - `hardware/qcom-caf/sm8750/display/hal`: `8b5551211f`
 - `packages/apps/Settings`: `f699d16`
 - `packages/apps/InfinitySuite`: `69e5d7c`
