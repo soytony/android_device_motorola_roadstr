@@ -37,7 +37,8 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    vendor/lunaris/dolby
 
 # Overlays
 PRODUCT_SOONG_NAMESPACES += \
@@ -63,6 +64,13 @@ PRODUCT_PACKAGES += \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
+
+# Use Lunaris controller with RoadSTR's stock 64-bit Motorola DAX 3.12 stack.
+PRODUCT_PACKAGES += \
+    LunarisDolby
+
+PRODUCT_COPY_FILES += \
+    vendor/lunaris/dolby/configs/permissions/privapp-permissions-dolby.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-dolby.xml
 
 # Load the optional ambient-lux provider in system_server. The common framework
 # invokes only the generic hook; all rear-sensor and leakage policy stays here.
