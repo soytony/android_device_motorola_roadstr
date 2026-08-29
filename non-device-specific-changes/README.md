@@ -22,6 +22,7 @@ repository, then port the same intent when source context differs.
 - `hardware-qcom-caf-sm8750-display-core/` HDR GPU target handling.
 - `hardware-qcom-caf-sm8750-display-hal/` composer memory compatibility.
 - `external-tinyxml2/` CFI workaround for the stock-linked library.
+- `packages-apps-Launcher3/` custom icon-shape launch animation alignment.
 - `packages-apps-InfinitySuite/` native Settings submenu navigation.
 - `packages-apps-Settings/` HAL-owned face enrollment preview.
 - `packages-apps-ThemePicker/` framework-wide adaptive icon shape projection.

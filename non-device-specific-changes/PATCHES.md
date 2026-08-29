@@ -207,6 +207,19 @@ of replacing fragments inside the parent activity. Submenus therefore use the
 standard Settings shared-axis and predictive-back activity transitions. Both
 toolbar Up and system Back close only the submenu and return to Infinity Suite.
 
+### RETAIN: Launcher custom-shape launch radius
+
+**Source:** `packages/apps/Launcher3`
+
+**Original:** `121d41e7550221d07a18aa949e1e3cf3eeba70f7`
+
+**Patch:** `packages-apps-Launcher3/0001-launcher3-match-app-launch-radius.patch`
+
+Scales the initial SurfaceControl rounded-rectangle crop radius using the
+selected custom icon model. This aligns the window crop with the exact path
+drawn by `FloatingIconView`, avoiding a circular first frame when launching an
+app from a non-circular custom icon.
+
 ### RETAIN: Global icon shape projection
 
 **Source:** `packages/apps/ThemePicker`
@@ -259,6 +272,7 @@ ports where dependency or branch drift prevents an exact reverse check:
 - `hardware/qcom-caf/sm8750/display/hal`: `8b5551211f`
 - `packages/apps/Settings`: `f699d16`
 - `packages/apps/InfinitySuite`: `69e5d7c`
+- `packages/apps/Launcher3`: `121d41e`
 - `packages/apps/ThemePicker`: `3f26e9cba`
 - `vendor/google/gms`: `0523fe6`
 

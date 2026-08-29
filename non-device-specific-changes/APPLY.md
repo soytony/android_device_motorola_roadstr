@@ -65,6 +65,9 @@ device-tree notes.
 9. Apply the WM Shell trusted-scrim patch with predictive-back navigation.
    Rebuild and flash `system_ext`; the affected library is packaged in
    SystemUI on this branch.
+10. Apply the Launcher3 launch-radius patch with the ThemePicker global icon
+    shape patch. Launcher3 reads the selected shape radius from `ThemeManager`;
+    rebuild and flash `system_ext` on this branch.
 
 ## Verification
 
@@ -88,6 +91,11 @@ SystemUI stays alive and that logcat has no WM Shell or SystemUI fatal error.
 For Infinity Suite navigation, open a card and confirm `SubSettings` is the
 resumed child activity. Toolbar Up and committed or predictive Back must reveal
 the existing Infinity Suite parent activity instead of exiting it.
+
+For Launcher3, select a visibly non-circular custom icon shape and launch apps
+from workspace and all-apps icons. The initial window crop must start at the
+selected shape's corner radius without a circular first-frame morph. Confirm
+`com.android.launcher3` remains alive after repeated launches.
 
 For tinyxml validation, RoadSTR should lack
 `/vendor/lib64/libtinyxml2_vendor.so`, retain global AOSP
