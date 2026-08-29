@@ -12,17 +12,20 @@ bootconfig logging, recovery logs, and service-specific logcat instead.
 
 ## Reverted or unrelated
 
-The `frameworks/base` ALS iterations and their reverts, WM Shell back-scrim,
-`build/release` ranging permission, and `packages/apps/Stk` restyle do not
-belong in RoadSTR build patches.
+The `frameworks/base` ALS iterations and their reverts, `build/release` ranging
+permission, and `packages/apps/Stk` restyle do not belong in RoadSTR build
+patches. The WM Shell predictive-back scrim fix is retained in this bundle.
 
 ## Feature-only
 
 Assist Button changes across `frameworks/base`, `lineage-sdk`, and
-`packages/apps/LineageParts`, plus Launcher3/ThemePicker icon-shape changes,
-are optional product features. Device overlays or keylayout can cover limited
-appearance/input needs; omit shared policy and settings changes unless the
-feature is explicitly required.
+`packages/apps/LineageParts` are optional product features. Device overlays or
+keylayout can cover limited appearance/input needs; omit shared policy and
+settings changes unless the feature is explicitly required.
+
+ThemePicker global icon-shape overlay `44da4135` and Launcher3 launch-radius
+patch `f1aeba52` are retained in this bundle. Launcher3 delayed-reveal patch
+`ec5c709a` remains omitted because it is an independent animation refinement.
 
 ## Speculative display workaround
 

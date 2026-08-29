@@ -53,6 +53,10 @@ device-tree notes.
 4. Use the audio patch only with a complete stock `audiohalservice.qti`
    implementation and matching blobs.
 5. Keep display-core and display-hal changes independently testable.
+6. Apply ThemePicker global icon shape only with compatible Launcher3 shape
+   selection and platform overlay-management privileges.
+7. Apply Launcher3 launch-radius patch with custom icon-shape support;
+   ThemePicker global overlay is recommended but not required for it.
 
 ## Verification
 

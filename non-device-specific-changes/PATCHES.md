@@ -120,6 +120,17 @@ for the RoadSTR brightness implementation.
 
 Exports the current sensor manager instance used by the device sensor path.
 
+### RETAIN: Predictive-back touch response
+
+**Source:** `frameworks/base`
+**Original:** `57a58aeb95756bd2d1f6d293e1ce8f8792a07108`
+**Patch:** `frameworks-base/0008-wm-shell-trust-cross-activity-back-scrim.patch`
+
+Marks WM Shell's system-owned cross-activity-back scrim as a trusted overlay.
+The scrim has no input channel, so it must not invalidate the next visible
+activity touch while post-commit animation runs. Fixes dropped first
+touch/scroll immediately after a predictive-back transition.
+
 ## Qualcomm audio
 
 ### RETAIN: QTI primary HAL integration
@@ -171,3 +182,26 @@ Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
 Allows LPA policy when Google Play services are absent. Apply only for builds
 that ship and use eUICC without GMS.
+
+### OPTIONAL: Global icon-shape overlay
+
+**Source:** `packages/apps/ThemePicker`
+**Original:** `44da4135c344e5857a062420c7ce8d899bb8e236`
+**Patch:** `packages-apps-ThemePicker/0001-themepicker-global-icon-shape-overlay.patch`
+
+Adds a ThemePicker toggle that projects selected Launcher icon shape into the
+framework adaptive-icon mask using a fabricated runtime resource overlay. It
+persists and reapplies state after boot, package replacement, and user unlock.
+Requires a compatible Launcher3 shape provider and ThemePicker privileges for
+overlay management. It is a product feature, not RoadSTR hardware bring-up.
+
+### OPTIONAL: Custom icon-shape launch radius
+
+**Source:** `packages/apps/Launcher3`
+**Original:** `f1aeba523149a3ca77fcb641e337e607b0a7baf8`
+**Patch:** `packages-apps-Launcher3/0001-launcher3-match-app-launch-radius.patch`
+
+Matches first app-launch `SurfaceControl` crop radius to selected custom icon
+shape. Removes transient circular mismatch before `FloatingIconView` applies
+the exact path. Companion to global icon-shape support; retain when custom
+shapes are enabled.

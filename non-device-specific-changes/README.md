@@ -13,7 +13,7 @@ repository, then port the same intent when source context differs.
 
 - `frameworks-native/` SurfaceFlinger touch-boost policy.
 - `frameworks-av/` media ABI and vendor-variant compatibility.
-- `frameworks-base/` UDFPS and adaptive-brightness hooks.
+- `frameworks-base/` UDFPS, adaptive-brightness, and predictive-back fixes.
 - `frameworks-hardware-interfaces/` sensor-manager export.
 - `hardware-lineage-interfaces/` UDFPS HBM interface.
 - `hardware-qcom-caf-sm8750-audio-primary-hal/` QTI primary audio integration.
@@ -22,6 +22,8 @@ repository, then port the same intent when source context differs.
 - `external-tinyxml2/` CFI workaround for the stock-linked library.
 - `packages-apps-Settings/` HAL-owned face enrollment preview.
 - `packages-apps-EuiccPolicy/` LPA without Google Play services.
+- `packages-apps-Launcher3/` custom icon-shape launch animation.
+- `packages-apps-ThemePicker/` global dynamic icon-shape overlay.
 
 See [PATCHES.md](PATCHES.md) for the complete catalog and [APPLY.md](APPLY.md)
 for application and porting instructions.

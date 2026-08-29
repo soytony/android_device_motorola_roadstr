@@ -1,0 +1,65 @@
+From f1aeba523149a3ca77fcb641e337e607b0a7baf8 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Fri, 17 Jul 2026 22:01:04 +0800
+Subject: [PATCH] Launcher3: Match app launch radius to custom icon shape
+
+Assisted-by: Codex:GPT-5
+Change-Id: Ib0878007974c35d1ecc22b16621fda7fe5eda3e1
+---
+ .../launcher3/QuickstepTransitionManager.java   | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/quickstep/src/com/android/launcher3/QuickstepTransitionManager.java b/quickstep/src/com/android/launcher3/QuickstepTransitionManager.java
+index 072bdcf3d3b8c0b046aa2115506868ef8820097b..2b341f41588fdbf273d8322e25b0c47f16565dc8 100644
+--- a/quickstep/src/com/android/launcher3/QuickstepTransitionManager.java
++++ b/quickstep/src/com/android/launcher3/QuickstepTransitionManager.java
+@@ -62,6 +62,8 @@ import static com.android.launcher3.testing.shared.TestProtocol.WALLPAPER_OPEN_A
+ import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
+ import static com.android.launcher3.util.MultiPropertyFactory.MULTI_PROPERTY_VALUE;
+ import static com.android.launcher3.util.window.RefreshRateTracker.getSingleFrameMs;
++import static com.android.launcher3.icons.BitmapInfo.FLAG_CUSTOM_SHAPE;
++import static com.android.launcher3.shapes.IconShapeModel.DEFAULT_ICON_RADIUS;
+ import static com.android.launcher3.views.FloatingIconView.SHAPE_PROGRESS_DURATION;
+ import static com.android.quickstep.TaskViewUtils.findTaskViewToLaunch;
+ import static com.android.quickstep.util.AnimUtils.clampToDuration;
+@@ -135,6 +137,7 @@ import com.android.launcher3.anim.AnimationSuccessListener;
+ import com.android.launcher3.anim.AnimatorListeners;
+ import com.android.launcher3.compat.AccessibilityManagerCompat;
+ import com.android.launcher3.dragndrop.DragLayer;
++import com.android.launcher3.graphics.ThemeManager;
+ import com.android.launcher3.icons.FastBitmapDrawable;
+ import com.android.launcher3.model.data.ItemInfo;
+ import com.android.launcher3.shortcuts.DeepShortcutView;
+@@ -878,9 +881,19 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
+             }
+         });
+ 
+-        final float initialWindowRadius = supportsRoundedCornersOnWindows(mLauncher.getResources())
++        float initialWindowRadius = supportsRoundedCornersOnWindows(mLauncher.getResources())
+                 ? Math.max(crop.width(), crop.height()) / 2f
+                 : 0f;
++        if (initialWindowRadius > 0f && v instanceof BubbleTextView bubbleTextView) {
++            FastBitmapDrawable icon = bubbleTextView.getIcon();
++            if (icon != null && (icon.creationFlags & FLAG_CUSTOM_SHAPE) != 0) {
++                // SurfaceControl only supports rounded-rectangle crops. Match its initial corner
++                // radius to the selected icon model while FloatingIconView applies the exact path.
++                initialWindowRadius *= ThemeManager.INSTANCE.get(mLauncher).getIconState()
++                        .getShapeRadius() / DEFAULT_ICON_RADIUS;
++            }
++        }
++        final float windowRadiusStart = initialWindowRadius;
+         final float finalShadowRadius = appTargetsAreTranslucent ? 0 : mMaxShadowRadius;
+ 
+         MultiValueUpdateListener listener = new MultiValueUpdateListener() {
+@@ -893,7 +906,7 @@ public class QuickstepTransitionManager implements OnDeviceProfileChangeListener
+                     clampToDuration(LINEAR, APP_LAUNCH_ALPHA_START_DELAY, APP_LAUNCH_ALPHA_DURATION,
+                             APP_LAUNCH_DURATION));
+ 
+-            FloatProp mWindowRadius = new FloatProp(initialWindowRadius,
++            FloatProp mWindowRadius = new FloatProp(windowRadiusStart,
+                     getWindowCornerRadius(mLauncher), mOpeningInterpolator);
+             FloatProp mShadowRadius = new FloatProp(0, finalShadowRadius,
+                     mOpeningInterpolator);
+-- 
+2.34.1
+

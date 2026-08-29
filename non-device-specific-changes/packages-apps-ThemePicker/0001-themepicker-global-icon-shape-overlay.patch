@@ -1,0 +1,853 @@
+From 44da4135c344e5857a062420c7ce8d899bb8e236 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Wed, 29 Jul 2026 22:47:39 +0800
+Subject: [PATCH] feat: apply launcher icon shape globally
+
+Project the selected Launcher shape into the framework icon mask so adaptive icons and starting windows use the same silhouette.
+
+Assisted-by: Codex:GPT-5
+Change-Id: I63f50c9d33c38835e9f1a81e8474bbc9fabb8562
+---
+ AndroidManifest.xml                           |  16 ++
+ res/layout/floating_sheet_app_icon.xml        |  51 +++-
+ res/values/lineage_strings.xml                |  10 +
+ .../icon/data/GlobalIconShapeManager.kt       | 244 ++++++++++++++++++
+ .../receiver/GlobalIconShapeSyncJobService.kt |  62 +++++
+ .../receiver/GlobalIconShapeSyncReceiver.kt   |  34 +++
+ .../ui/binder/AppIconFloatingSheetBinder.kt   |  48 +++-
+ .../ui/viewmodel/AppIconPickerViewModel.kt    | 113 +++++++-
+ .../viewmodel/AppIconPickerViewModelTest.kt   |  50 +++-
+ 9 files changed, 616 insertions(+), 12 deletions(-)
+ create mode 100644 res/values/lineage_strings.xml
+ create mode 100644 src/com/android/customization/picker/icon/data/GlobalIconShapeManager.kt
+ create mode 100644 src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncJobService.kt
+ create mode 100644 src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncReceiver.kt
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index ca32347a30bfee7be992f9c4f0e9a2da6e48578d..ebb7e09e5f6338a6e663ea5b9eacf0c75d5735f5 100755
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -11,6 +11,7 @@
+     <uses-sdk android:targetSdkVersion="30" android:minSdkVersion="28"/>
+ 
+     <uses-permission android:name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
++    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+     <uses-permission android:name="android.permission.SET_WALLPAPER_COMPONENT" />
+     <uses-permission android:name="android.permission.READ_DEVICE_CONFIG" />
+@@ -121,5 +122,20 @@
+              </intent-filter>
+         </activity-alias>
+ 
++        <receiver
++            android:name="com.android.customization.picker.icon.receiver.GlobalIconShapeSyncReceiver"
++            android:exported="false">
++            <intent-filter>
++                <action android:name="android.intent.action.BOOT_COMPLETED"/>
++                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
++                <action android:name="android.intent.action.USER_UNLOCKED"/>
++            </intent-filter>
++        </receiver>
++
++        <service
++            android:name="com.android.customization.picker.icon.receiver.GlobalIconShapeSyncJobService"
++            android:permission="android.permission.BIND_JOB_SERVICE"
++            android:exported="false"/>
++
+     </application>
+ </manifest>
+diff --git a/res/layout/floating_sheet_app_icon.xml b/res/layout/floating_sheet_app_icon.xml
+index ae7c361190435c51d6a187ba905c5a54b42ae0b7..e83457c587c55d76a12fe513c571bd2ce7227980 100644
+--- a/res/layout/floating_sheet_app_icon.xml
++++ b/res/layout/floating_sheet_app_icon.xml
+@@ -60,6 +60,7 @@
+         </FrameLayout>
+ 
+         <LinearLayout
++            android:id="@+id/app_shape_content"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+@@ -130,6 +131,54 @@
+                     app:layout_constraintEnd_toEndOf="parent"
+                     android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
+             </androidx.constraintlayout.widget.ConstraintLayout>
++
++            <androidx.constraintlayout.widget.ConstraintLayout
++                android:id="@+id/global_icon_shape_toggle_entry"
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:paddingVertical="@dimen/floating_sheet_content_vertical_padding"
++                android:clipToPadding="false"
++                android:clipChildren="false">
++
++                <TextView
++                    style="@style/CustomizationOptionEntryTitleTextStyle"
++                    android:id="@+id/global_icon_shape_toggle_title"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginStart="@dimen/floating_sheet_content_horizontal_padding"
++                    android:layout_marginEnd="@dimen/floating_sheet_clock_style_clock_size_text_margin_end"
++                    android:text="@string/global_icon_shape_title"
++                    android:importantForAccessibility="no"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintEnd_toStartOf="@+id/global_icon_shape_toggle"
++                    app:layout_constraintTop_toTopOf="parent" />
++
++                <TextView
++                    style="@style/CustomizationOptionEntrySubtitleTextStyle"
++                    android:layout_width="0dp"
++                    android:layout_height="wrap_content"
++                    android:layout_marginStart="@dimen/floating_sheet_content_horizontal_padding"
++                    android:layout_marginEnd="@dimen/floating_sheet_clock_style_clock_size_text_margin_end"
++                    android:text="@string/global_icon_shape_description"
++                    android:importantForAccessibility="no"
++                    app:layout_constraintStart_toStartOf="parent"
++                    app:layout_constraintEnd_toStartOf="@+id/global_icon_shape_toggle"
++                    app:layout_constraintTop_toBottomOf="@id/global_icon_shape_toggle_title"
++                    app:layout_constraintBottom_toBottomOf="parent" />
++
++                <com.google.android.material.materialswitch.MaterialSwitch
++                    style="@style/SettingslibSwitchStyle.Expressive"
++                    android:id="@+id/global_icon_shape_toggle"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:layout_marginEnd="@dimen/floating_sheet_content_horizontal_padding"
++                    android:contentDescription="@string/global_icon_shape_title"
++                    android:clickable="true"
++                    app:layout_constraintTop_toTopOf="parent"
++                    app:layout_constraintBottom_toBottomOf="parent"
++                    app:layout_constraintEnd_toEndOf="parent"
++                    android:theme="@style/Theme.Material3.DynamicColors.DayNight" />
++            </androidx.constraintlayout.widget.ConstraintLayout>
+         </LinearLayout>
+     </FrameLayout>
+ 
+@@ -140,4 +189,4 @@
+         android:layout_gravity="center_horizontal"
+         android:layout_marginVertical="@dimen/floating_sheet_tab_toolbar_vertical_margin"
+         android:visibility="gone" />
+-</LinearLayout>
+\ No newline at end of file
++</LinearLayout>
+diff --git a/res/values/lineage_strings.xml b/res/values/lineage_strings.xml
+new file mode 100644
+index 0000000000000000000000000000000000000000..cdbd0e60a3995fa380bb2f66001b6cc6574352e7
+--- /dev/null
++++ b/res/values/lineage_strings.xml
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++     SPDX-FileCopyrightText: 2026 The LineageOS Project
++     SPDX-License-Identifier: Apache-2.0
++-->
++<resources>
++    <string name="global_icon_shape_title">Apply icon shape globally</string>
++    <string name="global_icon_shape_description">Use this shape in app launch screens and system adaptive icons</string>
++    <string name="global_icon_shape_apply_failed">Couldn\'t apply icon shape globally. Your current setting was kept.</string>
++</resources>
+diff --git a/src/com/android/customization/picker/icon/data/GlobalIconShapeManager.kt b/src/com/android/customization/picker/icon/data/GlobalIconShapeManager.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..0e6a541cdfcc48dd865911ec90239ce226772d9b
+--- /dev/null
++++ b/src/com/android/customization/picker/icon/data/GlobalIconShapeManager.kt
+@@ -0,0 +1,244 @@
++/*
++ * Copyright (C) 2026 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.customization.picker.icon.data
++
++import android.app.job.JobInfo
++import android.app.job.JobScheduler
++import android.content.ComponentName
++import android.content.Context
++import android.content.SharedPreferences
++import android.content.om.FabricatedOverlay
++import android.content.om.OverlayIdentifier
++import android.content.om.OverlayManager
++import android.content.om.OverlayManagerTransaction
++import android.graphics.RectF
++import android.os.UserHandle
++import android.util.Base64
++import android.util.Log
++import android.util.PathParser
++import android.util.TypedValue
++import com.android.customization.model.grid.ShapeGridManager
++import com.android.customization.picker.icon.receiver.GlobalIconShapeSyncJobService
++import com.android.wallpaper.picker.di.modules.BackgroundDispatcher
++import dagger.hilt.android.qualifiers.ApplicationContext
++import java.security.MessageDigest
++import javax.inject.Inject
++import javax.inject.Singleton
++import kotlinx.coroutines.CoroutineDispatcher
++import kotlinx.coroutines.flow.MutableStateFlow
++import kotlinx.coroutines.flow.StateFlow
++import kotlinx.coroutines.withContext
++
++/** Persists and projects Launcher shape selection into the framework icon mask. */
++@Singleton
++class GlobalIconShapeManager
++@Inject
++constructor(
++    @ApplicationContext private val context: Context,
++    private val shapeGridManager: ShapeGridManager,
++    @BackgroundDispatcher private val backgroundDispatcher: CoroutineDispatcher,
++) {
++    private val preferences: SharedPreferences =
++        context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE)
++    private val overlayManager: OverlayManager = context.getSystemService(OverlayManager::class.java)
++    private val _isEnabled = MutableStateFlow(preferences.getBoolean(PREF_ENABLED, true))
++    private val preferenceChangeListener =
++        SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
++            if (key == PREF_ENABLED) {
++                _isEnabled.value = preferences.getBoolean(PREF_ENABLED, true)
++            }
++        }
++
++    val isEnabled: StateFlow<Boolean> = _isEnabled
++
++    init {
++        preferences.registerOnSharedPreferenceChangeListener(preferenceChangeListener)
++    }
++
++    /** Applies or removes global mask. Does not persist enabled state when operation fails. */
++    suspend fun setEnabled(enabled: Boolean, shapeKey: String): Result<Unit> =
++        withContext(backgroundDispatcher) {
++            runCatching {
++                if (enabled) {
++                    val pathData = findShapePath(shapeKey)
++                    val pathFingerprint = maybeApplyShape(pathData)
++                    check(
++                        preferences
++                            .edit()
++                            .putBoolean(PREF_ENABLED, true)
++                            .putString(PREF_APPLIED_PATH_FINGERPRINT, pathFingerprint)
++                            .commit()
++                    ) {
++                        "Failed to persist global icon shape preference"
++                    }
++                } else {
++                    removeShape()
++                    check(
++                        preferences
++                            .edit()
++                            .putBoolean(PREF_ENABLED, false)
++                            .remove(PREF_APPLIED_PATH_FINGERPRINT)
++                            .commit()
++                    ) {
++                        "Failed to persist global icon shape preference"
++                    }
++                }
++            }.onFailure { Log.e(TAG, "Failed to update global icon shape", it) }
++        }
++
++    /** Reconciles the enabled FRRO with Launcher's current selected shape. Safe to call repeatedly. */
++    suspend fun syncIfEnabled(): Result<Unit> =
++        withContext(backgroundDispatcher) {
++            if (!preferences.getBoolean(PREF_ENABLED, true)) {
++                return@withContext Result.success(Unit)
++            }
++            runCatching {
++                val selected = shapeGridManager.getShapeOptions().singleOrNull { it.isCurrent }
++                    ?: error("Launcher did not return exactly one selected icon shape")
++                val pathFingerprint = maybeApplyShape(selected.path)
++                if (
++                    preferences.getString(PREF_APPLIED_PATH_FINGERPRINT, null) != pathFingerprint
++                ) {
++                    check(
++                        preferences
++                            .edit()
++                            .putString(
++                                PREF_APPLIED_PATH_FINGERPRINT,
++                                pathFingerprint,
++                            )
++                            .commit()
++                    ) {
++                        "Failed to persist applied icon shape fingerprint"
++                    }
++                }
++            }.onFailure { Log.e(TAG, "Failed to synchronize global icon shape", it) }
++        }
++
++    /** Schedules a persisted retry after boot or package replacement. */
++    fun scheduleSync() {
++        if (!preferences.getBoolean(PREF_ENABLED, true)) return
++        val job =
++            JobInfo.Builder(
++                    SYNC_JOB_ID,
++                    ComponentName(context, GlobalIconShapeSyncJobService::class.java),
++                )
++                .setMinimumLatency(SYNC_DELAY_MILLIS)
++                .setOverrideDeadline(SYNC_DEADLINE_MILLIS)
++                .setPersisted(true)
++                .build()
++        val result = context.getSystemService(JobScheduler::class.java).schedule(job)
++        if (result == JobScheduler.RESULT_FAILURE) {
++            Log.w(TAG, "Unable to schedule global icon shape synchronization")
++        }
++    }
++
++    private suspend fun findShapePath(shapeKey: String): String =
++        shapeGridManager.getShapeOptions().firstOrNull { it.key == shapeKey }?.path
++            ?: error("Launcher shape '$shapeKey' is unavailable")
++
++    private fun maybeApplyShape(pathData: String): String {
++        val pathFingerprint = pathFingerprint(pathData)
++        if (!isShapeApplied(pathFingerprint)) {
++            applyShape(pathData)
++        }
++        return pathFingerprint
++    }
++
++    private fun isShapeApplied(pathFingerprint: String): Boolean {
++        val userId = UserHandle.myUserId()
++        val identifier = OverlayIdentifier(context.packageName, overlayName(userId))
++        val overlayInfo = overlayManager.getOverlayInfo(identifier, UserHandle.of(userId))
++        return overlayInfo?.isEnabled == true &&
++            preferences.getString(PREF_APPLIED_PATH_FINGERPRINT, null) == pathFingerprint
++    }
++
++    private fun pathFingerprint(pathData: String): String =
++        Base64.encodeToString(
++            MessageDigest.getInstance("SHA-256").digest(pathData.toByteArray(Charsets.UTF_8)),
++            Base64.NO_WRAP,
++        )
++
++    private fun applyShape(pathData: String) {
++        validatePath(pathData)
++        val userId = UserHandle.myUserId()
++        val overlay =
++            FabricatedOverlay.Builder(context.packageName, overlayName(userId), ANDROID_PACKAGE)
++                .setResourceValue(ICON_MASK_RESOURCE, TypedValue.TYPE_STRING, pathData, null)
++                .build()
++        val identifier = overlay.identifier
++        overlayManager.commit(
++            OverlayManagerTransaction.Builder()
++                .registerFabricatedOverlay(overlay)
++                .setEnabled(identifier, true, userId)
++                .build()
++        )
++        check(overlayManager.getOverlayInfo(identifier, UserHandle.of(userId))?.isEnabled == true) {
++            "Global icon shape overlay was not enabled"
++        }
++    }
++
++    private fun removeShape() {
++        val userId = UserHandle.myUserId()
++        val identifier = OverlayIdentifier(context.packageName, overlayName(userId))
++        if (overlayManager.getOverlayInfo(identifier, UserHandle.of(userId)) == null) {
++            return
++        }
++        overlayManager.commit(
++            OverlayManagerTransaction.Builder().unregisterFabricatedOverlay(identifier).build()
++        )
++    }
++
++    private fun validatePath(pathData: String) {
++        require(pathData.length in 1..MAX_PATH_LENGTH) { "Icon mask path length is invalid" }
++        val path = PathParser.createPathFromPathData(pathData)
++            ?: error("Icon mask path could not be parsed")
++        val bounds = RectF()
++        path.computeBounds(bounds, true)
++        require(
++            bounds.left.isFinite() &&
++                bounds.top.isFinite() &&
++                bounds.right.isFinite() &&
++                bounds.bottom.isFinite() &&
++                bounds.width() >= MIN_PATH_SIZE &&
++                bounds.height() >= MIN_PATH_SIZE &&
++                bounds.left >= MIN_PATH_COORDINATE &&
++                bounds.top >= MIN_PATH_COORDINATE &&
++                bounds.right <= MAX_PATH_COORDINATE &&
++                bounds.bottom <= MAX_PATH_COORDINATE
++        ) { "Icon mask path bounds are invalid: $bounds" }
++    }
++
++    private fun overlayName(userId: Int): String = "${OVERLAY_NAME}_u$userId"
++
++    companion object {
++        private const val TAG = "GlobalIconShapeManager"
++        private const val PREFERENCES_NAME = "global_icon_shape"
++        private const val PREF_ENABLED = "enabled"
++        private const val PREF_APPLIED_PATH_FINGERPRINT = "applied_path_fingerprint"
++        private const val OVERLAY_NAME = "lineage_launcher_icon_shape"
++        private const val ANDROID_PACKAGE = "android"
++        private const val ICON_MASK_RESOURCE = "android:string/config_icon_mask"
++        private const val SYNC_JOB_ID = 230201
++        private const val SYNC_DELAY_MILLIS = 5_000L
++        private const val SYNC_DEADLINE_MILLIS = 60_000L
++        private const val MAX_PATH_LENGTH = 16 * 1024
++        private const val MIN_PATH_SIZE = 1f
++        // Launcher paths use a 100 x 100 viewport and a small overshoot for some shapes.
++        private const val MIN_PATH_COORDINATE = -25f
++        private const val MAX_PATH_COORDINATE = 125f
++    }
++}
+diff --git a/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncJobService.kt b/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncJobService.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..704342045a0666f825ae5243521389699de5a1c5
+--- /dev/null
++++ b/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncJobService.kt
+@@ -0,0 +1,62 @@
++/*
++ * Copyright (C) 2026 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.customization.picker.icon.receiver
++
++import android.app.job.JobParameters
++import android.app.job.JobService
++import com.android.customization.picker.icon.data.GlobalIconShapeManager
++import dagger.hilt.android.AndroidEntryPoint
++import javax.inject.Inject
++import kotlinx.coroutines.CoroutineScope
++import kotlinx.coroutines.Dispatchers
++import kotlinx.coroutines.Job
++import kotlinx.coroutines.SupervisorJob
++import kotlinx.coroutines.cancel
++import kotlinx.coroutines.isActive
++import kotlinx.coroutines.launch
++
++@AndroidEntryPoint(JobService::class)
++class GlobalIconShapeSyncJobService : Hilt_GlobalIconShapeSyncJobService() {
++    @Inject lateinit var globalIconShapeManager: GlobalIconShapeManager
++
++    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
++    private var syncJob: Job? = null
++
++    override fun onStartJob(params: JobParameters): Boolean {
++        syncJob?.cancel()
++        syncJob = scope.launch {
++            val result = globalIconShapeManager.syncIfEnabled()
++            // Launcher3 may not have published its shape provider immediately after boot.
++            // Ask JobScheduler to retry instead of leaving the persisted preference unsynchronized.
++            if (isActive) {
++                jobFinished(params, result.isFailure)
++            }
++        }
++        return true
++    }
++
++    override fun onStopJob(params: JobParameters): Boolean {
++        syncJob?.cancel()
++        syncJob = null
++        return true
++    }
++
++    override fun onDestroy() {
++        scope.cancel()
++        super.onDestroy()
++    }
++}
+diff --git a/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncReceiver.kt b/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncReceiver.kt
+new file mode 100644
+index 0000000000000000000000000000000000000000..57f50dc9c5b28d391fbe196a1c44cde5f3cb4084
+--- /dev/null
++++ b/src/com/android/customization/picker/icon/receiver/GlobalIconShapeSyncReceiver.kt
+@@ -0,0 +1,34 @@
++/*
++ * Copyright (C) 2026 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.customization.picker.icon.receiver
++
++import android.content.BroadcastReceiver
++import android.content.Context
++import android.content.Intent
++import com.android.customization.picker.icon.data.GlobalIconShapeManager
++import dagger.hilt.android.AndroidEntryPoint
++import javax.inject.Inject
++
++@AndroidEntryPoint(BroadcastReceiver::class)
++class GlobalIconShapeSyncReceiver : Hilt_GlobalIconShapeSyncReceiver() {
++    @Inject lateinit var globalIconShapeManager: GlobalIconShapeManager
++
++    override fun onReceive(context: Context, intent: Intent) {
++        super.onReceive(context, intent)
++        globalIconShapeManager.scheduleSync()
++    }
++}
+diff --git a/src/com/android/wallpaper/customization/ui/binder/AppIconFloatingSheetBinder.kt b/src/com/android/wallpaper/customization/ui/binder/AppIconFloatingSheetBinder.kt
+index 678a6e02e5ebd6f18a6201dc06ed2370841d65ee..fb84a653c7428215ca92da108bdbc75de1524746 100644
+--- a/src/com/android/wallpaper/customization/ui/binder/AppIconFloatingSheetBinder.kt
++++ b/src/com/android/wallpaper/customization/ui/binder/AppIconFloatingSheetBinder.kt
+@@ -109,7 +109,7 @@ object AppIconFloatingSheetBinder {
+         )
+ 
+         val styleContent = view.requireViewById<View>(R.id.app_icon_style_container)
+-        val shapeContent = view.requireViewById<View>(R.id.app_shape_container)
++        val shapeContent = view.requireViewById<View>(R.id.app_shape_content)
+ 
+         val shapeOptionListAdapter =
+             createShapeOptionItemAdapter(
+@@ -139,6 +139,12 @@ object AppIconFloatingSheetBinder {
+         val themedIconsSwitch = view.requireViewById<MaterialSwitch>(R.id.themed_icon_toggle)
+         val themedIconEntry = view.requireViewById<ViewGroup>(R.id.themed_icon_toggle_entry)
+         val themedIconTitle = view.requireViewById<TextView>(R.id.themed_icon_toggle_title)
++        val globalIconShapeSwitch =
++            view.requireViewById<MaterialSwitch>(R.id.global_icon_shape_toggle)
++        val globalIconShapeEntry =
++            view.requireViewById<ViewGroup>(R.id.global_icon_shape_toggle_entry)
++        val globalIconShapeTitle =
++            view.requireViewById<TextView>(R.id.global_icon_shape_toggle_title)
+ 
+         data class FloatingSheetHeightsViewModel(
+             val styleContentHeight: Int? = null,
+@@ -201,6 +207,46 @@ object AppIconFloatingSheetBinder {
+                     }
+                 }
+ 
++                launch {
++                    viewModel.isShapeOptionsAvailable.collect { isAvailable ->
++                        globalIconShapeEntry.isVisible = isAvailable
++                        globalIconShapeSwitch.isEnabled = isAvailable
++                    }
++                }
++
++                launch {
++                    var switchBinding: SwitchColorBinder.Binding? = null
++                    var titleBinding: ColorUpdateBinder.Binding? = null
++                    viewModel.previewingGlobalIconShapeEnabled.collect {
++                        globalIconShapeSwitch.isChecked = it
++                        titleBinding?.destroy()
++                        titleBinding =
++                            bindTitleColor(
++                                globalIconShapeTitle,
++                                colorUpdateViewModel,
++                                isFloatingSheetActive,
++                                lifecycleOwner,
++                            )
++                        switchBinding?.destroy()
++                        switchBinding =
++                            SwitchColorBinder.bind(
++                                switch = globalIconShapeSwitch,
++                                isChecked = it,
++                                colorUpdateViewModel = colorUpdateViewModel,
++                                shouldAnimateColor = isFloatingSheetActive,
++                                lifecycleOwner = lifecycleOwner,
++                            )
++                    }
++                }
++
++                launch {
++                    viewModel.toggleGlobalIconShape.collect { toggle ->
++                        globalIconShapeSwitch.setOnCheckedChangeListener { _, _ ->
++                            launch { toggle.invoke() }
++                        }
++                    }
++                }
++
+                 if (isExtendibleThemeManager) {
+                     themedIconEntry.isVisible = false
+ 
+diff --git a/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModel.kt b/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModel.kt
+index 4443ad308830764cab38db83e2f7545600e64a44..5b0302ac0de7b04c92df1ba147a90890b1e46404 100644
+--- a/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModel.kt
++++ b/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModel.kt
+@@ -19,9 +19,11 @@ package com.android.wallpaper.customization.ui.viewmodel
+ import android.content.Context
+ import android.stats.style.StyleEnums.APP_ICON_STYLE_UNSPECIFIED
+ import android.util.Log
++import android.widget.Toast
+ import com.android.customization.model.grid.ShapeOptionModel
+ import com.android.customization.module.logging.ThemesUserEventLogger
+ import com.android.customization.picker.grid.ui.viewmodel.ShapeIconViewModel
++import com.android.customization.picker.icon.data.GlobalIconShapeManager
+ import com.android.customization.picker.icon.domain.interactor.AppIconInteractor
+ import com.android.customization.picker.icon.shared.model.IconStyle
+ import com.android.customization.picker.icon.shared.model.IconStyleModel
+@@ -60,6 +62,7 @@ class AppIconPickerViewModel
+ constructor(
+     @ApplicationContext private val applicationContext: Context,
+     interactor: AppIconInteractor,
++    private val globalIconShapeManager: GlobalIconShapeManager,
+     private val logger: ThemesUserEventLogger,
+     @Assisted private val viewModelScope: CoroutineScope,
+ ) {
+@@ -120,6 +123,27 @@ constructor(
+             }
+         }
+ 
++    //// Global icon shape
++    private val overridingGlobalIconShapeEnabled = MutableStateFlow<Boolean?>(null)
++    val isGlobalIconShapeEnabled =
++        globalIconShapeManager.isEnabled.shareIn(
++            scope = viewModelScope,
++            started = SharingStarted.Lazily,
++            replay = 1,
++        )
++    val previewingGlobalIconShapeEnabled =
++        combine(overridingGlobalIconShapeEnabled, isGlobalIconShapeEnabled) {
++            overridingGlobalIconShapeEnabled,
++            isGlobalIconShapeEnabled ->
++            overridingGlobalIconShapeEnabled ?: isGlobalIconShapeEnabled
++        }
++    val toggleGlobalIconShape: Flow<suspend () -> Unit> =
++        previewingGlobalIconShapeEnabled.map {
++            {
++                overridingGlobalIconShapeEnabled.value = !it
++            }
++        }
++
+     //// Style
+     val selectedIconStyle = interactor.selectedIconStyle
+     private val overridingIconStyle: MutableStateFlow<IconStyle?> = MutableStateFlow(null)
+@@ -302,25 +326,52 @@ constructor(
+             selectedShape,
+             overridingIsThemedIconEnabled,
+             isThemedIconEnabled,
++            combine(overridingGlobalIconShapeEnabled, isGlobalIconShapeEnabled, ::Pair),
+         ) {
+             overridingShapeKey,
+             selectedShape,
+             overridingIsThemedIconEnabled,
+-            currentIsThemedIconEnabled ->
++            currentIsThemedIconEnabled,
++            globalIconShapeState ->
++            val (overridingGlobalIconShapeEnabled, currentGlobalIconShapeEnabled) =
++                globalIconShapeState
+             val shapeNeedsUpdate =
+                 overridingShapeKey != null && overridingShapeKey != selectedShape.key.value
+             val themedIconNeedsUpdate =
+                 overridingIsThemedIconEnabled != null &&
+                     overridingIsThemedIconEnabled != currentIsThemedIconEnabled
+-            if (shapeNeedsUpdate || themedIconNeedsUpdate) {
++            val globalIconShapeNeedsUpdate =
++                overridingGlobalIconShapeEnabled != null &&
++                    overridingGlobalIconShapeEnabled != currentGlobalIconShapeEnabled
++            if (shapeNeedsUpdate || themedIconNeedsUpdate || globalIconShapeNeedsUpdate) {
+                 {
+-                    if (shapeNeedsUpdate) {
++                    val targetShapeKey = overridingShapeKey ?: selectedShape.key.value
++                    val targetGlobalIconShapeEnabled =
++                        overridingGlobalIconShapeEnabled ?: currentGlobalIconShapeEnabled
++                    val globalIconShapeApplied =
++                        if (
++                        globalIconShapeNeedsUpdate ||
++                            (shapeNeedsUpdate && targetGlobalIconShapeEnabled)
++                    ) {
++                        val result =
++                            globalIconShapeManager.setEnabled(
++                                targetGlobalIconShapeEnabled,
++                                targetShapeKey,
++                            )
++                        if (result.isFailure) {
++                            showGlobalIconShapeFailure(result.exceptionOrNull())
++                        }
++                        result.isSuccess
++                    } else {
++                        true
++                    }
++                    if (globalIconShapeApplied && shapeNeedsUpdate) {
+                         overridingShapeKey?.let {
+                             interactor.applyShape(it)
+                             logger.logShapeApplied(it)
+                         }
+                     }
+-                    if (themedIconNeedsUpdate) {
++                    if (globalIconShapeApplied && themedIconNeedsUpdate) {
+                         coroutineScope {
+                             launch {
+                                 overridingIsThemedIconEnabled?.let {
+@@ -340,24 +391,56 @@ constructor(
+         }
+ 
+     val iconStyleAndShapeOnApply: Flow<(suspend () -> Unit)?> =
+-        combine(overridingShapeKey, selectedShape, overridingIconStyle, selectedIconStyle) {
++        combine(
+             overridingShapeKey,
+             selectedShape,
+             overridingIconStyle,
+-            currentIconStyle ->
++            selectedIconStyle,
++            combine(overridingGlobalIconShapeEnabled, isGlobalIconShapeEnabled, ::Pair),
++        ) {
++            overridingShapeKey,
++            selectedShape,
++            overridingIconStyle,
++            currentIconStyle,
++            globalIconShapeState ->
++            val (overridingGlobalIconShapeEnabled, currentGlobalIconShapeEnabled) =
++                globalIconShapeState
+             val shapeNeedsUpdate =
+                 overridingShapeKey != null && overridingShapeKey != selectedShape.key.value
+             val styleNeedsUpdate =
+                 overridingIconStyle != null && overridingIconStyle != currentIconStyle
+-            if (shapeNeedsUpdate || styleNeedsUpdate) {
++            val globalIconShapeNeedsUpdate =
++                overridingGlobalIconShapeEnabled != null &&
++                    overridingGlobalIconShapeEnabled != currentGlobalIconShapeEnabled
++            if (shapeNeedsUpdate || styleNeedsUpdate || globalIconShapeNeedsUpdate) {
+                 {
+-                    if (shapeNeedsUpdate) {
++                    val targetShapeKey = overridingShapeKey ?: selectedShape.key.value
++                    val targetGlobalIconShapeEnabled =
++                        overridingGlobalIconShapeEnabled ?: currentGlobalIconShapeEnabled
++                    val globalIconShapeApplied =
++                        if (
++                        globalIconShapeNeedsUpdate ||
++                            (shapeNeedsUpdate && targetGlobalIconShapeEnabled)
++                    ) {
++                        val result =
++                            globalIconShapeManager.setEnabled(
++                                targetGlobalIconShapeEnabled,
++                                targetShapeKey,
++                            )
++                        if (result.isFailure) {
++                            showGlobalIconShapeFailure(result.exceptionOrNull())
++                        }
++                        result.isSuccess
++                    } else {
++                        true
++                    }
++                    if (globalIconShapeApplied && shapeNeedsUpdate) {
+                         overridingShapeKey?.let {
+                             interactor.applyShape(it)
+                             logger.logShapeApplied(it)
+                         }
+                     }
+-                    if (styleNeedsUpdate) {
++                    if (globalIconShapeApplied && styleNeedsUpdate) {
+                         coroutineScope {
+                             val waitForUpdate = launch {
+                                 try {
+@@ -398,11 +481,23 @@ constructor(
+     fun resetPreview() {
+         overridingShapeKey.value = null
+         overridingIsThemedIconEnabled.value = null
++        overridingGlobalIconShapeEnabled.value = null
+     }
+ 
+     fun resetPreview2() {
+         overridingShapeKey.value = null
+         overridingIconStyle.value = null
++        overridingGlobalIconShapeEnabled.value = null
++    }
++
++    private fun showGlobalIconShapeFailure(throwable: Throwable?) {
++        Log.e(TAG, "Failed to apply global icon shape", throwable)
++        Toast.makeText(
++                applicationContext,
++                R.string.global_icon_shape_apply_failed,
++                Toast.LENGTH_LONG,
++            )
++            .show()
+     }
+ 
+     private fun toShapeOptionItemViewModel(
+diff --git a/tests/robotests/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModelTest.kt b/tests/robotests/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModelTest.kt
+index e495def0e8c1d792412d624beb865deca13362f3..f42dca9f73167d1d5aa0f7d0a256844fe84f91a0 100644
+--- a/tests/robotests/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModelTest.kt
++++ b/tests/robotests/src/com/android/wallpaper/customization/ui/viewmodel/AppIconPickerViewModelTest.kt
+@@ -24,6 +24,7 @@ import com.android.customization.model.grid.FakeShapeGridManager
+ import com.android.customization.module.logging.TestThemesUserEventLogger
+ import com.android.customization.picker.grid.data.repository.ShapeRepository
+ import com.android.customization.picker.grid.ui.viewmodel.ShapeIconViewModel
++import com.android.customization.picker.icon.data.GlobalIconShapeManager
+ import com.android.customization.picker.icon.data.repository.FakeIconStyleRepository
+ import com.android.customization.picker.icon.domain.interactor.AppIconInteractor
+ import com.android.customization.picker.icon.shared.model.ThemePickerIconStyle
+@@ -71,8 +72,21 @@ class AppIconPickerViewModelTest {
+     @Before
+     fun setUp() {
+         hiltRule.inject()
++        // Robolectric does not provide a functional system OverlayManager. Existing ViewModel
++        // behavior tests do not need to create an FRRO, so keep the global projection disabled.
++        appContext
++            .getSharedPreferences("global_icon_shape", Context.MODE_PRIVATE)
++            .edit()
++            .putBoolean("enabled", false)
++            .commit()
+         underTest =
+-            AppIconPickerViewModel(appContext, interactor, logger, testScope.backgroundScope)
++            AppIconPickerViewModel(
++                appContext,
++                interactor,
++                GlobalIconShapeManager(appContext, shapeManager, Dispatchers.Unconfined),
++                logger,
++                testScope.backgroundScope,
++            )
+         shapeManager.setShapeOptions(FakeShapeGridManager.DEFAULT_SHAPE_OPTION_LIST)
+     }
+ 
+@@ -202,6 +216,40 @@ class AppIconPickerViewModelTest {
+             assertThat(previewingIsThemeIconEnabled()).isTrue()
+         }
+ 
++    @Test
++    fun globalIconShapeEnabled_shouldDefaultToTrue() =
++        testScope.runTest {
++            appContext
++                .getSharedPreferences("global_icon_shape", Context.MODE_PRIVATE)
++                .edit()
++                .remove("enabled")
++                .commit()
++            val manager =
++                GlobalIconShapeManager(appContext, shapeManager, Dispatchers.Unconfined)
++            val isEnabled = collectLastValue(manager.isEnabled)
++
++            assertThat(isEnabled()).isTrue()
++        }
++
++    @Test
++    fun previewingGlobalIconShapeEnabled_shouldReflectDisabledPreference() =
++        testScope.runTest {
++            val isEnabled = collectLastValue(underTest.previewingGlobalIconShapeEnabled)
++
++            assertThat(isEnabled()).isFalse()
++        }
++
++    @Test
++    fun previewingGlobalIconShapeEnabled_shouldToggleFromDisabledPreference() =
++        testScope.runTest {
++            val toggle = collectLastValue(underTest.toggleGlobalIconShape)
++            val isEnabled = collectLastValue(underTest.previewingGlobalIconShapeEnabled)
++
++            toggle()?.invoke()
++
++            assertThat(isEnabled()).isTrue()
++        }
++
+     @Test
+     fun shapeAndThemedIconOnApply_shouldBeNonnull_whenToggle() =
+         testScope.runTest {
+-- 
+2.34.1
+
