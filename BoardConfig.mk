@@ -27,6 +27,8 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 21474836480
+BOARD_CUSTOMIMAGES_PARTITION_LIST += logo
+BOARD_LOGO_IMAGE_LIST := $(DEVICE_PATH)/prebuilt/logo.img
 
 # MindTheGapps patches the logical system partitions from recovery. Keep all
 # partitions it touches writable, and reserve enough free ext4 space for the
