@@ -4,7 +4,7 @@ Device tree for Motorola Edge 70 (XT2601-2), codename roadstr.
 
 SoC: Qualcomm Snapdragon 7 Gen 4 (SM7750), platform "sun"
 Android: 16 (SDK 36), vendor SDK 35
-Kernel: GKI Linux 6.6.82-android15-8
+Kernel: GKI Linux 6.6.98-android15-8 (stock W1WRS36.39-115-2)
 
 ## Structure
 

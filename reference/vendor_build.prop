@@ -21,11 +21,11 @@ ro.mot.build.guid=fc01e2eccbd276f
 ro.vendor.mot.base_buildid=W1WR36.39-25-2/400fb-98168
 ro.vendor.build.date=Sun Nov  9 11:16:06 CST 2025
 ro.vendor.build.date.utc=1762708566
-ro.vendor.build.fingerprint=motorola/roadstr_g/roadstr:15/VVR3S5V-25-ST7.3/aa3747:user/release-keys
-ro.vendor.build.id=VVR3S5V-25-ST7.3
+ro.vendor.build.fingerprint=motorola/roadstr_g/roadstr:15/VVRS35V/b43f75:user/release-keys
+ro.vendor.build.version.incremental=b43f75
+ro.vendor.build.id=VVRS35V
 ro.vendor.build.tags=release-keys
 ro.vendor.build.type=user
-ro.vendor.build.version.incremental=aa3747
 ro.vendor.build.version.release=15
 ro.vendor.build.version.release_or_codename=15
 ro.vendor.build.version.sdk=35
@@ -48,7 +48,7 @@ ro.product.first_api_level=36
 ro.board.first_api_level=202404
 ro.board.api_level=202404
 ro.board.api_frozen=true
-ro.vendor.build.security_patch=2025-11-01
+ro.vendor.build.security_patch=2026-06-01
 ro.product.board=roadstr
 ro.board.platform=sun
 ro.hwui.use_vulkan=true
@@ -428,4 +428,3 @@ import /vendor/etc/motorola/props/hardware.sku.${ro.boot.hardware.sku}.prop
 import /vendor/etc/motorola/props/carrier.${ro.boot.carrier}.prop
 # end of device/moto/init/props/vendor.prop
 # end of file
-

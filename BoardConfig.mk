@@ -46,7 +46,7 @@ BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 536870912
 BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 268435456
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2025-11-01
+VENDOR_SECURITY_PATCH := 2026-06-01
 
 # RoadSTR's bootloader has a root vbmeta rollback floor of 1. Leaving this unset emits zero,
 # which is rejected. Keep the known device floor instead of permanently advancing it.

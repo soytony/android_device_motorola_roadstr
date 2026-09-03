@@ -58,6 +58,7 @@ PRODUCT_PACKAGES += \
     SystemGalleryOverlayRoadstr \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
+    SystemUIIconsRoadstr \
     SystemUIResRoadstr \
     NetworkLocation460 \
     NetworkStackResMcc460Roadstr \
