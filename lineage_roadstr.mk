@@ -80,7 +80,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="roadstr_g-user 16 W1WRS36.39-25-2-1 aa3747-f1b0b release-keys" \
-    BuildFingerprint=motorola/roadstr_g/roadstr:16/W1WRS36.39-25-2-1/aa3747-f1b0b:user/release-keys \
+    BuildDesc="roadstr_g-user 16 W1WRS36.39-115-2 549c34 release-keys" \
+    BuildFingerprint=motorola/roadstr_g/roadstr:16/W1WRS36.39-115-2/549c34:user/release-keys \
     DeviceProduct=roadstr_g \
     SystemName=roadstr_g

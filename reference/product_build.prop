@@ -10,11 +10,11 @@ ro.product.product.model=motorola edge 70
 ro.product.product.name=roadstr_g
 ro.product.build.date=Sun Nov  9 11:28:49 EST 2025
 ro.product.build.date.utc=1762705729
-ro.product.build.fingerprint=motorola/roadstr_g/msi:16/W1WRS36M-25-ST7.3/f1b0b:user/release-keys
-ro.product.build.id=W1WRS36M-25-ST7.3
+ro.product.build.fingerprint=motorola/roadstr_g/msi:16/W1WRS36M/549c34:user/release-keys
+ro.product.build.version.incremental=549c34
+ro.product.build.id=W1WRS36M
 ro.product.build.tags=release-keys
 ro.product.build.type=user
-ro.product.build.version.incremental=f1b0b
 ro.product.build.version.release=16
 ro.product.build.version.release_or_codename=16
 ro.product.build.version.sdk=36
@@ -143,4 +143,3 @@ import /product/etc/motorola/props/carrier.${ro.boot.carrier}.${ro.boot.device}.
 import /product/etc/motorola/props/carrier.${ro.boot.carrier}.sku.${ro.boot.hardware.sku}.prop
 # end of device/moto/init/props/product.prop
 # end of file
-
