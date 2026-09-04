@@ -1,1 +1,2 @@
 prebuilt/ReFra/ReFra.apk filter=lfs diff=lfs merge=lfs -text
+firmware/stock-W1WRS36.39-115-2/radio.img filter=lfs diff=lfs merge=lfs -text
