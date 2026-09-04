@@ -63,7 +63,9 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.surface_flinger.set_idle_timer_ms=1000 \
     vendor.display.enable_brightness_drm_prop=1 \
     vendor.display.enable_dpps_dynamic_fps=1 \
-    vendor.display.disable_stc_dimming=1
+    vendor.display.disable_stc_dimming=1 \
+    vendor.display.only_report_first_mode=0 \
+    vendor.display.disable_idle_fps_switch=0
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
