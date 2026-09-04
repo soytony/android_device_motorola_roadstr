@@ -103,13 +103,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_module_config_primary.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/audio_module_config_primary.xml \
     $(LOCAL_PATH)/audio/sku_sun_audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/audio_effects.conf
 
-# Display
-# The current composer reports this display ID instead of the IDs encoded in
-# stock. Install the byte-identical stock profile under the reported ID so the
-# framework loads the panel's HBM and HDR brightness configuration.
-PRODUCT_COPY_FILES += \
-    vendor/motorola/sm7750-common/proprietary/vendor/etc/displayconfig/display_id_4630947039571902850.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946747577212050.xml
-
 # LiveDisplay
 $(call soong_config_set_bool,livedisplay_sysfs,enable_ab,true)
 
