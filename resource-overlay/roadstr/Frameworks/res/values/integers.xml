@@ -25,7 +25,7 @@
 
     <!-- Do not install a global render-rate ceiling. The display policy uses
          this panel's 60, 90, and 120 Hz modes according to user settings. -->
-    <integer name="config_defaultRefreshRate">0</integer>
+    <integer name="config_defaultRefreshRate">90</integer>
 
     <!-- Visionox uses distinct low-end gamma curves at 90 and 120 Hz.  Keep
          the panel at 90 Hz in the inherited dark/low-brightness zone so a
