@@ -27,8 +27,26 @@ BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 21474836480
-BOARD_CUSTOMIMAGES_PARTITION_LIST += logo
-BOARD_LOGO_IMAGE_LIST := $(DEVICE_PATH)/prebuilt/logo.img
+
+# Keep the replacement logo and stock firmware prerequisites in the same
+# custom-image plumbing so release image packages carry every payload.
+BOARD_CUSTOMIMAGES_PARTITION_LIST += \
+    logo partition bootloader radio bluetooth dsp pvmfw
+
+BOARD_LOGO_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/logo.img
+BOARD_PARTITION_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/gpt.bin
+BOARD_BOOTLOADER_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/bootloader.img
+BOARD_RADIO_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/radio.img
+BOARD_BLUETOOTH_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/BTFM.bin
+BOARD_DSP_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/dspso.bin
+BOARD_PVMFW_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/pvmfw.img
+
+BOARD_PARTITION_IMAGE_NO_FLASHALL := true
+BOARD_BOOTLOADER_IMAGE_NO_FLASHALL := true
+BOARD_RADIO_IMAGE_NO_FLASHALL := true
+BOARD_BLUETOOTH_IMAGE_NO_FLASHALL := true
+BOARD_DSP_IMAGE_NO_FLASHALL := true
+BOARD_PVMFW_IMAGE_NO_FLASHALL := true
 
 # MindTheGapps patches the logical system partitions from recovery. Keep all
 # partitions it touches writable, and reserve enough free ext4 space for the
