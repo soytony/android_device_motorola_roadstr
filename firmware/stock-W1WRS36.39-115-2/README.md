@@ -14,17 +14,17 @@ baseline.
 Included partitions:
 
 - `logo.img` → `logo` (LineageOS replacement)
-- `gpt.bin` → `partition`
+- `partition.img` → `partition`
 - `bootloader.img` → `bootloader`
 - `radio.img` → `radio`
-- `BTFM.bin` → `bluetooth`
-- `dspso.bin` → `dsp`
+- `bluetooth.img` → `bluetooth`
+- `dsp.img` → `dsp`
 - `pvmfw.img` → `pvmfw`
 
 The stock `super.img` and stock `logo.bin` are intentionally not included.
 LineageOS supplies its own dynamic-partition images and the replacement
 `logo.img` stored alongside these prerequisite images.
 
-Verify the payloads with `SHA256SUMS` before flashing. `gpt.bin` and
+Verify the payloads with `SHA256SUMS` before flashing. `partition.img` and
 `bootloader.img` modify low-level boot-chain state; do not downgrade or mix
 firmware from another model, region, or software branch.
