@@ -1,4 +1,61 @@
-# Contextual Ambient Lux Fusion Design Document
+# Stock ALS Compensation Design Document
+
+> **Superseded implementation (2026-09-05).** This document describes the
+> earlier ROI/rear-sensor Java experiment. It is retained as historical design
+> context only. The active Roadstr implementation uses the device-local
+> `StockAlsCompensationProcessor` bridge to Motorola `ISensorExt` and the stock
+> vendor ALS models. Do not re-enable `ContextualAmbientLuxProcessor` for
+> normal builds; see `documents/roadstr-stock-moto-auto-brightness-findings.md`.
+
+## Active solution: stock Motorola compensation
+
+The active workflow is intentionally short and device-local:
+
+1. `FrameworksResRoadstr` sets `config_ambientLuxProcessorClass` to the
+   bridge class name only; no sensor or file parameters are encoded in the
+   framework resource.
+2. `AutomaticBrightnessController` loads the class in `moto-framework.jar`
+   when automatic brightness starts.
+3. `StockAlsCompensationProcessor` reads the sensor name and configuration path
+   from `com.motorola.res` (the platform `moto-res.apk` plus the Roadstr
+   `MotoResRoadstr` product RRO).
+4. The bridge initializes Motorola `ISensorExt`, sends each primary ALS sample
+   to `updateSensorLux`, and returns the vendor-compensated lux to the normal
+   AOSP filtering, hysteresis, and brightness mapping.
+5. SensorExt reads DBV/DC/display state and applies the packaged panel config,
+   TFLite model, and native filter. No rear sensor, ROI sampling, custom
+   leakage curve, or target-history feedback is used in this active path.
+
+```text
+Frameworks RRO (class only)
+        -> system_server / moto-framework.jar
+        -> MotoRes APK + Roadstr RRO (sensor/config identifiers)
+        -> ISensorExt Binder bridge
+        -> vendor ALS config + model + panel state
+        -> compensated lux -> AOSP auto-brightness controller
+```
+
+```mermaid
+flowchart TD
+    RRO[FrameworksResRoadstr RRO<br/>class name only] --> ABC[AutomaticBrightnessController]
+    ABC --> JAR[StockAlsCompensationProcessor<br/>moto-framework.jar]
+    JAR --> RES[moto-res.apk + MotoResRoadstr RRO<br/>sensor name + config path]
+    JAR -->|init / update / deinit| EXT[ISensorExt/default]
+    EXT --> CFG[als_comp_config.xml]
+    EXT --> MODEL[BOE/CSOT TFLite models<br/>native panel filter]
+    EXT --> PANEL[DBV / DC / FPS / display state]
+    CFG --> COMP[Compensated lux]
+    MODEL --> COMP
+    PANEL --> COMP
+    COMP --> ABC
+    ABC --> FILTER[AOSP ambient filter,<br/>hysteresis, brightness mapping]
+    FILTER --> DISPLAY[Panel brightness]
+    DISPLAY -. panel leakage .-> EXT
+```
+
+The dotted feedback edge is handled inside the vendor compensation path using
+panel state and calibrated models; the Java bridge does not maintain a second
+leakage estimator or fuse rear-sensor/ROI data.
 
 ## Purpose
 
@@ -7,8 +64,8 @@ bright screen content. In dim surroundings, a conventional single-sensor
 controller can form a feedback loop: the panel brightens, the front ALS reports
 more lux, and automatic brightness raises the panel target again.
 
-**Contextual Ambient Lux Fusion** is a device-owned policy that returns a
-corrected lux value to the existing LineageOS automatic-brightness controller.
+The historical **Contextual Ambient Lux Fusion** policy returned a corrected
+lux value to the existing LineageOS automatic-brightness controller.
 It combines target-nits-aware front-ALS leakage compensation with a guarded rear
 ALS reference. The standard controller still owns its sensor buffer, debounce,
 hysteresis, brightness curve, user model, thermal limits, HBM/HDR limits, and
@@ -27,7 +84,7 @@ The rear ALS is `ON_CHANGE`. A stable sample remains useful in stable lighting,
 but its confidence decays after the configured grace period so stale data cannot
 indefinitely request a brightness increase.
 
-## Architecture
+## Historical architecture (superseded)
 
 ```mermaid
 flowchart LR
@@ -106,16 +163,16 @@ move brightness unnecessarily.
 
 | Path | Responsibility |
 | --- | --- |
-| `moto-framework/src/com/motorola/display/ContextualAmbientLuxProcessor.java` | Device policy and auxiliary sensor listeners, installed in `system_server` as `moto-framework.jar` |
+| `moto-framework/src/com/motorola/display/StockAlsCompensationProcessor.java` | Thin SensorExt Binder bridge installed in `system_server` as `moto-framework.jar` |
 | `moto-res/` | Platform-signed `com.motorola.res` APK with safe defaults and overlayable resources |
 | `resource-overlay/roadstr/MotoRes/` | Static product RRO with Roadstr calibration and tuning |
-| `resource-overlay/roadstr/Frameworks/res/values/strings.xml` | Enables the generic processor with the class name |
-| `tools/display_calibration_utils/calibrate_udals_leakage.py` | Dark-room leakage calibration collection utility |
+| `resource-overlay/roadstr/Frameworks/res/values/strings.xml` | Enables the bridge with the class name only |
 | `device.mk` | Installs the JAR, resource APK, RRO, permissions XML, and system-server declaration |
 
 Device-specific values belong in `com.motorola.res` and its Roadstr RRO, never
-in `framework-res`. This includes sensor types, leakage curves, ROI geometry,
-filter values, and all fusion thresholds.
+in `framework-res` or a pipe-delimited class declaration. The active resource
+set contains the SensorExt sensor identifier and vendor ALS configuration path;
+panel calibration/model data remains in the stock vendor partition.
 
 ## Resources and Tuning
 
@@ -157,7 +214,7 @@ Enable diagnostics only during validation:
 
 ```sh
 adb shell setprop persist.sys.moto.ambient_lux_debug 1
-adb logcat -s ContextualAmbientLuxProcessor
+adb logcat -s StockAlsCompensation
 ```
 
 The processor log includes raw front lux, target nits, estimated leakage,

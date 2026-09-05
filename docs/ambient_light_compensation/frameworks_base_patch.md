@@ -1,5 +1,10 @@
 # Generic `frameworks/base` Patch Guide
 
+> For current Roadstr builds, `config_ambientLuxProcessorClass` contains only
+> the bridge class name. SensorExt identifiers and paths are loaded from
+> `com.motorola.res` by `StockAlsCompensationProcessor`; do not use a
+> pipe-delimited parameter example for this device.
+
 ## Scope
 
 The device policy requires a small extension point in `frameworks/base`. The
@@ -69,8 +74,10 @@ An enabled device RRO supplies only the implementation class name, for example:
 </string>
 ```
 
-The optional `|` plus comma-separated suffix is retained as opaque parameters
-for the device implementation. The framework must not parse vendor policy.
+The generic interface still accepts an optional parameter array for branches
+that need it, but Roadstr deliberately supplies no suffix. Its sensor and
+configuration identifiers live in `com.motorola.res` and its product RRO.
+The framework must not parse vendor policy.
 
 ## 3. Discover the Provider Safely
 
