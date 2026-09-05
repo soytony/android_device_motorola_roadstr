@@ -24,6 +24,11 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
+# Integrate the Lunaris Dolby control app with Roadstr's existing Motorola
+# 64-bit Dolby HAL. The module's Xiaomi/OnePlus ODM blobs are intentionally
+# not inherited because they are a different platform stack.
+$(call inherit-product, $(LOCAL_PATH)/lunaris-dolby.mk)
+
 # The stock touch driver uses the Motorola gesture command ABI. RoadSTR's
 # Goodix gesture input reports BTN_TRIGGER_HAPPY6; map it as a wake key in the
 # device-specific keylayout below.
@@ -95,7 +100,7 @@ PRODUCT_PACKAGES += \
     libvisualizeraidl
 
 PRODUCT_COPY_FILES += \
-    vendor/motorola/sm7750-common/proprietary/vendor/etc/audio/sku_sun/audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml \
+    $(LOCAL_PATH)/audio/sku_sun_audio_effects_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects_config.xml \
     $(LOCAL_PATH)/audio/sku_sun_audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/audio_effects.xml \
     $(LOCAL_PATH)/audio/sku_sun_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/sku_sun_quasar_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_sun/quasar_config.xml \
