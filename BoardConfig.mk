@@ -34,11 +34,11 @@ BOARD_CUSTOMIMAGES_PARTITION_LIST += \
     logo partition bootloader radio bluetooth dsp pvmfw
 
 BOARD_LOGO_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/logo.img
-BOARD_PARTITION_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/gpt.bin
+BOARD_PARTITION_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/partition.img
 BOARD_BOOTLOADER_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/bootloader.img
 BOARD_RADIO_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/radio.img
-BOARD_BLUETOOTH_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/BTFM.bin
-BOARD_DSP_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/dspso.bin
+BOARD_BLUETOOTH_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/bluetooth.img
+BOARD_DSP_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/dsp.img
 BOARD_PVMFW_IMAGE_LIST := $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/pvmfw.img
 
 BOARD_PARTITION_IMAGE_NO_FLASHALL := true
