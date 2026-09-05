@@ -14,7 +14,9 @@
          brightness was enabled without a brightness curve, so it had no
          usable mapping from lux to panel luminance. -->
     <string name="config_displayLightSensorType">android.sensor.light</string>
-    <string name="config_ambientLuxProcessorClass" translatable="false">com.motorola.display.ContextualAmbientLuxProcessor</string>
+    <!-- Invoke Motorola's stock vendor ALS compensation service. Its identifiers are supplied
+         by the com.motorola.res MotoRes RRO, not encoded in this class declaration. -->
+    <string name="config_ambientLuxProcessorClass" translatable="false">com.motorola.display.StockAlsCompensationProcessor</string>
     <!-- String type published by the rear STK6B9X RGB/CCT sensor. -->
     <string name="config_displayWhiteBalanceColorTemperatureSensorName"
             translatable="false">com.motorola.sensor.alternate_rgb</string>
