@@ -48,9 +48,9 @@ device-tree notes.
 2. Use committed common-tree tinyxml guard `0f37846` in
    `device/motorola/sm7750-common` together with `external-tinyxml2`; common
    tree is part of device-tree ownership and has no duplicate patch here.
-3. Set `ro.surface_flinger.touch_boost_across_groups=true` with the cross-group
-   touch-boost patch. Do not restore the removed boost-cap property or
-   `RefreshRateDefaults` cap experiment.
+3. Apply the touch-interaction power patch with the SurfaceFlinger touch-group
+   patch. RoadSTR forwards physical touch hints, confines boosts to the active
+   90/120 Hz group, and does not permit cross-group touch switching.
 4. Keep RoadSTR's device overlay refresh policy separate from shared patches:
    default 90-120 Hz, low-light thresholds `56, 67` / `-1, 70`, and 90 Hz zone
    rate. Rebuild `product` after changing these resources.

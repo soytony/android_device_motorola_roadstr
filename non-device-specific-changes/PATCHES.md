@@ -96,6 +96,16 @@ ported independently.
 
 ## UDFPS, brightness, and sensors
 
+### RETAIN: Forward touch interaction boost
+
+**Source:** `frameworks/base`
+**Patch:** `frameworks-base/0007-power-forward-touch-interaction-boost.patch`
+
+Allows RoadSTR to forward physical touch user activity from the native input
+callback to SurfaceFlinger's touch timer. This is required because the AOSP UI
+toolkit HighHint path does not cover every system surface. Companion property:
+`ro.power.forward_touch_interaction_boost=true`.
+
 ### RETAIN: UDFPS validation and callback ordering
 
 **Source:** `frameworks/base`  

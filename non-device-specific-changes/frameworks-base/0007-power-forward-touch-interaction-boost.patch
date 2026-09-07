@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Mon, 7 Sep 2026 00:55:00 +0800
+Subject: [PATCH] power: optionally forward touch interaction boosts
+
+Modern UI toolkit touch hints do not cover every application and system
+surface. Allow devices to opt into forwarding physical touch user activity
+from the native input callback to SurfaceFlinger's touch timer.
+---
+ .../jni/com_android_server_power_PowerManagerService.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/services/core/jni/com_android_server_power_PowerManagerService.cpp b/services/core/jni/com_android_server_power_PowerManagerService.cpp
+index cc14c52a3930..2f4d027fad6a 100644
+--- a/services/core/jni/com_android_server_power_PowerManagerService.cpp
++++ b/services/core/jni/com_android_server_power_PowerManagerService.cpp
+@@ -26,6 +26,7 @@
+ #include <aidl/android/system/suspend/IWakeLock.h>
+ #include <android/keycodes.h>
+ #include <android-base/chrono_utils.h>
++#include <android-base/properties.h>
+ #include <android/binder_manager.h>
+ #include <android/system/suspend/ISuspendControlService.h>
+ #include <android/system/suspend/internal/ISuspendControlServiceInternal.h>
+@@ -98,6 +99,11 @@ void android_server_PowerManagerService_userActivity(nsecs_t eventTime, int32_t
+                                                      ui::LogicalDisplayId displayId,
+                                                      int32_t keyCode) {
+     if (gPowerManagerServiceObj) {
++        if (eventType == USER_ACTIVITY_EVENT_TOUCH &&
++            android::base::GetBoolProperty("ro.power.forward_touch_interaction_boost", false)) {
++            setPowerBoost(Boost::INTERACTION, 0);
++        }
++
+         // Throttle calls into user activity by event type.
+         // We're a little conservative about argument checking here in case the caller
+         // passes in bad data which could corrupt system state.
+-- 
+2.34.1

@@ -65,18 +65,11 @@ PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2inputsurface=-1 \
     persist.vendor.camera.physical.num=3
 
-# Keep the Visionox OLED's brightness and 60/90/120 Hz mode commits in sync.
-# The DRM connector brightness property makes the Composer include pending
-# brightness in the matching atomic commit, while DPPS receives the panel's
-# current FPS to update its dimming policy across refresh-rate transitions.
-# The stock display stack disables STC digital dimming: on this Visionox OLED,
-# keeping it enabled changes the emitted luminance when the idle policy moves
-# between 120 and 90 Hz even when Android's requested brightness is unchanged.
+# Match Motorola's stock idle policy.  The panel's 60/90 Hz mode transition
+# emits a short luminance step, so the vendor HAL—not a custom SurfaceFlinger
+# brightness/DPPS override—must own the refresh-rate decision.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=1000 \
-    vendor.display.enable_brightness_drm_prop=1 \
-    vendor.display.enable_dpps_dynamic_fps=1 \
-    vendor.display.disable_stc_dimming=1
+    ro.surface_flinger.set_idle_timer_ms=500
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \

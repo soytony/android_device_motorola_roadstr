@@ -135,8 +135,14 @@ PRODUCT_COPY_FILES += \
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/motorola/roadstr/roadstr-vendor.mk)
 
-# Enable SurfaceFlinger touch boost policy used by RoadSTR refresh-rate setup.
+# Advertise the panel's 120-Hz high frame-rate category.  This is a compile-
+# time category limit, independent of the cross-group touch-boost policy.
 $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
 
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.touch_boost_across_groups=true
+    debug.sf.touch_boost_refreshrate=120 \
+    ro.surface_flinger.touch_boost_across_groups=false \
+    ro.surface_flinger.touch_boost_active_group=true
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.power.forward_touch_interaction_boost=true

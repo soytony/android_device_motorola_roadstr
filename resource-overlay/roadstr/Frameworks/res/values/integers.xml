@@ -26,8 +26,10 @@
     <!-- Default new users to an adaptive 90-120 Hz range. -->
     <integer name="config_defaultRefreshRate">90</integer>
 
-    <!-- Keep low-light interaction within the panel's 90/120 Hz video-mode group. -->
-    <integer name="config_defaultRefreshRateInZone">90</integer>
+    <!-- Do not pin low-brightness operation to 90 Hz.  Idle FPS switching is
+         disabled in the vendor display HAL, so 90/120 Hz policy can remain
+         responsive without the touch-end 60/90 Hz luminance step. -->
+    <integer name="config_defaultRefreshRateInZone">0</integer>
 
     <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->
     <integer name="config_displayWhiteBalanceColorTemperatureMin">4500</integer>
