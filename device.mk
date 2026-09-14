@@ -52,7 +52,6 @@ PRODUCT_PACKAGES += \
     moto-framework \
     moto-res \
     moto-framework-roadstr-permissions \
-    RefreshRateDefaults \
     MotoResRoadstr \
     roadstr-udfps-hbm \
     ReFra \
