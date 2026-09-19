@@ -7,7 +7,7 @@
     <!-- Physical front-camera hole: display center X, center Y 79 px, radius 33 px. -->
     <string name="config_mainBuiltInDisplayCutout">M 33,79 A 33,33 0 0 1 0,111 A 33,33 0 0 1 -33,79 A 33,33 0 0 1 0,47 A 33,33 0 0 1 33,79 Z</string>
     <!-- Keep the larger logical exclusion area used to align status-bar content. -->
-    <string name="config_mainBuiltInDisplayCutoutRectApproximation">M -56,0 L 56,0 L 56,139 L -56,139 Z</string>
+    <string name="config_mainBuiltInDisplayCutoutRectApproximation">M -56,0 L 56,0 L 56,158 L -56,158 Z</string>
     <string name="config_mms_user_agent">motorolaedge70</string>
     <string name="config_mms_user_agent_profile_url">http://uaprof.motorola.com/phoneconfig/motov1/Profile/motov1.rdf</string>
     <!-- The ALS is exposed by the vendor sensors HAL.  Framework auto
