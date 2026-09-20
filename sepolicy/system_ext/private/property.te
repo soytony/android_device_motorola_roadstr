@@ -1,0 +1,2 @@
+# RoadSTR reuses platform-exported property classes for Motorola init triggers;
+# no device-specific public policy API is required.

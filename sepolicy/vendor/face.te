@@ -11,8 +11,9 @@ allow vendor_biometricsface fwk_camera_service:service_manager find;
 
 # Stock Tetras publishes vendor.faceauth.* state through its private property
 # type. Keep the grant typed and limited to this provider domain.
-allow vendor_biometricsface vendor_tetras_prop:property_service set;
+set_prop(vendor_biometricsface, vendor_tetras_prop)
 
 # Tetras reads its own state/version properties while starting enrollment.
 # Keep the read grant limited to the RoadSTR face provider and typed property.
 get_prop(vendor_biometricsface, vendor_tetras_prop)
+get_prop(vendor_biometricsface, exported_config_prop)

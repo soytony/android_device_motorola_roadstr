@@ -1,0 +1,5 @@
+mot.oobe.rubbish.screenshot     u:object_r:exported_config_prop:s0 exact int
+ro.sys.force_demo_mode         u:object_r:charger_config_prop:s0 exact string
+ro.sys.force_max_chrg_temp     u:object_r:charger_config_prop:s0 exact string
+ro.product.is_production       u:object_r:exported_config_prop:s0 exact bool
+persist.mot_bt.sar_state       u:object_r:exported_bluetooth_prop:s0 exact string
