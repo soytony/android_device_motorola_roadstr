@@ -57,6 +57,7 @@ PRODUCT_PACKAGES += \
     ReFra \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \
+    Launcher3ResRoadstr \
     LineageSdkRoadstr \
     LineagePartsActionButtonRoadstr \
     SystemGalleryOverlayRoadstr \

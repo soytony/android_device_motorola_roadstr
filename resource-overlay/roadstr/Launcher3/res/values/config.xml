@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RoadSTR default launcher layout: four columns by five rows. -->
+    <bool name="config_force_default_4x5_grid">true</bool>
+</resources>
