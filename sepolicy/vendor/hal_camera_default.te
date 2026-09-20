@@ -1,0 +1,9 @@
+# Arcsoft post-processing runs inside the camera provider and registers one
+# protected vendor service. Keep it separate from default_android_service.
+type hal_arcsoft_camera_postproc_service, protected_service, hal_service_type, service_manager_type;
+add_service(hal_camera_default, hal_arcsoft_camera_postproc_service)
+
+# Refreshed camera provider reads factory sensor calibration from persist.
+# Match stock policy: traverse only the sensors label and read existing files.
+allow hal_camera_default vendor_persist_sensors_file:dir search;
+allow hal_camera_default vendor_persist_sensors_file:file { read getattr open };

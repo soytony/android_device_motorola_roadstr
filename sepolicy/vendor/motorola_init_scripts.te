@@ -23,6 +23,9 @@ init_daemon_domain(init_capsensor)
 
 # Stock labels the capsensor driver separately from generic sysfs.
 type sysfs_capsense, fs_type, sysfs_type;
+type sysfs_roadstr_bus_drivers, fs_type, sysfs_type;
+type sysfs_roadstr_display_dpms, fs_type, sysfs_type;
+type sysfs_roadstr_wireless_fw, fs_type, sysfs_type;
 
 type init_display, domain;
 type init_display_exec, exec_type, vendor_file_type, file_type;
@@ -48,12 +51,16 @@ allow { hardware_rev init_block_perm init_usb init_display } vendor_file:file ex
 allow { hardware_rev init_block_perm init_usb init_wls init_display } vendor_toolbox_exec:file rx_file_perms;
 
 rw_dir_file(hardware_rev, hwrev_data_file)
-allow hardware_rev { sysfs vendor_sysfs_touchpanel }:dir search;
+allow hardware_rev hwrev_data_file:dir create_dir_perms;
+allow hardware_rev hwrev_data_file:file create_file_perms;
+allow hardware_rev kmsg_device:chr_file w_file_perms;
+allow hardware_rev sysfs_roadstr_bus_drivers:dir r_dir_perms;
+allow hardware_rev { sysfs vendor_sysfs_touchpanel }:dir r_dir_perms;
 allow hardware_rev { sysfs vendor_sysfs_touchpanel }:file r_file_perms;
 
 allow init_block_perm block_device:dir search;
-allow init_block_perm self:capability { chown fowner };
-allow init_block_perm { vendor_utags_block_device cid_block_device kpan_block_device clogo_block_device }:blk_file setattr;
+allow init_block_perm self:capability { chown fowner fsetid };
+allow init_block_perm { vendor_utags_block_device cid_block_device kpan_block_device clogo_block_device }:blk_file { getattr setattr };
 
 set_prop(init_usb, vendor_usb_prop)
 set_prop(init_usb, vendor_mot_factory_prop)
@@ -67,6 +74,7 @@ allow init_usb self:capability { chown fowner };
 allow init_usb configfs:dir search;
 allow init_usb configfs:file w_file_perms;
 allow init_usb kmsg_device:chr_file w_file_perms;
+allow init_usb sysfs_udc:dir search;
 
 allow init_wls kmsg_device:chr_file rw_file_perms;
 allow init_wls vendor_sysfs_battery_supply:dir search;
@@ -74,6 +82,8 @@ allow init_wls vendor_sysfs_battery_supply:file rw_file_perms;
 allow init_wls vendor_sysfs_usb_supply:dir search;
 allow init_wls sysfs_wls_dev:dir search;
 allow init_wls sysfs_wls_dev:file rw_file_perms;
+allow init_wls { vendor_sysfs_battery_supply vendor_sysfs_wlc sysfs_wls_dev }:file { getattr setattr };
+allow init_wls sysfs_roadstr_wireless_fw:file rw_file_perms;
 allow init_wls self:capability { chown fowner fsetid };
 
 # The core capsensor setup service is a vendor shell script.  Match stock's
@@ -97,4 +107,33 @@ allow mbm_spy vendor_utags_block_device:blk_file rw_file_perms;
 allow mbm_spy rtc_device:chr_file r_file_perms;
 allow mbm_spy proc:dir search;
 allow mbm_spy proc:{ file lnk_file } r_file_perms;
+allow mbm_spy { proc_version vendor_proc_moto_boot }:file r_file_perms;
 get_prop(mbm_spy, vendor_radio_prop)
+get_prop(mbm_spy, vendor_spm_prop)
+
+# Stock battery-health service reads the hardware boot reason when deciding
+# whether lifetime metadata needs an update.
+get_prop(batt_health, vendor_mot_boot_prop)
+get_prop(rild, vendor_mot_boot_prop)
+get_prop(vendor_hal_gatekeeper_qti, vendor_keymint_retry_timer_prop)
+
+# Lineage charging control toggles Motorola's driver-owned disable node.
+allow hal_lineage_health_default vendor_sysfs_battery_supply:file rw_file_perms;
+
+# Refreshed vendor camera and GNSS blobs use these existing, narrowly typed
+# platform/vendor interfaces during service startup.
+get_prop(hal_camera_default, vendor_mot_boot_prop)
+allow vendor_hal_gnss_qti fwk_sensor_service:service_manager find;
+allow system_server hal_sensorext_service:service_manager find;
+
+# Motorola's broad battery label also covers three wakeup-source statistic
+# directories enumerated by system suspend. Only read access is required.
+allow system_suspend_server vendor_sysfs_battery_supply:file r_file_perms;
+
+# Thermal engine watches panel power state to select display-related profiles.
+allow vendor_thermal-engine sysfs_roadstr_display_dpms:file r_file_perms;
+
+# Motorola SensorExt follows display state through the QTI display service and
+# the panel DPMS node when managing low-power sensors.
+hal_client_domain(hal_sensors_default, hal_graphics_composer)
+allow hal_sensors_default sysfs_roadstr_display_dpms:file r_file_perms;
