@@ -31,6 +31,7 @@ $(call soong_config_set_bool,moto_sensors,legacy_double_tap,true)
 $(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH)/lineagehw/touch:libperfmgr-ext-roadstr)
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.roadstr.weaver.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.weaver.rc \
     $(LOCAL_PATH)/configs/idc/double-tap.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/double-tap.idc \
     $(LOCAL_PATH)/configs/keylayout/double-tap.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/double-tap.kl
 
