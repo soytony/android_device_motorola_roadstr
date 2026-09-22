@@ -127,4 +127,6 @@ $(call inherit-product-if-exists, vendor/motorola/roadstr/roadstr-vendor.mk)
 # Enable SurfaceFlinger touch boost policy used by RoadSTR refresh-rate setup.
 PRODUCT_VENDOR_PROPERTIES += \
     ro.surface_flinger.touch_boost_across_groups=true \
-    ro.surface_flinger.touch_boost_refresh_rate=90
+    ro.surface_flinger.touch_boost_refresh_rate=0 \
+    debug.sf.touch_boost_refreshrate=120 \
+    debug.sf.touch_scroll_predict_ms=200

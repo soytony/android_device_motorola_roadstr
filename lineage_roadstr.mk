@@ -60,7 +60,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 # keeping it enabled changes the emitted luminance when the idle policy moves
 # between 120 and 90 Hz even when Android's requested brightness is unchanged.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=1000 \
+    ro.surface_flinger.set_idle_timer_ms=200 \
     vendor.display.enable_brightness_drm_prop=1 \
     vendor.display.enable_dpps_dynamic_fps=1 \
     vendor.display.disable_stc_dimming=1 \
