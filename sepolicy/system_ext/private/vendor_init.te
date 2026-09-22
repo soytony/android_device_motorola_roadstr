@@ -1,4 +1,0 @@
-# Vendor init owns Motorola's property-triggered hardware integration.
-get_prop(vendor_init, exported_config_prop)
-get_prop(vendor_init, charger_config_prop)
-get_prop(vendor_init, moto_battinfo_prop)

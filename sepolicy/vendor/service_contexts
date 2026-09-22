@@ -5,8 +5,6 @@ vendor.lineage.biometrics.udfps.IUdfpsHbm/default            u:object_r:udfps_hb
 android.hardware.media.c2.IComponentStore/default9            u:object_r:hal_codec2_service:s0
 # The low-power sensor service shares Motorola's SensorExt HAL policy.
 motorola.hardware.lpsensing.ILpSensing/default                u:object_r:hal_sensorext_service:s0
-vendor.arcsoft.hardware.camera.postproc.IPostProcService/default u:object_r:hal_arcsoft_camera_postproc_service:s0
-vendor.dolby.dms.IDms/default                                 u:object_r:hal_aidl_dms_service:s0
 # These Motorola fingerprint diagnostic interfaces are registered by the
 # regular fingerprint HAL and share its stock vendor service type.
 com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint/default         u:object_r:hal_fingerprint_test_service:s0
