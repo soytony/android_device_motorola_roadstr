@@ -424,6 +424,7 @@ vendor/lib64/libarcsoft_tfs_portrait_sn.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libarcsoft_tfs_sn.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libarcsoft_tfs_sr.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libarcsoftpostprocservice.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libcppbor_external.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libmot_afd.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libmot_engine_settings.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libvidhance.so;MAKE_COPY_RULE_ONLY
