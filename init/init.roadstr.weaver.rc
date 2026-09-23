@@ -1,4 +1,0 @@
-# RoadSTR firmware exposes Thales Weaver service, but bootloader does not
-# publish ro.boot.strongbox_support. Start service so vold can unlock FBE user.
-on init
-    start weaver_hal_service

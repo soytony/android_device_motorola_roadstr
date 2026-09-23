@@ -8,6 +8,5 @@ vendor.boot_completed                    u:object_r:vendor_mot_init_prop:s0
 vendor.tcmd.ctrl_adb                     u:object_r:vendor_mot_tcmd_ctrl_adb_prop:s0
 ro.boot.adb_early                        u:object_r:vendor_mot_boot_prop:s0
 ro.boot.secure_hardware                  u:object_r:vendor_mot_boot_prop:s0
-ro.boot.strongbox_support                u:object_r:vendor_mot_boot_prop:s0
 ro.boot.usbcontroller                    u:object_r:vendor_mot_boot_prop:s0
 ro.vendor.boot.cid                       u:object_r:vendor_mot_boot_prop:s0
