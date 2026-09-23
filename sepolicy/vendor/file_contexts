@@ -22,6 +22,8 @@
 
 # Camera post-processing libraries are loaded by Motorola Camera (priv_app).
 # Stock labels these same-process libraries so appdomain can map/read them.
+/vendor/lib(64)?/libmpbase\.so                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libpostprocclient\.moto\.so        u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libportrait_repair_qnn\.so        u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libarcsoft_tfs_hdr\.so            u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libenginepostproc\.moto\.so       u:object_r:same_process_hal_file:s0
