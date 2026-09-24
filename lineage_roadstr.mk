@@ -77,3 +77,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=motorola/roadstr_g/roadstr:16/W1WRS36.39-115-2/549c34:user/release-keys \
     DeviceProduct=roadstr_g \
     SystemName=roadstr_g
+
+# Optional Motorola/QTI helpers are omitted at source: they are incompatible
+# with refreshed Android 16 libraries and crash during receiver startup.

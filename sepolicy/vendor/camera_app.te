@@ -1,0 +1,5 @@
+# MotCamera5 uses the Qualcomm camera post-processing/fastrpc path. Qualcomm
+# policy already defines vendor_snapcam_app for this workload; package mapping
+# is kept in seapp_contexts instead of broadening generic priv_app. Its stock
+# policy intentionally limits appdomain access to vendor_qdsp_device; the
+# dedicated domain supplies secure DSP access through vendor_xdsp_device.
