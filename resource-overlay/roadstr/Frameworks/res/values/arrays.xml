@@ -76,13 +76,4 @@
         <item>0.05</item>
     </array>
 
-    <!-- Match stock policy: avoid command/video mode switching in low light. -->
-    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
-        <item>56</item>
-        <item>67</item>
-    </integer-array>
-    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
-        <item>-1</item>
-        <item>70</item>
-    </integer-array>
 </resources>

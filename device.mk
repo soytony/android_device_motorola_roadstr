@@ -141,8 +141,9 @@ $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
 
 PRODUCT_VENDOR_PROPERTIES += \
     debug.sf.touch_boost_refreshrate=120 \
-    ro.surface_flinger.touch_boost_across_groups=false \
-    ro.surface_flinger.touch_boost_active_group=true
+    ro.surface_flinger.touch_boost_across_groups=true \
+    ro.surface_flinger.touch_boost_refresh_rate=0 \
+    debug.sf.touch_scroll_predict_ms=200
 
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.power.forward_touch_interaction_boost=true

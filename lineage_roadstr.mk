@@ -69,7 +69,9 @@ PRODUCT_VENDOR_PROPERTIES += \
 # emits a short luminance step, so the vendor HAL—not a custom SurfaceFlinger
 # brightness/DPPS override—must own the refresh-rate decision.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=500
+    ro.surface_flinger.set_idle_timer_ms=200 \
+    vendor.display.only_report_first_mode=0 \
+    vendor.display.disable_idle_fps_switch=0
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \

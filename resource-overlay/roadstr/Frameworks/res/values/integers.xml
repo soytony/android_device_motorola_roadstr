@@ -24,7 +24,7 @@
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
     <!-- Default new users to an adaptive 90-120 Hz range. -->
-    <integer name="config_defaultRefreshRate">90</integer>
+    <integer name="config_defaultRefreshRate">0</integer>
 
     <!-- Do not pin low-brightness operation to 90 Hz.  Idle FPS switching is
          disabled in the vendor display HAL, so 90/120 Hz policy can remain
