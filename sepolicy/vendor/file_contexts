@@ -27,6 +27,20 @@
 /data/vendor/hardware_revisions(/.*)?               u:object_r:hwrev_data_file:s0
 /data/vendor/dolby(/.*)?                            u:object_r:vendor_dolby_file:s0
 
+# MotoCamera loads these post-processing libraries in its app process.  Stock
+# labels them same_process_hal_file; vendor_file is unreadable to priv_app
+# under enforcing SELinux and causes post-processing to crash after capture.
+/vendor/lib(64)?/libportrait_repair_qnn\.so       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarcsoft_tfs(_portrait)?_hdr\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarcsoft_tfs(_portrait)?_sn\.so  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarcsoft_tfs_motioncapture\.so u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libenginepostproc\.moto\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarc\.ion\.so                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libpostprocclient\.moto\.so    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libarcsoft_qnnhtp\.so           u:object_r:same_process_hal_file:s0
+# Public Arcsoft/QNN dependencies loaded directly by MotoCamera.
+/vendor/lib(64)?/lib(mpbase|QnnSystem|QnnHtp|QnnHtpV73Stub|fastcvopt|OpenCL|qti-perfd-client|adsprpc|cdsprpc|sdsprpc)\.so u:object_r:same_process_hal_file:s0
+
 # These names are stable /dev/block symlinks on RoadSTR.  The block-permission
 # helper adjusts ownership and modes during early vendor initialization.
 /dev/block/bootdevice/by-name/cid                    u:object_r:cid_block_device:s0
