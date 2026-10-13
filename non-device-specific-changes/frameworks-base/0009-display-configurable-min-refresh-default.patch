@@ -1,0 +1,41 @@
+diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
+index 8ed45fc22a3c..241d49f5f024 100644
+--- a/core/res/res/values/config.xml
++++ b/core/res/res/values/config.xml
+@@ -5868,6 +5868,10 @@
+          non-zero. -->
+     <integer name="config_defaultPeakRefreshRate">0</integer>
+ 
++    <!-- Default minimum refresh rate when the user has not selected one.
++         Zero leaves the minimum unconstrained. -->
++    <integer name="config_defaultMinRefreshRate">0</integer>
++
+     <!-- External display peak refresh rate for the given device. Change this value if you want to
+          prevent the framework from using higher refresh rates, even if display modes with higher
+          refresh rates are available from hardware composer. Only has an effect if this value and
+diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
+index 44a4b1cf0b4c..27c4c5d40fac 100644
+--- a/core/res/res/values/symbols.xml
++++ b/core/res/res/values/symbols.xml
+@@ -4616,6 +4616,7 @@
+   <!-- For high refresh rate displays -->
+   <java-symbol type="integer" name="config_defaultRefreshRate" />
+   <java-symbol type="integer" name="config_defaultPeakRefreshRate" />
++  <java-symbol type="integer" name="config_defaultMinRefreshRate" />
+   <java-symbol type="integer" name="config_externalDisplayPeakRefreshRate" />
+   <java-symbol type="integer" name="config_externalDisplayPeakWidth" />
+   <java-symbol type="integer" name="config_externalDisplayPeakHeight" />
+diff --git a/services/core/java/com/android/server/display/mode/DisplayModeDirector.java b/services/core/java/com/android/server/display/mode/DisplayModeDirector.java
+index b14448356585..94b746d03442 100644
+--- a/services/core/java/com/android/server/display/mode/DisplayModeDirector.java
++++ b/services/core/java/com/android/server/display/mode/DisplayModeDirector.java
+@@ -1167,7 +1167,8 @@ public class DisplayModeDirector {
+             float highestRefreshRate = getMaxRefreshRateLocked(displayId);
+ 
+             float minRefreshRate = Settings.System.getFloatForUser(cr,
+-                    Settings.System.MIN_REFRESH_RATE, 0f, UserHandle.USER_CURRENT);
++                    Settings.System.MIN_REFRESH_RATE, mContext.getResources().getInteger(
++                            R.integer.config_defaultMinRefreshRate), UserHandle.USER_CURRENT);
+             if (Float.isInfinite(minRefreshRate)) {
+                 // Infinity means that we want the highest possible refresh rate
+                 minRefreshRate = highestRefreshRate;

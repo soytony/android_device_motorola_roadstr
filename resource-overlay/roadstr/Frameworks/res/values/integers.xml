@@ -23,6 +23,9 @@
     <!-- Allow the framework refresh-rate policy to use the panel's high modes. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
+    <!-- Keep the default range within the panel's adaptive 90/120 Hz group. -->
+    <integer name="config_defaultMinRefreshRate">90</integer>
+
     <!-- Do not install a global render-rate ceiling. The display policy uses
          this panel's 60, 90, and 120 Hz modes according to user settings. -->
     <integer name="config_defaultRefreshRate">0</integer>

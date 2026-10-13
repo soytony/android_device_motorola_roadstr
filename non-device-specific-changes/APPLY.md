@@ -48,8 +48,9 @@ device-tree notes.
 2. Use committed common-tree tinyxml guard `0f37846` in
    `device/motorola/sm7750-common` together with `external-tinyxml2`; common
    tree is part of device-tree ownership and has no duplicate patch here.
-3. Set both SurfaceFlinger properties and keep RoadSTR `RefreshRateDefaults`
-   initialization when using the refresh patches.
+3. Set the SurfaceFlinger properties when using the refresh patches. Apply
+   the framework and Settings minimum-refresh-default patches so RoadSTR's
+   `config_defaultMinRefreshRate` overlay controls both display policy and UI.
 4. Use the audio patch only with a complete stock `audiohalservice.qti`
    implementation and matching blobs.
 5. Keep display-core and display-hal changes independently testable.
