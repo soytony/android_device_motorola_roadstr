@@ -7,6 +7,23 @@ Status labels:
   needs it.
 - **COMPANION**: shared patch needs a device-tree or product definition.
 
+## COMPANION: Configurable minimum refresh-rate default
+
+**Sources:** `frameworks/base`, `packages/apps/Settings`
+**Patches:** `frameworks-base/0009-display-configurable-min-refresh-default.patch`,
+`packages-apps-Settings/0002-settings-configurable-min-refresh-default.patch`
+
+Adds `config_defaultMinRefreshRate` and uses it when no minimum refresh-rate
+setting is saved. RoadSTR overlays 90 Hz, retaining the 120 Hz peak default.
+Settings shows the same default; saved user preferences take precedence.
+The base value of zero preserves unconstrained framework behavior and the
+existing 60 Hz Settings fallback on other devices. No boot app is required.
+
+InfinityX port: framework commit `859aa8c26e11` adds the resource and policy;
+`ffbc3ea5147f` adapts `DisplayRefreshRateHelper`, which supplies the InfinityX
+Settings refresh controllers. The bundled Lineage Settings patch targets a
+controller absent from InfinityX and is a reference, not an applicable patch.
+
 ## Frameworks native
 
 ### RETAIN: SurfaceFlinger cross-group touch boost

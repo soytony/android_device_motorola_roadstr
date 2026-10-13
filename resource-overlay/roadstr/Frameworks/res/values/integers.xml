@@ -23,12 +23,16 @@
     <!-- Allow the framework refresh-rate policy to use the panel's high modes. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
 
-    <!-- Default new users to an adaptive 90-120 Hz range. -->
+    <!-- Keep the default range within the panel's adaptive 90/120 Hz group. -->
+    <integer name="config_defaultMinRefreshRate">90</integer>
+
+    <!-- Do not install a global render-rate ceiling. The display policy uses
+         this panel's 60, 90, and 120 Hz modes according to user settings. -->
     <integer name="config_defaultRefreshRate">0</integer>
 
-    <!-- Do not pin low-brightness operation to 90 Hz.  Idle FPS switching is
-         disabled in the vendor display HAL, so 90/120 Hz policy can remain
-         responsive without the touch-end 60/90 Hz luminance step. -->
+    <!-- Do not add a low-brightness render-rate ceiling. The 90 Hz floor is
+         selected by the user refresh-rate policy; touch and scroll may still
+         use the panel's 120 Hz mode. -->
     <integer name="config_defaultRefreshRateInZone">0</integer>
 
     <!-- Conservative MVP limits until BOE and CSOT panels are calibrated. -->

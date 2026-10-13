@@ -51,9 +51,11 @@ device-tree notes.
 3. Apply the touch-interaction power patch with the SurfaceFlinger touch-group
    patch. RoadSTR forwards physical touch hints, confines boosts to the active
    90/120 Hz group, and does not permit cross-group touch switching.
-4. Keep RoadSTR's device overlay refresh policy separate from shared patches:
-   default 90-120 Hz, low-light thresholds `56, 67` / `-1, 70`, and 90 Hz zone
-   rate. Rebuild `product` after changing these resources.
+4. Apply the framework minimum-refresh-default patch before the RoadSTR RRO.
+   Default to adaptive 90-120 Hz through `config_defaultMinRefreshRate=90`,
+   with no default render-rate or low-light zone ceiling. On InfinityX, port
+   the Settings companion to `DisplayRefreshRateHelper` in frameworks/base;
+   the Lineage Settings controller is absent. Rebuild `system` and `product`.
 5. Use the audio patch only with a complete stock `audiohalservice.qti`
    implementation and matching blobs.
 6. Keep display-core and display-hal changes independently testable.
