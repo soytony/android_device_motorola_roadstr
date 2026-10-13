@@ -21,6 +21,9 @@ PRODUCT_SHIPPING_API_LEVEL := 36
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Attenuate only the top amplifier during speaker playback.
+ROADSTR_TFA_CONTAINER := $(LOCAL_PATH)/audio/tfa98xx.cnt
+
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
