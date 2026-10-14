@@ -65,13 +65,35 @@ PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.c2inputsurface=-1 \
     persist.vendor.camera.physical.num=3
 
-# Match Motorola's stock idle policy.  The panel's 60/90 Hz mode transition
-# emits a short luminance step, so the vendor HAL—not a custom SurfaceFlinger
-# brightness/DPPS override—must own the refresh-rate decision.
+# Keep panel brightness and 60/90/120 Hz mode commits in sync.
+# The DRM connector brightness property makes the Composer include pending
+# brightness in the matching atomic commit, while DPPS receives the panel's
+# current FPS to update its dimming policy across refresh-rate transitions.
+# Keep STC digital dimming disabled, matching the stock display configuration.
+# TODO(display): Fix the CSOT NT37706 panel's subtle luminance difference
+# between 90 and 120 Hz, observed in dark grays at low brightness. The 2-second
+# idle timeout only reduces transition frequency; it does not correct luminance.
+# Investigate documented panel per-rate gamma calibration or a kernel-managed
+# display-controller LUT with gray/brightness-dependent piecewise correction,
+# synchronized with physical mode changes and preserving existing color/HDR
+# calibration. These are unvalidated options, not established fixes. Investigate
+# the brief release-time dip separately, including mode/command synchronization.
+# Preserve adaptive 90-120 Hz at all brightness levels, transparent to Android;
+# do not substitute a refresh-rate cap or guess undocumented panel registers.
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.set_idle_timer_ms=200 \
+    ro.surface_flinger.set_idle_timer_ms=2000 \
+    vendor.display.enable_brightness_drm_prop=1 \
+    vendor.display.enable_dpps_dynamic_fps=1 \
+    vendor.display.disable_stc_dimming=1 \
     vendor.display.only_report_first_mode=0 \
     vendor.display.disable_idle_fps_switch=0
+
+# Let SurfaceFlinger own physical mode selection. SDM's independent ChangeFps
+# policy otherwise drops this panel to 60 Hz even while SF requests 90 Hz,
+# adding extra mode transitions on touch/idle. This disables SDM's internal
+# FPS overrides, not SetActiveConfig: adaptive 90/120 Hz remains available.
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.display.disable_dynamic_fps=1
 
 # Build info
 PRODUCT_BUILD_PROP_OVERRIDES += \
