@@ -36,8 +36,8 @@ framework/Settings/resource/SELinux build passed in 23m23s.
 | Original OTA SHA-256 | 0d9cb57af2b0e546b08bbd058370d779e7c56d7a590aaa8d0b8560d5542fad09 |
 | Fresh complete super | out/target/product/roadstr/super-infinity-20261015.img |
 | Super SHA-256 | eb198cacb6c9131d970d70a42b23b47d59a6e6c62affa3789d2063032304e48d |
-| Working root vbmeta | out/target/product/roadstr/vbmeta-pvmfw-fixed.img |
-| Working vbmeta SHA-256 | db999cf17b04027c287f233a2ea99343baca1b5fc22615e9342d425b2dccc0ab |
+| Initial working root vbmeta (original recovery only) | out/target/product/roadstr/vbmeta-pvmfw-fixed.img |
+| Initial vbmeta SHA-256 | db999cf17b04027c287f233a2ea99343baca1b5fc22615e9342d425b2dccc0ab |
 
 Canonical build images came from:
 `out/target/product/roadstr/obj/PACKAGING/target_files_intermediates/infinity_roadstr-target_files/IMAGES`.
@@ -47,9 +47,10 @@ canonical extracted target files. All six embedded logical partitions were
 unpacked and matched the expanded source-image SHA-256 hashes.
 
 **The original OTA ZIP and original canonical vbmeta predate the pvmfw fix.**
-Bacon was not rerun after that fix. Rebuild the OTA with commit b5f5059 before
-using the ZIP for another installation. The current phone uses the corrected
-standalone vbmeta and has completed boot.
+Bacon was not rerun after that fix. Rebuild the OTA with commits b5f5059,
+319105e, and 978eb1e before using the ZIP for another installation. Android
+completed boot with the pvmfw fix; recovery was subsequently rebuilt and
+verified with automatic touch and the banner margin, as recorded below.
 
 ## Flash sequence and failure diagnosis
 
@@ -111,3 +112,60 @@ is saved under ~/Documents/. The evidence directory is
 This report and the historical audit are also committed under
 `device/motorola/roadstr/docs/`. The workspace-root audits directory is outside
 any Git repository, so its report is preserved through that tracked copy.
+
+
+## Recovery touch and camera-cutout follow-up
+
+The user reported that the recovery banner overlapped the front camera hole
+and touch no longer worked. Both changes were implemented in device trees.
+
+| Change | Repository | Commit |
+| --- | --- | --- |
+| Set TARGET_RECOVERY_UI_MARGIN_HEIGHT=10 | device/motorola/roadstr | 319105e |
+| Start touch loader in recovery domain; remove duplicate init installation | device/motorola/sm7750-common | 978eb1e |
+
+The banner uses ro.recovery.ui.margin_height directly as its top coordinate.
+The 10-pixel setting shifts the banner/menu downward and reserves the same
+vertical margin at the bottom. No recovery UI source change was needed.
+
+The touch regression was an init service failure. The rootfs-labeled
+/system/bin/recovery_touch_start script lacked an explicit SELinux domain,
+so init rejected it before any touchscreen modules could load. The same init
+file was also installed under both the root and system/etc/init paths,
+causing duplicate service definitions. Adding seclabel u:r:recovery:s0 uses
+the existing recovery domain/transition; retaining only the root init copy
+removes the duplication. No SELinux policy relaxation was added.
+
+Running the existing loader manually registered goodix_ts, and the user
+confirmed touch worked. Then m -j8 recoveryimage passed in 8m34s. Inspection
+of the built ramdisk confirmed exactly one recovery_touch service, its
+explicit recovery domain, and ro.recovery.ui.margin_height=10.
+
+A matching root vbmeta was generated from the already verified pvmfw-fixed
+image with the new recovery descriptor. All other partition descriptors,
+including pvmfw, remained unchanged. Flags 0 and root rollback index 1 were
+retained; avbtool verify_image --follow_chain_partitions passed for the full
+chain. recovery_a and vbmeta_a were flashed through bootloader with slot A
+explicitly active, followed by fastboot reboot recovery. No userdata,
+metadata, or logical partitions were written during this follow-up.
+
+| Post-reboot check | Result |
+| --- | --- |
+| Recovery slot | _a |
+| Margin property | 10 |
+| Touch-loader service | Started automatically; exited status 0 after 4.197 seconds |
+| Touchscreen | goodix_ts registered as input5/event5 at 6.446 seconds |
+| Duplicate/transition errors | Absent |
+| User confirmation | Touch works after reboot; banner placement accepted |
+
+The following pair is the latest working recovery/vbmeta combination. The
+initial pvmfw-only vbmeta above authenticates the previous recovery image;
+it must not be paired with this newly rebuilt recovery.
+
+| Current image | SHA-256 |
+| --- | --- |
+| /media/tony/SSD512/ProjectInfinityX/out/target/product/roadstr/recovery-touch-fixed.img | 1a78a6af7072860aedf82acef4fb471cda505ba48888351cf0130fe46bf58895 |
+| /media/tony/SSD512/ProjectInfinityX/out/target/product/roadstr/vbmeta-recovery-touch-fixed.img | 15ef23e3c6660292fdda81b53a209c2b8ea1ed287fa5d1e41442b4851f1d56ae |
+
+The phone is left in the successfully tested recovery. The original OTA ZIP
+still predates these fixes and must be rebuilt before reuse.
