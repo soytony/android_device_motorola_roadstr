@@ -18,6 +18,10 @@ TARGET_BOOTLOADER_BOARD_NAME := roadstr
 # 1220 px * 160 / 501 dpi = 389.6 dp minimum width.
 TARGET_SCREEN_DENSITY := 501
 
+# Recovery
+# Keep the banner clear of the front-facing camera cutout.
+TARGET_RECOVERY_UI_MARGIN_HEIGHT := 10
+
 # Kernel
 TARGET_KERNEL_VERSION := 6.6
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
