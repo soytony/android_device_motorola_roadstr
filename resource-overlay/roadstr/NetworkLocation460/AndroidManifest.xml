@@ -4,5 +4,7 @@
           package="com.motorola.android.networklocation.overlay.mcc460">
     <overlay android:targetPackage="android"
              android:isStatic="true"
-             android:priority="800" />
+             android:priority="800"
+             android:requiredSystemPropertyName="ro.boot.hardware.sku"
+             android:requiredSystemPropertyValue="XT2601-1" />
 </manifest>

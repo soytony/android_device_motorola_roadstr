@@ -72,6 +72,10 @@ PRODUCT_PACKAGES += \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
 
+# Baidu is selected only on CN hardware by the property-gated framework overlay.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/default-permissions-baidu-location.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-baidu-location.xml
+
 # Load the optional ambient-lux provider in system_server. The common framework
 # invokes only the generic hook; all rear-sensor and leakage policy stays here.
 PRODUCT_SYSTEM_SERVER_JARS_EXTRA += moto-framework
