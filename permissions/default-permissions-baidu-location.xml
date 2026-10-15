@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<exceptions>
+    <!-- The network provider needs location access to collect Wi-Fi and cell observations. -->
+    <exception package="com.baidu.map.location">
+        <permission name="android.permission.ACCESS_COARSE_LOCATION" fixed="false" />
+        <permission name="android.permission.ACCESS_FINE_LOCATION" fixed="false" />
+        <permission name="android.permission.ACCESS_BACKGROUND_LOCATION" fixed="false" />
+        <!-- The stock APK checks this legacy permission before starting location or geocoding. -->
+        <permission name="android.permission.WRITE_EXTERNAL_STORAGE" fixed="false" />
+    </exception>
+</exceptions>

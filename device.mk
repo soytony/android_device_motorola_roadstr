@@ -69,6 +69,10 @@ PRODUCT_PACKAGES += \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
 
+# Baidu is selected only on CN hardware by the property-gated framework overlay.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/default-permissions-baidu-location.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-baidu-location.xml
+
 # Use Lunaris controller with RoadSTR's stock 64-bit Motorola DAX 3.12 stack.
 PRODUCT_PACKAGES += \
     LunarisDolby

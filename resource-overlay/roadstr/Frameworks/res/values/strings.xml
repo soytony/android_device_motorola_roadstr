@@ -20,7 +20,7 @@
     <!-- String type published by the rear STK6B9X RGB/CCT sensor. -->
     <string name="config_displayWhiteBalanceColorTemperatureSensorName"
             translatable="false">com.motorola.sensor.alternate_rgb</string>
-    <!-- Keep generic provider discovery disabled; values-mcc460 selects Baidu. -->
+    <!-- Keep generic discovery disabled; the CN hardware overlay selects Baidu. -->
     <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
 
     <!-- Use a compact separator between multiple SIM carrier names on keyguard. -->
