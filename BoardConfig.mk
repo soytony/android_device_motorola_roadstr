@@ -51,6 +51,11 @@ VENDOR_SECURITY_PATCH := 2026-06-01
 # which is rejected. Keep the known device floor instead of permanently advancing it.
 BOARD_AVB_ROLLBACK_INDEX := 1
 
+# The bootloader requests pvmfw during AVB verification. Authenticate the
+# firmware prerequisite alongside the Android images to keep the slot bootable.
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += \
+    --include_descriptors_from_image $(DEVICE_PATH)/firmware/stock-W1WRS36.39-115-2/pvmfw.img
+
 # SEPolicy
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/public
