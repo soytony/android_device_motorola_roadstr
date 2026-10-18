@@ -8,7 +8,10 @@
     <dimen name="status_bar_clock_size">15.0sp</dimen>
 
     <!-- Padding on the start of the statusbar -->
-    <dimen name="status_bar_padding_start">6dp</dimen>
+    <dimen name="status_bar_padding_start">8dp</dimen>
+
+    <!-- Reserve room for the 6dp privacy dot without the default 20dp gap. -->
+    <dimen name="ongoing_appops_dot_min_padding">12dp</dimen>
 
     <!-- Padding on the top of the statusbar. Disabled as we use vertically
     symmetrical status bar around the camera hole -->
