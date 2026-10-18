@@ -1,0 +1,18 @@
+# The stock location launcher forks/execs these helpers. Match Qualcomm's
+# compatibility transitions rather than executing helpers in the parent domain.
+domain_auto_trans(vendor_location, vendor_location_lowi_server_exec, vendor_location_lowi_server)
+allow vendor_location_lowi_server vendor_location:fd use;
+domain_auto_trans(vendor_location, vendor_location_xtra_daemon_exec, vendor_location_xtra_daemon)
+allow vendor_location_xtra_daemon vendor_location:fd use;
+allow vendor_location vendor_location_xtra_daemon:process signal;
+
+# Composer probes the persist mount before reading its calibration directories.
+allow hal_graphics_composer_default mnt_vendor_file:dir getattr;
+
+# Kernel module initialization updates its keyring and configures worker priority.
+allow vendor_modprobe self:key write;
+allow vendor_modprobe self:capability sys_nice;
+allow vendor_modprobe kernel:process setsched;
+
+# The in-kernel RFCOMM worker binds a reserved Bluetooth port.
+allow kernel self:capability net_bind_service;

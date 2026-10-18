@@ -24,7 +24,6 @@ init_daemon_domain(init_capsensor)
 # Stock labels the capsensor driver separately from generic sysfs.
 type sysfs_capsense, fs_type, sysfs_type;
 type sysfs_roadstr_bus_drivers, fs_type, sysfs_type;
-type sysfs_roadstr_display_dpms, fs_type, sysfs_type;
 type sysfs_roadstr_wireless_fw, fs_type, sysfs_type;
 
 type init_display, domain;
@@ -130,10 +129,6 @@ allow system_server hal_sensorext_service:service_manager find;
 # directories enumerated by system suspend. Only read access is required.
 allow system_suspend_server vendor_sysfs_battery_supply:file r_file_perms;
 
-# Thermal engine watches panel power state to select display-related profiles.
-allow vendor_thermal-engine sysfs_roadstr_display_dpms:file r_file_perms;
-
-# Motorola SensorExt follows display state through the QTI display service and
-# the panel DPMS node when managing low-power sensors.
+# Motorola SensorExt uses the QTI display service for low-power sensors.
+# Common Motorola policy supplies the panel DPMS label and sysfs access.
 hal_client_domain(hal_sensors_default, hal_graphics_composer)
-allow hal_sensors_default sysfs_roadstr_display_dpms:file r_file_perms;

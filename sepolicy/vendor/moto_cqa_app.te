@@ -1,4 +1,5 @@
 # CQATest uses Motorola's vendor fingerprint diagnostics and factory-test interfaces.
+hal_client_domain(moto_cqa_app, hal_fingerprint)
 allow moto_cqa_app hal_fingerprint_test_service:service_manager find;
 binder_call(moto_cqa_app, hal_fingerprint_default)
 binder_call(hal_fingerprint_default, moto_cqa_app)

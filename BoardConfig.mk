@@ -25,6 +25,10 @@ TARGET_PREBUILT_KERNEL_HEADERS := $(DEVICE_PATH)/prebuilt/kernel-headers.tar.gz
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtb
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
+# Display
+# Sun's stock display UAPI uses the non-AIQE path in the sm8750 display stack.
+$(call soong_config_set,qtidisplay,neo,true)
+
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 21474836480
 

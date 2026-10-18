@@ -24,6 +24,12 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Attenuate only the top amplifier during speaker playback.
 ROADSTR_TFA_CONTAINER := $(LOCAL_PATH)/audio/tfa98xx.cnt
 
+# Override the stock setup init script before common inheritance: Evo's Pixel
+# Setup Wizard requires its product-selected expressive theme. First destination
+# in PRODUCT_COPY_FILES wins; keep the remaining Motorola setup settings.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init/init.setupwizardext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.setupwizardext.rc
+
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
@@ -31,6 +37,10 @@ $(call inherit-product, device/motorola/sm7750-common/common.mk)
 # 64-bit Dolby HAL. The module's Xiaomi/OnePlus ODM blobs are intentionally
 # not inherited because they are a different platform stack.
 $(call inherit-product, $(LOCAL_PATH)/lunaris-dolby.mk)
+
+# Keep the stock fingerprint extension separate from Motorola's source AIDL.
+PRODUCT_PACKAGES += \
+    com.motorola.hardware.biometric.fingerprint-V2-ndk-moto
 
 # The stock touch driver uses the Motorola gesture command ABI. RoadSTR's
 # Goodix gesture input reports BTN_TRIGGER_HAPPY6; map it as a wake key in the
@@ -45,7 +55,8 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    $(LOCAL_PATH)/overlay
+    $(LOCAL_PATH)/overlay \
+    hardware/google/pixel/power-libperfmgr
 
 # Overlays
 PRODUCT_SOONG_NAMESPACES += \
@@ -120,6 +131,10 @@ $(call soong_config_set_bool,livedisplay_sysfs,enable_ab,true)
 # NFC - STMicro ST54L
 PRODUCT_PACKAGES += \
     android.hardware.nfc-service.st
+
+# Stock C2 services are copied blobs, so Make cannot infer their AIDL runtime.
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2-V1-ndk.vendor
 
 # Media
 PRODUCT_COPY_FILES += \

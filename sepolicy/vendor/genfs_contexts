@@ -2,7 +2,6 @@
 # so vendor services never need access to generic sysfs.
 genfscon sysfs /bus/i2c/drivers u:object_r:sysfs_roadstr_bus_drivers:s0
 genfscon sysfs /bus/spi/drivers u:object_r:sysfs_roadstr_bus_drivers:s0
-genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/dpms u:object_r:sysfs_roadstr_display_dpms:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wireless_fw_update u:object_r:sysfs_roadstr_wireless_fw:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wireless_fw_update_time_ms u:object_r:sysfs_roadstr_wireless_fw:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink_log/soc:qcom,pmic_glink_log:qcom,bm_adsp_ulog/wakeup u:object_r:sysfs_wakeup:s0

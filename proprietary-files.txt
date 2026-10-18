@@ -412,7 +412,7 @@ vendor/etc/st54l_conf_felica_ss.txt
 vendor/etc/st54l_conf_ss.txt
 
 # Vendor libs
-vendor/lib64/com.motorola.hardware.biometric.fingerprint-V2-ndk.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/com.motorola.hardware.biometric.fingerprint-V2-ndk.so:vendor/lib64/com.motorola.hardware.biometric.fingerprint-V2-ndk-moto.so;FIX_SONAME
 vendor/lib64/libarcsoft_distortion_correction.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libarcsoft_portrait_distortion_correction.so;MAKE_COPY_RULE_ONLY
 vendor/lib64/libarcsoft_qnnhtp.so;MAKE_COPY_RULE_ONLY

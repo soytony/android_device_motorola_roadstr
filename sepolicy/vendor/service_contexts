@@ -7,9 +7,8 @@ android.hardware.media.c2.IComponentStore/default9            u:object_r:hal_cod
 motorola.hardware.lpsensing.ILpSensing/default                u:object_r:hal_sensorext_service:s0
 vendor.arcsoft.hardware.camera.postproc.IPostProcService/default u:object_r:hal_arcsoft_camera_postproc_service:s0
 vendor.dolby.dms.IDms/default                                 u:object_r:hal_aidl_dms_service:s0
-# These Motorola fingerprint diagnostic interfaces are registered by the
-# regular fingerprint HAL and share its stock vendor service type.
-com.motorola.hardware.biometric.fingerprint.IMotoFingerPrint/default         u:object_r:hal_fingerprint_test_service:s0
+# IMotoFingerPrint uses the common Motorola hal_fingerprint_service mapping.
+# The additional diagnostic interfaces retain their stock vendor service type.
 com.motorola.hardware.biometric.fingerprint.IMotoFodSensorTest/default       u:object_r:hal_fingerprint_test_service:s0
 com.motorola.hardware.biometric.fingerprint.IMotoCaptiveSensorTest/default   u:object_r:hal_fingerprint_test_service:s0
 com.motorola.hardware.biometric.fingerprint.IMotoFpsNavigate/default         u:object_r:hal_fingerprint_test_service:s0

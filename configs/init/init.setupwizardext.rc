@@ -1,0 +1,10 @@
+on boot
+    # Enable Decision Point screen during setup flow
+    setprop setupwizard.feature.baseline_setupwizard_enabled true
+    # Default mobile data to false during setup flow
+    setprop ro.com.android.prov_mobiledata false
+    # Mobile data activation timeout dialog
+    setprop ro.setupwizard.loading_subscriptions_timeout_millis 720000
+    # Keep the ROM-selected setupwizard.theme from product build.prop.
+    # Update Phenotype sync timeout to 1min
+    setprop setupwizard.phenotype_sync_timeout_ms 60000
