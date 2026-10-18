@@ -1,0 +1,279 @@
+From 20ccaa326319019503aacd57af9595257c98af65 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:01 +0800
+Subject: [PATCH] feat: support legacy double-tap input sensors
+
+Older Motorola input devices expose a different gesture event ABI.
+Keep support behind the legacy_double_tap build flag.
+
+Change-Id: Iea308312f46e17784a9b5b1c4737a82bcac5fb91
+---
+ sensors/Android.bp        |   3 +
+ sensors/Sensor.cpp        | 174 ++++++++++++++++++++++++++++++++++++++
+ sensors/Sensor.h          |  24 ++++++
+ sensors/SensorsSubHal.cpp |   4 +-
+ 4 files changed, 204 insertions(+), 1 deletion(-)
+
+diff --git a/sensors/Android.bp b/sensors/Android.bp
+index 09fde85..566ec17 100644
+--- a/sensors/Android.bp
++++ b/sensors/Android.bp
+@@ -35,6 +35,9 @@ cc_library_shared {
+     }) + select(soong_config_variable("moto_sensors", "double_tap"), {
+         false: [],
+         default: ["-DENABLE_DOUBLE_TAP"],
++    }) + select(soong_config_variable("moto_sensors", "legacy_double_tap"), {
++        false: [],
++        default: ["-DENABLE_LEGACY_DOUBLE_TAP"],
+     }),
+     vendor: true,
+ }
+diff --git a/sensors/Sensor.cpp b/sensors/Sensor.cpp
+index 80b95ba..5e5e61d 100644
+--- a/sensors/Sensor.cpp
++++ b/sensors/Sensor.cpp
+@@ -7,10 +7,14 @@
+ #include "Sensor.h"
+ 
+ #include <hardware/sensors.h>
++#include <linux/input.h>
+ #include <log/log.h>
++#include <sys/ioctl.h>
+ #include <utils/SystemClock.h>
+ 
++#include <cerrno>
+ #include <cmath>
++#include <cstring>
+ 
+ namespace {
+ 
+@@ -207,6 +211,176 @@ OneShotSensor::OneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callba
+     mSensorInfo.flags |= SensorFlagBits::ONE_SHOT_MODE;
+ }
+ 
++#ifdef ENABLE_LEGACY_DOUBLE_TAP
++namespace {
++
++struct DoubleTapInputDevice {
++    int fd = -1;
++    int triggerKeyCode = -1;
++    std::string path;
++};
++
++bool testBit(const unsigned long* bits, size_t bit) {
++    constexpr size_t kBitsPerLong = sizeof(unsigned long) * 8;
++    return bits[bit / kBitsPerLong] & (1UL << (bit % kBitsPerLong));
++}
++
++DoubleTapInputDevice openDoubleTapInputDevice() {
++    DoubleTapInputDevice fallback;
++    std::error_code error;
++    for (const auto& entry : std::filesystem::directory_iterator("/dev/input", error)) {
++        if (error || entry.path().filename().string().rfind("event", 0) != 0) continue;
++
++        int fd = open(entry.path().c_str(), O_RDONLY | O_CLOEXEC | O_NONBLOCK);
++        if (fd < 0) continue;
++
++        char name[80] = {};
++        if (ioctl(fd, EVIOCGNAME(sizeof(name)), name) < 0 || strcmp(name, "double-tap")) {
++            close(fd);
++            continue;
++        }
++
++        // Motorola touchscreen_mmi variants report either KEY_F4 or the
++        // equivalent BTN_TRIGGER_HAPPY6 code. Goodix can use ABS_DISTANCE.
++        unsigned long keyBits[(KEY_MAX / (sizeof(unsigned long) * 8)) + 1] = {};
++        int triggerKeyCode = -1;
++        if (ioctl(fd, EVIOCGBIT(EV_KEY, sizeof(keyBits)), keyBits) >= 0) {
++            if (testBit(keyBits, KEY_F4)) {
++                triggerKeyCode = KEY_F4;
++            } else if (testBit(keyBits, BTN_TRIGGER_HAPPY6)) {
++                triggerKeyCode = BTN_TRIGGER_HAPPY6;
++            }
++        }
++        if (triggerKeyCode >= 0) {
++            if (fallback.fd >= 0) close(fallback.fd);
++            return {.fd = fd, .triggerKeyCode = triggerKeyCode, .path = entry.path()};
++        }
++
++        unsigned long absBits[(ABS_MAX / (sizeof(unsigned long) * 8)) + 1] = {};
++        if (fallback.fd < 0 && ioctl(fd, EVIOCGBIT(EV_ABS, sizeof(absBits)), absBits) >= 0 &&
++            testBit(absBits, ABS_DISTANCE)) {
++            fallback.fd = fd;
++            fallback.path = entry.path();
++            continue;
++        }
++
++        close(fd);
++    }
++
++    return fallback;
++}
++
++}  // anonymous namespace
++
++LegacyDoubleTapSensor::LegacyDoubleTapSensor(int32_t sensorHandle,
++                                             ISensorsEventCallback* callback)
++    : OneShotSensor(sensorHandle, callback) {
++    mSensorInfo.name = "Double Tap Sensor";
++    mSensorInfo.type = static_cast<SensorType>(SENSOR_TYPE_BASE + 1);
++    mSensorInfo.typeAsString = "org.lineageos.sensor.double_tap";
++    mSensorInfo.maxRange = 1.0f;
++    mSensorInfo.resolution = 1.0f;
++    mSensorInfo.power = 0;
++    mSensorInfo.flags |= SensorFlagBits::WAKE_UP;
++
++    if (pipe(mWaitPipeFd) < 0) {
++        ALOGE("failed to open wait pipe");
++        return;
++    }
++
++    DoubleTapInputDevice inputDevice = openDoubleTapInputDevice();
++    mInputFd = inputDevice.fd;
++    mTriggerKeyCode = inputDevice.triggerKeyCode;
++    if (mInputFd < 0) {
++        ALOGE("failed to find double-tap input device");
++        return;
++    }
++    const char* eventType = mTriggerKeyCode == KEY_F4             ? "KEY_F4"
++                            : mTriggerKeyCode == BTN_TRIGGER_HAPPY6 ? "BTN_TRIGGER_HAPPY6"
++                                                                  : "ABS_DISTANCE";
++    ALOGI("using %s double-tap events from %s", eventType, inputDevice.path.c_str());
++
++    mPolls[0] = {.fd = mWaitPipeFd[0], .events = POLLIN};
++    mPolls[1] = {.fd = mInputFd, .events = POLLIN};
++}
++
++LegacyDoubleTapSensor::~LegacyDoubleTapSensor() {
++    {
++        std::lock_guard<std::mutex> lock(mRunMutex);
++        mStopThread = true;
++        mIsEnabled = false;
++        mWaitCV.notify_all();
++    }
++    interruptPoll();
++}
++
++bool LegacyDoubleTapSensor::opened() {
++    return mWaitPipeFd[0] >= 0 && mWaitPipeFd[1] >= 0 && mInputFd >= 0;
++}
++
++void LegacyDoubleTapSensor::activate(bool enable) {
++    std::lock_guard<std::mutex> lock(mRunMutex);
++    if (mIsEnabled == enable) return;
++
++    mIsEnabled = enable;
++    interruptPoll();
++    mWaitCV.notify_all();
++}
++
++void LegacyDoubleTapSensor::setOperationMode(OperationMode mode) {
++    Sensor::setOperationMode(mode);
++    interruptPoll();
++}
++
++bool LegacyDoubleTapSensor::readDoubleTapEvent() {
++    input_event event;
++    while (read(mInputFd, &event, sizeof(event)) == sizeof(event)) {
++        if (mTriggerKeyCode >= 0 && event.type == EV_KEY && event.code == mTriggerKeyCode &&
++            event.value == 1) {
++            return true;
++        }
++        if (mTriggerKeyCode < 0 && event.type == EV_ABS && event.code == ABS_DISTANCE) return true;
++    }
++    return false;
++}
++
++void LegacyDoubleTapSensor::run() {
++    std::unique_lock<std::mutex> runLock(mRunMutex);
++
++    while (!mStopThread) {
++        if (!mIsEnabled || mMode == OperationMode::DATA_INJECTION) {
++            mWaitCV.wait(runLock, [&] {
++                return ((mIsEnabled && mMode == OperationMode::NORMAL) || mStopThread);
++            });
++            continue;
++        }
++
++        runLock.unlock();
++        int rc = poll(mPolls, 2, -1);
++        runLock.lock();
++        if (rc < 0) {
++            if (errno == EINTR) continue;
++            ALOGE("failed to poll double-tap input: %d", errno);
++            mStopThread = true;
++            continue;
++        }
++
++        if ((mPolls[1].revents & POLLIN) && readDoubleTapEvent()) {
++            mIsEnabled = false;
++            mCallback->postEvents(readEvents(), isWakeUpSensor());
++        }
++        if (mPolls[0].revents & POLLIN) readBool(mWaitPipeFd[0], false /* seek */);
++    }
++}
++
++void LegacyDoubleTapSensor::interruptPoll() {
++    if (mWaitPipeFd[1] < 0) return;
++
++    char value = '1';
++    write(mWaitPipeFd[1], &value, sizeof(value));
++}
++#endif
++
+ SysfsPollingOneShotSensor::SysfsPollingOneShotSensor(
+         int32_t sensorHandle, ISensorsEventCallback* callback, const std::string& pollPath,
+         const std::string& enablePath, const std::string& name, const std::string& typeAsString,
+diff --git a/sensors/Sensor.h b/sensors/Sensor.h
+index 12625eb..096635e 100644
+--- a/sensors/Sensor.h
++++ b/sensors/Sensor.h
+@@ -84,6 +84,30 @@ class OneShotSensor : public Sensor {
+     virtual Result flush() override { return Result::BAD_VALUE; }
+ };
+ 
++#ifdef ENABLE_LEGACY_DOUBLE_TAP
++class LegacyDoubleTapSensor : public OneShotSensor {
++  public:
++    LegacyDoubleTapSensor(int32_t sensorHandle, ISensorsEventCallback* callback);
++    virtual ~LegacyDoubleTapSensor() override;
++
++    virtual bool opened() override;
++    virtual void activate(bool enable) override;
++    virtual void setOperationMode(OperationMode mode) override;
++
++  protected:
++    virtual void run() override;
++
++  private:
++    bool readDoubleTapEvent();
++    void interruptPoll();
++
++    struct pollfd mPolls[2] = {};
++    int mWaitPipeFd[2] = {-1, -1};
++    int mInputFd = -1;
++    int mTriggerKeyCode = -1;
++};
++#endif
++
+ class SysfsPollingOneShotSensor : public OneShotSensor {
+   public:
+     SysfsPollingOneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callback,
+diff --git a/sensors/SensorsSubHal.cpp b/sensors/SensorsSubHal.cpp
+index 1d633f6..98b583f 100644
+--- a/sensors/SensorsSubHal.cpp
++++ b/sensors/SensorsSubHal.cpp
+@@ -24,7 +24,9 @@ using ::android::hardware::Void;
+ using ::android::hardware::sensors::V2_0::implementation::ScopedWakelock;
+ 
+ SensorsSubHal::SensorsSubHal() : mCallback(nullptr), mNextHandle(1) {
+-#ifdef ENABLE_DOUBLE_TAP
++#ifdef ENABLE_LEGACY_DOUBLE_TAP
++    AddSensor<LegacyDoubleTapSensor>();
++#elif defined(ENABLE_DOUBLE_TAP)
+     AddSensor<DoubleTapSensor>();
+ #endif
+ #ifdef ENABLE_UDFPS
+-- 
+2.34.1
+

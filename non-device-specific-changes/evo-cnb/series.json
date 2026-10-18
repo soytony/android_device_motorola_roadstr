@@ -1,0 +1,332 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "repositories": [
+    {
+      "repo": "build/soong",
+      "base_commit": "1ac47f839dbb998440f558d886ba03a61954cfe8",
+      "patches": [
+        {
+          "file": "build-soong/0001-allow-platform-resource-APK-installation.patch",
+          "commit": "ea77730c640b9302832db5d8caba3e85021b3caa",
+          "subject": "build: allow platform resource APK installation",
+          "reason": "Motorola framework resources must share the framework directory.\nExpose an opt-in property instead of hard-coding another device module.",
+          "optional": false
+        },
+        {
+          "file": "build-soong/0002-forward-optional-Go-heap-controls.patch",
+          "commit": "179c70eef0a9cae6070b4e37332032108a4eee49",
+          "subject": "build: forward optional Go heap controls",
+          "reason": "Constrained build hosts need graph-builder heap limits. Unset controls\npreserve the existing environment and have no device runtime effect.",
+          "optional": true
+        }
+      ],
+      "result_commit": "179c70eef0a9cae6070b4e37332032108a4eee49",
+      "result_tree": "42bb1113207c22f0e90210ed09a6079b75122209",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "external/tinycompress",
+      "base_commit": "7a3ded281c0068322b89eb49438308fa5f46dfa1",
+      "patches": [
+        {
+          "file": "external-tinycompress/0001-export-standalone-tinycompress-headers.patch",
+          "commit": "09e11d8ebd2548d90ffacee76136a81f9fef70de",
+          "subject": "build: export standalone tinycompress headers",
+          "reason": "Stock prebuilt consumers still need matching public headers without\nselecting the source implementation.",
+          "optional": false
+        }
+      ],
+      "result_commit": "09e11d8ebd2548d90ffacee76136a81f9fef70de",
+      "result_tree": "9b93b460c13f6121c677224aa4c3906a7e35e22d",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "external/tinyxml2",
+      "base_commit": "33ba115074c80a720826efffab1937d5b355c3b8",
+      "patches": [
+        {
+          "file": "external-tinyxml2/0001-disable-CFI-for-stock-linked-tinyxml2.patch",
+          "commit": "25e13c16acbd0b36b49103cedfaddd10736b14dd",
+          "subject": "fix: disable CFI for stock-linked tinyxml2",
+          "reason": "Motorola vendor consumers require the stock-compatible library ABI.\nThis affects the shared library; revisit when those blobs are retired.",
+          "optional": false
+        }
+      ],
+      "result_commit": "25e13c16acbd0b36b49103cedfaddd10736b14dd",
+      "result_tree": "81b6cda8c6d53dfc79b523693e4306ec41bac058",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "frameworks/av",
+      "base_commit": "8e6f34b6babe951b980f77a449828749bcfafd2b",
+      "patches": [
+        {
+          "file": "frameworks-av/0001-restore-legacy-buffer-producer-ABI.patch",
+          "commit": "2251793a917894b8df2ef53e74bb3fc0285af60f",
+          "subject": "fix: restore legacy buffer producer ABI",
+          "reason": "Stock media blobs reference the pre-rename buffer producer symbol.\nForward to the existing implementation without changing the new API.",
+          "optional": false
+        },
+        {
+          "file": "frameworks-av/0002-keep-Codec2-vendor-providers-stock.patch",
+          "commit": "ef3585879cbbea17e39409c266da097c0d688393",
+          "subject": "build: keep Codec2 vendor providers stock",
+          "reason": "RoadSTR packages matching stock V1 Codec2 providers. Avoid duplicate\nsource vendor variants; retain platform implementations. This shared\nmodule availability change requires review for other device targets.",
+          "optional": false
+        },
+        {
+          "file": "frameworks-av/0003-support-64-bit-OMX-service-and-sandbox.patch",
+          "commit": "1b911bfc89263594781f3b5afa1013c2d6d0d83c",
+          "subject": "fix: support 64-bit OMX service and sandbox",
+          "reason": "RoadSTR is 64-bit only. Pair the OMX service architecture with arm64\nsyscalls rather than the inherited arm32 sandbox policy. Other targets\nrequiring 32-bit OMX must retain their original service configuration.",
+          "optional": false
+        }
+      ],
+      "result_commit": "1b911bfc89263594781f3b5afa1013c2d6d0d83c",
+      "result_tree": "a768aa93517ce09193fa9b4d7c589b159cdd69a6",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "frameworks/base",
+      "base_commit": "a5aa7df30cf60f5874880614741a716d4a1f4551",
+      "patches": [
+        {
+          "file": "frameworks-base/0001-port-optional-UDFPS-HBM-integration.patch",
+          "commit": "cd6293079b5ed925c31a0b8a3f9c0bdd05347cfb",
+          "subject": "fix: port optional UDFPS HBM integration",
+          "reason": "Validate device overlays and sequence optical illumination through the\noptional stable HBM service. Empty configuration retains the default\npath. Pair with the Lineage UDFPS interface and RoadSTR panel service.",
+          "optional": false
+        },
+        {
+          "file": "frameworks-base/0002-expose-device-brightness-and-refresh-hooks.patch",
+          "commit": "2cb60ce75596cc9adf243d8e1036de86a511a621",
+          "subject": "feat: expose device brightness and refresh hooks",
+          "reason": "Keep ambient-lux processing in device code behind an empty-by-default\nclass hook. Retain applied nits and allow overlays to choose the minimum\nrefresh default. Preserve Evo default 60 Hz; RoadSTR selects 90 Hz.",
+          "optional": false
+        }
+      ],
+      "result_commit": "2cb60ce75596cc9adf243d8e1036de86a511a621",
+      "result_tree": "d30bbc7f92d5ac79682f3613f239eb9f4319aa5f",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "frameworks/hardware/interfaces",
+      "base_commit": "9de6d032a248523c22d0bd86e224d1762355c41e",
+      "patches": [
+        {
+          "file": "frameworks-hardware-interfaces/0001-export-legacy-sensor-manager-accessor.patch",
+          "commit": "bd8352dde84bfcae2986a0214f083968f8d90af3",
+          "subject": "fix: export legacy sensor manager accessor",
+          "reason": "Stock sensor clients require the manager accessor symbol. Preserve\nexisting behavior while restoring linkage.",
+          "optional": false
+        }
+      ],
+      "result_commit": "bd8352dde84bfcae2986a0214f083968f8d90af3",
+      "result_tree": "0e8bbb5200d82e0684c421f3c63ab423d9775352",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "frameworks/native",
+      "base_commit": "49687694bd18a4a2df972f89b6717dbfce610721",
+      "patches": [
+        {
+          "file": "frameworks-native/0001-port-configurable-refresh-touch-boost.patch",
+          "commit": "476adf1bf512720907551b6a24246b1bbb0daa77",
+          "subject": "fix: port configurable refresh touch boost",
+          "reason": "Allow cross-group touch boost with a device-controlled cap. Pair with\nRoadSTR SurfaceFlinger properties and refresh overlays; review policy\nimpact before enabling on other display stacks.",
+          "optional": false
+        }
+      ],
+      "result_commit": "476adf1bf512720907551b6a24246b1bbb0daa77",
+      "result_tree": "84da62f8992df3ef1c3c086c7db0397b6fc5cf22",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/lineage/interfaces",
+      "base_commit": "a0f3ada220c573a2252bcb506407b04dfb9b3de0",
+      "patches": [
+        {
+          "file": "hardware-lineage-interfaces/0001-add-stable-optical-UDFPS-HBM-interface.patch",
+          "commit": "c15c856c9789a4ff60c5d482ac0117340f7ad7e5",
+          "subject": "feat: add stable optical UDFPS HBM interface",
+          "reason": "SystemUI and the device panel service need a stable, narrow Binder\ncontract for optical illumination. Include the frozen API snapshot.",
+          "optional": false
+        }
+      ],
+      "result_commit": "c15c856c9789a4ff60c5d482ac0117340f7ad7e5",
+      "result_tree": "de620a2de07051f4092becd76a03d8b4fe30107f",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/motorola",
+      "base_commit": "50e65e5fd3ede70dd6417a9dbfe0ce5d798c626e",
+      "patches": [
+        {
+          "file": "hardware-motorola/0001-support-legacy-double-tap-input-sensors.patch",
+          "commit": "20ccaa326319019503aacd57af9595257c98af65",
+          "subject": "feat: support legacy double-tap input sensors",
+          "reason": "Older Motorola input devices expose a different gesture event ABI.\nKeep support behind the legacy_double_tap build flag.",
+          "optional": false
+        },
+        {
+          "file": "hardware-motorola/0002-restore-MotoActions-build-dependencies.patch",
+          "commit": "f9fab82bb838a1b34c1950d423fd5ca272ef92a7",
+          "subject": "fix: restore MotoActions build dependencies",
+          "reason": "MotoActions uses internal platform APIs and queries phone state.\nDeclare the library and permission required by the existing behavior.",
+          "optional": false
+        },
+        {
+          "file": "hardware-motorola/0003-declare-legacy-Motorola-HIDL-interfaces.patch",
+          "commit": "ea403e6b8738096c4a0c470d93be53a873cf5ba9",
+          "subject": "build: declare legacy Motorola HIDL interfaces",
+          "reason": "Stock health/storage and TCMD blobs need matching prebuilt HIDL\ninterface metadata and the Motorola package root.",
+          "optional": false
+        },
+        {
+          "file": "hardware-motorola/0004-label-stock-Motorola-vendor-services.patch",
+          "commit": "f28a91bc6df81bc43d6d456dbdb5cb044df58b25",
+          "subject": "fix: label stock Motorola vendor services",
+          "reason": "Stock battery, panel, touch, wireless and Dolby services need dedicated\nSELinux labels and scoped access. RoadSTR removes duplicate local labels.\nThese rules live in the inherited Motorola policy; review concrete paths\nand service availability before reuse on another Motorola device.",
+          "optional": false
+        },
+        {
+          "file": "hardware-motorola/0005-allow-RoadSTR-in-Motorola-eUICC-policy.patch",
+          "commit": "6335e56bac2277207c81c22a0fdb014bba0ca773",
+          "subject": "fix: allow RoadSTR in Motorola eUICC policy",
+          "reason": "The shared Motorola allowlist gates the stock eUICC flow. Add RoadSTR\nwithout changing other entries. This device-specific entry remains here\nbecause the shared package owns its resource; prefer a product overlay\nif upstream later provides an equivalent supported override.",
+          "optional": false
+        }
+      ],
+      "result_commit": "6335e56bac2277207c81c22a0fdb014bba0ca773",
+      "result_tree": "2ad49880f68f29dfce3d3c7ab064a043ae0682a0",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/qcom-caf/sm8750/audio/graphservices",
+      "base_commit": "62591b81ddb14cb1ddecf2a8e7162f2082456793",
+      "patches": [
+        {
+          "file": "hardware-qcom-caf-sm8750-audio-graphservices/0001-guard-unavailable-hypervisor-map-ioctls.patch",
+          "commit": "d0dc57f7ef74ff1e9cadd7de99f6caf4fcd8ebdf",
+          "subject": "fix: guard unavailable hypervisor map ioctls",
+          "reason": "The stock kernel UAPI lacks optional assignment ioctls. Return\nAR_EUNSUPPORTED instead of failing the source build.",
+          "optional": false
+        }
+      ],
+      "result_commit": "d0dc57f7ef74ff1e9cadd7de99f6caf4fcd8ebdf",
+      "result_tree": "dbf95efc24553cda0f18052631dd59f732e14cae",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/qcom-caf/sm8750/audio/pal",
+      "base_commit": "c0f825a2320577b9069783947ceec764bef8f672",
+      "patches": [
+        {
+          "file": "hardware-qcom-caf-sm8750-audio-pal/0001-correct-PAL-logging-formats-and-types.patch",
+          "commit": "e4d7b03a2053ad58d943915fe7dcb57cad1fce64",
+          "subject": "fix: correct PAL logging formats and types",
+          "reason": "Android 17 compiler checks reject mismatched format arguments.\nCorrect the logging calls while retaining -Werror.",
+          "optional": false
+        }
+      ],
+      "result_commit": "e4d7b03a2053ad58d943915fe7dcb57cad1fce64",
+      "result_tree": "e385b71557a84f5884f3ba6cb7cb46b77fe61bfd",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/qcom-caf/sm8750/audio/primary-hal",
+      "base_commit": "31964dd4cb5824bb71cadb19b39d82d77bd8b5a7",
+      "patches": [
+        {
+          "file": "hardware-qcom-caf-sm8750-audio-primary-hal/0001-pair-audio-services-with-stock-providers.patch",
+          "commit": "8f60dd819359a002c857824f3a943296ba0defa8",
+          "subject": "fix: pair audio services with stock providers",
+          "reason": "Avoid duplicate default manifests and Bluetooth software registration.\nRequires the matching stock audiohalservice.qti implementation.",
+          "optional": false
+        },
+        {
+          "file": "hardware-qcom-caf-sm8750-audio-primary-hal/0002-adapt-QTI-audio-core-to-Android-17-APIs.patch",
+          "commit": "ec2fa0ad1d2a4515eecda26896a58096762b5b71",
+          "subject": "fix: adapt QTI audio core to Android 17 APIs",
+          "reason": "Handle mmap descriptors, unsupported flush-from-frame requests, ACN\nchannel counts and range-loop warnings. Source build validation does\nnot establish this HAL as the runtime provider; RoadSTR uses stock HALs.",
+          "optional": false
+        }
+      ],
+      "result_commit": "ec2fa0ad1d2a4515eecda26896a58096762b5b71",
+      "result_tree": "c7371ca62c835079ef0744596f410b14970580b0",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/qcom-caf/sm8750/display/core",
+      "base_commit": "89aa1914da50aae0fb1b2ebf3db38d34fba5f748",
+      "patches": [
+        {
+          "file": "hardware-qcom-caf-sm8750-display-core/0001-preserve-HDR-GPU-target-handling.patch",
+          "commit": "a0b48ce7be580f6a0fd91e50b49211482c9836b0",
+          "subject": "fix: preserve HDR GPU target handling",
+          "reason": "Retain the HDR target compatibility path required by the stock\nRoadSTR display stack.",
+          "optional": false
+        }
+      ],
+      "result_commit": "a0b48ce7be580f6a0fd91e50b49211482c9836b0",
+      "result_tree": "941498f604a541b9cbba4fe3acf0e982b7faa23f",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "hardware/qcom-caf/sm8750/display/hal",
+      "base_commit": "9c00ef9bd5cc5799a441c13e442a09756b6db51e",
+      "patches": [
+        {
+          "file": "hardware-qcom-caf-sm8750-display-hal/0001-port-composer-retry-and-init-compatibility.patch",
+          "commit": "df9181966bc2657038f8b0b0200749958ac2ed46",
+          "subject": "fix: port composer retry and init compatibility",
+          "reason": "Retain composer compatibility on Evo without obsolete libvmmem hunks.\nThose files do not exist on this base and must not be reintroduced.",
+          "optional": false
+        }
+      ],
+      "result_commit": "df9181966bc2657038f8b0b0200749958ac2ed46",
+      "result_tree": "24b27deb8fb6d73e4841738b89649b76dbc8ed78",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "packages/apps/Settings",
+      "base_commit": "717b365cd1f37743582487012741b2fb1fcaa4a5",
+      "patches": [
+        {
+          "file": "packages-apps-Settings/0001-honor-device-minimum-refresh-default.patch",
+          "commit": "169d2b19aadf3eb6d9b5d973e1fb669d76d676ff",
+          "subject": "fix: honor device minimum refresh default",
+          "reason": "Settings and display policy must use the same device resource rather\nthan disagreeing on the initial minimum refresh rate.",
+          "optional": false
+        }
+      ],
+      "result_commit": "169d2b19aadf3eb6d9b5d973e1fb669d76d676ff",
+      "result_tree": "255642f76b4176066d073f2405b5ca996a9b2a15",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    },
+    {
+      "repo": "vendor/lineage",
+      "base_commit": "72104cd46a5e303e74e57977d5e995b9d4469b72",
+      "patches": [
+        {
+          "file": "vendor-lineage/0001-skip-empty-generator-dependencies.patch",
+          "commit": "465a5659f0b194a1a62df662a2ea8cec43ec2b49",
+          "subject": "build: skip empty generator dependencies",
+          "reason": "Optional build variables may expand to an empty dependency. Skip them\ninstead of globbing the dependency root.",
+          "optional": false
+        },
+        {
+          "file": "vendor-lineage/0002-support-prebuilt-kernel-header-archives.patch",
+          "commit": "baa3dd91178e50dccbdd23064d5e143cf3f8956f",
+          "subject": "build: support prebuilt kernel header archives",
+          "reason": "Stock-kernel devices supply exported UAPI headers without a source\nkernel build. Track the archive as an input and preserve source-kernel\npaths for products that do not opt in.",
+          "optional": false
+        }
+      ],
+      "result_commit": "baa3dd91178e50dccbdd23064d5e143cf3f8956f",
+      "result_tree": "5cfb1d266ec5a104b36a1fb9b5123776f9a6a4ab",
+      "verification": "Sequential cached application to base reproduced committed tree exactly"
+    }
+  ]
+}

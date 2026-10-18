@@ -1,0 +1,31 @@
+From bd8352dde84bfcae2986a0214f083968f8d90af3 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:01 +0800
+Subject: [PATCH] fix: export legacy sensor manager accessor
+
+Stock sensor clients require the manager accessor symbol. Preserve
+existing behavior while restoring linkage.
+
+Change-Id: I4d0d7a4599655eb191096c8dfa8f61c3d355010e
+---
+ sensorservice/libsensorndkbridge/ASensorManager.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sensorservice/libsensorndkbridge/ASensorManager.cpp b/sensorservice/libsensorndkbridge/ASensorManager.cpp
+index 2438700..7919f31 100644
+--- a/sensorservice/libsensorndkbridge/ASensorManager.cpp
++++ b/sensorservice/libsensorndkbridge/ASensorManager.cpp
+@@ -201,6 +201,10 @@ ASensorManager *ASensorManager_getInstance() {
+     return ASensorManager::getInstance();
+ }
+ 
++extern "C" ASensorManager *ASensorManager_getCurInstance() {
++    return ASensorManager::getInstance();
++}
++
+ ASensorManager *ASensorManager_getInstanceForPackage(
+         const char* /* packageName */) {
+     return ASensorManager::getInstance();
+-- 
+2.34.1
+

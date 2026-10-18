@@ -1,0 +1,81 @@
+From ef3585879cbbea17e39409c266da097c0d688393 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:58 +0800
+Subject: [PATCH] build: keep Codec2 vendor providers stock
+
+RoadSTR packages matching stock V1 Codec2 providers. Avoid duplicate
+source vendor variants; retain platform implementations. This shared
+module availability change requires review for other device targets.
+---
+ media/codec2/hal/aidl/Android.bp           | 6 +++++-
+ media/codec2/hal/hidl/1.0/utils/Android.bp | 2 +-
+ media/codec2/hal/hidl/1.1/utils/Android.bp | 2 +-
+ media/codec2/hal/hidl/1.2/utils/Android.bp | 2 +-
+ 4 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/media/codec2/hal/aidl/Android.bp b/media/codec2/hal/aidl/Android.bp
+index 00b747d126..e61fd5881b 100644
+--- a/media/codec2/hal/aidl/Android.bp
++++ b/media/codec2/hal/aidl/Android.bp
+@@ -59,7 +59,8 @@ cc_library {
+ cc_library {
+     name: "libcodec2_aidl_noisurface",
+     min_sdk_version: "30",
+-    vendor_available: true,
++    // RoadSTR supplies the matching stock vendor Codec2 stack.
++    vendor_available: false,
+     apex_available: [
+         "//apex_available:platform",
+         "com.android.media.swcodec",
+@@ -261,6 +262,9 @@ cc_library {
+ cc_library {
+     name: "libcodec2_aidl",
+ 
++    // Override the shared defaults for the stock V1 vendor implementation.
++    vendor_available: false,
++
+     defaults: [
+         "libcodec2-aidl-common-defaults",
+     ],
+diff --git a/media/codec2/hal/hidl/1.0/utils/Android.bp b/media/codec2/hal/hidl/1.0/utils/Android.bp
+index ba269ba97d..c542f5e375 100644
+--- a/media/codec2/hal/hidl/1.0/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.0/utils/Android.bp
+@@ -56,7 +56,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.0",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+diff --git a/media/codec2/hal/hidl/1.1/utils/Android.bp b/media/codec2/hal/hidl/1.1/utils/Android.bp
+index c5d16731bd..eb824bea42 100644
+--- a/media/codec2/hal/hidl/1.1/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.1/utils/Android.bp
+@@ -58,7 +58,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.1",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+diff --git a/media/codec2/hal/hidl/1.2/utils/Android.bp b/media/codec2/hal/hidl/1.2/utils/Android.bp
+index 2cd58f7acd..4bfc98cf1d 100644
+--- a/media/codec2/hal/hidl/1.2/utils/Android.bp
++++ b/media/codec2/hal/hidl/1.2/utils/Android.bp
+@@ -62,7 +62,7 @@ cc_library {
+ // use libcodec2-hidl-defaults instead
+ cc_library {
+     name: "libcodec2_hidl@1.2",
+-    vendor_available: true,
++
+     min_sdk_version: "29",
+     apex_available: [
+         "//apex_available:platform",
+-- 
+2.34.1
+

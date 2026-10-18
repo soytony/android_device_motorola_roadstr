@@ -1,5 +1,9 @@
 # Applying and porting patches
 
+> Evolution-X `cnb`: use the [verified Android 17 series](evo-cnb/README.md)
+> and its `series.json`. The older patches below are historical references;
+> do not apply both sets.
+
 Run commands from an Android source checkout. Apply each directory to its
 matching repository; do not apply all directories from the top level.
 

@@ -1,0 +1,60 @@
+From baa3dd91178e50dccbdd23064d5e143cf3f8956f Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:03 +0800
+Subject: [PATCH] build: support prebuilt kernel header archives
+
+Stock-kernel devices supply exported UAPI headers without a source
+kernel build. Track the archive as an input and preserve source-kernel
+paths for products that do not opt in.
+---
+ build/soong/Android.bp | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/build/soong/Android.bp b/build/soong/Android.bp
+index e69a6a18..85df6f45 100644
+--- a/build/soong/Android.bp
++++ b/build/soong/Android.bp
+@@ -24,7 +24,10 @@ lineage_generator {
+     // The headers make command
+     cmd: "set -e; " +
+          "(cd $(KERNEL_BUILD_OUT_PREFIX).; " +
+-         "if [ -n \"$(TARGET_KERNEL_PLATFORM_TARGET)\" ]; then " +
++         "if [ -n \"$(TARGET_PREBUILT_KERNEL_HEADERS)\" ]; then " +
++         "    mkdir -p $(genDir) || exit 1; " +
++         "    (set -o pipefail; gzip -d < $(TARGET_PREBUILT_KERNEL_HEADERS) | tar -x -C $(genDir)) || exit 1; " +
++         "elif [ -n \"$(TARGET_KERNEL_PLATFORM_TARGET)\" ]; then " +
+          "    pushd $(KERNEL_PATH); " +
+          "    ./tools/bazel --output_user_root=$(KERNEL_BUILD_OUT_PREFIX)$(genDir)/bazel-out --output_root=$(KERNEL_BUILD_OUT_PREFIX)$(genDir)/bazel-out run --experimental_convenience_symlinks=ignore --cpu=$(KERNEL_ARCH) //$(TARGET_KERNEL_SOURCE):$(TARGET_KERNEL_PLATFORM_TARGET)_uapi_headers_dist -- --destdir=$(KERNEL_BUILD_OUT_PREFIX)$(genDir); " +
+          "    popd; " +
+@@ -45,12 +48,13 @@ lineage_generator {
+     ],
+ 
+     // Sources for dependency tracking
+-    dep_root: "$(TARGET_KERNEL_SOURCE)",
++    dep_root: ".",
+     dep_files: [
+-        "Makefile",
+-        "include/**/*",
+-        "arch/$(KERNEL_ARCH)/include/**/*",
+-        "techpack/audio/include/**/*",
++        "$(TARGET_PREBUILT_KERNEL_HEADERS)",
++        "$(TARGET_KERNEL_SOURCE)/Makefile",
++        "$(TARGET_KERNEL_SOURCE)/include/**/*",
++        "$(TARGET_KERNEL_SOURCE)/arch/$(KERNEL_ARCH)/include/**/*",
++        "$(TARGET_KERNEL_SOURCE)/techpack/audio/include/**/*",
+     ],
+ 
+     tool_files: [":clean_headers.sh"],
+@@ -73,6 +77,9 @@ lineage_generator {
+         "usr/techpack/audio/include",
+     ],
+ 
++    dep_root: ".",
++    dep_files: ["$(TARGET_PREBUILT_KERNEL_HEADERS)"],
++
+     tool_files: [":clean_headers.sh"],
+ }
+ 
+-- 
+2.34.1
+

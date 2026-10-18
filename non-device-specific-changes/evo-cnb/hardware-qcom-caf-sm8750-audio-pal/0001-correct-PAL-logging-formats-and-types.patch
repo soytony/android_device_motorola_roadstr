@@ -1,0 +1,193 @@
+From e4d7b03a2053ad58d943915fe7dcb57cad1fce64 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:02 +0800
+Subject: [PATCH] fix: correct PAL logging formats and types
+
+Android 17 compiler checks reject mismatched format arguments.
+Correct the logging calls while retaining -Werror.
+
+Change-Id: I421c31c6ce7732f18ffd03276cff12d4f7a9f249
+---
+ device/src/Bluetooth.cpp                 | 4 ++--
+ device/src/HapticsDevProtection.cpp      | 2 +-
+ resource_manager/src/ResourceManager.cpp | 8 ++++----
+ session/src/Session.cpp                  | 2 +-
+ session/src/SessionAlsaPcm.cpp           | 4 ++--
+ session/src/SessionAlsaUtils.cpp         | 2 +-
+ session/src/SoundTriggerEngineGsl.cpp    | 6 +++---
+ stream/src/StreamHaptics.cpp             | 4 ++--
+ 8 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/device/src/Bluetooth.cpp b/device/src/Bluetooth.cpp
+index c811e4697..fc5261357 100644
+--- a/device/src/Bluetooth.cpp
++++ b/device/src/Bluetooth.cpp
+@@ -2569,9 +2569,9 @@ void BtSco::convertCodecInfo(audio_lc3_codec_cfg_t &lc3CodecInfo,
+         streamMapStr = match.suffix().str();
+     }
+ 
+-    PAL_DBG(LOG_TAG, "stream map out size: %d, stream map in size: %d", steamMapOut.size(), steamMapIn.size());
++    PAL_DBG(LOG_TAG, "stream map out size: %zu, stream map in size: %zu", steamMapOut.size(), steamMapIn.size());
+     if ((steamMapOut.size() == 0) || (steamMapIn.size() == 0)) {
+-        PAL_ERR(LOG_TAG, "invalid size steamMapOut.size %d, steamMapIn.size %d",
++        PAL_ERR(LOG_TAG, "invalid size steamMapOut.size %zu, steamMapIn.size %zu",
+                 steamMapOut.size(), steamMapIn.size());
+         return;
+     }
+diff --git a/device/src/HapticsDevProtection.cpp b/device/src/HapticsDevProtection.cpp
+index 98beb54fc..7eb4ca9ae 100644
+--- a/device/src/HapticsDevProtection.cpp
++++ b/device/src/HapticsDevProtection.cpp
+@@ -1721,7 +1721,7 @@ int32_t HapticsDevProtection::getFTMParameter(void **param)
+               << ((FtmCalParam.Blq_ftm_q24)/(1<<24)) << "; Le: "
+               << ((FtmCalParam.Le_mH_ftm_q24)/(1<<24));
+ 
+-    PAL_DBG(LOG_TAG, "Get param value %s, length:%d",
++    PAL_DBG(LOG_TAG, "Get param value %s, length:%zu",
+             resString.str().c_str(), resString.str().length());
+     if (resString.str().length() > 0 && ((*param) != nullptr)) {
+         payload_size = resString.str().length() + 1;
+diff --git a/resource_manager/src/ResourceManager.cpp b/resource_manager/src/ResourceManager.cpp
+index e4db9b831..2f078de6a 100644
+--- a/resource_manager/src/ResourceManager.cpp
++++ b/resource_manager/src/ResourceManager.cpp
+@@ -1735,7 +1735,7 @@ int32_t ResourceManager::voiceuiDmgrRestartUseCases(vui_dmgr_param_restart_useca
+     }
+ 
+     // Reuse SSR mechanism for stream teardown and bring up.
+-    PAL_INFO(LOG_TAG, "restart %d streams", st_streams.size());
++    PAL_INFO(LOG_TAG, "restart %zu streams", st_streams.size());
+     for (auto &st : st_streams) {
+         st->getStreamType(&st_type);
+         status = st->ssrDownHandler();
+@@ -11313,7 +11313,7 @@ int ResourceManager::setParameter(uint32_t param_id, void *param_payload,
+                     break;
+                     default:
+                     {
+-                        PAL_ERR(LOG_TAG, "unsupported hap op mode",
++                        PAL_ERR(LOG_TAG, "unsupported hap op mode %d",
+                                 hapModeVal->operationMode);
+                         status = -EINVAL;
+                         goto exit;
+@@ -14925,7 +14925,7 @@ void ResourceManager::reconfigureScoStreams() {
+         dattr = nullptr;
+     }
+ 
+-    PAL_DBG(LOG_TAG, "streamDevDisconnect size=%d and streamDevConnect size=%d",
++    PAL_DBG(LOG_TAG, "streamDevDisconnect size=%zu and streamDevConnect size=%zu",
+             streamDevDisconnect.size(), streamDevConnect.size());
+     status = streamDevSwitch(streamDevDisconnect, streamDevConnect);
+     if (status) {
+@@ -14981,7 +14981,7 @@ int ResourceManager::setUltrasoundGain(pal_ultrasound_gain_t gain, Stream *s)
+     } else {
+         status = getActiveStream_l(activeStreams, NULL);
+         if ((0 != status) || (activeStreams.size() == 0)) {
+-            PAL_DBG(LOG_TAG, "No active stream available, status = %d, nStream = %d",
++            PAL_DBG(LOG_TAG, "No active stream available, status = %d, nStream = %zu",
+                     status, activeStreams.size());
+             return -ENOENT;
+         }
+diff --git a/session/src/Session.cpp b/session/src/Session.cpp
+index 0ae370819..85ef34e6a 100644
+--- a/session/src/Session.cpp
++++ b/session/src/Session.cpp
+@@ -1591,7 +1591,7 @@ int dump_registers(const char *in_file_path, const char *regdump_out_file)
+        read_out_size = -1;
+        goto close_regdump_file;
+     }
+-    PAL_INFO(LOG_TAG, "Bolero Regmap Dump Size %ld and file %s", regdump_size, regdump_out_file);
++    PAL_INFO(LOG_TAG, "Bolero Regmap Dump Size %d and file %s", regdump_size, regdump_out_file);
+ 
+ close_regdump_file:
+     close(regdump_wr_fd);
+diff --git a/session/src/SessionAlsaPcm.cpp b/session/src/SessionAlsaPcm.cpp
+index e58d43486..5eb97549f 100644
+--- a/session/src/SessionAlsaPcm.cpp
++++ b/session/src/SessionAlsaPcm.cpp
+@@ -2951,7 +2951,7 @@ int SessionAlsaPcm::write(Stream *s, int tag, struct pal_buffer *buf, int * size
+             if (sAttr.out_media_config.sample_rate)
+                 ns = pcm_bytes_to_frames(pcm, sizeWritten)*1000000000LL/
+                     sAttr.out_media_config.sample_rate;
+-            PAL_DBG(LOG_TAG, "1.bufsize:%u ns:%ld", sizeWritten, ns);
++            PAL_DBG(LOG_TAG, "1.bufsize:%zu ns:%ld", sizeWritten, ns);
+             requestAdmFocus(s, ns);
+             status =  pcm_mmap_write(pcm, data,  sizeWritten);
+             releaseAdmFocus(s);
+@@ -2983,7 +2983,7 @@ int SessionAlsaPcm::write(Stream *s, int tag, struct pal_buffer *buf, int * size
+             if (sAttr.out_media_config.sample_rate)
+                 ns = pcm_bytes_to_frames(pcm, sizeWritten)*1000000000LL/
+                     sAttr.out_media_config.sample_rate;
+-            PAL_DBG(LOG_TAG, "2.bufsize:%u ns:%ld", sizeWritten, ns);
++            PAL_DBG(LOG_TAG, "2.bufsize:%zu ns:%ld", sizeWritten, ns);
+             requestAdmFocus(s, ns);
+             status =  pcm_mmap_write(pcm, data,  sizeWritten);
+             releaseAdmFocus(s);
+diff --git a/session/src/SessionAlsaUtils.cpp b/session/src/SessionAlsaUtils.cpp
+index 69d07093d..776c87c53 100644
+--- a/session/src/SessionAlsaUtils.cpp
++++ b/session/src/SessionAlsaUtils.cpp
+@@ -912,7 +912,7 @@ int SessionAlsaUtils::rwACDBTunnel(Stream * streamHandle, std::shared_ptr<Resour
+         __builtin_add_overflow(effectACDBPayload->num_kvs * sizeof(pal_key_value_pair_t),
+             sizeof(pal_effect_custom_payload_t), &checkSum);
+         __builtin_sub_overflow(effectACDBPayload->blob_size, checkSum, &payloadSize);
+-        PAL_DBG(LOG_TAG, "payload size = 0x%x", payloadSize);
++        PAL_DBG(LOG_TAG, "payload size = 0x%zx", payloadSize);
+         ar_mem_cpy((uint8_t *)(effectACDBPayload->blob +
+             sizeof(pal_effect_custom_payload_t) +
+             effectACDBPayload->num_kvs * sizeof(pal_key_value_pair_t)),
+diff --git a/session/src/SoundTriggerEngineGsl.cpp b/session/src/SoundTriggerEngineGsl.cpp
+index ed9d34e7e..e7d4c350e 100644
+--- a/session/src/SoundTriggerEngineGsl.cpp
++++ b/session/src/SoundTriggerEngineGsl.cpp
+@@ -234,7 +234,7 @@ int32_t SoundTriggerEngineGsl::StartBuffering(Stream *s) {
+             det_streams_q_.pop();
+             buffer_->getIndices(s, &start_index, &end_index, &ftrt_size);
+             event_notified = false;
+-            PAL_DBG(LOG_TAG, "new detected stream added, size %d", det_streams_q_.size());
++            PAL_DBG(LOG_TAG, "new detected stream added, size %zu", det_streams_q_.size());
+             kw_transfer_begin = std::chrono::steady_clock::now();
+         }
+ 
+@@ -369,7 +369,7 @@ int32_t SoundTriggerEngineGsl::StartBuffering(Stream *s) {
+                 ATRACE_ASYNC_END("stEngine: read FTRT data", (int32_t)module_type_);
+                 kw_transfer_latency_ = std::chrono::duration_cast<std::chrono::milliseconds>(
+                     kw_transfer_end - kw_transfer_begin).count();
+-                PAL_INFO(LOG_TAG, "FTRT data read done! total_read_size %zu, ftrt_size %zu, read latency %llums",
++                PAL_INFO(LOG_TAG, "FTRT data read done! total_read_size %zu, ftrt_size %u, read latency %llums",
+                         total_read_size, ftrt_size, (long long)kw_transfer_latency_);
+                 st = dynamic_cast<StreamSoundTrigger *>(s);
+                 if (st) {
+@@ -1106,7 +1106,7 @@ int32_t SoundTriggerEngineGsl::RestartRecognition_l(Stream *s) {
+ 
+         mmap_write_position_ =
+             mmap_write_position_ % BytesToFrames(mmap_buffer_size_);
+-        PAL_DBG(LOG_TAG, "Reset mmap write position to %zu", mmap_write_position_);
++        PAL_DBG(LOG_TAG, "Reset mmap write position to %u", mmap_write_position_);
+     }
+ 
+     exit_buffering_ = false;
+diff --git a/stream/src/StreamHaptics.cpp b/stream/src/StreamHaptics.cpp
+index e1af63099..c5f037156 100644
+--- a/stream/src/StreamHaptics.cpp
++++ b/stream/src/StreamHaptics.cpp
+@@ -77,7 +77,7 @@ int32_t  StreamHaptics::setParameters(uint32_t param_id, void *payload)
+     } else {
+        /* If Setparam for touch haptics is called when Ringtone Haptics is active
+           skip the Setparam for touch haptics*/
+-        PAL_DBG(LOG_TAG, "activestreams size %d",activeStreams.size());
++        PAL_DBG(LOG_TAG, "activestreams size %zu", activeStreams.size());
+         for (int i = 0; i<activeStreams.size(); i++) {
+             stream = static_cast<Stream *>(activeStreams[i]);
+             stream->getStreamAttributes(&ActivesAttr);
+@@ -284,7 +284,7 @@ int32_t StreamHaptics::HandleHapticsConcurrency(struct pal_stream_attributes *sa
+     } else {
+        /* If incoming stream is Ringtone Haptics and active stream is Touch
+           stop the Touch haptics and start Ringtone*/
+-        PAL_DBG(LOG_TAG, "activestreams size %d",activeStreams.size());
++        PAL_DBG(LOG_TAG, "activestreams size %zu", activeStreams.size());
+         for (int i = 0; i<activeStreams.size(); i++) {
+             stream = static_cast<Stream *>(activeStreams[i]);
+             stream->getStreamAttributes(&ActivesAttr);
+-- 
+2.34.1
+

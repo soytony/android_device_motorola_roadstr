@@ -1,0 +1,58 @@
+From d0dc57f7ef74ff1e9cadd7de99f6caf4fcd8ebdf Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:02 +0800
+Subject: [PATCH] fix: guard unavailable hypervisor map ioctls
+
+The stock kernel UAPI lacks optional assignment ioctls. Return
+AR_EUNSUPPORTED instead of failing the source build.
+
+Change-Id: I8efbb355a85ea91dee88589dc00726ac1e8412c7
+---
+ ar_osal/src/linux/qcom/ar_osal_shmem_db.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/ar_osal/src/linux/qcom/ar_osal_shmem_db.c b/ar_osal/src/linux/qcom/ar_osal_shmem_db.c
+index 3fc6274..5121639 100644
+--- a/ar_osal/src/linux/qcom/ar_osal_shmem_db.c
++++ b/ar_osal/src/linux/qcom/ar_osal_shmem_db.c
+@@ -644,18 +644,25 @@ int32_t ar_shmem_hyp_assign_phys(ar_shmem_hyp_assign_phys_info *info)
+                       }
+                       shmem_handle->dma_sync_flag = false;
+                     }
++#ifdef IOCTL_MAP_HYP_ASSIGN
+                     AR_LOG_VERBOSE(AR_OSAL_SHMEM_LOG_TAG,"%s:IOCTL_MAP_HYP_ASSIGN\n", __func__);
+                     status = ioctl(pdata->armem_fd_cma, IOCTL_MAP_HYP_ASSIGN, shm_addr_lsw);
+                     if (status) {
+                         AR_LOG_ERR(AR_OSAL_SHMEM_LOG_TAG,"%s:hyp_assign failed. status %d\n",
+                          __func__, status);
+                     }
++#else
++                    AR_LOG_ERR(AR_OSAL_SHMEM_LOG_TAG,
++                        "%s:IOCTL_MAP_HYP_ASSIGN is not supported by kernel headers\n", __func__);
++                    status = AR_EUNSUPPORTED;
++#endif
+                 } else {
+                     AR_LOG_ERR(AR_OSAL_SHMEM_LOG_TAG,"%s:invalid params handle \n", __func__);
+                     status = AR_EBADPARAM;
+                     goto end;
+                 }
+             } else {
++#ifdef IOCTL_UNMAP_HYP_ASSIGN
+                 AR_LOG_VERBOSE(AR_OSAL_SHMEM_LOG_TAG,"%s:IOCTL_UNMAP_HYP_ASSIGN\n", __func__);
+                 status = ioctl(pdata->armem_fd_cma, IOCTL_UNMAP_HYP_ASSIGN, shm_addr_lsw);
+ 
+@@ -663,6 +670,11 @@ int32_t ar_shmem_hyp_assign_phys(ar_shmem_hyp_assign_phys_info *info)
+                      AR_LOG_ERR(AR_OSAL_SHMEM_LOG_TAG,"%s:unmap_hyp_assign failed. status %d\n",
+                          __func__, status);
+                 }
++#else
++                AR_LOG_ERR(AR_OSAL_SHMEM_LOG_TAG,
++                    "%s:IOCTL_UNMAP_HYP_ASSIGN is not supported by kernel headers\n", __func__);
++                status = AR_EUNSUPPORTED;
++#endif
+             }
+          }
+          info->phys_addr_list++;
+-- 
+2.34.1
+

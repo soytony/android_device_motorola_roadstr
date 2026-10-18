@@ -1,5 +1,9 @@
 # Patch catalog
 
+> Evolution-X `cnb`: use the [verified Android 17 series](evo-cnb/README.md)
+> and its `series.json`. The older patches below are historical references;
+> do not apply both sets.
+
 Status labels:
 
 - **RETAIN**: required by the current RoadSTR stack or fixes tested behavior.

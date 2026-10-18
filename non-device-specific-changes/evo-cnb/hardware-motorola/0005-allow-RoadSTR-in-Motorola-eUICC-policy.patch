@@ -1,0 +1,30 @@
+From 6335e56bac2277207c81c22a0fdb014bba0ca773 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:02 +0800
+Subject: [PATCH] fix: allow RoadSTR in Motorola eUICC policy
+
+The shared Motorola allowlist gates the stock eUICC flow. Add RoadSTR
+without changing other entries. This device-specific entry remains here
+because the shared package owns its resource; prefer a product overlay
+if upstream later provides an equivalent supported override.
+
+Change-Id: I79d3ae31cbb1372cb09965f358a9b3fdb1748955
+---
+ overlay/EuiccPolicyMoto/res/values/strings.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/overlay/EuiccPolicyMoto/res/values/strings.xml b/overlay/EuiccPolicyMoto/res/values/strings.xml
+index c98b9aa..ddbc2e0 100644
+--- a/overlay/EuiccPolicyMoto/res/values/strings.xml
++++ b/overlay/EuiccPolicyMoto/res/values/strings.xml
+@@ -65,6 +65,7 @@
+                         \"paros\",
+                         \"penang\",
+                         \"pnangn\",
++                        \"roadstr\",
+                         \"rtwo\",
+                         \"scout\",
+                         \"sorap\",
+-- 
+2.34.1
+

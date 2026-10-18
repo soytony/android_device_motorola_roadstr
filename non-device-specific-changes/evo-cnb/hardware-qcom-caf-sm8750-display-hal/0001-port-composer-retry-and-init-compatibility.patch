@@ -1,0 +1,86 @@
+From df9181966bc2657038f8b0b0200749958ac2ed46 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:02 +0800
+Subject: [PATCH] fix: port composer retry and init compatibility
+
+Retain composer compatibility on Evo without obsolete libvmmem hunks.
+Those files do not exist on this base and must not be reintroduced.
+
+Change-Id: Iac6450c646da5436c8108dd68cd9ce507ac356a1
+---
+ composer/AidlComposerClient.cpp               | 41 +++++++++++++++++++
+ ...r.qti.hardware.display.composer-service.rc |  5 +++
+ 2 files changed, 46 insertions(+)
+
+diff --git a/composer/AidlComposerClient.cpp b/composer/AidlComposerClient.cpp
+index c00f2710f2..80bb67beb9 100644
+--- a/composer/AidlComposerClient.cpp
++++ b/composer/AidlComposerClient.cpp
+@@ -1335,7 +1335,48 @@ void AidlComposerClient::CommandEngine::executeAcceptDisplayChanges(int64_t disp
+ Error AidlComposerClient::CommandEngine::presentDisplay(int64_t display,
+                                                         shared_ptr<Fence> *presentFence) {
+   auto err = mClient.drawcycle_->PresentDisplay(display, presentFence);
++  if (err == sdm::kErrorNeedsValidate || err == sdm::kErrorNotValidated) {
++    bool validateOnly = true;
++    bool needsCommit = false;
++    uint32_t typesCount = 0;
++    uint32_t reqsCount = 0;
++    shared_ptr<Fence> validateFence = nullptr;
++
++    ALOGW("%s: PresentDisplay needs validate display=%" PRId64 " sdm_err=%d; "
++          "running internal validate/accept retry", __FUNCTION__, display, err);
++    auto validateErr = mClient.drawcycle_->CommitOrPrepare(display, validateOnly, &validateFence,
++                                                           &typesCount, &reqsCount, &needsCommit);
++    ALOGW("%s: internal validate display=%" PRId64 " sdm_err=%d needsCommit=%d "
++          "types=%u reqs=%u", __FUNCTION__, display, validateErr, needsCommit,
++          typesCount, reqsCount);
++
++    if (validateErr == sdm::kErrorNone && !needsCommit) {
++      *presentFence = validateFence;
++      return postPresentDisplay(display, presentFence);
++    }
++
++    if (validateErr == sdm::kErrorNone || validateErr == sdm::kErrorNeedsCommit || needsCommit) {
++      auto acceptErr = mClient.drawcycle_->AcceptDisplayChanges(display);
++      ALOGW("%s: internal accept display=%" PRId64 " sdm_err=%d", __FUNCTION__,
++            display, acceptErr);
++      if (acceptErr == sdm::kErrorNone) {
++        err = mClient.drawcycle_->PresentDisplay(display, presentFence);
++        ALOGW("%s: internal present retry display=%" PRId64 " sdm_err=%d",
++              __FUNCTION__, display, err);
++      } else {
++        err = acceptErr;
++      }
++    } else {
++      err = validateErr;
++    }
++  }
++
+   if (err != sdm::kErrorNone) {
++    ALOGE("%s: PresentDisplay failed display=%" PRId64 " sdm_err=%d", __FUNCTION__,
++          display, err);
++    if (err == sdm::kErrorNeedsValidate || err == sdm::kErrorNotValidated) {
++      return Error::NotValidated;
++    }
+     return Error::BadConfig;
+   }
+ 
+diff --git a/composer/vendor.qti.hardware.display.composer-service.rc b/composer/vendor.qti.hardware.display.composer-service.rc
+index 55b011265c..a44ea37775 100644
+--- a/composer/vendor.qti.hardware.display.composer-service.rc
++++ b/composer/vendor.qti.hardware.display.composer-service.rc
+@@ -2,6 +2,11 @@ service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.
+     class hal animation
+     user system
+     group graphics drmrpc
++    interface aidl android.hardware.graphics.composer3.IComposer/default
++    interface aidl vendor.qti.hardware.display.color.IDisplayColor/default
++    interface aidl vendor.qti.hardware.display.postproc.IDisplayPostproc/default
++    interface aidl vendor.qti.hardware.display.config.IDisplayConfig/default
++    interface aidl vendor.qti.hardware.display.aiqe.IDisplayAiqe/default
+     capabilities SYS_NICE
+     onrestart restart surfaceflinger
+     socket pps stream 0660 system system
+-- 
+2.34.1
+

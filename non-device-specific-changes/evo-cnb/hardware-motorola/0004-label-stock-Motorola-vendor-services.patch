@@ -1,0 +1,228 @@
+From f28a91bc6df81bc43d6d456dbdb5cb044df58b25 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:01 +0800
+Subject: [PATCH] fix: label stock Motorola vendor services
+
+Stock battery, panel, touch, wireless and Dolby services need dedicated
+SELinux labels and scoped access. RoadSTR removes duplicate local labels.
+These rules live in the inherited Motorola policy; review concrete paths
+and service availability before reuse on another Motorola device.
+
+Change-Id: I6bea79d17bfcaa468a9407550d1fd3bb3b71f6ee
+---
+ sepolicy/qti/private/property_contexts |  4 ++++
+ sepolicy/qti/public/property.te        |  1 +
+ sepolicy/qti/vendor/batt_health.te     | 19 +++++++++++++++++++
+ sepolicy/qti/vendor/file.te            |  3 +++
+ sepolicy/qti/vendor/file_contexts      | 13 +++++++++++++
+ sepolicy/qti/vendor/genfs_contexts     | 18 ++++++++++++++++++
+ sepolicy/qti/vendor/hal_moto_panel.te  | 15 +++++++++++++++
+ sepolicy/qti/vendor/hal_mottouch.te    | 11 +++++++++++
+ sepolicy/qti/vendor/hal_motwlc.te      | 11 +++++++++++
+ sepolicy/qti/vendor/service.te         |  5 +++++
+ 10 files changed, 100 insertions(+)
+ create mode 100644 sepolicy/qti/public/property.te
+ create mode 100644 sepolicy/qti/vendor/batt_health.te
+ create mode 100644 sepolicy/qti/vendor/hal_moto_panel.te
+ create mode 100644 sepolicy/qti/vendor/hal_mottouch.te
+ create mode 100644 sepolicy/qti/vendor/hal_motwlc.te
+
+diff --git a/sepolicy/qti/private/property_contexts b/sepolicy/qti/private/property_contexts
+index 51c6e8e..ec94a85 100644
+--- a/sepolicy/qti/private/property_contexts
++++ b/sepolicy/qti/private/property_contexts
+@@ -7,3 +7,7 @@ ro.camera.res.fmq.size            u:object_r:exported_camera_prop:s0
+ 
+ # Motorola
+ ro.mot.build.customerid    u:object_r:build_prop:s0 exact string
++
++# Battery lifetime information exported by the Motorola health daemon.
++ro.sys.battery.FirstUsageDate    u:object_r:moto_battinfo_prop:s0 exact string
++sys.clear_batt_first_usage_date  u:object_r:moto_battinfo_prop:s0 exact bool
+diff --git a/sepolicy/qti/public/property.te b/sepolicy/qti/public/property.te
+new file mode 100644
+index 0000000..3c61bb5
+--- /dev/null
++++ b/sepolicy/qti/public/property.te
+@@ -0,0 +1 @@
++system_public_prop(moto_battinfo_prop)
+diff --git a/sepolicy/qti/vendor/batt_health.te b/sepolicy/qti/vendor/batt_health.te
+new file mode 100644
+index 0000000..c306451
+--- /dev/null
++++ b/sepolicy/qti/vendor/batt_health.te
+@@ -0,0 +1,19 @@
++type batt_health, domain;
++type batt_health_exec, exec_type, vendor_file_type, file_type;
++
++init_daemon_domain(batt_health)
++
++# Monitor power-supply uevents used to maintain battery lifetime metadata.
++allow batt_health self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
++
++# Read the power-supply class and update the battery driver's lifetime fields.
++allow batt_health sysfs:dir r_dir_perms;
++allow batt_health vendor_sysfs_battery_supply:dir r_dir_perms;
++allow batt_health vendor_sysfs_battery_supply:{ file lnk_file } rw_file_perms;
++
++# Keep the persistent lifetime counters in the device-specific persist area.
++allow batt_health mnt_vendor_file:dir search;
++allow batt_health persist_batt_file:dir create_dir_perms;
++allow batt_health persist_batt_file:file create_file_perms;
++
++get_prop(batt_health, moto_battinfo_prop)
+diff --git a/sepolicy/qti/vendor/file.te b/sepolicy/qti/vendor/file.te
+index 9a1791f..68b208e 100644
+--- a/sepolicy/qti/vendor/file.te
++++ b/sepolicy/qti/vendor/file.te
+@@ -28,10 +28,13 @@ type vendor_sysfs_devicetree_mmi, fs_type, sysfs_type;
+ type fsg_file, contextmount_type, file_type, vendor_file_type;
+ 
+ # Power
++type persist_batt_file, file_type, vendor_persist_type;
+ type proc_sched_lib_mask_cpuinfo, fs_type, proc_type;
+ 
+ # Powershare
+ type vendor_sysfs_wlc, fs_type, sysfs_type;
++type sysfs_wls_dev, fs_type, sysfs_type;
++type touchRec_data_file, file_type, data_file_type;
+ 
+ # Radio
+ type vendor_persist_mdm_file, file_type, vendor_persist_type;
+diff --git a/sepolicy/qti/vendor/file_contexts b/sepolicy/qti/vendor/file_contexts
+index 7b9c0f7..484589c 100644
+--- a/sepolicy/qti/vendor/file_contexts
++++ b/sepolicy/qti/vendor/file_contexts
+@@ -124,6 +124,12 @@
+ # Touch HAL
+ /vendor/bin/hw/vendor\.lineage\.touch-service\.motorola    u:object_r:hal_lineage_touch_default_exec:s0
+ 
++# Motorola display and wireless HALs
++/vendor/bin/hw/com\.motorola\.hardware\.display\.panel-service       u:object_r:hal_moto_panel_default_exec:s0
++/vendor/bin/hw/com\.motorola\.hardware\.display\.touch-service       u:object_r:hal_mottouch_default_exec:s0
++/vendor/bin/hw/motorola\.hardware\.wireless\.wlc-service             u:object_r:hal_motwlc_default_exec:s0
++/data/vendor/touchrec(/.*)?                                          u:object_r:touchRec_data_file:s0
++
+ # Touchscreen
+ /sys/devices/platform/soc/a94000\.i2c/i2c-2/2-0049/double_click    u:object_r:vendor_sysfs_touchpanel:s0
+ /sys/devices/platform/soc/a94000\.i2c/i2c-2/2-0049/single_click    u:object_r:vendor_sysfs_touchpanel:s0
+@@ -143,3 +149,10 @@
+ 
+ # Wakeup (Audio Service)
+ /sys/devices/platform/soc/soc:qcom,msm-audio-apr/soc:qcom,msm-audio-apr:qcom,q6core-audio/soc:qcom,msm-audio-apr:qcom,q6core-audio:sound/Listen\s[0-9]+\sAudio\sService/wakeup/wakeup[0-9]+(/.*)?    u:object_r:sysfs_wakeup:s0
++
++# Battery health
++/(mnt/vendor/persist|persist)/batt_health(/.*)?    u:object_r:persist_batt_file:s0
++/(vendor|system/vendor)/bin/batt_health         u:object_r:batt_health_exec:s0
++
++# Dolby Codec2 service uses the platform mediacodec sandbox in stock policy.
++/vendor/bin/hw/vendor\.dolby\.media\.c2-default-service-dax    u:object_r:mediacodec_exec:s0
+diff --git a/sepolicy/qti/vendor/genfs_contexts b/sepolicy/qti/vendor/genfs_contexts
+index f2b8f05..7429934 100644
+--- a/sepolicy/qti/vendor/genfs_contexts
++++ b/sepolicy/qti/vendor/genfs_contexts
+@@ -42,6 +42,7 @@ genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.q
+ genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5-mmi/power_supply                u:object_r:vendor_sysfs_battery_supply:s0
+ genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply                    u:object_r:vendor_sysfs_battery_supply:s0
+ genfscon sysfs /devices/platform/soc/soc:mmi,charger/power_supply/mmi_battery                                                                          u:object_r:vendor_sysfs_battery_supply:s0
++genfscon sysfs /devices/platform/soc/soc:mmi,charger/power_supply                                                                                      u:object_r:vendor_sysfs_battery_supply:s0
+ genfscon sysfs /devices/platform/soc/soc:mmi,discrete-charging/power_supply/battery                                                                    u:object_r:vendor_sysfs_battery_supply:s0
+ genfscon sysfs /devices/platform/soc/soc:mmi,discrete-charging/power_supply/dc                                                                         u:object_r:vendor_sysfs_battery_supply:s0
+ genfscon sysfs /devices/platform/soc/soc:mmi_chrg_manager/power_supply/mmi_chrg_manager                                                                u:object_r:vendor_sysfs_battery_supply:s0
+@@ -91,6 +92,21 @@ genfscon proc /sys/kernel/sched_lib_name          u:object_r:proc_sched_lib_mask
+ 
+ # Powershare
+ genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/tx_mode    u:object_r:vendor_sysfs_wlc:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/rx_dev_manufacturing    u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_tx_capability       u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_st_changed          u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_fan_speed           u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_light_ctl           u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_tx_power            u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_set_mode            u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/rx_connected            u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_tx_type             u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/rx_dev_type             u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/folio_mode              u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_tx_id               u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wlc_tx_sn               u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/rx_dev_id               u:object_r:sysfs_wls_dev:s0
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/tx_vout                 u:object_r:sysfs_wls_dev:s0
+ 
+ # Touchscreen
+ genfscon sysfs /class/touchscreen                                                                                 u:object_r:vendor_sysfs_touchpanel:s0
+@@ -233,3 +249,5 @@ genfscon sysfs /devices/virtual/input/input5/wakeup
+ genfscon sysfs /devices/virtual/input/input7/wakeup                                                                                                                             u:object_r:sysfs_wakeup:s0
+ genfscon sysfs /devices/virtual/input/input8/wakeup                                                                                                                             u:object_r:sysfs_wakeup:s0
+ genfscon sysfs /devices/virtual/misc/focaltech_fp/wakeup                                                                                                                        u:object_r:sysfs_wakeup:s0
++# Wireless charging limit exposed directly by the PMIC GLINK charger driver.
++genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink/soc:qcom,pmic_glink:qcom,battery_charger/wls_input_current_limit    u:object_r:vendor_sysfs_battery_supply:s0
+diff --git a/sepolicy/qti/vendor/hal_moto_panel.te b/sepolicy/qti/vendor/hal_moto_panel.te
+new file mode 100644
+index 0000000..fa08fb7
+--- /dev/null
++++ b/sepolicy/qti/vendor/hal_moto_panel.te
+@@ -0,0 +1,15 @@
++type hal_moto_panel_default, domain;
++type hal_moto_panel_default_exec, exec_type, vendor_file_type, file_type;
++
++init_daemon_domain(hal_moto_panel_default)
++binder_use(hal_moto_panel_default)
++vndbinder_use(hal_moto_panel_default)
++add_service(hal_moto_panel_default, hal_moto_panel_aidl_service)
++
++allow hal_moto_panel_default sysfs_dt_chosen:dir search;
++allow hal_moto_panel_default sysfs_dt_chosen:file { read open };
++allow hal_moto_panel_default graphics_device:chr_file { ioctl read write open };
++
++# The fingerprint HAL requests local HBM through the panel service.
++binder_call(hal_fingerprint_default, hal_moto_panel_default)
++allow hal_fingerprint_default hal_moto_panel_aidl_service:service_manager find;
+diff --git a/sepolicy/qti/vendor/hal_mottouch.te b/sepolicy/qti/vendor/hal_mottouch.te
+new file mode 100644
+index 0000000..1b7d203
+--- /dev/null
++++ b/sepolicy/qti/vendor/hal_mottouch.te
+@@ -0,0 +1,11 @@
++type hal_mottouch_default, domain;
++type hal_mottouch_default_exec, exec_type, vendor_file_type, file_type;
++
++init_daemon_domain(hal_mottouch_default)
++binder_use(hal_mottouch_default)
++vndbinder_use(hal_mottouch_default)
++add_service(hal_mottouch_default, hal_mottouch_aidl_service)
++
++allow hal_mottouch_default vendor_sysfs_touchpanel:dir search;
++allow hal_mottouch_default touchRec_data_file:dir create_dir_perms;
++allow hal_mottouch_default touchRec_data_file:file create_file_perms;
+diff --git a/sepolicy/qti/vendor/hal_motwlc.te b/sepolicy/qti/vendor/hal_motwlc.te
+new file mode 100644
+index 0000000..70252ec
+--- /dev/null
++++ b/sepolicy/qti/vendor/hal_motwlc.te
+@@ -0,0 +1,11 @@
++type hal_motwlc_default, domain;
++type hal_motwlc_default_exec, exec_type, vendor_file_type, file_type;
++
++init_daemon_domain(hal_motwlc_default)
++binder_use(hal_motwlc_default)
++vndbinder_use(hal_motwlc_default)
++add_service(hal_motwlc_default, hal_motwlc_aidl_service)
++
++allow hal_motwlc_default vendor_sysfs_usb_supply:dir search;
++allow hal_motwlc_default sysfs_wls_dev:dir search;
++allow hal_motwlc_default sysfs_wls_dev:file rw_file_perms;
+diff --git a/sepolicy/qti/vendor/service.te b/sepolicy/qti/vendor/service.te
+index f8a12ae..6777843 100644
+--- a/sepolicy/qti/vendor/service.te
++++ b/sepolicy/qti/vendor/service.te
+@@ -1 +1,6 @@
+ type hal_sensorext_service, protected_service, hal_service_type, service_manager_type;
++
++# Motorola display and wireless AIDL HALs
++type hal_moto_panel_aidl_service, protected_service, hal_service_type, service_manager_type;
++type hal_mottouch_aidl_service, protected_service, hal_service_type, service_manager_type;
++type hal_motwlc_aidl_service, protected_service, hal_service_type, service_manager_type;
+-- 
+2.34.1
+

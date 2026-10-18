@@ -1,5 +1,9 @@
 # RoadSTR non-device-specific changes
 
+> Evolution-X `cnb`: use the [verified Android 17 series](evo-cnb/README.md)
+> and its `series.json`. The older patches below are historical references;
+> do not apply both sets.
+
 This directory carries small, reviewable patches for shared AOSP, Lineage,
 QCOM, and external repositories. They keep RoadSTR-specific behavior out of
 shared repository history while giving other device maintainers reusable

@@ -1,0 +1,28 @@
+From 465a5659f0b194a1a62df662a2ea8cec43ec2b49 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:03 +0800
+Subject: [PATCH] build: skip empty generator dependencies
+
+Optional build variables may expand to an empty dependency. Skip them
+instead of globbing the dependency root.
+---
+ build/soong/generator/generator.go | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/build/soong/generator/generator.go b/build/soong/generator/generator.go
+index c70ef5f0..5a24b934 100644
+--- a/build/soong/generator/generator.go
++++ b/build/soong/generator/generator.go
+@@ -205,6 +205,9 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+ 	// Glob dep_files property
+ 	for _, dep_file := range g.properties.Dep_files {
+ 		dep_file = lineageExpandVariables(ctx, dep_file)
++		if dep_file == "" {
++			continue
++		}
+ 		globPath := filepath.Join(depRoot, dep_file)
+ 		paths, err := ctx.GlobWithDeps(globPath, nil)
+ 		if err != nil {
+-- 
+2.34.1
+

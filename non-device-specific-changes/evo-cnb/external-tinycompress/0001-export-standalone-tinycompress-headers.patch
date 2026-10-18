@@ -1,0 +1,34 @@
+From 09e11d8ebd2548d90ffacee76136a81f9fef70de Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:58 +0800
+Subject: [PATCH] build: export standalone tinycompress headers
+
+Stock prebuilt consumers still need matching public headers without
+selecting the source implementation.
+
+Change-Id: I6247e4180a0df230accfd78dd5807b11446457ac
+---
+ Android.bp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Android.bp b/Android.bp
+index 630283c..7cb3fc9 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -19,6 +19,13 @@ license {
+     ],
+ }
+ 
++// Keep the public headers available when a device supplies a prebuilt library.
++cc_library_headers {
++    name: "libtinycompress_headers",
++    vendor: true,
++    export_include_dirs: ["include"],
++}
++
+ cc_library_shared {
+     name: "libtinycompress",
+     vendor: true,
+-- 
+2.34.1
+

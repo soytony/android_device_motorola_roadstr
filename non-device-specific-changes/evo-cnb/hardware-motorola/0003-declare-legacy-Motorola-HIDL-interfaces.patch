@@ -1,0 +1,54 @@
+From ea403e6b8738096c4a0c470d93be53a873cf5ba9 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:01 +0800
+Subject: [PATCH] build: declare legacy Motorola HIDL interfaces
+
+Stock health/storage and TCMD blobs need matching prebuilt HIDL
+interface metadata and the Motorola package root.
+
+Change-Id: Ib2447a7c1a2219d87578450eddf9c3d204c8438d
+---
+ interfaces/Android.bp                    | 3 +++
+ interfaces/health/storage/1.0/Android.bp | 6 ++++++
+ interfaces/tcmd/1.0/Android.bp           | 6 ++++++
+ 3 files changed, 15 insertions(+)
+ create mode 100644 interfaces/Android.bp
+ create mode 100644 interfaces/health/storage/1.0/Android.bp
+ create mode 100644 interfaces/tcmd/1.0/Android.bp
+
+diff --git a/interfaces/Android.bp b/interfaces/Android.bp
+new file mode 100644
+index 0000000..5bc4bd6
+--- /dev/null
++++ b/interfaces/Android.bp
+@@ -0,0 +1,3 @@
++hidl_package_root {
++    name: "motorola.hardware",
++}
+diff --git a/interfaces/health/storage/1.0/Android.bp b/interfaces/health/storage/1.0/Android.bp
+new file mode 100644
+index 0000000..cad87b5
+--- /dev/null
++++ b/interfaces/health/storage/1.0/Android.bp
+@@ -0,0 +1,6 @@
++prebuilt_hidl_interfaces {
++    name: "motorola.hardware.health.storage@1.0-prebuilt-interfaces",
++    interfaces: [
++        "motorola.hardware.health.storage@1.0::IMotStorage",
++    ],
++}
+diff --git a/interfaces/tcmd/1.0/Android.bp b/interfaces/tcmd/1.0/Android.bp
+new file mode 100644
+index 0000000..5f6482a
+--- /dev/null
++++ b/interfaces/tcmd/1.0/Android.bp
+@@ -0,0 +1,6 @@
++prebuilt_hidl_interfaces {
++    name: "motorola.hardware.tcmd@1.0-prebuilt-interfaces",
++    interfaces: [
++        "motorola.hardware.tcmd@1.0::IMotTcmd",
++    ],
++}
+-- 
+2.34.1
+

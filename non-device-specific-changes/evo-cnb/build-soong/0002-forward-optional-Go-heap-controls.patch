@@ -1,0 +1,31 @@
+From 179c70eef0a9cae6070b4e37332032108a4eee49 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:58 +0800
+Subject: [PATCH] build: forward optional Go heap controls
+
+Constrained build hosts need graph-builder heap limits. Unset controls
+preserve the existing environment and have no device runtime effect.
+---
+ ui/build/soong.go | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ui/build/soong.go b/ui/build/soong.go
+index 4521b4abe..3ecb3699e 100644
+--- a/ui/build/soong.go
++++ b/ui/build/soong.go
+@@ -215,6 +215,12 @@ func (pb PrimaryBuilderFactory) primaryBuilderInvocation(config Config) bootstra
+ 
+ 	commonArgs = append(commonArgs, "-l", filepath.Join(pb.config.FileListDir(), "Android.bp.list"))
+ 	invocationEnv := make(map[string]string)
++	// Allow constrained hosts to tune the Go heap of the graph builder.
++	for _, key := range []string{"GOGC", "GOMEMLIMIT"} {
++		if value, ok := config.Environment().Get(key); ok {
++			invocationEnv[key] = value
++		}
++	}
+ 	if pb.debugPort != "" {
+ 		//debug mode
+ 		commonArgs = append(commonArgs, "--delve_listen", pb.debugPort,
+-- 
+2.34.1
+

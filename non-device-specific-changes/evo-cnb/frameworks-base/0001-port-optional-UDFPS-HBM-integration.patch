@@ -1,0 +1,265 @@
+From cd6293079b5ed925c31a0b8a3f9c0bdd05347cfb Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:59 +0800
+Subject: [PATCH] fix: port optional UDFPS HBM integration
+
+Validate device overlays and sequence optical illumination through the
+optional stable HBM service. Empty configuration retains the default
+path. Pair with the Lineage UDFPS interface and RoadSTR panel service.
+---
+ packages/SystemUI/Android.bp                  |  2 +
+ packages/SystemUI/res/values/config.xml       |  3 +
+ .../systemui/biometrics/AuthController.java   |  2 +-
+ .../systemui/biometrics/UdfpsDisplayMode.kt   | 65 +++++++++++++++++--
+ .../biometrics/dagger/BiometricsModule.kt     | 32 +++++++--
+ .../biometrics/ui/view/UdfpsTouchOverlay.kt   |  3 +-
+ 6 files changed, 92 insertions(+), 15 deletions(-)
+
+diff --git a/packages/SystemUI/Android.bp b/packages/SystemUI/Android.bp
+index 6f24dc7a49bf..cc5a9f894eb1 100644
+--- a/packages/SystemUI/Android.bp
++++ b/packages/SystemUI/Android.bp
+@@ -581,6 +581,7 @@ android_library {
+         "uilatencystats_flags_core_java_lib",
+         "personalcontext_ace_visualizer",
+         "vendor.lineage.powershare-V1-java",
++        "vendor.lineage.biometrics.udfps-V1-java",
+         "FadingEdgeLayoutLib",
+     ],
+     enable_ksp: true,
+@@ -793,6 +794,7 @@ android_library {
+         "dynamiccolors",
+         "SurfaceEffectsComposeLib",
+         "vendor.lineage.powershare-V1-java",
++        "vendor.lineage.biometrics.udfps-V1-java",
+     ],
+ }
+ 
+diff --git a/packages/SystemUI/res/values/config.xml b/packages/SystemUI/res/values/config.xml
+index fbac5c08f714..63e030413397 100644
+--- a/packages/SystemUI/res/values/config.xml
++++ b/packages/SystemUI/res/values/config.xml
+@@ -720,6 +720,9 @@
+          when the device supports an under-display fingerprint sensor -->
+     <integer name="config_udfpsDeviceEntryIconLongPress" translatable="false">100</integer>
+ 
++    <!-- Optional stable Binder service that controls optical UDFPS local HBM. -->
++    <string name="config_udfpsHbmService" translatable="false"></string>
++
+     <!-- package name of a built-in camera app to use to restrict implicit intent resolution
+          when the double-press power gesture is used. Ignored if empty. -->
+     <string translatable="false" name="config_cameraGesturePackage"></string>
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/AuthController.java b/packages/SystemUI/src/com/android/systemui/biometrics/AuthController.java
+index 052e985063f5..9108f51ca378 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/AuthController.java
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/AuthController.java
+@@ -321,7 +321,7 @@ public class AuthController implements
+             });
+             mUdfpsController.setAuthControllerUpdateUdfpsLocation(this::updateUdfpsLocation);
+             mUdfpsController.setUdfpsDisplayMode(new UdfpsDisplayMode(mContext, mExecution,
+-                    this, mUdfpsLogger.get()));
++                    this, mUdfpsLogger.get(), mBackgroundExecutor));
+             mUdfpsBounds = mUdfpsProps.get(0).getLocation().getRect();
+         }
+         mSidefpsProps = !sidefpsProps.isEmpty() ? sidefpsProps : null;
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsDisplayMode.kt b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsDisplayMode.kt
+index 670a8e6389af..56326b1778dd 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsDisplayMode.kt
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsDisplayMode.kt
+@@ -18,8 +18,12 @@ package com.android.systemui.biometrics
+ 
+ import android.content.Context
+ import android.os.RemoteException
++import android.os.ServiceManager
+ import android.os.Trace
++import com.android.systemui.res.R
+ import com.android.systemui.util.concurrency.Execution
++import java.util.concurrent.Executor
++import vendor.lineage.biometrics.udfps.IUdfpsHbm
+ 
+ private const val TAG = "UdfpsDisplayMode"
+ 
+@@ -32,11 +36,14 @@ constructor(
+     private val context: Context,
+     private val execution: Execution,
+     private val authController: AuthController,
+-    private val logger: UdfpsLogger
++    private val logger: UdfpsLogger,
++    private val backgroundExecutor: Executor
+ ) : UdfpsDisplayModeProvider {
+ 
+     // The request is reset to null after it's processed.
+     private var currentRequest: Request? = null
++    private var requestGeneration = 0L
++    private val hbmServiceName = context.getString(R.string.config_udfpsHbmService)
+ 
+     override fun enable(onEnabled: Runnable?) {
+         execution.isMainThread()
+@@ -54,7 +61,7 @@ constructor(
+         Trace.beginSection("UdfpsDisplayMode.enable")
+ 
+         // Track this request in one object.
+-        val request = Request(context.displayId)
++        val request = Request(context.displayId, ++requestGeneration)
+         currentRequest = request
+ 
+         try {
+@@ -66,7 +73,27 @@ constructor(
+             logger.e(TAG, "enable", e)
+         }
+ 
+-        onEnabled?.run() ?: logger.w(TAG, "enable | onEnabled is null")
++        if (hbmServiceName.isEmpty()) {
++            onEnabled?.run() ?: logger.w(TAG, "enable | onEnabled is null")
++        } else {
++            backgroundExecutor.execute {
++                val enabled = setHbmEnabled(true)
++                context.mainExecutor.execute main@{
++                    if (currentRequest?.generation != request.generation) {
++                        if (enabled) {
++                            backgroundExecutor.execute { setHbmEnabled(false) }
++                        }
++                        return@main
++                    }
++                    if (enabled) {
++                        logger.v(TAG, "enable | local HBM enabled")
++                        onEnabled?.run() ?: logger.w(TAG, "enable | onEnabled is null")
++                    } else {
++                        logger.e(TAG, "enable | failed to enable local HBM")
++                    }
++                }
++            }
++        }
+         Trace.endSection()
+     }
+ 
+@@ -91,10 +118,38 @@ constructor(
+         }
+ 
+         currentRequest = null
+-        onDisabled?.run() ?: logger.w(TAG, "disable | onDisabled is null")
++        requestGeneration++
++        if (hbmServiceName.isEmpty()) {
++            onDisabled?.run() ?: logger.w(TAG, "disable | onDisabled is null")
++        } else {
++            backgroundExecutor.execute {
++                setHbmEnabled(false)
++                context.mainExecutor.execute {
++                    onDisabled?.run() ?: logger.w(TAG, "disable | onDisabled is null")
++                }
++            }
++        }
+         Trace.endSection()
+     }
++
++    private fun setHbmEnabled(enabled: Boolean): Boolean {
++        return try {
++            val binder = ServiceManager.getService(hbmServiceName)
++            if (binder == null) {
++                logger.e(TAG, "setHbmEnabled | service unavailable: $hbmServiceName")
++                false
++            } else {
++                IUdfpsHbm.Stub.asInterface(binder).setEnabled(enabled)
++            }
++        } catch (e: RemoteException) {
++            logger.e(TAG, "setHbmEnabled | remote failure", e)
++            false
++        } catch (e: RuntimeException) {
++            logger.e(TAG, "setHbmEnabled | service failure", e)
++            false
++        }
++    }
+ }
+ 
+ /** Tracks a request to enable the UDFPS mode. */
+-private data class Request(val displayId: Int)
++private data class Request(val displayId: Int, val generation: Long)
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt b/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
+index b9c1dc9da01b..21040115ceb0 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/dagger/BiometricsModule.kt
+@@ -18,6 +18,7 @@ package com.android.systemui.biometrics.dagger
+ 
+ import android.content.Context
+ import android.content.res.Resources
++import android.util.Log
+ import android.view.Display
+ import com.android.app.displaylib.PerDisplayRepository
+ import com.android.internal.R
+@@ -114,6 +115,8 @@ interface BiometricsModule {
+     @BindsOptionalOf fun deviceEntryUnlockTrackerViewBinder(): DeviceEntryUnlockTrackerViewBinder
+ 
+     companion object {
++        private const val TAG = "BiometricsModule"
++
+         @Provides
+         @SysUISingleton
+         fun displayStateRepository(
+@@ -141,20 +144,35 @@ interface BiometricsModule {
+                 Resources.getSystem().getInteger(R.integer.config_selected_udfps_touch_detection)
+             val values =
+                 Resources.getSystem()
+-                    .getStringArray(R.array.config_udfps_touch_detection_options)[selectedOption]
+-                    .split(",")
+-                    .map { it.toFloat() }
++                    .getStringArray(R.array.config_udfps_touch_detection_options)
++                    .getOrNull(selectedOption)
++                    ?.split(",")
++                    ?.map { it.toFloatOrNull() }
++
++            // Resource overlays are device supplied. Do not let an invalid option prevent SystemUI
++            // from starting; the standard detector works for every UDFPS shape.
++            if (
++                values == null ||
++                    values.size < 5 ||
++                    values.any { it == null } ||
++                    values[2]!! <= 0f ||
++                    (values[0] != 0f && values[0] != 1f) ||
++                    (values[0] == 1f && (values[3]!! !in 0f..1f || values[4]!! <= 0f))
++            ) {
++                Log.w(TAG, "Invalid UDFPS touch detection configuration; using bounding box")
++                return BoundingBoxOverlapDetector(1f)
++            }
+ 
+             return if (values[0] == 1f) {
+                 EllipseOverlapDetector(
+                     EllipseOverlapDetectorParams(
+-                        minOverlap = values[3],
+-                        targetSize = values[2],
+-                        stepSize = values[4].toInt(),
++                        minOverlap = values[3]!!,
++                        targetSize = values[2]!!,
++                        stepSize = values[4]!!.toInt(),
+                     )
+                 )
+             } else {
+-                BoundingBoxOverlapDetector(values[2])
++                BoundingBoxOverlapDetector(values[2]!!)
+             }
+         }
+ 
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt b/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
+index a7c9ffdec058..f73cfef4cf9f 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/ui/view/UdfpsTouchOverlay.kt
+@@ -32,7 +32,6 @@ import com.android.systemui.res.R
+ class UdfpsTouchOverlay(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
+     private var ghbmView: UdfpsSurfaceView? = null
+     private var udfpsDisplayMode: UdfpsDisplayModeProvider? = null
+-
+     // sensorRect may be bigger than the sensor. True sensor dimensions are defined in
+     // overlayParams.sensorBounds
+     var sensorRect = Rect()
+@@ -63,8 +62,8 @@ class UdfpsTouchOverlay(context: Context, attrs: AttributeSet?) : FrameLayout(co
+ 
+     private fun doIlluminate(surface: Surface?, onDisplayConfigured: Runnable?) {
+         udfpsDisplayMode?.enable {
+-            onDisplayConfigured?.run()
+             ghbmView?.drawIlluminationDot(RectF(sensorRect))
++            onDisplayConfigured?.run()
+         }
+     }
+ 
+-- 
+2.34.1
+

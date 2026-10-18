@@ -1,0 +1,31 @@
+From 25e13c16acbd0b36b49103cedfaddd10736b14dd Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:58 +0800
+Subject: [PATCH] fix: disable CFI for stock-linked tinyxml2
+
+Motorola vendor consumers require the stock-compatible library ABI.
+This affects the shared library; revisit when those blobs are retired.
+
+Change-Id: I94b518048a3487fa208f15b857874cc533f576d0
+---
+ Android.bp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Android.bp b/Android.bp
+index d8a3b48..08ca2d8 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -67,6 +67,10 @@ cc_library {
+         },
+     },
+ 
++    sanitize: {
++        cfi: false,
++    },
++
+     export_include_dirs: ["."],
+ 
+     min_sdk_version: "apex_inherit",
+-- 
+2.34.1
+

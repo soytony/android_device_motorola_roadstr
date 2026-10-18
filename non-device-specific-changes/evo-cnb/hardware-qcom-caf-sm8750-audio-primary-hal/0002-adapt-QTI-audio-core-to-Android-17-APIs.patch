@@ -1,0 +1,259 @@
+From ec2fa0ad1d2a4515eecda26896a58096762b5b71 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:02 +0800
+Subject: [PATCH] fix: adapt QTI audio core to Android 17 APIs
+
+Handle mmap descriptors, unsupported flush-from-frame requests, ACN
+channel counts and range-loop warnings. Source build validation does
+not establish this HAL as the runtime provider; RoadSTR uses stock HALs.
+
+Change-Id: Iffdab29ce12699199f545debae526822bcb621cb
+---
+ hal/core/Module.cpp                           | 14 +++++-
+ hal/core/Stream.cpp                           | 49 +++++++++++++++++++
+ hal/core/include/qti-audio-core/Module.h      |  3 ++
+ hal/core/include/qti-audio-core/Stream.h      | 21 ++++++++
+ hal/core/utils/include/qti-audio-core/Utils.h |  5 ++
+ 5 files changed, 91 insertions(+), 1 deletion(-)
+
+diff --git a/hal/core/Module.cpp b/hal/core/Module.cpp
+index 9412b8b6e..cdd4b8312 100644
+--- a/hal/core/Module.cpp
++++ b/hal/core/Module.cpp
+@@ -688,7 +688,7 @@ ndk::ScopedAStatus Module::connectExternalDevice(const AudioPort& in_templateIdA
+                 // Check if profiles are non empty because they were populated
+                 // by a previous connection. Otherwise, it means that they are
+                 // not empty because the mix port has static profiles.
+-                for (const auto cp : mConnectedDevicePorts) {
++                for (const auto& cp : mConnectedDevicePorts) {
+                     if (cp.second.count(portsIt->id) > 0) {
+                         connectedPortsIt->second.insert(portsIt->id);
+                         break;
+@@ -864,6 +864,9 @@ ndk::ScopedAStatus Module::openInputStream(const OpenInputStreamArguments& in_ar
+         mmapRef.sharedMemory.fd = ndk::ScopedFileDescriptor{fd};
+         mmapRef.burstSizeFrames = burstSizeFrames;
+         mmapRef.flags = mmapFlags;
++        mmapRef.sharedMemory.size =
++                static_cast<int64_t>(bufferSizeFrames) * stream->getContext().getFrameSize();
++        RETURN_STATUS_IF_ERROR(stream->setMmapBufferDescriptor(mmapRef));
+         _aidl_return->desc.bufferSizeFrames = bufferSizeFrames;
+     }
+ 
+@@ -926,6 +929,9 @@ ndk::ScopedAStatus Module::openOutputStream(const OpenOutputStreamArguments& in_
+         mmapRef.sharedMemory.fd = ndk::ScopedFileDescriptor{fd};
+         mmapRef.burstSizeFrames = burstSizeFrames;
+         mmapRef.flags = mmapFlags;
++        mmapRef.sharedMemory.size =
++                static_cast<int64_t>(bufferSizeFrames) * stream->getContext().getFrameSize();
++        RETURN_STATUS_IF_ERROR(stream->setMmapBufferDescriptor(mmapRef));
+         _aidl_return->desc.bufferSizeFrames = bufferSizeFrames;
+     } else if (mTelephony && hasOutputVoipRxFlag(port->flags)) {
+         // TODO remove this way of handling streams for telephony
+@@ -1614,6 +1620,12 @@ ndk::ScopedAStatus Module::getAAudioHardwareBurstMinUsec(int32_t* _aidl_return)
+     return ndk::ScopedAStatus::ok();
+ }
+ 
++ndk::ScopedAStatus Module::getFlushFromFrameSupport(
++        const AudioPortConfig& in_config __unused,
++        ::aidl::android::media::audio::common::FlushFromFrameSupport* _aidl_return __unused) {
++    return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
++}
++
+ bool Module::isMmapSupported() {
+     if (mIsMmapSupported.has_value()) {
+         return mIsMmapSupported.value();
+diff --git a/hal/core/Stream.cpp b/hal/core/Stream.cpp
+index 44a74ca84..f0c18525f 100644
+--- a/hal/core/Stream.cpp
++++ b/hal/core/Stream.cpp
+@@ -205,6 +205,10 @@ StreamInWorkerLogic::Status StreamInWorkerLogic::cycle() {
+     StreamDescriptor::Reply reply{};
+     reply.status = STATUS_BAD_VALUE;
+     switch (command.getTag()) {
++        case Tag::flushFromFrame:
++            // This HAL does not advertise flush-from-frame support.
++            reply.status = STATUS_INVALID_OPERATION;
++            break;
+         case Tag::halReservedExit:
+             if (const int32_t cookie = command.get<Tag::halReservedExit>();
+                 cookie == mContext->getInternalCommandCookie()) {
+@@ -460,6 +464,10 @@ StreamOutWorkerLogic::Status StreamOutWorkerLogic::cycle() {
+     reply.status = STATUS_BAD_VALUE;
+     using Tag = StreamDescriptor::Command::Tag;
+     switch (command.getTag()) {
++        case Tag::flushFromFrame:
++            // This HAL does not advertise flush-from-frame support.
++            reply.status = STATUS_INVALID_OPERATION;
++            break;
+         case Tag::halReservedExit:
+             if (const int32_t cookie = command.get<Tag::halReservedExit>();
+                 cookie == mContext->getInternalCommandCookie()) {
+@@ -839,6 +847,43 @@ ndk::ScopedAStatus StreamCommonImpl::removeEffect(
+     return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+ }
+ 
++ndk::ScopedAStatus StreamCommonImpl::setMmapBufferDescriptor(
++        const ::aidl::android::hardware::audio::core::MmapBufferDescriptor& descriptor) {
++    std::lock_guard lock(mMmapBufferMutex);
++    ::aidl::android::hardware::audio::core::MmapBufferDescriptor copy;
++    copy.sharedMemory.fd = descriptor.sharedMemory.fd.dup();
++    if (copy.sharedMemory.fd.get() < 0) {
++        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
++    }
++    copy.sharedMemory.size = descriptor.sharedMemory.size;
++    copy.burstSizeFrames = descriptor.burstSizeFrames;
++    copy.flags = descriptor.flags;
++    mMmapBufferDescriptor = std::move(copy);
++    return ndk::ScopedAStatus::ok();
++}
++
++ndk::ScopedAStatus StreamCommonImpl::createMmapBuffer(
++        ::aidl::android::hardware::audio::core::MmapBufferDescriptor* descriptor) {
++    std::lock_guard lock(mMmapBufferMutex);
++    if (isClosed()) {
++        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
++    }
++    if (!hasMMapFlagsEnabled(mContextRef.getFlags())) {
++        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
++    }
++    if (mWorker->getState() == StreamDescriptor::State::STANDBY || !mMmapBufferDescriptor) {
++        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
++    }
++    descriptor->sharedMemory.fd = mMmapBufferDescriptor->sharedMemory.fd.dup();
++    if (descriptor->sharedMemory.fd.get() < 0) {
++        return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
++    }
++    descriptor->sharedMemory.size = mMmapBufferDescriptor->sharedMemory.size;
++    descriptor->burstSizeFrames = mMmapBufferDescriptor->burstSizeFrames;
++    descriptor->flags = mMmapBufferDescriptor->flags;
++    return ndk::ScopedAStatus::ok();
++}
++
+ ndk::ScopedAStatus StreamCommonImpl::close() {
+     ModulePrimary::outListMutex.lock();
+     LOG(DEBUG) << __func__;
+@@ -846,6 +891,10 @@ ndk::ScopedAStatus StreamCommonImpl::close() {
+         stopAndJoinWorker();
+         onClose();
+         mWorker->setClosed();
++        {
++            std::lock_guard lock(mMmapBufferMutex);
++            mMmapBufferDescriptor.reset();
++        }
+         ModulePrimary::outListMutex.unlock();
+         return ndk::ScopedAStatus::ok();
+     } else {
+diff --git a/hal/core/include/qti-audio-core/Module.h b/hal/core/include/qti-audio-core/Module.h
+index f9d2ca672..2ea053d11 100644
+--- a/hal/core/include/qti-audio-core/Module.h
++++ b/hal/core/include/qti-audio-core/Module.h
+@@ -140,6 +140,9 @@ class Module : public ::aidl::android::hardware::audio::core::BnModule,
+     ndk::ScopedAStatus supportsVariableLatency(bool* _aidl_return) override;
+     ndk::ScopedAStatus getAAudioMixerBurstCount(int32_t* _aidl_return) override;
+     ndk::ScopedAStatus getAAudioHardwareBurstMinUsec(int32_t* _aidl_return) override;
++    ndk::ScopedAStatus getFlushFromFrameSupport(
++            const ::aidl::android::media::audio::common::AudioPortConfig& in_config,
++            ::aidl::android::media::audio::common::FlushFromFrameSupport* _aidl_return) override;
+     // #################### end of overriding APIs from IModule ####################
+ 
+     // This value is used for all AudioPatches.
+diff --git a/hal/core/include/qti-audio-core/Stream.h b/hal/core/include/qti-audio-core/Stream.h
+index 40bb69f37..70bcc7ca7 100644
+--- a/hal/core/include/qti-audio-core/Stream.h
++++ b/hal/core/include/qti-audio-core/Stream.h
+@@ -246,6 +246,7 @@ class StreamWorkerCommonLogic : public StreamLogic {
+     bool isClosed() const {
+         return static_cast<int32_t>(mState.load()) == StreamContext::STATE_CLOSED;
+     }
++    auto getState() const { return mState.load(); }
+     void setClosed() {
+         mState = static_cast<::aidl::android::hardware::audio::core::StreamDescriptor::State>(
+                 StreamContext::STATE_CLOSED);
+@@ -322,6 +323,7 @@ struct StreamWorkerInterface {
+             std::function<StreamWorkerInterface*(StreamContext* context, DriverInterface* driver)>;
+     virtual ~StreamWorkerInterface() = default;
+     virtual bool isClosed() const = 0;
++    virtual ::aidl::android::hardware::audio::core::StreamDescriptor::State getState() const = 0;
+     virtual void setIsConnected(bool isConnected) = 0;
+     virtual void setClosed() = 0;
+     virtual bool start() = 0;
+@@ -341,6 +343,9 @@ class StreamWorkerImpl : public StreamWorkerInterface,
+     StreamWorkerImpl(StreamContext* context, DriverInterface* driver)
+         : WorkerImpl(context, driver) {}
+     bool isClosed() const override { return WorkerImpl::isClosed(); }
++    auto getState() const -> ::aidl::android::hardware::audio::core::StreamDescriptor::State override {
++        return WorkerImpl::getState();
++    }
+     void setIsConnected(bool isConnected) override { WorkerImpl::setIsConnected(isConnected); }
+     void setClosed() override { WorkerImpl::setClosed(); }
+     bool start() override {
+@@ -404,6 +409,8 @@ struct StreamCommonInterface {
+     // Methods below originate from the 'IStreamCommon' interface.
+     // This is semantically equivalent to inheriting from 'IStreamCommon' with a benefit
+     // that concrete stream implementations can inherit both from this interface and IStreamIn/Out.
++    virtual ndk::ScopedAStatus createMmapBuffer(
++            ::aidl::android::hardware::audio::core::MmapBufferDescriptor* descriptor) = 0;
+     virtual ndk::ScopedAStatus close() = 0;
+     virtual ndk::ScopedAStatus prepareToClose() = 0;
+     virtual ndk::ScopedAStatus updateHwAvSyncId(int32_t in_hwAvSyncId) = 0;
+@@ -431,6 +438,8 @@ struct StreamCommonInterface {
+     virtual Metadata getMetadataCommon() = 0;
+ 
+     // Methods below are called by implementation of 'IModule', 'IStreamIn' and 'IStreamOut'.
++    virtual ndk::ScopedAStatus setMmapBufferDescriptor(
++            const ::aidl::android::hardware::audio::core::MmapBufferDescriptor& descriptor) = 0;
+     virtual ndk::ScopedAStatus initInstance(
+             const std::shared_ptr<StreamCommonInterface>& delegate) = 0;
+     virtual const StreamContext& getContext() const = 0;
+@@ -460,6 +469,12 @@ class StreamCommonDelegator : public ::aidl::android::hardware::audio::core::BnS
+         : mDelegate(delegate) {}
+ 
+   private:
++    ndk::ScopedAStatus createMmapBuffer(
++            ::aidl::android::hardware::audio::core::MmapBufferDescriptor* descriptor) override {
++        auto delegate = mDelegate.lock();
++        return delegate != nullptr ? delegate->createMmapBuffer(descriptor)
++                                   : ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
++    }
+     ndk::ScopedAStatus close() override {
+         auto delegate = mDelegate.lock();
+         return delegate != nullptr ? delegate->close()
+@@ -524,6 +539,10 @@ class StreamCommonImpl : virtual public StreamCommonInterface, virtual public Dr
+         : StreamCommonImpl(context, metadata, isInput(metadata) ? getDefaultInWorkerCreator()
+                                                                 : getDefaultOutWorkerCreator()) {}
+     virtual ~StreamCommonImpl() override;
++    ndk::ScopedAStatus createMmapBuffer(
++            ::aidl::android::hardware::audio::core::MmapBufferDescriptor* descriptor) override;
++    ndk::ScopedAStatus setMmapBufferDescriptor(
++            const ::aidl::android::hardware::audio::core::MmapBufferDescriptor& descriptor) override;
+     ndk::ScopedAStatus close() override;
+     ndk::ScopedAStatus prepareToClose() override;
+     ndk::ScopedAStatus updateHwAvSyncId(int32_t in_hwAvSyncId) override;
+@@ -595,6 +614,8 @@ class StreamCommonImpl : virtual public StreamCommonInterface, virtual public Dr
+ 
+     private:
+     std::atomic<bool> mWorkerStopIssued = false;
++    std::mutex mMmapBufferMutex;
++    std::optional<::aidl::android::hardware::audio::core::MmapBufferDescriptor> mMmapBufferDescriptor;
+ };
+ 
+ // Note: 'StreamIn/Out' can not be used on their own. Instead, they must be used for defining
+diff --git a/hal/core/utils/include/qti-audio-core/Utils.h b/hal/core/utils/include/qti-audio-core/Utils.h
+index d0ee641d5..58125ebb8 100644
+--- a/hal/core/utils/include/qti-audio-core/Utils.h
++++ b/hal/core/utils/include/qti-audio-core/Utils.h
+@@ -346,6 +346,11 @@ constexpr size_t getChannelCount(
+             return __builtin_popcount(layout.get<Tag::layoutMask>() & mask);
+         case Tag::voiceMask:
+             return __builtin_popcount(layout.get<Tag::voiceMask>() & mask);
++        case Tag::acnMask:
++            // ACN encodes the channel count, not one bit per channel.
++            return layout.get<Tag::acnMask>() &
++                   ::aidl::android::media::audio::common::AudioChannelLayout::
++                           ACN_CHANNEL_COUNT_BIT_MASK;
+     }
+     return 0;
+ }
+-- 
+2.34.1
+

@@ -1,0 +1,41 @@
+From f9fab82bb838a1b34c1950d423fd5ca272ef92a7 Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:05:01 +0800
+Subject: [PATCH] fix: restore MotoActions build dependencies
+
+MotoActions uses internal platform APIs and queries phone state.
+Declare the library and permission required by the existing behavior.
+
+Change-Id: Iafcd2a6f91769625d69e5513c71176c3b7f689ad
+---
+ packages/MotoActions/Android.bp          | 1 +
+ packages/MotoActions/AndroidManifest.xml | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/packages/MotoActions/Android.bp b/packages/MotoActions/Android.bp
+index 0f1c36c..f54770a 100644
+--- a/packages/MotoActions/Android.bp
++++ b/packages/MotoActions/Android.bp
+@@ -17,6 +17,7 @@ android_app {
+     static_libs: [
+         "androidx.core_core",
+         "androidx.preference_preference",
++        "org.lineageos.platform.internal",
+         "org.lineageos.settings.resources",
+     ],
+ 
+diff --git a/packages/MotoActions/AndroidManifest.xml b/packages/MotoActions/AndroidManifest.xml
+index 38280d6..95d9919 100644
+--- a/packages/MotoActions/AndroidManifest.xml
++++ b/packages/MotoActions/AndroidManifest.xml
+@@ -12,6 +12,7 @@
+ 
+     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
++    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+     <uses-permission android:name="android.permission.VIBRATE"/>
+     <uses-permission android:name="android.permission.WAKE_LOCK" />
+-- 
+2.34.1
+

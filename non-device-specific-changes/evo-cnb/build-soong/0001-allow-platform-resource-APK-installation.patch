@@ -1,0 +1,64 @@
+From ea77730c640b9302832db5d8caba3e85021b3caa Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sun, 18 Oct 2026 15:04:58 +0800
+Subject: [PATCH] build: allow platform resource APK installation
+
+Motorola framework resources must share the framework directory.
+Expose an opt-in property instead of hard-coding another device module.
+---
+ java/app.go | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+diff --git a/java/app.go b/java/app.go
+index b2f1e6da6..13c232145 100644
+--- a/java/app.go
++++ b/java/app.go
+@@ -111,6 +111,9 @@ type AppInfos []AppInfo
+ // package splits
+ 
+ type appProperties struct {
++	// Installs a platform-owned resource APK in the partition's framework directory.
++	Install_in_system_framework *bool
++
+ 	// Names of extra android_app_certificate modules to sign the apk with in the form ":module".
+ 	Additional_certificates []string
+ 
+@@ -841,13 +844,16 @@ func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
+ 	}
+ }
+ 
++func (a *AndroidApp) installInSystemFramework(ctx android.ModuleContext) bool {
++	return ctx.ModuleName() == "framework-res" ||
++		ctx.ModuleName() == "org.lineageos.platform-res" ||
++		Bool(a.appProperties.Install_in_system_framework)
++}
++
+ func (a *AndroidApp) installPath(ctx android.ModuleContext) android.InstallPath {
+ 	var installDir string
+-	if ctx.ModuleName() == "framework-res" {
+-		// framework-res.apk is installed as system/framework/framework-res.apk
+-		installDir = "framework"
+-	} else if ctx.ModuleName() == "org.lineageos.platform-res" {
+-		// org.lineageos.platform-res.apk is installed as system/framework/org.lineageos.platform-res.apk
++	if a.installInSystemFramework(ctx) {
++		// Platform resource APKs are installed alongside framework-res.apk.
+ 		installDir = "framework"
+ 	} else if a.Privileged() {
+ 		installDir = filepath.Join("priv-app", a.installApkName)
+@@ -1089,11 +1095,8 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
+ 	a.installApkName = ctx.DeviceConfig().OverridePackageNameFor(
+ 		proptools.StringDefault(a.overridableProperties.Stem, a.Name()))
+ 
+-	if ctx.ModuleName() == "framework-res" {
+-		// framework-res.apk is installed as system/framework/framework-res.apk
+-		a.installDir = android.PathForModuleInstall(ctx, "framework")
+-	} else if ctx.ModuleName() == "org.lineageos.platform-res" {
+-		// org.lineageos.platform-res.apk is installed as system/framework/org.lineageos.platform-res.apk
++	if a.installInSystemFramework(ctx) {
++		// Platform resource APKs are installed alongside framework-res.apk.
+ 		a.installDir = android.PathForModuleInstall(ctx, "framework")
+ 	} else if a.Privileged() {
+ 		a.installDir = android.PathForModuleInstall(ctx, "priv-app", a.installApkName)
+-- 
+2.34.1
+
