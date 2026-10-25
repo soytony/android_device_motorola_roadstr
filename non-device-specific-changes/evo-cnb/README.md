@@ -254,3 +254,47 @@ Base: `72104cd46a5e303e74e57977d5e995b9d4469b72`. Result: `baa3dd91178e50dccbdd2
 - [build: support prebuilt kernel header archives](vendor-lineage/0002-support-prebuilt-kernel-header-archives.patch)
 
   Stock-kernel devices supply exported UAPI headers without a source kernel build. Track the archive as an input and preserve source-kernel paths for products that do not opt in.
+
+## Validated UDFPS timing supplement
+
+[udfps-timing.json](udfps-timing.json) records the exact base commit and result
+tree for [the capture timing patch](frameworks-base/0003-defer-optical-capture-until-hbm-ready.patch).
+This supplement remains separate from the historical `series.json` snapshot.
+It is a raw diff, not a mail patch; use `git apply`, not `git am`.
+
+The stock Jiiov HAL starts optical capture on pointer-down. Evo previously
+sent it before enabling local HBM. The optional SystemUI resource
+`config_udfpsPointerDownDelay` defers pointer-down and UI-ready until HBM and
+illumination are configured, plus the selected delay. Default zero preserves
+existing ordering. RoadSTR selects 20 ms in its SystemUI overlay. Finger state,
+generation and request guards reject canceled or stale delayed callbacks.
+
+Apply at the `frameworks/base` base commit recorded in `udfps-timing.json`,
+which already contains the existing HBM service/illumination support. Do not
+assume the historical series alone reaches this later base. From the Android
+root, with a clean framework checkout at that base:
+
+```sh
+patch="$PWD/device/motorola/roadstr/non-device-specific-changes/evo-cnb/frameworks-base/0003-defer-optical-capture-until-hbm-ready.patch"
+git -C frameworks/base apply --check "$patch"
+git -C frameworks/base apply "$patch"
+python3 device/motorola/roadstr/non-device-specific-changes/evo-cnb/verify.py --series udfps-timing.json
+```
+
+The verifier uses an isolated index and leaves the source checkout and its
+index untouched. Port deliberately when the base differs; do not reapply to
+a checkout that already includes this fix. Deployment requires rebuilt
+SystemUI in `system_ext` and the RoadSTR overlay in `product`, with matching
+AVB metadata.
+
+The device-local companions stay outside this shared patch: legacy ION
+selection in `BoardConfig.mk`, corrected Motorola FOD transaction/context in
+`udfps-hbm/UdfpsHbm.cpp`, and the 20 ms overlay. Existing shared legacy ION
+support needs no additional source patch.
+
+Validation passed: build, complete image/AVB audit, flash, effective runtime
+resource value 20, capture 47 ms after HBM completion, quick-touch cancellation,
+and zero HAL deaths. After physical unlock testing the user reported “it
+worked fine.” This is user validation, not a measured long-term failure rate.
+Evidence is recorded in `documents/roadstr-udfps-timing-20261025.md` and
+`documents/roadstr-udfps-capture-context-20261025.md` in the Android checkout.

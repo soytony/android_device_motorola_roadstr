@@ -18,6 +18,11 @@ TARGET_BOOTLOADER_BOARD_NAME := roadstr
 # 1220 px * 160 / 501 dpi = 389.6 dp minimum width.
 TARGET_SCREEN_DENSITY := 501
 
+# Fingerprint
+# Stock anc.hal imports ion_close from libdmabufheap. Retain its legacy ION
+# exports and allocator behavior instead of the platform's ION-free defaults.
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # Kernel
 TARGET_KERNEL_VERSION := 6.6
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel

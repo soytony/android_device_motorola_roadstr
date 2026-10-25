@@ -1,0 +1,79 @@
+diff --git a/packages/SystemUI/res/values/config.xml b/packages/SystemUI/res/values/config.xml
+index 63e030413397..4ae7cda788a8 100644
+--- a/packages/SystemUI/res/values/config.xml
++++ b/packages/SystemUI/res/values/config.xml
+@@ -723,6 +723,10 @@
+     <!-- Optional stable Binder service that controls optical UDFPS local HBM. -->
+     <string name="config_udfpsHbmService" translatable="false"></string>
+ 
++    <!-- Optional delay after local HBM is ready before starting optical capture.
++         Zero retains the default pointer-down ordering. Requires an HBM service. -->
++    <integer name="config_udfpsPointerDownDelay" translatable="false">0</integer>
++
+     <!-- package name of a built-in camera app to use to restrict implicit intent resolution
+          when the double-press power gesture is used. Ignored if empty. -->
+     <string translatable="false" name="config_cameraGesturePackage"></string>
+diff --git a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
+index 07ef83d1bdb5..8b02b43f8efa 100644
+--- a/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
++++ b/packages/SystemUI/src/com/android/systemui/biometrics/UdfpsController.java
+@@ -237,6 +237,7 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+     private boolean mScreenOn;
+     private Runnable mAodInterruptRunnable;
+     private boolean mOnFingerDown;
++    private long mFingerDownGeneration;
+     private boolean mAttemptedToDismissKeyguard;
+     private final Set<Callback> mCallbacks = new HashSet<>();
+ 
+@@ -1273,8 +1274,18 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+             mDeviceEntryFaceAuthInteractor.onUdfpsSensorTouched();
+         }
+         mOnFingerDown = true;
+-        mFingerprintManager.onPointerDown(requestId, mSensorProps.sensorId, pointerId, x, y,
+-                minor, major, orientation, time, gestureStart, isAod);
++        final long fingerDownGeneration = ++mFingerDownGeneration;
++        final View view = mOverlay.getTouchOverlay();
++        final int pointerDownDelay = mContext.getResources()
++                .getInteger(com.android.systemui.res.R.integer.config_udfpsPointerDownDelay);
++        final boolean waitForHbm = isOptical() && !mIgnoreRefreshRate
++                && view instanceof UdfpsTouchOverlay && pointerDownDelay > 0
++                && !mContext.getString(
++                        com.android.systemui.res.R.string.config_udfpsHbmService).isEmpty();
++        if (!waitForHbm) {
++            mFingerprintManager.onPointerDown(requestId, mSensorProps.sensorId, pointerId, x, y,
++                    minor, major, orientation, time, gestureStart, isAod);
++        }
+ 
+         if (mUseMtkGhbmDimming && mOverlay != null) {
+             View hbmView = mOverlay.getHbmView(); // Ensure UdfpsControllerOverlay exposes this
+@@ -1301,12 +1312,28 @@ public class UdfpsController implements DozeReceiver, Dumpable {
+ 
+         Trace.endAsyncSection("UdfpsController.e2e.onPointerDown", 0);
+ 
+-        final View view = mOverlay.getTouchOverlay();
+         if (isOptical() && view instanceof UdfpsTouchOverlay udfpsView) {
+             if (mIgnoreRefreshRate) {
+                 dispatchOnUiReady(requestId);
+             } else {
+-                udfpsView.configureDisplay(() -> dispatchOnUiReady(requestId));
++                udfpsView.configureDisplay(() -> {
++                    if (!waitForHbm) {
++                        dispatchOnUiReady(requestId);
++                        return;
++                    }
++                    // Some optical HALs begin capture on pointer-down, before UI-ready.
++                    // Wait for panel HBM and the illumination surface to settle first.
++                    mFgExecutor.executeDelayed(() -> {
++                        if (!mOnFingerDown || mFingerDownGeneration != fingerDownGeneration
++                                || mOverlay == null || !mOverlay.matchesRequestId(requestId)) {
++                            return;
++                        }
++                        mFingerprintManager.onPointerDown(requestId, mSensorProps.sensorId,
++                                pointerId, x, y, minor, major, orientation, time,
++                                gestureStart, isAod);
++                        dispatchOnUiReady(requestId);
++                    }, pointerDownDelay);
++                });
+             }
+         }
+ 

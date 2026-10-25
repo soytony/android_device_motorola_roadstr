@@ -38,22 +38,20 @@ constexpr char kMotoFingerprintDescriptor[] =
 
 // Stable NDK AIDL transaction number for IDisplayPanel.setMode(PanelMode).
 constexpr transaction_code_t kSetModeTransaction = FIRST_CALL_TRANSACTION + 4;
-// RoadSTR exposes this vendor fingerprint endpoint through the stable AIDL
-// binder manager despite sharing the Motorola interface name with older HIDL.
-// RoadSTR's deployed service routes sendFodEvent through transaction 1.
-// Other transaction numbers crash the vendor HAL, so keep this isolated from
-// the older Motorola interface ordering used by Rtwo.
-constexpr transaction_code_t kSendFodEventTransaction = FIRST_CALL_TRANSACTION;
-// Use a normal synchronous Binder call; the panel-specific private flag is
-// rejected by this Motorola AIDL endpoint.
-constexpr uint32_t kBinderFlags = 0;
+// Match RoadSTR's stock V2 NDK proxy: transaction 4 and FLAG_PRIVATE_VENDOR.
+// Transaction 1 is getCheckinVersion(), whose string length is not an event result.
+constexpr transaction_code_t kSendFodEventTransaction = FIRST_CALL_TRANSACTION + 3;
+constexpr uint32_t kBinderFlags = 0x10000000;
 constexpr uint32_t kPanelBinderFlags = 0x10000000;
 
 // Values from Motorola's PanelMode enum, confirmed against the running stock service.
 constexpr int32_t kPanelModeNormal = 0;
 constexpr int32_t kPanelModeHighBrightFod = 4;
-constexpr int32_t kMotoFodFingerDown = 1;
-constexpr int32_t kMotoFodFingerUp = 0;
+constexpr int32_t kMotoFodFingerDown = 0;
+// The stock Jiiov implementation requires a populated eventValue vector. Its
+// first byte selects the display state (ON = 2); the second retains the normal
+// authentication context. Null throws bad_optional_access; empty is also unsafe.
+constexpr int8_t kMotoFodContext[] = {2, 0};
 constexpr auto kHbmWatchdogTimeout = std::chrono::seconds(10);
 
 ndk::SpAIBinder gPanel;
@@ -97,9 +95,9 @@ bool sendFodEvent(int32_t event) {
     binder_status_t status = AIBinder_prepareTransaction(gMotoFingerprint.get(), &rawIn);
     ndk::ScopedAParcel in(rawIn);
     if (status == STATUS_OK) status = AParcel_writeInt32(in.get(), event);
-    // The vendor method takes an optional byte[] event ID.  Encode it as null,
-    // not an empty vector; the RoadSTR implementation rejects the latter.
-    if (status == STATUS_OK) status = AParcel_writeInt32(in.get(), -1);
+    if (status == STATUS_OK) {
+        status = AParcel_writeByteArray(in.get(), kMotoFodContext, sizeof(kMotoFodContext));
+    }
     AParcel* rawOut = nullptr;
     if (status == STATUS_OK) {
         rawIn = in.release();
@@ -121,10 +119,8 @@ bool sendFodEvent(int32_t event) {
         __android_log_print(ANDROID_LOG_INFO, LOG_TAG,
                             "Motorola FOD event %d transport=%d header=%d vendor result=%d",
                             event, transportStatus, headerStatus, result);
-        // The vendor implementation may return a non-standard AIDL reply
-        // header. A completed synchronous Binder transaction is authoritative;
-        // do not reject it solely because the optional result cannot be read.
-        status = transportStatus;
+        // Binder transport success alone does not mean the HAL accepted the event.
+        if (!replyOk || result != 0) status = STATUS_FAILED_TRANSACTION;
     }
     const bool success = status == STATUS_OK;
     if (!success) gMotoFingerprint = nullptr;
@@ -206,11 +202,14 @@ class UdfpsHbm : public BnUdfpsHbm {
             return ndk::ScopedAStatus::ok();
         }
 
-        // The vendor service expects the panel transition before the matching event.
-        // FINGER_DOWN (0) follows HBM enable; FINGER_UP (1) follows HBM disable.
+        // The extension supplies capture context; the standard fingerprint
+        // session supplies the actual pointer down/up events. Do not send an
+        // extension FINGER_UP here: Jiiov resets its context to UNKNOWN (3)
+        // before the framework's next onPointerDown can read it.
         const bool panelSuccess =
                 setPanelMode(enabled ? kPanelModeHighBrightFod : kPanelModeNormal);
-        const bool eventSuccess = sendFodEvent(enabled ? kMotoFodFingerDown : kMotoFodFingerUp);
+        const bool eventSuccess = !enabled ||
+                (panelSuccess && sendFodEvent(kMotoFodFingerDown));
         const bool success = panelSuccess && eventSuccess;
         if (enabled && !eventSuccess) {
             setPanelMode(kPanelModeNormal);
@@ -260,6 +259,9 @@ class UdfpsHbm : public BnUdfpsHbm {
 
 int main() {
     setPanelMode(kPanelModeNormal);
+    // SystemUI delivers onPointerDown before enabling this optional HBM
+    // service. Seed the context before the first capture as well.
+    sendFodEvent(kMotoFodFingerDown);
 
     ABinderProcess_setThreadPoolMaxThreadCount(1);
     const std::shared_ptr<UdfpsHbm> service = ndk::SharedRefBase::make<UdfpsHbm>();

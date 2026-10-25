@@ -212,3 +212,17 @@ Matches first app-launch `SurfaceControl` crop radius to selected custom icon
 shape. Removes transient circular mismatch before `FloatingIconView` applies
 the exact path. Companion to global icon-shape support; retain when custom
 shapes are enabled.
+
+## COMPANION: Optical capture after HBM readiness
+
+**Source:** `frameworks/base`
+**Patch:** `evo-cnb/frameworks-base/0003-defer-optical-capture-until-hbm-ready.patch`
+
+Optional `config_udfpsPointerDownDelay` defers pointer-down and UI-ready until
+illumination is configured plus the selected delay. RoadSTR selects 20 ms,
+matching stock. Zero retains existing ordering. Build, flash, runtime event
+ordering/cancellation, and user unlock testing passed. See the Evo README
+supplement instructions (`git apply`, outside historical `series.json`);
+`evo-cnb/udfps-timing.json` records its verified base and result tree. The
+BoardConfig legacy ION selection and Motorola FOD helper correction remain
+device-local companions, not additional shared patches.

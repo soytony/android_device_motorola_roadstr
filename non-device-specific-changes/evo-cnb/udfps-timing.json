@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "repositories": [
+    {
+      "repo": "frameworks/base",
+      "base_commit": "2cb60ce75596cc9adf243d8e1036de86a511a621",
+      "patches": [
+        {
+          "file": "frameworks-base/0003-defer-optical-capture-until-hbm-ready.patch",
+          "commit": "deffdb5b63fa04da7bc57f277e22d4311da07e83",
+          "subject": "fix(systemui): defer capture until HBM is ready"
+        }
+      ],
+      "result_tree": "60df9da8b85c59104aef6918994f89c4d8d8a11c",
+      "verification": "Isolated-index application reproduces the committed tree and tested SystemUI source; build, flash, runtime ordering/cancellation and user unlock testing passed",
+      "result_commit": "deffdb5b63fa04da7bc57f277e22d4311da07e83"
+    }
+  ]
+}
