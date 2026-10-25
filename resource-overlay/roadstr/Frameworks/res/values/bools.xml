@@ -16,6 +16,8 @@
     <bool name="config_searchAllEntrypointsEnabledDefault">true</bool>
     <bool name="config_setColorTransformAccelerated">true</bool>
     <bool name="config_smart_battery_available">true</bool>
+    <!-- Start the per-subscription Smart 5G power-saving service. -->
+    <bool name="config_supportSmart5G">true</bool>
     <bool name="config_useDevInputEventForAudioJack">true</bool>
     <bool name="config_zramWriteback">true</bool>
     <bool name="device_idle_use_window_alarms">false</bool>
