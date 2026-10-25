@@ -91,3 +91,6 @@ BOARD_SYSTEM_EXT_SEPOLICY_PREBUILT_DIRS += $(DEVICE_PATH)/sepolicy/system_ext
 
 # Inherit from the proprietary version
 -include vendor/motorola/roadstr/BoardConfigVendor.mk
+
+# Optional local Evolution X release signing; public builds retain defaults.
+-include vendor/evolution-priv/keys/roadstr-avb.mk

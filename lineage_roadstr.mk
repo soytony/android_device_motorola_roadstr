@@ -88,3 +88,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=motorola/roadstr_g/roadstr:16/W1WRS36.39-115-2/549c34:user/release-keys \
     DeviceProduct=roadstr_g \
     SystemName=roadstr_g
+
+# Apply local release trust policy after common config adds recovery keys.
+-include vendor/evolution-priv/keys/roadstr-product.mk
