@@ -1,0 +1,7 @@
+# Copyright (C) 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# The Lineage Power HAL registers Binder before its hint worker starts.
+# Signal readiness after boot-time scheduler/sysfs initialization has finished.
+on property:sys.boot_completed=1
+    setprop vendor.powerhal.init 1

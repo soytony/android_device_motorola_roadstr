@@ -30,6 +30,13 @@ ROADSTR_TFA_CONTAINER := $(LOCAL_PATH)/audio/tfa98xx.cnt
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/init.setupwizardext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.setupwizardext.rc
 
+# Select RoadSTR's GPU operating points and LLCC monitor before common
+# inheritance. The common power hints target different hardware resources.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
+    $(LOCAL_PATH)/configs/init/init.roadstr.power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.power.rc \
+    $(LOCAL_PATH)/configs/seccomp_policy/perfservice.policy:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/seccomp_policy/perfservice.policy
+
 # Inherit from sm7750-common
 $(call inherit-product, device/motorola/sm7750-common/common.mk)
 
