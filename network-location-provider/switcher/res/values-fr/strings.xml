@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Commutateur de fournisseur d\'emplacement réseau</string>
+    <string name="explanation">Choisissez l\'emplacement réseau et le fournisseur de géocodage utilisés après le redémarrage. Votre sélection ne modifie pas le GPS ni les services de localisation fusionnée de Google.</string>
+    <string name="provider_choice">Fournisseur pour le prochain redémarrage</string>
+    <string name="provider_google">Par défaut (Google)</string>
+    <string name="automatic_detection">Détection automatique</string>
+    <string name="detection_summary">Suggérez Baidu NLP lorsqu\'un réseau mobile enregistré indique la Chine continentale. La commutation nécessite toujours votre confirmation et un redémarrage. Le Wi-Fi seul ne peut pas établir votre pays.</string>
+    <string name="boot_configuration">Configuration au dernier redémarrage</string>
+    <string name="pending_title">Redémarrage requis</string>
+    <string name="reboot_reminder">Redémarrez votre téléphone pour appliquer le fournisseur sélectionné.</string>
+    <string name="restart_title">Comment appliquer votre sélection</string>
+    <string name="restart_message">Ouvrez le menu d\'alimentation du téléphone et choisissez Redémarrer. Le fournisseur sélectionné sera configuré au prochain démarrage.</string>
+    <string name="confirm_title">Changer de fournisseur de localisation réseau ?</string>
+    <string name="confirm_message">Sélectionner %1$s pour le prochain redémarrage ? Le fournisseur en cours d\'exécution continuera jusqu\'à ce que vous redémarriez votre téléphone.</string>
+    <string name="save_selection">Enregistrer la sélection</string>
+    <string name="cancel">Annuler</string>
+    <string name="country_evidence">Dernière observation du réseau</string>
+    <string name="unknown">Inconnu — aucune preuve de pays enregistrée</string>
+    <string name="evidence_cn">Réseau mobile enregistré : Chine continentale</string>
+    <string name="evidence_other">Réseau mobile enregistré : en dehors de la Chine continentale</string>
+    <string name="channel_name">Suggestions d\'emplacement réseau</string>
+    <string name="notification_title">Fournisseur de localisation réseau</string>
+    <string name="suggestion">Utiliser Baidu NLP en Chine continentale ?</string>
+    <string name="review">Examen</string>
+    <string name="not_now">Pas maintenant</string>
+    <string name="configuration_failed">Impossible d\'enregistrer la configuration du fournisseur. Vérifiez la sélection avant de redémarrer.</string>
+    <string name="provider_unavailable">Le fournisseur sélectionné n\'est pas disponible. Le redémarrage peut ne pas résoudre un service manquant ou désactivé.</string>
+</resources>

@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: Apache-2.0
+// Keep device variants out of the global namespace and Annibale's product export.
+soong_namespace {}
+
+android_app {
+    name: "NetworkLocationProviderBroker",
+    srcs: ["broker/src/**/*.java"],
+    manifest: "broker/AndroidManifest.xml",
+    platform_apis: true,
+    certificate: "platform",
+    privileged: true,
+    system_ext_specific: true,
+    optimize: { enabled: false },
+}

@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.android.networklocationproviderswitcher">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.MANAGE_USERS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <permission android:name="com.android.networklocationproviderswitcher.CONTROL_PROVIDERS"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.android.networklocationproviderswitcher.CONTROL_PROVIDERS" />
+    <queries>
+        <package android:name="com.google.android.gms" />
+        <package android:name="com.baidu.map.location" />
+    </queries>
+    <application android:name=".ControllerApplication" android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher"
+        android:persistent="true"
+        android:directBootAware="true" android:defaultToDeviceProtectedStorage="true"
+        android:allowBackup="false" android:supportsRtl="true" android:theme="@style/SwitcherTheme">
+        <provider android:name=".ControlProvider" android:authorities="com.android.networklocationproviderswitcher.control"
+            android:singleUser="true" android:exported="true"
+            android:permission="com.android.networklocationproviderswitcher.CONTROL_PROVIDERS" />
+        <service android:name=".ControllerService" android:exported="false" />
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_UNLOCKED" />
+            </intent-filter>
+        </receiver>
+        <activity android:name=".LocationActivity" android:exported="true" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DiagnosticsActivity" android:exported="false"
+            android:label="@string/diag_app_name" />
+    </application>
+</manifest>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Penukar Pembekal Lokasi Rangkaian</string>
+    <string name="explanation">Pilih lokasi rangkaian dan pembekal geokod yang digunakan selepas dimulakan semula. Pilihan anda tidak mengubah GPS atau perkhidmatan lokasi gabungan Google sendiri.</string>
+    <string name="provider_choice">Pembekal untuk mula semula seterusnya</string>
+    <string name="provider_google">Lalai (Google)</string>
+    <string name="automatic_detection">Pengesanan automatik</string>
+    <string name="detection_summary">Cadangkan Baidu NLP apabila rangkaian mudah alih berdaftar menunjukkan tanah besar China. Penukaran sentiasa memerlukan pengesahan anda dan dimulakan semula. Wi-Fi sahaja tidak boleh menubuhkan negara anda.</string>
+    <string name="boot_configuration">Konfigurasi akhirnya dimulakan semula</string>
+    <string name="pending_title">Mulakan semula diperlukan</string>
+    <string name="reboot_reminder">Mulakan semula telefon anda untuk menggunakan pembekal yang dipilih.</string>
+    <string name="restart_title">Cara menggunakan pilihan anda</string>
+    <string name="restart_message">Buka menu kuasa telefon dan pilih Mulakan semula. Pembekal yang dipilih akan dikonfigurasikan pada permulaan seterusnya.</string>
+    <string name="confirm_title">Tukar pembekal lokasi rangkaian?</string>
+    <string name="confirm_message">Pilih %1$s untuk mula semula seterusnya? Pembekal yang sedang berjalan akan diteruskan sehingga anda memulakan semula telefon anda.</string>
+    <string name="save_selection">Simpan pilihan</string>
+    <string name="cancel">Batal</string>
+    <string name="country_evidence">Pemerhatian rangkaian terakhir</string>
+    <string name="unknown">Tidak diketahui — tiada bukti negara berdaftar</string>
+    <string name="evidence_cn">Rangkaian mudah alih berdaftar: tanah besar China</string>
+    <string name="evidence_other">Rangkaian mudah alih berdaftar: di luar tanah besar China</string>
+    <string name="channel_name">Cadangan lokasi rangkaian</string>
+    <string name="notification_title">Pembekal lokasi rangkaian</string>
+    <string name="suggestion">Gunakan Baidu NLP di tanah besar China?</string>
+    <string name="review">Semakan</string>
+    <string name="not_now">bukan sekarang</string>
+    <string name="configuration_failed">Tidak dapat menyimpan konfigurasi pembekal. Semak pilihan sebelum memulakan semula.</string>
+    <string name="provider_unavailable">Pembekal yang dipilih tidak tersedia. Memulakan semula mungkin tidak menyelesaikan perkhidmatan yang hilang atau dilumpuhkan.</string>
+</resources>

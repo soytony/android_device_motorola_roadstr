@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">سویچەری دابینکەری شوێنی تۆڕ</string>
+    <string name="explanation">شوێنی تۆڕ و دابینکەری جیۆکۆدکردن هەڵبژێرە کە دوای دووبارە دەستپێکردنەوە بەکاردێت. هەڵبژاردنەکەت جی پی ئێس یان خزمەتگوزارییەکانی شوێنی یەکگرتووی گووگڵ ناگۆڕێت.</string>
+    <string name="provider_choice">دابینکەر بۆ دووبارە دەستپێکردنەوەی داهاتوو</string>
+    <string name="provider_google">بە شێوەی پێشوەختە (گوگڵ)</string>
+    <string name="automatic_detection">دۆزینەوەی ئۆتۆماتیکی</string>
+    <string name="detection_summary">پێشنیاری Baidu NLP بکە کاتێک تۆڕێکی مۆبایلی تۆمارکراو ئاماژەیە بۆ چینی سەرەکی. گۆڕینی هەمیشە پێویستی بە پشتڕاستکردنەوەی تۆ و دووبارە دەستپێکردنەوە هەیە. وای فای بە تەنیا ناتوانێت وڵاتەکەت دابمەزرێنێت.</string>
+    <string name="boot_configuration">ڕێکخستن لە دوایین دووبارە دەستپێکردنەوە</string>
+    <string name="pending_title">پێویستە دووبارە دەستپێبکەیتەوە</string>
+    <string name="reboot_reminder">مۆبایلەکەت دووبارە دابمەزرێنەرەوە بۆ جێبەجێکردنی دابینکەری هەڵبژێردراو.</string>
+    <string name="restart_title">چۆن هەڵبژاردنەکەت جێبەجێ بکەیت</string>
+    <string name="restart_message">مینیوی کارەبای مۆبایلەکە بکەرەوە و Restart هەڵبژێرە. دابینکەری هەڵبژێردراو لە دەستپێکردنی داهاتوودا ڕێکدەخرێت.</string>
+    <string name="confirm_title">گۆڕینی شوێنی تۆڕ دابینکەر؟</string>
+    <string name="confirm_message">%1$s هەڵبژێرە بۆ دووبارە دەستپێکردنەوەی داهاتوو؟ دابینکەری کارپێکراو بەردەوام دەبێت تاوەکو مۆبایلەکەت دووبارە دەستپێدەکەیتەوە.</string>
+    <string name="save_selection">هەڵبژاردن هەڵبگرە</string>
+    <string name="cancel">هەڵوەشاندنەوە</string>
+    <string name="country_evidence">دوا چاودێری تۆڕ</string>
+    <string name="unknown">نادیارە — هیچ بەڵگەیەکی وڵاتی تۆمارکراو نییە</string>
+    <string name="evidence_cn">تۆڕی مۆبایلی تۆمارکراو: چینی سەرەکی</string>
+    <string name="evidence_other">تۆڕی مۆبایلی تۆمارکراو: لە دەرەوەی چین</string>
+    <string name="channel_name">پێشنیاری شوێنی تۆڕەکە</string>
+    <string name="notification_title">دابینکەری شوێنی تۆڕ</string>
+    <string name="suggestion">بەکارهێنانی Baidu NLP لە چین؟</string>
+    <string name="review">پێداچوونەوە</string>
+    <string name="not_now">ئێستا نا</string>
+    <string name="configuration_failed">نەتوانرا ڕێکخستنی دابینکەرەکە پاشەکەوت بکات. پێش دەستپێکردنەوە هەڵبژاردنەکە بپشکنە.</string>
+    <string name="provider_unavailable">دابینکەری هەڵبژێردراو بەردەست نییە. ڕەنگە دووبارە دەستپێکردنەوە خزمەتگوزارییەکی ونبوو یان لەکارکەوتوو چارەسەر نەکات.</string>
+</resources>

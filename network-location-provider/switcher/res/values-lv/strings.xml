@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tīkla atrašanās vietas nodrošinātāja pārslēdzējs</string>
+    <string name="explanation">Pēc restartēšanas izvēlieties tīkla atrašanās vietu un ģeokodēšanas nodrošinātāju. Jūsu izvēle nemaina GPS vai paša Google apvienotās atrašanās vietas pakalpojumus.</string>
+    <string name="provider_choice">Nākamās restartēšanas nodrošinātājs</string>
+    <string name="provider_google">Noklusējums (Google)</string>
+    <string name="automatic_detection">Automātiska noteikšana</string>
+    <string name="detection_summary">Iesakiet Baidu NLP, ja reģistrēts mobilais tīkls norāda uz kontinentālo Ķīnu. Pārslēgšanai vienmēr ir nepieciešams apstiprinājums un restartēšana. Wi-Fi vien nevar noteikt jūsu valsti.</string>
+    <string name="boot_configuration">Konfigurācija pēdējā restartēšanas reizē</string>
+    <string name="pending_title">Nepieciešama restartēšana</string>
+    <string name="reboot_reminder">Restartējiet tālruni, lai lietotu atlasīto pakalpojumu sniedzēju.</string>
+    <string name="restart_title">Kā piemērot savu izvēli</string>
+    <string name="restart_message">Atveriet tālruņa barošanas izvēlni un izvēlieties Restartēt. Atlasītais pakalpojumu sniedzējs tiks konfigurēts nākamajā startēšanas reizē.</string>
+    <string name="confirm_title">Vai mainīt tīkla atrašanās vietas nodrošinātāju?</string>
+    <string name="confirm_message">Vai atlasīt %1$s nākamajai restartēšanai? Darbības nodrošinātājs turpinās darboties, līdz restartēsit tālruni.</string>
+    <string name="save_selection">Saglabāt atlasi</string>
+    <string name="cancel">Atcelt</string>
+    <string name="country_evidence">Pēdējais tīkla novērojums</string>
+    <string name="unknown">Nezināms — nav reģistrētu valsts pierādījumu</string>
+    <string name="evidence_cn">Reģistrētais mobilais tīkls: kontinentālā Ķīna</string>
+    <string name="evidence_other">Reģistrēts mobilais tīkls: ārpus kontinentālās Ķīnas</string>
+    <string name="channel_name">Tīkla atrašanās vietas ieteikumi</string>
+    <string name="notification_title">Tīkla atrašanās vietas nodrošinātājs</string>
+    <string name="suggestion">Vai izmantot Baidu NLP kontinentālajā Ķīnā?</string>
+    <string name="review">Pārskats</string>
+    <string name="not_now">Ne tagad</string>
+    <string name="configuration_failed">Nevarēja saglabāt nodrošinātāja konfigurāciju. Pirms restartēšanas pārbaudiet atlasi.</string>
+    <string name="provider_unavailable">Atlasītais pakalpojumu sniedzējs nav pieejams. Restartēšana var neatrisināt trūkstošo vai atspējoto pakalpojumu.</string>
+</resources>

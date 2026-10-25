@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">நெட்வொர்க் இருப்பிட வழங்குநர் மாற்றி</string>
+    <string name="explanation">மறுதொடக்கம் செய்த பிறகு பயன்படுத்தப்படும் பிணைய இருப்பிடம் மற்றும் புவிசார் குறியீடு வழங்குநரைத் தேர்வு செய்யவும். உங்கள் தேர்வு GPS அல்லது Google இன் சொந்த இணைந்த இருப்பிடச் சேவைகளை மாற்றாது.</string>
+    <string name="provider_choice">அடுத்த மறுதொடக்கத்திற்கான வழங்குநர்</string>
+    <string name="provider_google">இயல்புநிலை (Google)</string>
+    <string name="automatic_detection">தானியங்கி கண்டறிதல்</string>
+    <string name="detection_summary">பதிவுசெய்யப்பட்ட மொபைல் நெட்வொர்க் சீனாவின் பிரதான நிலப்பகுதியைக் குறிக்கும் போது Baidu NLP ஐ பரிந்துரைக்கவும். மாறுவதற்கு எப்போதும் உங்கள் உறுதிப்படுத்தல் மற்றும் மறுதொடக்கம் தேவைப்படும். Wi-Fi மட்டும் உங்கள் நாட்டை நிறுவ முடியாது.</string>
+    <string name="boot_configuration">கடைசி மறுதொடக்கத்தில் உள்ளமைவு</string>
+    <string name="pending_title">மறுதொடக்கம் தேவை</string>
+    <string name="reboot_reminder">தேர்ந்தெடுக்கப்பட்ட வழங்குநரைப் பயன்படுத்த உங்கள் மொபைலை மறுதொடக்கம் செய்யவும்.</string>
+    <string name="restart_title">உங்கள் தேர்வை எவ்வாறு பயன்படுத்துவது</string>
+    <string name="restart_message">தொலைபேசியின் பவர் மெனுவைத் திறந்து மறுதொடக்கம் என்பதைத் தேர்ந்தெடுக்கவும். தேர்ந்தெடுக்கப்பட்ட வழங்குநர் அடுத்த தொடக்கத்தில் உள்ளமைக்கப்படுவார்.</string>
+    <string name="confirm_title">நெட்வொர்க் இருப்பிட வழங்குநரை மாற்றவா?</string>
+    <string name="confirm_message">அடுத்த மறுதொடக்கத்திற்கு %1$sஐத் தேர்ந்தெடுக்கவா? உங்கள் மொபைலை மறுதொடக்கம் செய்யும் வரை இயங்கும் வழங்குநர் தொடரும்.</string>
+    <string name="save_selection">தேர்வைச் சேமிக்கவும்</string>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="country_evidence">கடைசி நெட்வொர்க் கண்காணிப்பு</string>
+    <string name="unknown">தெரியவில்லை - பதிவு செய்யப்பட்ட நாட்டின் ஆதாரம் இல்லை</string>
+    <string name="evidence_cn">பதிவுசெய்யப்பட்ட மொபைல் நெட்வொர்க்: சீனாவின் பிரதான நிலப்பகுதி</string>
+    <string name="evidence_other">பதிவுசெய்யப்பட்ட மொபைல் நெட்வொர்க்: சீனாவின் பிரதான நிலப்பகுதிக்கு வெளியே</string>
+    <string name="channel_name">நெட்வொர்க் இருப்பிட பரிந்துரைகள்</string>
+    <string name="notification_title">நெட்வொர்க் இருப்பிட வழங்குநர்</string>
+    <string name="suggestion">சீனாவின் பிரதான நிலப்பகுதியில் Baidu NLP ஐப் பயன்படுத்தவா?</string>
+    <string name="review">மதிப்பாய்வு</string>
+    <string name="not_now">இப்போது இல்லை</string>
+    <string name="configuration_failed">வழங்குநரின் உள்ளமைவைச் சேமிக்க முடியவில்லை. மறுதொடக்கம் செய்வதற்கு முன் தேர்வைச் சரிபார்க்கவும்.</string>
+    <string name="provider_unavailable">தேர்ந்தெடுக்கப்பட்ட வழங்குநர் கிடைக்கவில்லை. மறுதொடக்கம் செய்வது விடுபட்ட அல்லது முடக்கப்பட்ட சேவையைத் தீர்க்காது.</string>
+</resources>

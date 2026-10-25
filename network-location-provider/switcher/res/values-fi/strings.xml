@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Verkkosijainnin tarjoajan vaihtaja</string>
+    <string name="explanation">Valitse uudelleenkäynnistyksen jälkeen käytettävä verkon sijainti ja geokoodauksen tarjoaja. Valintasi ei muuta GPS- tai Googlen omia paikannuspalveluita.</string>
+    <string name="provider_choice">Palveluntarjoaja seuraavaa uudelleenkäynnistystä varten</string>
+    <string name="provider_google">Oletus (Google)</string>
+    <string name="automatic_detection">Automaattinen tunnistus</string>
+    <string name="detection_summary">Ehdota Baidu NLP:tä, kun rekisteröity matkapuhelinverkko tarkoittaa Manner-Kiinaa. Vaihto vaatii aina vahvistuksen ja uudelleenkäynnistyksen. Wi-Fi ei yksin pysty määrittämään maatasi.</string>
+    <string name="boot_configuration">Konfigurointi viimeisen uudelleenkäynnistyksen yhteydessä</string>
+    <string name="pending_title">Uudelleenkäynnistys vaaditaan</string>
+    <string name="reboot_reminder">Käynnistä puhelin uudelleen ottaaksesi valitun palveluntarjoajan käyttöön.</string>
+    <string name="restart_title">Kuinka soveltaa valintaasi</string>
+    <string name="restart_message">Avaa puhelimen virtavalikko ja valitse Käynnistä uudelleen. Valittu palveluntarjoaja määritetään seuraavan käynnistyksen yhteydessä.</string>
+    <string name="confirm_title">Vaihdetaanko verkon sijainnin tarjoajaa?</string>
+    <string name="confirm_message">Valitaanko %1$s seuraavaa uudelleenkäynnistystä varten? Käynnissä oleva palveluntarjoaja jatkaa, kunnes käynnistät puhelimen uudelleen.</string>
+    <string name="save_selection">Tallenna valinta</string>
+    <string name="cancel">Peruuta</string>
+    <string name="country_evidence">Viimeinen verkkohavainto</string>
+    <string name="unknown">Tuntematon – ei rekisteröityä maatodistusta</string>
+    <string name="evidence_cn">Rekisteröity matkapuhelinverkko: Manner-Kiina</string>
+    <string name="evidence_other">Rekisteröity matkapuhelinverkko: Manner-Kiinan ulkopuolella</string>
+    <string name="channel_name">Verkkosijaintiehdotukset</string>
+    <string name="notification_title">Verkkosijainnin tarjoaja</string>
+    <string name="suggestion">Käytätkö Baidu NLP:tä Manner-Kiinassa?</string>
+    <string name="review">Tarkista</string>
+    <string name="not_now">Ei nyt</string>
+    <string name="configuration_failed">Palveluntarjoajan määritystä ei voitu tallentaa. Tarkista valinta ennen uudelleenkäynnistystä.</string>
+    <string name="provider_unavailable">Valittu palveluntarjoaja ei ole käytettävissä. Uudelleenkäynnistys ei välttämättä korjaa puuttuvaa tai käytöstä poistettua palvelua.</string>
+</resources>

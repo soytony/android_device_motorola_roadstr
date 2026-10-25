@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">سوئیچر ارائه دهنده موقعیت مکانی شبکه</string>
+    <string name="explanation">مکان شبکه و ارائه دهنده ژئوکدینگ مورد استفاده پس از راه اندازی مجدد را انتخاب کنید. انتخاب شما GPS یا خدمات مکان ادغام شده خود Google را تغییر نمی دهد.</string>
+    <string name="provider_choice">ارائه دهنده برای راه اندازی مجدد بعدی</string>
+    <string name="provider_google">پیش فرض (Google)</string>
+    <string name="automatic_detection">تشخیص خودکار</string>
+    <string name="detection_summary">هنگامی که یک شبکه تلفن همراه ثبت شده سرزمین اصلی چین را نشان می دهد، Baidu NLP را پیشنهاد دهید. جابجایی همیشه به تأیید شما و راه اندازی مجدد نیاز دارد. Wi-Fi به تنهایی نمی تواند کشور شما را ایجاد کند.</string>
+    <string name="boot_configuration">پیکربندی در آخرین راه اندازی مجدد</string>
+    <string name="pending_title">راه اندازی مجدد لازم است</string>
+    <string name="reboot_reminder">تلفن خود را مجددا راه اندازی کنید تا ارائه دهنده انتخاب شده را اعمال کنید.</string>
+    <string name="restart_title">نحوه اعمال انتخاب خود</string>
+    <string name="restart_message">منوی پاور گوشی را باز کنید و Restart را انتخاب کنید. ارائه دهنده انتخاب شده در راه اندازی بعدی پیکربندی می شود.</string>
+    <string name="confirm_title">ارائه دهنده مکان شبکه را تغییر دهید؟</string>
+    <string name="confirm_message">%1$s را برای راه اندازی مجدد بعدی انتخاب کنید؟ ارائه‌دهنده در حال اجرا تا زمانی که تلفن خود را مجدداً راه‌اندازی نکنید، ادامه می‌دهد.</string>
+    <string name="save_selection">ذخیره انتخاب</string>
+    <string name="cancel">لغو کنید</string>
+    <string name="country_evidence">آخرین مشاهده شبکه</string>
+    <string name="unknown">ناشناخته - هیچ مدرک کشور ثبت شده ای وجود ندارد</string>
+    <string name="evidence_cn">شبکه تلفن همراه ثبت شده: سرزمین اصلی چین</string>
+    <string name="evidence_other">شبکه تلفن همراه ثبت شده: خارج از سرزمین اصلی چین</string>
+    <string name="channel_name">پیشنهادات مکان شبکه</string>
+    <string name="notification_title">ارائه دهنده مکان شبکه</string>
+    <string name="suggestion">استفاده از Baidu NLP در سرزمین اصلی چین؟</string>
+    <string name="review">بررسی کنید</string>
+    <string name="not_now">الان نه</string>
+    <string name="configuration_failed">پیکربندی ارائه دهنده ذخیره نشد. قبل از راه اندازی مجدد، انتخاب را بررسی کنید.</string>
+    <string name="provider_unavailable">ارائه دهنده انتخاب شده در دسترس نیست. راه‌اندازی مجدد ممکن است یک سرویس از دست رفته یا غیرفعال را برطرف کند.</string>
+</resources>

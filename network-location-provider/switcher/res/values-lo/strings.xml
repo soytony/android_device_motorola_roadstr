@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ຕົວປ່ຽນຜູ້ໃຫ້ບໍລິການສະຖານທີ່ເຄືອຂ່າຍ</string>
+    <string name="explanation">ເລືອກສະຖານທີ່ເຄືອຂ່າຍ ແລະຜູ້ໃຫ້ບໍລິການລະຫັດທາງພູມສາດທີ່ໃຊ້ຫຼັງຈາກປິດເປີດໃໝ່. ການເລືອກຂອງທ່ານບໍ່ປ່ຽນແປງ GPS ຫຼືການບໍລິການສະຖານທີ່ທີ່ປະສົມປະສານຂອງ Google.</string>
+    <string name="provider_choice">ຜູ້ໃຫ້ບໍລິການສໍາລັບການເລີ່ມຕົ້ນໃຫມ່ຄັ້ງຕໍ່ໄປ</string>
+    <string name="provider_google">ຄ່າເລີ່ມຕົ້ນ (Google)</string>
+    <string name="automatic_detection">ການກວດຫາອັດຕະໂນມັດ</string>
+    <string name="detection_summary">ແນະນໍາ Baidu NLP ເມື່ອເຄືອຂ່າຍມືຖືທີ່ລົງທະບຽນຊີ້ໃຫ້ເຫັນຈີນແຜ່ນດິນໃຫຍ່. ການສະຫຼັບຕ້ອງການການຢືນຢັນ ແລະຣີສະຕາດຂອງທ່ານສະເໝີ. Wi-Fi ດຽວບໍ່ສາມາດຕັ້ງປະເທດຂອງທ່ານໄດ້.</string>
+    <string name="boot_configuration">ການ​ຕັ້ງ​ຄ່າ​ໃນ​ທີ່​ສຸດ restart</string>
+    <string name="pending_title">ຕ້ອງປິດເປີດຄືນໃໝ່</string>
+    <string name="reboot_reminder">ຣີສະຕາດໂທລະສັບຂອງທ່ານເພື່ອນຳໃຊ້ຜູ້ໃຫ້ບໍລິການທີ່ເລືອກ.</string>
+    <string name="restart_title">ວິທີການນໍາໃຊ້ການເລືອກຂອງທ່ານ</string>
+    <string name="restart_message">ເປີດເມນູພະລັງງານຂອງໂທລະສັບແລະເລືອກ Restart. ຜູ້ໃຫ້ບໍລິການທີ່ເລືອກຈະຖືກຕັ້ງຄ່າໃນຕອນເລີ່ມຕົ້ນຄັ້ງຕໍ່ໄປ.</string>
+    <string name="confirm_title">ປ່ຽນຜູ້ໃຫ້ບໍລິການສະຖານທີ່ເຄືອຂ່າຍບໍ?</string>
+    <string name="confirm_message">ເລືອກ %1$s ສຳລັບການຣີສະຕາດຄັ້ງຕໍ່ໄປບໍ? ຜູ້ໃຫ້ບໍລິການເຮັດວຽກຈະສືບຕໍ່ຈົນກວ່າທ່ານຈະຣີສະຕາດໂທລະສັບຂອງທ່ານ.</string>
+    <string name="save_selection">ບັນທຶກການເລືອກ</string>
+    <string name="cancel">ຍົກເລີກ</string>
+    <string name="country_evidence">ການສັງເກດເຄືອຂ່າຍຫຼ້າສຸດ</string>
+    <string name="unknown">ບໍ່ຮູ້ຈັກ — ບໍ່ມີຫຼັກຖານປະເທດທີ່ລົງທະບຽນ</string>
+    <string name="evidence_cn">ເຄືອ​ຂ່າຍ​ມື​ຖື​ທີ່​ຈົດ​ທະ​ບຽນ​: ຈີນ​ແຜ່ນ​ດິນ​ໃຫຍ່​</string>
+    <string name="evidence_other">ເຄືອ​ຂ່າຍ​ມື​ຖື​ທີ່​ຈົດ​ທະ​ບຽນ​: ນອກ​ຈີນ​ແຜ່ນ​ດິນ​ໃຫຍ່​</string>
+    <string name="channel_name">ການແນະນຳສະຖານທີ່ເຄືອຂ່າຍ</string>
+    <string name="notification_title">ຜູ້ໃຫ້ບໍລິການສະຖານທີ່ເຄືອຂ່າຍ</string>
+    <string name="suggestion">ໃຊ້ Baidu NLP ໃນຈີນແຜ່ນດິນໃຫຍ່ບໍ?</string>
+    <string name="review">ທົບທວນຄືນ</string>
+    <string name="not_now">ບໍ່ແມ່ນດຽວນີ້</string>
+    <string name="configuration_failed">ບໍ່ສາມາດບັນທຶກການຕັ້ງຄ່າຜູ້ໃຫ້ບໍລິການໄດ້. ກວດເບິ່ງການເລືອກກ່ອນທີ່ຈະເລີ່ມຕົ້ນໃຫມ່.</string>
+    <string name="provider_unavailable">ຜູ້ໃຫ້ບໍລິການທີ່ເລືອກບໍ່ສາມາດໃຊ້ໄດ້. ການຣີສະຕາດອາດຈະບໍ່ແກ້ໄຂບັນຫາການບໍລິການທີ່ຂາດຫາຍໄປ ຫຼືປິດການໃຊ້ງານ.</string>
+</resources>

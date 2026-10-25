@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ցանցի տեղադրության մատակարարի փոխարկիչ</string>
+    <string name="explanation">Ընտրեք ցանցի գտնվելու վայրը և գեոկոդավորման մատակարարը, որն օգտագործվում է վերագործարկումից հետո: Ձեր ընտրությունը չի փոխում GPS-ը կամ Google-ի միաձուլված տեղորոշման ծառայությունները:</string>
+    <string name="provider_choice">Մատակարար հաջորդ վերագործարկման համար</string>
+    <string name="provider_google">Կանխադրված (Google)</string>
+    <string name="automatic_detection">Ավտոմատ հայտնաբերում</string>
+    <string name="detection_summary">Առաջարկեք Baidu NLP, երբ գրանցված բջջային ցանցը ցույց է տալիս մայրցամաքային Չինաստանը: Անցումը միշտ ձեր հաստատման և վերագործարկման կարիք ունի: Միայն Wi-Fi-ը չի կարող հաստատել ձեր երկիրը:</string>
+    <string name="boot_configuration">Կազմաձևումը վերջին վերագործարկման ժամանակ</string>
+    <string name="pending_title">Պահանջվում է վերագործարկում</string>
+    <string name="reboot_reminder">Վերագործարկեք ձեր հեռախոսը՝ ընտրված մատակարարին կիրառելու համար:</string>
+    <string name="restart_title">Ինչպես կիրառել ձեր ընտրությունը</string>
+    <string name="restart_message">Բացեք հեռախոսի էներգիայի ընտրացանկը և ընտրեք Վերագործարկեք: Ընտրված մատակարարը կկարգավորվի հաջորդ գործարկման ժամանակ:</string>
+    <string name="confirm_title">Փոխե՞լ ցանցի տեղադրության մատակարարը:</string>
+    <string name="confirm_message">Ընտրե՞լ %1$s հաջորդ վերագործարկման համար: Գործող մատակարարը կշարունակի աշխատել այնքան ժամանակ, մինչև չվերագործարկեք ձեր հեռախոսը:</string>
+    <string name="save_selection">Պահպանել ընտրությունը</string>
+    <string name="cancel">Չեղարկել</string>
+    <string name="country_evidence">Ցանցի վերջին դիտարկումը</string>
+    <string name="unknown">Անհայտ — գրանցված երկրի ապացույց չկա</string>
+    <string name="evidence_cn">Գրանցված բջջային ցանց՝ մայրցամաքային Չինաստան</string>
+    <string name="evidence_other">Գրանցված բջջային ցանց՝ մայրցամաքային Չինաստանից դուրս</string>
+    <string name="channel_name">Ցանցի տեղադրության առաջարկներ</string>
+    <string name="notification_title">Ցանցի տեղադրության մատակարար</string>
+    <string name="suggestion">Օգտագործե՞լ Baidu NLP մայրցամաքային Չինաստանում:</string>
+    <string name="review">Վերանայում</string>
+    <string name="not_now">Ոչ հիմա</string>
+    <string name="configuration_failed">Չհաջողվեց պահպանել մատակարարի կոնֆիգուրացիան: Վերագործարկելուց առաջ ստուգեք ընտրությունը:</string>
+    <string name="provider_unavailable">Ընտրված մատակարարն անհասանելի է: Վերագործարկումը չի կարող լուծել բացակայող կամ անջատված ծառայությունը:</string>
+</resources>

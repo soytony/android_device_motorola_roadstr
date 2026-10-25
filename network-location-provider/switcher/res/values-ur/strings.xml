@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">نیٹ ورک لوکیشن پرووائیڈر سوئچر</string>
+    <string name="explanation">دوبارہ شروع کرنے کے بعد استعمال ہونے والے نیٹ ورک کا مقام اور جیو کوڈنگ فراہم کنندہ کا انتخاب کریں۔ آپ کا انتخاب GPS یا Google کی اپنی فیوزڈ لوکیشن سروسز کو تبدیل نہیں کرتا ہے۔</string>
+    <string name="provider_choice">اگلے دوبارہ شروع کرنے کے لیے فراہم کنندہ</string>
+    <string name="provider_google">ڈیفالٹ (گوگل)</string>
+    <string name="automatic_detection">خودکار پتہ لگانا</string>
+    <string name="detection_summary">Baidu NLP تجویز کریں جب ایک رجسٹرڈ موبائل نیٹ ورک مین لینڈ چین کی طرف اشارہ کرتا ہے۔ سوئچنگ کو ہمیشہ آپ کی تصدیق اور دوبارہ شروع کرنے کی ضرورت ہوتی ہے۔ Wi-Fi تنہا آپ کا ملک قائم نہیں کر سکتا۔</string>
+    <string name="boot_configuration">آخری بار دوبارہ شروع کرنے پر کنفیگریشن</string>
+    <string name="pending_title">دوبارہ شروع کرنا ضروری ہے۔</string>
+    <string name="reboot_reminder">منتخب فراہم کنندہ کو لاگو کرنے کے لیے اپنے فون کو دوبارہ شروع کریں۔</string>
+    <string name="restart_title">اپنے انتخاب کا اطلاق کیسے کریں۔</string>
+    <string name="restart_message">فون کا پاور مینو کھولیں اور ری اسٹارٹ کو منتخب کریں۔ منتخب فراہم کنندہ کو اگلے آغاز پر کنفیگر کیا جائے گا۔</string>
+    <string name="confirm_title">نیٹ ورک لوکیشن فراہم کنندہ کو تبدیل کریں؟</string>
+    <string name="confirm_message">اگلی دوبارہ شروع کرنے کے لیے %1$s کو منتخب کریں؟ چلانے والا فراہم کنندہ اس وقت تک جاری رہے گا جب تک آپ اپنے فون کو دوبارہ شروع نہ کریں۔</string>
+    <string name="save_selection">انتخاب کو محفوظ کریں۔</string>
+    <string name="cancel">منسوخ کریں۔</string>
+    <string name="country_evidence">آخری نیٹ ورک کا مشاہدہ</string>
+    <string name="unknown">نامعلوم - کوئی رجسٹرڈ ملک ثبوت نہیں۔</string>
+    <string name="evidence_cn">رجسٹرڈ موبائل نیٹ ورک: مین لینڈ چین</string>
+    <string name="evidence_other">رجسٹرڈ موبائل نیٹ ورک: مین لینڈ چین سے باہر</string>
+    <string name="channel_name">نیٹ ورک کے مقام کی تجاویز</string>
+    <string name="notification_title">نیٹ ورک لوکیشن فراہم کرنے والا</string>
+    <string name="suggestion">مینلینڈ چین میں Baidu NLP استعمال کریں؟</string>
+    <string name="review">جائزہ لیں</string>
+    <string name="not_now">ابھی نہیں۔</string>
+    <string name="configuration_failed">فراہم کنندہ کی ترتیب کو محفوظ نہیں کیا جا سکا۔ دوبارہ شروع کرنے سے پہلے انتخاب کو چیک کریں۔</string>
+    <string name="provider_unavailable">منتخب فراہم کنندہ دستیاب نہیں ہے۔ دوبارہ شروع کرنے سے گمشدہ یا غیر فعال سروس حل نہیں ہو سکتی۔</string>
+</resources>

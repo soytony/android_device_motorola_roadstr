@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.networklocationproviderbroker"
+    android:sharedUserId="android.uid.system">
+    <!-- GMS's non-exported geocoder requires system UID, beyond platform signing. -->
+    <permission android:name="com.android.networklocationproviderbroker.BIND_PROVIDER"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <queries>
+        <package android:name="com.google.android.gms" />
+        <package android:name="com.baidu.map.location" />
+    </queries>
+    <application android:label="Network location provider broker" android:directBootAware="true"
+        android:allowBackup="false">
+        <service android:name=".ProviderBrokerService" android:exported="true"
+            android:permission="com.android.networklocationproviderbroker.BIND_PROVIDER"
+            android:directBootAware="true">
+            <intent-filter><action android:name="com.android.location.service.v3.NetworkLocationProvider" /></intent-filter>
+            <intent-filter><action android:name="com.android.location.service.GeocodeProvider" /></intent-filter>
+        </service>
+    </application>
+</manifest>

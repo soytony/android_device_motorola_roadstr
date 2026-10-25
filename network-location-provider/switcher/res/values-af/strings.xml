@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Netwerkliggingverskaffer-wisselaar</string>
+    <string name="explanation">Kies die netwerkligging en geokoderingverskaffer wat gebruik word na herbegin. Jou keuse verander nie GPS of Google se eie saamgesmelte liggingdienste nie.</string>
+    <string name="provider_choice">Verskaffer vir volgende herbegin</string>
+    <string name="provider_google">Verstek (Google)</string>
+    <string name="automatic_detection">Outomatiese opsporing</string>
+    <string name="detection_summary">Stel Baidu NLP voor wanneer \'n geregistreerde mobiele netwerk die vasteland van China aandui. Omskakeling benodig altyd jou bevestiging en \'n herbegin. Wi-Fi alleen kan nie jou land vestig nie.</string>
+    <string name="boot_configuration">Konfigurasie by laaste herbegin</string>
+    <string name="pending_title">Herbegin vereis</string>
+    <string name="reboot_reminder">Herbegin jou foon om die geselekteerde verskaffer toe te pas.</string>
+    <string name="restart_title">Hoe om jou keuse toe te pas</string>
+    <string name="restart_message">Maak die foon se kragkieslys oop en kies Herbegin. Die gekose verskaffer sal by die volgende opstart gekonfigureer word.</string>
+    <string name="confirm_title">Verander netwerkliggingverskaffer?</string>
+    <string name="confirm_message">Kies %1$s vir die volgende herbegin? Die lopende verskaffer sal voortgaan totdat jy jou foon herbegin.</string>
+    <string name="save_selection">Stoor seleksie</string>
+    <string name="cancel">Kanselleer</string>
+    <string name="country_evidence">Laaste netwerkwaarneming</string>
+    <string name="unknown">Onbekend — geen geregistreerde landbewyse nie</string>
+    <string name="evidence_cn">Geregistreerde mobiele netwerk: vasteland van China</string>
+    <string name="evidence_other">Geregistreerde mobiele netwerk: buite die vasteland van China</string>
+    <string name="channel_name">Netwerkliggingvoorstelle</string>
+    <string name="notification_title">Netwerkliggingverskaffer</string>
+    <string name="suggestion">Gebruik Baidu NLP op die vasteland van China?</string>
+    <string name="review">Hersien</string>
+    <string name="not_now">Nie nou nie</string>
+    <string name="configuration_failed">Kon nie die verskafferopstelling stoor nie. Kontroleer die keuse voordat u weer begin.</string>
+    <string name="provider_unavailable">Die gekose verskaffer is nie beskikbaar nie. Herbegin sal dalk nie \'n ontbrekende of gedeaktiveerde diens oplos nie.</string>
+</resources>

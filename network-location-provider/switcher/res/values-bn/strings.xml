@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">নেটওয়ার্ক অবস্থান প্রদানকারী সুইচার</string>
+    <string name="explanation">পুনরায় চালু করার পরে ব্যবহৃত নেটওয়ার্ক অবস্থান এবং জিওকোডিং প্রদানকারী নির্বাচন করুন। আপনার নির্বাচন জিপিএস বা Google-এর নিজস্ব ফিউজড-অবস্থান পরিষেবা পরিবর্তন করে না।</string>
+    <string name="provider_choice">পরবর্তী পুনঃসূচনা জন্য প্রদানকারী</string>
+    <string name="provider_google">ডিফল্ট (গুগল)</string>
+    <string name="automatic_detection">স্বয়ংক্রিয় সনাক্তকরণ</string>
+    <string name="detection_summary">Baidu NLP সুপারিশ করুন যখন একটি নিবন্ধিত মোবাইল নেটওয়ার্ক মূল ভূখণ্ড চীন নির্দেশ করে। স্যুইচ করার জন্য সর্বদা আপনার নিশ্চিতকরণ এবং একটি পুনঃসূচনা প্রয়োজন। Wi-Fi একা আপনার দেশ প্রতিষ্ঠা করতে পারে না।</string>
+    <string name="boot_configuration">শেষ রিস্টার্টে কনফিগারেশন</string>
+    <string name="pending_title">রিস্টার্ট প্রয়োজন</string>
+    <string name="reboot_reminder">নির্বাচিত প্রদানকারী প্রয়োগ করতে আপনার ফোন রিস্টার্ট করুন।</string>
+    <string name="restart_title">আপনার নির্বাচন কিভাবে প্রয়োগ করবেন</string>
+    <string name="restart_message">ফোনের পাওয়ার মেনু খুলুন এবং রিস্টার্ট নির্বাচন করুন। নির্বাচিত প্রদানকারী পরবর্তী স্টার্টআপে কনফিগার করা হবে।</string>
+    <string name="confirm_title">নেটওয়ার্ক অবস্থান প্রদানকারী পরিবর্তন করবেন?</string>
+    <string name="confirm_message">পরবর্তী রিস্টার্টের জন্য %1$s নির্বাচন করবেন? আপনি আপনার ফোন রিস্টার্ট না করা পর্যন্ত চলমান প্রদানকারী চলতে থাকবে।</string>
+    <string name="save_selection">নির্বাচন সংরক্ষণ করুন</string>
+    <string name="cancel">বাতিল করুন</string>
+    <string name="country_evidence">সর্বশেষ নেটওয়ার্ক পর্যবেক্ষণ</string>
+    <string name="unknown">অজানা - কোন নিবন্ধিত দেশের প্রমাণ নেই</string>
+    <string name="evidence_cn">নিবন্ধিত মোবাইল নেটওয়ার্ক: মূল ভূখণ্ড চীন</string>
+    <string name="evidence_other">নিবন্ধিত মোবাইল নেটওয়ার্ক: মূল ভূখণ্ড চীনের বাইরে</string>
+    <string name="channel_name">নেটওয়ার্ক অবস্থানের পরামর্শ</string>
+    <string name="notification_title">নেটওয়ার্ক অবস্থান প্রদানকারী</string>
+    <string name="suggestion">চীনের মূল ভূখণ্ডে Baidu NLP ব্যবহার করবেন?</string>
+    <string name="review">পর্যালোচনা</string>
+    <string name="not_now">এখন না</string>
+    <string name="configuration_failed">প্রদানকারী কনফিগারেশন সংরক্ষণ করা যায়নি. রিস্টার্ট করার আগে নির্বাচন চেক করুন।</string>
+    <string name="provider_unavailable">নির্বাচিত প্রদানকারী অনুপলব্ধ. রিস্টার্ট করা একটি অনুপস্থিত বা অক্ষম পরিষেবার সমাধান নাও করতে পারে৷</string>
+</resources>

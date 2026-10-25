@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Alternador de fornecedor de localização de rede</string>
+    <string name="explanation">Escolha o local de rede e o fornecedor de geocodificação utilizado após a reinicialização. A sua seleção não altera o GPS ou os próprios serviços de localização fundida do Google.</string>
+    <string name="provider_choice">Fornecedor para próxima reinicialização</string>
+    <string name="provider_google">Padrão (Google)</string>
+    <string name="automatic_detection">Detecção automática</string>
+    <string name="detection_summary">Sugira Baidu NLP quando uma rede móvel registada indicar a China continental. A troca necessita sempre da sua confirmação e reinicialização. O Wi-Fi por si só não pode estabelecer o seu país.</string>
+    <string name="boot_configuration">Configuração na última reinicialização</string>
+    <string name="pending_title">É necessário reiniciar</string>
+    <string name="reboot_reminder">Reinicie o seu telefone para aplicar o fornecedor selecionado.</string>
+    <string name="restart_title">Como aplicar a sua seleção</string>
+    <string name="restart_message">Abra o menu de energia do telefone e escolha Reiniciar. O fornecedor selecionado será configurado na próxima inicialização.</string>
+    <string name="confirm_title">Alterar fornecedor de localização de rede?</string>
+    <string name="confirm_message">Selecionar %1$s para o próximo reinício? O fornecedor em execução continuará até reiniciar o telefone.</string>
+    <string name="save_selection">Guardar seleção</string>
+    <string name="cancel">Cancelar</string>
+    <string name="country_evidence">Última observação de rede</string>
+    <string name="unknown">Desconhecido – sem evidência de país registado</string>
+    <string name="evidence_cn">Rede móvel registada: China continental</string>
+    <string name="evidence_other">Rede móvel registada: fora da China continental</string>
+    <string name="channel_name">Sugestões de localização de redes</string>
+    <string name="notification_title">Fornecedor de localização de rede</string>
+    <string name="suggestion">Usar Baidu NLP na China continental?</string>
+    <string name="review">Revisão</string>
+    <string name="not_now">Agora não</string>
+    <string name="configuration_failed">Não foi possível guardar a configuração do fornecedor. Verifique a seleção antes de reiniciar.</string>
+    <string name="provider_unavailable">O fornecedor selecionado não está disponível. A reinicialização pode não resolver um serviço em falta ou desativado.</string>
+</resources>

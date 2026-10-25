@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Isishintshi Somhlinzeki Wendawo Yenethiwekhi</string>
+    <string name="explanation">Khetha indawo yenethiwekhi nomhlinzeki we-geocoding osetshenziswe ngemuva kokuqala kabusha. Ukukhetha kwakho akuyishintshi i-GPS noma izinsiza zendawo ezihlanganisiwe ze-Google.</string>
+    <string name="provider_choice">Umhlinzeki wokuqalisa kabusha okulandelayo</string>
+    <string name="provider_google">Okuzenzakalelayo (Google)</string>
+    <string name="automatic_detection">Ukutholwa okuzenzakalelayo</string>
+    <string name="detection_summary">Phakamisa i-Baidu NLP lapho inethiwekhi yeselula ebhalisiwe ibonisa izwe lase-China. Ukushintsha kuhlala kudinga ukuqinisekiswa kwakho nokuqalwa kabusha. I-Wi-Fi iyodwa ayikwazi ukusungula izwe lakini.</string>
+    <string name="boot_configuration">Ukucushwa ekugcineni kuqalwa kabusha</string>
+    <string name="pending_title">Ukuqala kabusha kuyadingeka</string>
+    <string name="reboot_reminder">Qala kabusha ifoni yakho ukuze usebenzise umhlinzeki okhethiwe.</string>
+    <string name="restart_title">Indlela yokusebenzisa ukukhetha kwakho</string>
+    <string name="restart_message">Vula imenyu yamandla efoni bese ukhetha Qala kabusha. Umhlinzeki okhethiwe uzolungiswa ekuqaliseni okulandelayo.</string>
+    <string name="confirm_title">Shintsha umhlinzeki wendawo yenethiwekhi?</string>
+    <string name="confirm_message">Khetha i-%1$s ukuze uqalise kabusha okulandelayo? Umhlinzeki osebenzayo uzoqhubeka uze uqale kabusha ifoni yakho.</string>
+    <string name="save_selection">Londoloza okukhethiwe</string>
+    <string name="cancel">Khansela</string>
+    <string name="country_evidence">Ukubuka kokugcina kwenethiwekhi</string>
+    <string name="unknown">Akwaziwa — abukho ubufakazi bezwe obubhalisiwe</string>
+    <string name="evidence_cn">Inethiwekhi yeselula ebhalisiwe: i-mainland China</string>
+    <string name="evidence_other">Inethiwekhi yeselula ebhalisiwe: ngaphandle kwezwekazi laseChina</string>
+    <string name="channel_name">Iziphakamiso zendawo yenethiwekhi</string>
+    <string name="notification_title">Umhlinzeki wendawo yenethiwekhi</string>
+    <string name="suggestion">Sebenzisa i-Baidu NLP ezweni laseChina?</string>
+    <string name="review">Buyekeza</string>
+    <string name="not_now">Hhayi manje</string>
+    <string name="configuration_failed">Ayikwazanga ukulondoloza ukucushwa komhlinzeki. Hlola okukhethiwe ngaphambi kokuqala kabusha.</string>
+    <string name="provider_unavailable">Umhlinzeki okhethiwe akatholakali. Ukuqalisa kabusha kungase kungaxazululi isevisi engekho noma evimbelwe.</string>
+</resources>

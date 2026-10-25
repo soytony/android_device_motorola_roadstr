@@ -62,6 +62,7 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    $(LOCAL_PATH)/network-location-provider \
     $(LOCAL_PATH)/overlay \
     hardware/google/pixel/power-libperfmgr
 
@@ -85,12 +86,15 @@ PRODUCT_PACKAGES += \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \
     SystemUIResRoadstr \
-    NetworkLocation460 \
+    NetworkLocationProviderBroker \
+    NetworkLocationProviderBrokerOverlay \
+    NetworkLocationProviderSwitcher \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
     NfcResRoadstr
 
-# Baidu is selected only on CN hardware by the property-gated framework overlay.
+# Broker defaults to Google on all SKUs; confirmed choices apply after reboot.
+# Preserve the stock Baidu permissions, including its legacy storage prerequisite.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/default-permissions-baidu-location.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-baidu-location.xml
 

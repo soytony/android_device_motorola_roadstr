@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">नेटवर्क स्थान प्रदायक स्विचर</string>
+    <string name="explanation">पुन: सुरु गरेपछि प्रयोग गरिएको नेटवर्क स्थान र जियोकोडिङ प्रदायक छनौट गर्नुहोस्। तपाईंको चयनले GPS वा Google को आफ्नै फ्युज-स्थान सेवाहरू परिवर्तन गर्दैन।</string>
+    <string name="provider_choice">अर्को रिस्टार्टको लागि प्रदायक</string>
+    <string name="provider_google">पूर्वनिर्धारित (Google)</string>
+    <string name="automatic_detection">स्वचालित पत्ता लगाउने</string>
+    <string name="detection_summary">Baidu NLP सुझाव दिनुहोस् जब दर्ता गरिएको मोबाइल नेटवर्कले मुख्य भूमि चीनलाई संकेत गर्दछ। स्विच गर्न सधैं तपाइँको पुष्टिकरण र पुन: सुरु गर्न आवश्यक छ। Wi-Fi एक्लैले तपाईंको देश स्थापना गर्न सक्दैन।</string>
+    <string name="boot_configuration">अन्तिम रिस्टार्टमा कन्फिगरेसन</string>
+    <string name="pending_title">पुन: सुरु गर्न आवश्यक छ</string>
+    <string name="reboot_reminder">चयन गरिएको प्रदायक लागू गर्न आफ्नो फोन पुन: सुरु गर्नुहोस्।</string>
+    <string name="restart_title">आफ्नो चयन कसरी लागू गर्ने</string>
+    <string name="restart_message">फोनको पावर मेनु खोल्नुहोस् र रिस्टार्ट चयन गर्नुहोस्। चयन गरिएको प्रदायकलाई अर्को स्टार्टअपमा कन्फिगर गरिनेछ।</string>
+    <string name="confirm_title">नेटवर्क स्थान प्रदायक परिवर्तन गर्ने?</string>
+    <string name="confirm_message">अर्को रिस्टार्टका लागि %1$s चयन गर्ने हो? तपाईंले आफ्नो फोन पुन: सुरु नगरेसम्म चलिरहेको प्रदायक जारी रहनेछ।</string>
+    <string name="save_selection">चयन बचत गर्नुहोस्</string>
+    <string name="cancel">रद्द गर्नुहोस्</string>
+    <string name="country_evidence">पछिल्लो नेटवर्क अवलोकन</string>
+    <string name="unknown">अज्ञात - कुनै दर्ता गरिएको देश प्रमाण छैन</string>
+    <string name="evidence_cn">दर्ता मोबाइल नेटवर्क: मुख्य भूमि चीन</string>
+    <string name="evidence_other">दर्ता गरिएको मोबाइल नेटवर्क: मुख्य भूमि चीन बाहिर</string>
+    <string name="channel_name">नेटवर्क स्थान सुझावहरू</string>
+    <string name="notification_title">नेटवर्क स्थान प्रदायक</string>
+    <string name="suggestion">मुख्य भूमि चीनमा Baidu NLP प्रयोग गर्नुहुन्छ?</string>
+    <string name="review">समीक्षा गर्नुहोस्</string>
+    <string name="not_now">अहिले होइन</string>
+    <string name="configuration_failed">प्रदायक कन्फिगरेसन बचत गर्न सकिएन। पुन: सुरु गर्नु अघि चयन जाँच गर्नुहोस्।</string>
+    <string name="provider_unavailable">चयन गरिएको प्रदायक उपलब्ध छैन। पुन: सुरु गर्दा हराइरहेको वा असक्षम सेवा समाधान नहुन सक्छ।</string>
+</resources>

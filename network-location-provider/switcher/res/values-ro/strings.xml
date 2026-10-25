@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Comutator de furnizor de locație de rețea</string>
+    <string name="explanation">Alegeți locația rețelei și furnizorul de geocodare utilizat după repornire. Selecția dvs. nu modifică GPS-ul sau serviciile Google de localizare fuzionată.</string>
+    <string name="provider_choice">Furnizor pentru următoarea repornire</string>
+    <string name="provider_google">Implicit (Google)</string>
+    <string name="automatic_detection">Detectare automată</string>
+    <string name="detection_summary">Sugerați Baidu NLP atunci când o rețea mobilă înregistrată indică China continentală. Comutarea necesită întotdeauna confirmarea dvs. și o repornire. Numai Wi-Fi nu poate stabili țara dvs.</string>
+    <string name="boot_configuration">Configurare la ultima repornire</string>
+    <string name="pending_title">Este necesară repornirea</string>
+    <string name="reboot_reminder">Reporniți telefonul pentru a aplica furnizorul selectat.</string>
+    <string name="restart_title">Cum să aplicați selecția dvs</string>
+    <string name="restart_message">Deschideți meniul de alimentare al telefonului și alegeți Restart. Furnizorul selectat va fi configurat la următoarea pornire.</string>
+    <string name="confirm_title">Schimbați furnizorul de locație în rețea?</string>
+    <string name="confirm_message">Selectați %1$s pentru următoarea repornire? Furnizorul care rulează va continua până când reporniți telefonul.</string>
+    <string name="save_selection">Salvați selecția</string>
+    <string name="cancel">Anulează</string>
+    <string name="country_evidence">Ultima observație în rețea</string>
+    <string name="unknown">Necunoscut - nicio dovadă de țară înregistrată</string>
+    <string name="evidence_cn">Rețea mobilă înregistrată: China continentală</string>
+    <string name="evidence_other">Rețea mobilă înregistrată: în afara Chinei continentale</string>
+    <string name="channel_name">Sugestii de locație în rețea</string>
+    <string name="notification_title">Furnizor de locație în rețea</string>
+    <string name="suggestion">Folosiți Baidu NLP în China continentală?</string>
+    <string name="review">Revizuire</string>
+    <string name="not_now">Nu acum</string>
+    <string name="configuration_failed">Nu s-a putut salva configurația furnizorului. Verificați selecția înainte de a reporni.</string>
+    <string name="provider_unavailable">Furnizorul selectat este indisponibil. Este posibil ca repornirea să nu rezolve un serviciu lipsă sau dezactivat.</string>
+</resources>

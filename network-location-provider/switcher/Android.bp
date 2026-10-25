@@ -1,0 +1,24 @@
+android_app {
+    name: "NetworkLocationProviderSwitcher",
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    static_libs: [
+        "SettingsLibCollapsingToolbarBaseActivity",
+        "SettingsLibMainSwitchPreference",
+        "SettingsLibSelectorWithWidgetPreference",
+        "SettingsLibSettingsTheme",
+        "androidx.preference_preference",
+    ],
+    certificate: "platform",
+    privileged: true,
+    system_ext_specific: true,
+    required: ["default-permissions-network-location-provider-switcher"],
+    optimize: { enabled: false },
+}
+prebuilt_etc {
+    name: "default-permissions-network-location-provider-switcher",
+    src: "default-permissions-network-location-provider-switcher.xml",
+    filename_from_src: true,
+    sub_dir: "default-permissions",
+    system_ext_specific: true,
+}

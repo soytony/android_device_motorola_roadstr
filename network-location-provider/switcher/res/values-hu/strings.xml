@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Hálózati helyszolgáltató váltó</string>
+    <string name="explanation">Válassza ki az újraindítás után használt hálózati helyet és geokódolási szolgáltatót. Az Ön választása nem változtatja meg a GPS-t vagy a Google saját helymeghatározó szolgáltatásait.</string>
+    <string name="provider_choice">Szolgáltató a következő újraindításhoz</string>
+    <string name="provider_google">Alapértelmezett (Google)</string>
+    <string name="automatic_detection">Automatikus észlelés</string>
+    <string name="detection_summary">A Baidu NLP javaslata, ha egy regisztrált mobilhálózat a szárazföldi Kínát jelzi. A váltáshoz mindig megerősítésre és újraindításra van szükség. A Wi-Fi önmagában nem tudja meghatározni az Ön országát.</string>
+    <string name="boot_configuration">Konfiguráció az utolsó újraindításkor</string>
+    <string name="pending_title">Újraindítás szükséges</string>
+    <string name="reboot_reminder">A kiválasztott szolgáltató alkalmazásához indítsa újra a telefont.</string>
+    <string name="restart_title">Hogyan alkalmazza a választást</string>
+    <string name="restart_message">Nyissa meg a telefon tápellátási menüjét, és válassza az Újraindítás lehetőséget. A kiválasztott szolgáltató a következő indításkor lesz konfigurálva.</string>
+    <string name="confirm_title">Módosítja a hálózati helyszolgáltatót?</string>
+    <string name="confirm_message">Kiválasztja a %1$s-t a következő újraindításhoz? A futó szolgáltató addig folytatja, amíg újra nem indítja a telefont.</string>
+    <string name="save_selection">Mentse a kiválasztást</string>
+    <string name="cancel">Mégsem</string>
+    <string name="country_evidence">Utolsó hálózati megfigyelés</string>
+    <string name="unknown">Ismeretlen – nincs regisztrált országra vonatkozó bizonyíték</string>
+    <string name="evidence_cn">Regisztrált mobilhálózat: szárazföldi Kína</string>
+    <string name="evidence_other">Regisztrált mobilhálózat: Kínán kívül</string>
+    <string name="channel_name">Hálózati hely javaslatok</string>
+    <string name="notification_title">Hálózati helyszolgáltató</string>
+    <string name="suggestion">Használja a Baidu NLP-t Kínában?</string>
+    <string name="review">Tekintse át</string>
+    <string name="not_now">Most nem</string>
+    <string name="configuration_failed">Nem sikerült menteni a szolgáltatói konfigurációt. Újraindítás előtt ellenőrizze a kijelölést.</string>
+    <string name="provider_unavailable">A kiválasztott szolgáltató nem elérhető. Előfordulhat, hogy az újraindítás nem oldja meg a hiányzó vagy letiltott szolgáltatást.</string>
+</resources>

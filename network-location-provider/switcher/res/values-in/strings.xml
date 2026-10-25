@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pengalih Penyedia Lokasi Jaringan</string>
+    <string name="explanation">Pilih lokasi jaringan dan penyedia geocoding yang digunakan setelah restart. Pilihan Anda tidak mengubah GPS atau layanan lokasi gabungan milik Google.</string>
+    <string name="provider_choice">Penyedia untuk restart berikutnya</string>
+    <string name="provider_google">Bawaan (Google)</string>
+    <string name="automatic_detection">Deteksi otomatis</string>
+    <string name="detection_summary">Sarankan Baidu NLP ketika jaringan seluler terdaftar menunjukkan daratan Tiongkok. Peralihan selalu memerlukan konfirmasi Anda dan memulai ulang. Wi-Fi saja tidak dapat membangun negara Anda.</string>
+    <string name="boot_configuration">Konfigurasi saat restart terakhir</string>
+    <string name="pending_title">Diperlukan mulai ulang</string>
+    <string name="reboot_reminder">Restart ponsel Anda untuk menerapkan penyedia yang dipilih.</string>
+    <string name="restart_title">Bagaimana menerapkan pilihan Anda</string>
+    <string name="restart_message">Buka menu daya ponsel dan pilih Restart. Penyedia yang dipilih akan dikonfigurasi pada startup berikutnya.</string>
+    <string name="confirm_title">Ubah penyedia lokasi jaringan?</string>
+    <string name="confirm_message">Pilih %1$s untuk memulai ulang berikutnya? Penyedia yang berjalan akan terus berjalan sampai Anda me-restart telepon Anda.</string>
+    <string name="save_selection">Simpan pilihan</string>
+    <string name="cancel">Batalkan</string>
+    <string name="country_evidence">Pengamatan jaringan terakhir</string>
+    <string name="unknown">Tidak diketahui — tidak ada bukti negara yang terdaftar</string>
+    <string name="evidence_cn">Jaringan seluler terdaftar: Tiongkok daratan</string>
+    <string name="evidence_other">Jaringan seluler terdaftar: di luar daratan Tiongkok</string>
+    <string name="channel_name">Saran lokasi jaringan</string>
+    <string name="notification_title">Penyedia lokasi jaringan</string>
+    <string name="suggestion">Gunakan Baidu NLP di daratan Tiongkok?</string>
+    <string name="review">Ulasan</string>
+    <string name="not_now">Tidak sekarang</string>
+    <string name="configuration_failed">Tidak dapat menyimpan konfigurasi penyedia. Periksa pilihan sebelum memulai ulang.</string>
+    <string name="provider_unavailable">Penyedia yang dipilih tidak tersedia. Memulai ulang mungkin tidak menyelesaikan layanan yang hilang atau dinonaktifkan.</string>
+</resources>

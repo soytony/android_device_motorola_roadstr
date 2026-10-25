@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Bytter for nettverksplasseringsleverandør</string>
+    <string name="explanation">Velg nettverksplassering og geokodingsleverandør som brukes etter omstart. Valget ditt endrer ikke GPS eller Googles egne fused-location-tjenester.</string>
+    <string name="provider_choice">Leverandør for neste omstart</string>
+    <string name="provider_google">Standard (Google)</string>
+    <string name="automatic_detection">Automatisk deteksjon</string>
+    <string name="detection_summary">Foreslå Baidu NLP når et registrert mobilnettverk indikerer fastlands-Kina. Bytting krever alltid din bekreftelse og en omstart. Wi-Fi alene kan ikke etablere landet ditt.</string>
+    <string name="boot_configuration">Konfigurasjon ved siste omstart</string>
+    <string name="pending_title">Omstart kreves</string>
+    <string name="reboot_reminder">Start telefonen på nytt for å bruke den valgte leverandøren.</string>
+    <string name="restart_title">Slik bruker du valget ditt</string>
+    <string name="restart_message">Åpne telefonens strømmeny og velg Start på nytt. Den valgte leverandøren vil bli konfigurert ved neste oppstart.</string>
+    <string name="confirm_title">Bytte leverandør av nettverksplassering?</string>
+    <string name="confirm_message">Velg %1$s for neste omstart? Den kjørende leverandøren fortsetter til du starter telefonen på nytt.</string>
+    <string name="save_selection">Lagre utvalget</string>
+    <string name="cancel">Avbryt</string>
+    <string name="country_evidence">Siste nettverksobservasjon</string>
+    <string name="unknown">Ukjent – ingen registrerte landbevis</string>
+    <string name="evidence_cn">Registrert mobilnett: fastlands-Kina</string>
+    <string name="evidence_other">Registrert mobilnett: utenfor fastlands-Kina</string>
+    <string name="channel_name">Forslag til nettverksplassering</string>
+    <string name="notification_title">Nettverksplasseringsleverandør</string>
+    <string name="suggestion">Bruke Baidu NLP i fastlands-Kina?</string>
+    <string name="review">Gjennomgå</string>
+    <string name="not_now">Ikke nå</string>
+    <string name="configuration_failed">Kunne ikke lagre leverandørkonfigurasjonen. Kontroller valget før du starter på nytt.</string>
+    <string name="provider_unavailable">Den valgte leverandøren er utilgjengelig. Omstart løser kanskje ikke en manglende eller deaktivert tjeneste.</string>
+</resources>

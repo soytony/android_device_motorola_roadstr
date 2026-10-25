@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ឧបករណ៍ប្តូរអ្នកផ្តល់ទីតាំងបណ្តាញ</string>
+    <string name="explanation">ជ្រើសរើសទីតាំងបណ្តាញ និងអ្នកផ្តល់ការសរសេរភូមិសាស្ត្រដែលបានប្រើបន្ទាប់ពីចាប់ផ្តើមឡើងវិញ។ ការជ្រើសរើសរបស់អ្នកមិនផ្លាស់ប្តូរ GPS ឬសេវាកម្មកំណត់ទីតាំងផ្ទាល់របស់ Google ទេ។</string>
+    <string name="provider_choice">អ្នកផ្តល់សេវាសម្រាប់ការចាប់ផ្តើមឡើងវិញបន្ទាប់</string>
+    <string name="provider_google">លំនាំដើម (Google)</string>
+    <string name="automatic_detection">ការរកឃើញដោយស្វ័យប្រវត្តិ</string>
+    <string name="detection_summary">ណែនាំ Baidu NLP នៅពេលដែលបណ្តាញទូរស័ព្ទដែលបានចុះឈ្មោះបង្ហាញពីប្រទេសចិនដីគោក។ ការប្តូរតែងតែត្រូវការការបញ្ជាក់របស់អ្នក និងការចាប់ផ្តើមឡើងវិញ។ Wi-Fi តែឯងមិនអាចបង្កើតប្រទេសរបស់អ្នកបានទេ។</string>
+    <string name="boot_configuration">ការកំណត់រចនាសម្ព័ន្ធនៅពេលចាប់ផ្តើមឡើងវិញចុងក្រោយ</string>
+    <string name="pending_title">តម្រូវឱ្យចាប់ផ្តើមឡើងវិញ</string>
+    <string name="reboot_reminder">ចាប់ផ្តើមទូរស័ព្ទរបស់អ្នកឡើងវិញ ដើម្បីអនុវត្តអ្នកផ្តល់សេវាដែលបានជ្រើសរើស។</string>
+    <string name="restart_title">របៀបអនុវត្តការជ្រើសរើសរបស់អ្នក។</string>
+    <string name="restart_message">បើកម៉ឺនុយថាមពលរបស់ទូរស័ព្ទ ហើយជ្រើសរើស ចាប់ផ្តើមឡើងវិញ។ អ្នកផ្តល់សេវាដែលបានជ្រើសរើសនឹងត្រូវកំណត់រចនាសម្ព័ន្ធនៅពេលចាប់ផ្តើមបន្ទាប់។</string>
+    <string name="confirm_title">ផ្លាស់ប្តូរអ្នកផ្តល់ទីតាំងបណ្តាញ?</string>
+    <string name="confirm_message">ជ្រើសរើស %1$s សម្រាប់ការចាប់ផ្តើមឡើងវិញបន្ទាប់? អ្នកផ្តល់សេវាដែលកំពុងដំណើរការនឹងបន្តរហូតដល់អ្នកចាប់ផ្តើមទូរស័ព្ទរបស់អ្នកឡើងវិញ។</string>
+    <string name="save_selection">រក្សាទុកការជ្រើសរើស</string>
+    <string name="cancel">បោះបង់</string>
+    <string name="country_evidence">ការសង្កេតបណ្តាញចុងក្រោយ</string>
+    <string name="unknown">មិនស្គាល់ - មិនមានភស្តុតាងប្រទេសដែលបានចុះឈ្មោះ</string>
+    <string name="evidence_cn">បណ្តាញទូរស័ព្ទចល័តដែលបានចុះឈ្មោះ៖ ចិនដីគោក</string>
+    <string name="evidence_other">បណ្តាញទូរស័ព្ទចល័តដែលបានចុះឈ្មោះ៖ នៅខាងក្រៅប្រទេសចិនដីគោក</string>
+    <string name="channel_name">ការណែនាំអំពីទីតាំងបណ្តាញ</string>
+    <string name="notification_title">អ្នកផ្តល់ទីតាំងបណ្តាញ</string>
+    <string name="suggestion">ប្រើ Baidu NLP នៅចិនដីគោក?</string>
+    <string name="review">ពិនិត្យឡើងវិញ</string>
+    <string name="not_now">មិនមែនឥឡូវនេះទេ។</string>
+    <string name="configuration_failed">មិនអាចរក្សាទុកការកំណត់រចនាសម្ព័ន្ធអ្នកផ្តល់សេវាបានទេ។ ពិនិត្យជម្រើសមុនពេលចាប់ផ្តើមឡើងវិញ។</string>
+    <string name="provider_unavailable">អ្នកផ្តល់សេវាដែលបានជ្រើសរើសគឺមិនមានទេ។ ការចាប់ផ្តើមឡើងវិញអាចនឹងមិនដោះស្រាយសេវាដែលបាត់ ឬបិទ។</string>
+</resources>

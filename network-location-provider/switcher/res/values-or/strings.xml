@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ନେଟୱାର୍କ ଅବସ୍ଥାନ ପ୍ରଦାନକାରୀ ସୁଇଚର୍ |</string>
+    <string name="explanation">ପୁନ art ଆରମ୍ଭ ପରେ ବ୍ୟବହୃତ ନେଟୱର୍କ ଅବସ୍ଥାନ ଏବଂ ଜିଓକୋଡିଂ ପ୍ରଦାନକାରୀ ବାଛନ୍ତୁ | ଆପଣଙ୍କର ଚୟନ GPS କିମ୍ବା ଗୁଗୁଲର ନିଜସ୍ୱ ଫ୍ୟୁଜ୍-ଅବସ୍ଥାନ ସେବା ପରିବର୍ତ୍ତନ କରେ ନାହିଁ |</string>
+    <string name="provider_choice">ପରବର୍ତ୍ତୀ ପୁନ art ଆରମ୍ଭ ପାଇଁ ପ୍ରଦାନକାରୀ |</string>
+    <string name="provider_google">ଡିଫଲ୍ଟ (ଗୁଗୁଲ୍)</string>
+    <string name="automatic_detection">ସ୍ୱୟଂଚାଳିତ ଚିହ୍ନଟ |</string>
+    <string name="detection_summary">ଯେତେବେଳେ ଏକ ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ ନେଟୱାର୍କ ମଧ୍ୟପ୍ରଦେଶ ଚୀନ୍ କୁ ସୂଚିତ କରେ Baidu NLP କୁ ପରାମର୍ଶ ଦିଅ | ସୁଇଚ୍ କରିବା ସର୍ବଦା ତୁମର ନିଶ୍ଚିତକରଣ ଏବଂ ପୁନ rest ଆରମ୍ଭ ଆବଶ୍ୟକ କରେ | କେବଳ ୱାଇ-ଫାଇ ଆପଣଙ୍କ ଦେଶ ପ୍ରତିଷ୍ଠା କରିପାରିବ ନାହିଁ |</string>
+    <string name="boot_configuration">ଶେଷ ପୁନ art ଆରମ୍ଭରେ ବିନ୍ୟାସ</string>
+    <string name="pending_title">ପୁନ Rest ଆରମ୍ଭ ଆବଶ୍ୟକ |</string>
+    <string name="reboot_reminder">ମନୋନୀତ ପ୍ରଦାନକାରୀଙ୍କୁ ପ୍ରୟୋଗ କରିବାକୁ ଆପଣଙ୍କର ଫୋନ୍ ପୁନ Rest ଆରମ୍ଭ କରନ୍ତୁ |</string>
+    <string name="restart_title">ତୁମର ଚୟନ କିପରି ପ୍ରୟୋଗ କରିବେ |</string>
+    <string name="restart_message">ଫୋନର ପାୱାର ମେନୁ ଖୋଲନ୍ତୁ ଏବଂ ପୁନ art ଆରମ୍ଭ ବାଛନ୍ତୁ | ମନୋନୀତ ପ୍ରଦାନକାରୀ ପରବର୍ତ୍ତୀ ପ୍ରାରମ୍ଭରେ ବିନ୍ୟାସିତ ହେବ |</string>
+    <string name="confirm_title">ନେଟୱର୍କ ଅବସ୍ଥାନ ପ୍ରଦାନକାରୀ ପରିବର୍ତ୍ତନ କରନ୍ତୁ?</string>
+    <string name="confirm_message">ପରବର୍ତ୍ତୀ ପୁନ art ଆରମ୍ଭ ପାଇଁ%1$s ଚୟନ କରନ୍ତୁ? ଆପଣ ଆପଣଙ୍କର ଫୋନ୍ ପୁନ rest ଆରମ୍ଭ ନକରିବା ପର୍ଯ୍ୟନ୍ତ ଚାଲୁଥିବା ପ୍ରଦାନକାରୀ ଜାରି ରହିବ |</string>
+    <string name="save_selection">ଚୟନ ସଞ୍ଚୟ କରନ୍ତୁ |</string>
+    <string name="cancel">ବାତିଲ୍ କରନ୍ତୁ |</string>
+    <string name="country_evidence">ଶେଷ ନେଟୱାର୍କ ପର୍ଯ୍ୟବେକ୍ଷଣ |</string>
+    <string name="unknown">ଅଜ୍ଞାତ - କ registered ଣସି ପଞ୍ଜୀକୃତ ଦେଶ ପ୍ରମାଣ ନାହିଁ |</string>
+    <string name="evidence_cn">ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ ନେଟୱାର୍କ: ମଧ୍ୟପ୍ରଦେଶ ଚୀନ୍ |</string>
+    <string name="evidence_other">ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ ନେଟୱାର୍କ: ମଧ୍ୟପ୍ରଦେଶ ଚୀନ୍ ବାହାରେ |</string>
+    <string name="channel_name">ନେଟୱର୍କ ଅବସ୍ଥାନ ପରାମର୍ଶ |</string>
+    <string name="notification_title">ନେଟୱର୍କ ଅବସ୍ଥାନ ପ୍ରଦାନକାରୀ |</string>
+    <string name="suggestion">ଚାଇନାର ମଧ୍ୟପ୍ରଦେଶରେ Baidu NLP ବ୍ୟବହାର କରନ୍ତୁ?</string>
+    <string name="review">ସମୀକ୍ଷା କରନ୍ତୁ |</string>
+    <string name="not_now">ବର୍ତ୍ତମାନ ନୁହେଁ |</string>
+    <string name="configuration_failed">ପ୍ରଦାନକାରୀ ସଂରଚନାକୁ ସଂରକ୍ଷଣ କରିପାରିଲା ନାହିଁ | ପୁନ art ଆରମ୍ଭ କରିବା ପୂର୍ବରୁ ଚୟନ ଯାଞ୍ଚ କରନ୍ତୁ |</string>
+    <string name="provider_unavailable">ମନୋନୀତ ପ୍ରଦାନକାରୀ ଉପଲବ୍ଧ ନାହିଁ | ପୁନ art ଆରମ୍ଭ ଏକ ନିଖୋଜ କିମ୍ବା ଅକ୍ଷମ ସେବାର ସମାଧାନ କରିପାରିବ ନାହିଁ |</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Тармактын жайгашкан жерин камсыздоочу алмаштыргыч</string>
+    <string name="explanation">Өчүрүп күйгүзгөндөн кийин колдонулган тармактын жайгашкан жерин жана геокод провайдерин тандаңыз. Сиздин тандооңуз GPS же Google\'дун бириктирилген жайгашкан жерди аныктоо кызматтарын өзгөртпөйт.</string>
+    <string name="provider_choice">Кийинки кайра иштетүү үчүн камсыздоочу</string>
+    <string name="provider_google">Демейки (Google)</string>
+    <string name="automatic_detection">Автоматтык аныктоо</string>
+    <string name="detection_summary">Катталган мобилдик тармак материктик Кытайды көрсөткөндө Baidu NLP сунуштаңыз. Которуу ар дайым ырастооңузду жана кайра иштетүүнү талап кылат. Wi-Fi жалгыз өлкөңүздү орното албайт.</string>
+    <string name="boot_configuration">Акыркы кайра иштетүүдө конфигурация</string>
+    <string name="pending_title">Кайра иштетүү талап кылынат</string>
+    <string name="reboot_reminder">Тандалган камсыздоочуну колдонуу үчүн телефонуңузду өчүрүп күйгүзүңүз.</string>
+    <string name="restart_title">Тандооңузду кантип колдонсо болот</string>
+    <string name="restart_message">Телефондун кубат менюсун ачып, кайра иштетүүнү тандаңыз. Тандалган провайдер кийинки ишке киргизүүдө конфигурацияланат.</string>
+    <string name="confirm_title">Тармактын жайгашуу провайдери өзгөрүлсүнбү?</string>
+    <string name="confirm_message">Кийинки өчүрүп күйгүзүү үчүн %1$s тандалсынбы? Иштеп жаткан провайдер телефонуңузду өчүрүп күйгүзмөйүнчө иштей берет.</string>
+    <string name="save_selection">Тандоону сактоо</string>
+    <string name="cancel">Жокко чыгаруу</string>
+    <string name="country_evidence">Акыркы тармактык байкоо</string>
+    <string name="unknown">Белгисиз - катталган өлкө далилдери жок</string>
+    <string name="evidence_cn">Катталган мобилдик тармак: материктик Кытай</string>
+    <string name="evidence_other">Катталган мобилдик тармак: материктик Кытайдан тышкары</string>
+    <string name="channel_name">Тармактын жайгашуусу боюнча сунуштар</string>
+    <string name="notification_title">Тармак жайгашкан жерди камсыздоочу</string>
+    <string name="suggestion">Материктик Кытайда Baidu NLP колдонулабы?</string>
+    <string name="review">карап чыгуу</string>
+    <string name="not_now">Азыр эмес</string>
+    <string name="configuration_failed">Провайдердин конфигурациясы сакталган жок. Кайра баштоодон мурун тандоону текшериңиз.</string>
+    <string name="provider_unavailable">Тандалган камсыздоочу жеткиликсиз. Кайра иштетүү жетишпеген же өчүрүлгөн кызматты чечпейт.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Przełącznik dostawcy lokalizacji sieciowej</string>
+    <string name="explanation">Wybierz lokalizację sieciową i dostawcę geokodowania używanego po ponownym uruchomieniu. Twój wybór nie ma wpływu na usługi GPS ani usługi połączonej lokalizacji Google.</string>
+    <string name="provider_choice">Dostawca następnego ponownego uruchomienia</string>
+    <string name="provider_google">Domyślny (Google)</string>
+    <string name="automatic_detection">Automatyczne wykrywanie</string>
+    <string name="detection_summary">Zasugeruj Baidu NLP, gdy zarejestrowana sieć komórkowa wskazuje Chiny kontynentalne. Przełączenie zawsze wymaga potwierdzenia i ponownego uruchomienia. Sama sieć Wi-Fi nie może ustalić Twojego kraju.</string>
+    <string name="boot_configuration">Konfiguracja przy ostatnim ponownym uruchomieniu</string>
+    <string name="pending_title">Wymagane ponowne uruchomienie</string>
+    <string name="reboot_reminder">Uruchom ponownie telefon, aby zastosować wybranego dostawcę.</string>
+    <string name="restart_title">Jak zastosować swój wybór</string>
+    <string name="restart_message">Otwórz menu zasilania telefonu i wybierz Uruchom ponownie. Wybrany dostawca zostanie skonfigurowany przy następnym uruchomieniu.</string>
+    <string name="confirm_title">Zmienić dostawcę lokalizacji sieciowej?</string>
+    <string name="confirm_message">Wybrać %1$s do następnego ponownego uruchomienia? Działający dostawca będzie kontynuował działanie, dopóki nie uruchomisz ponownie telefonu.</string>
+    <string name="save_selection">Zapisz wybór</string>
+    <string name="cancel">Anuluj</string>
+    <string name="country_evidence">Ostatnia obserwacja sieci</string>
+    <string name="unknown">Nieznane – brak dowodów zarejestrowanych w kraju</string>
+    <string name="evidence_cn">Zarejestrowana sieć komórkowa: Chiny kontynentalne</string>
+    <string name="evidence_other">Zarejestrowana sieć komórkowa: poza Chinami kontynentalnymi</string>
+    <string name="channel_name">Sugestie dotyczące lokalizacji sieciowych</string>
+    <string name="notification_title">Dostawca lokalizacji sieciowej</string>
+    <string name="suggestion">Używaj Baidu NLP w Chinach kontynentalnych?</string>
+    <string name="review">Recenzja</string>
+    <string name="not_now">Nie teraz</string>
+    <string name="configuration_failed">Nie można zapisać konfiguracji dostawcy. Sprawdź wybór przed ponownym uruchomieniem.</string>
+    <string name="provider_unavailable">Wybrany dostawca jest niedostępny. Ponowne uruchomienie może nie rozwiązać problemu braku lub wyłączenia usługi.</string>
+</resources>

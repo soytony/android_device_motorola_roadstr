@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Превключвател на доставчик на мрежово местоположение</string>
+    <string name="explanation">Изберете мрежовото местоположение и доставчика на геокодиране, използвани след рестартиране. Вашият избор не променя GPS или собствените услуги за обединено местоположение на Google.</string>
+    <string name="provider_choice">Доставчик за следващо рестартиране</string>
+    <string name="provider_google">По подразбиране (Google)</string>
+    <string name="automatic_detection">Автоматично откриване</string>
+    <string name="detection_summary">Предложете Baidu NLP, когато регистрирана мобилна мрежа показва континентален Китай. Превключването винаги изисква вашето потвърждение и рестартиране. Само Wi-Fi не може да установи вашата държава.</string>
+    <string name="boot_configuration">Конфигурация при последно рестартиране</string>
+    <string name="pending_title">Изисква се рестартиране</string>
+    <string name="reboot_reminder">Рестартирайте телефона си, за да приложите избрания доставчик.</string>
+    <string name="restart_title">Как да приложите своя избор</string>
+    <string name="restart_message">Отворете менюто за захранване на телефона и изберете Рестартиране. Избраният доставчик ще бъде конфигуриран при следващото стартиране.</string>
+    <string name="confirm_title">Промяна на доставчика на мрежово местоположение?</string>
+    <string name="confirm_message">Изберете %1$s за следващото рестартиране? Работещият доставчик ще продължи, докато не рестартирате телефона си.</string>
+    <string name="save_selection">Запазване на селекцията</string>
+    <string name="cancel">Отказ</string>
+    <string name="country_evidence">Последно наблюдение на мрежата</string>
+    <string name="unknown">Неизвестно — няма регистрирано доказателство за държава</string>
+    <string name="evidence_cn">Регистрирана мобилна мрежа: континентален Китай</string>
+    <string name="evidence_other">Регистрирана мобилна мрежа: извън континентален Китай</string>
+    <string name="channel_name">Предложения за мрежово местоположение</string>
+    <string name="notification_title">Доставчик на мрежово местоположение</string>
+    <string name="suggestion">Използвате ли Baidu NLP в континентален Китай?</string>
+    <string name="review">Преглед</string>
+    <string name="not_now">Не сега</string>
+    <string name="configuration_failed">Конфигурацията на доставчика не можа да бъде запазена. Проверете избора преди рестартиране.</string>
+    <string name="provider_unavailable">Избраният доставчик не е наличен. Рестартирането може да не разреши липсваща или деактивирана услуга.</string>
+</resources>

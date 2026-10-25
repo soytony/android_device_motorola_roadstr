@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Selector del serviciu de llocalización de rede</string>
+    <string name="explanation">Escueyi los servicios de llocalización de rede y xeocodificación que s’usarán dempués de reaniciar. Nun cambia’l GPS nin los servicios de llocalización fundida de Google.</string>
+    <string name="provider_choice">Serviciu pal próximu reaniciu</string>
+    <string name="provider_google">Predetermináu (Google)</string>
+    <string name="automatic_detection">Detección automática</string>
+    <string name="detection_summary">Suxerir Baidu NLP cuando la rede móvil rexistrada indique China continental. El cambiu precisa confirmación y reaniciu. Wi-Fi solo nun determina’l país.</string>
+    <string name="boot_configuration">Configuración nel últimu reaniciu</string>
+    <string name="pending_title">Precísase reaniciar</string>
+    <string name="reboot_reminder">Reanicia’l teléfonu p’aplicar el serviciu escoyíu.</string>
+    <string name="restart_title">Cómo aplicar la seleición</string>
+    <string name="restart_message">Abri’l menú d’apagáu y escueyi Reaniciar. El serviciu configúrase nel próximu aniciu.</string>
+    <string name="confirm_title">¿Cambiar el serviciu de llocalización?</string>
+    <string name="confirm_message">¿Escoyer %1$s pal próximu reaniciu? El serviciu actual sigue funcionando hasta reaniciar.</string>
+    <string name="save_selection">Guardar seleición</string>
+    <string name="cancel">Encaboxar</string>
+    <string name="country_evidence">Última observación de rede</string>
+    <string name="unknown">Desconocíu: ensin país de rede rexistrada</string>
+    <string name="evidence_cn">Rede móvil rexistrada: China continental</string>
+    <string name="evidence_other">Rede móvil rexistrada: fuera de China continental</string>
+    <string name="channel_name">Suxerencies de llocalización de rede</string>
+    <string name="notification_title">Serviciu de llocalización de rede</string>
+    <string name="suggestion">¿Usar Baidu NLP en China continental?</string>
+    <string name="review">Revisar</string>
+    <string name="not_now">Agora non</string>
+    <string name="configuration_failed">Nun se pudo guardar la configuración. Revisa la seleición enantes de reaniciar.</string>
+    <string name="provider_unavailable">El serviciu escoyíu nun ta disponible. Reaniciar pue nun resolver un serviciu ausente o desactiváu.</string>
+</resources>

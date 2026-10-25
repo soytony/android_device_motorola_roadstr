@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Желілік орын провайдерінің ауыстырғышы</string>
+    <string name="explanation">Қайта іске қосқаннан кейін пайдаланылатын желі орнын және геокодтау провайдерін таңдаңыз. Таңдауыңыз GPS немесе Google-дың біріктірілген орынды анықтау қызметтерін өзгертпейді.</string>
+    <string name="provider_choice">Келесі қайта іске қосу үшін провайдер</string>
+    <string name="provider_google">Әдепкі (Google)</string>
+    <string name="automatic_detection">Автоматты анықтау</string>
+    <string name="detection_summary">Тіркелген ұялы желі материктік Қытайды көрсеткенде Baidu NLP ұсыныңыз. Ауыстыру әрқашан растауды және қайта іске қосуды қажет етеді. Wi-Fi жалғыз сіздің еліңізді құра алмайды.</string>
+    <string name="boot_configuration">Соңғы қайта іске қосу кезінде конфигурация</string>
+    <string name="pending_title">Қайта іске қосу қажет</string>
+    <string name="reboot_reminder">Таңдалған провайдерді қолдану үшін телефонды қайта іске қосыңыз.</string>
+    <string name="restart_title">Таңдауыңызды қалай қолдануға болады</string>
+    <string name="restart_message">Телефонның қуат мәзірін ашып, «Қайта іске қосу» тармағын таңдаңыз. Таңдалған провайдер келесі іске қосу кезінде конфигурацияланады.</string>
+    <string name="confirm_title">Желінің орналасу провайдерін өзгерту керек пе?</string>
+    <string name="confirm_message">Келесі қайта іске қосу үшін %1$s таңдалсын ба? Жұмыс істеп тұрған провайдер телефонды қайта іске қосқанша жұмыс істей береді.</string>
+    <string name="save_selection">Таңдауды сақтау</string>
+    <string name="cancel">Болдырмау</string>
+    <string name="country_evidence">Соңғы желіні бақылау</string>
+    <string name="unknown">Белгісіз — тіркелген ел дәлелдері жоқ</string>
+    <string name="evidence_cn">Тіркелген ұялы байланыс желісі: материктік Қытай</string>
+    <string name="evidence_other">Тіркелген ұялы желі: материктік Қытайдан тыс</string>
+    <string name="channel_name">Желі орналасуы бойынша ұсыныстар</string>
+    <string name="notification_title">Желінің орналасу провайдері</string>
+    <string name="suggestion">Материктік Қытайда Baidu NLP пайдалану керек пе?</string>
+    <string name="review">Қарау</string>
+    <string name="not_now">Қазір емес</string>
+    <string name="configuration_failed">Провайдер конфигурациясын сақтау мүмкін болмады. Қайта іске қоспас бұрын таңдауды тексеріңіз.</string>
+    <string name="provider_unavailable">Таңдалған провайдер қолжетімсіз. Қайта іске қосу жетіспейтін немесе өшірілген қызметті шеше алмайды.</string>
+</resources>

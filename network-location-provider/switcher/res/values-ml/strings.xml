@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">നെറ്റ്‌വർക്ക് ലൊക്കേഷൻ പ്രൊവൈഡർ സ്വിച്ചർ</string>
+    <string name="explanation">പുനരാരംഭിച്ചതിന് ശേഷം ഉപയോഗിക്കുന്ന നെറ്റ്‌വർക്ക് ലൊക്കേഷനും ജിയോകോഡിംഗ് ദാതാവും തിരഞ്ഞെടുക്കുക. നിങ്ങളുടെ തിരഞ്ഞെടുപ്പ് GPS-നെയോ Google-ൻ്റെ സ്വന്തം ഫ്യൂസ്ഡ് ലൊക്കേഷൻ സേവനങ്ങളെയോ മാറ്റില്ല.</string>
+    <string name="provider_choice">അടുത്ത പുനരാരംഭത്തിനുള്ള ദാതാവ്</string>
+    <string name="provider_google">ഡിഫോൾട്ട് (Google)</string>
+    <string name="automatic_detection">യാന്ത്രിക കണ്ടെത്തൽ</string>
+    <string name="detection_summary">ഒരു രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നെറ്റ്‌വർക്ക് ചൈന മെയിൻ ലാൻഡ് എന്ന് സൂചിപ്പിക്കുമ്പോൾ Baidu NLP നിർദ്ദേശിക്കുക. മാറുന്നതിന് എപ്പോഴും നിങ്ങളുടെ സ്ഥിരീകരണവും ഒരു പുനരാരംഭവും ആവശ്യമാണ്. Wi-Fi-ന് മാത്രം നിങ്ങളുടെ രാജ്യം സ്ഥാപിക്കാൻ കഴിയില്ല.</string>
+    <string name="boot_configuration">അവസാന പുനരാരംഭത്തിൽ കോൺഫിഗറേഷൻ</string>
+    <string name="pending_title">പുനരാരംഭിക്കേണ്ടതുണ്ട്</string>
+    <string name="reboot_reminder">തിരഞ്ഞെടുത്ത ദാതാവിനെ പ്രയോഗിക്കാൻ നിങ്ങളുടെ ഫോൺ പുനരാരംഭിക്കുക.</string>
+    <string name="restart_title">നിങ്ങളുടെ തിരഞ്ഞെടുപ്പ് എങ്ങനെ പ്രയോഗിക്കാം</string>
+    <string name="restart_message">ഫോണിൻ്റെ പവർ മെനു തുറന്ന് റീസ്റ്റാർട്ട് തിരഞ്ഞെടുക്കുക. തിരഞ്ഞെടുത്ത ദാതാവ് അടുത്ത സ്റ്റാർട്ടപ്പിൽ കോൺഫിഗർ ചെയ്യപ്പെടും.</string>
+    <string name="confirm_title">നെറ്റ്‌വർക്ക് ലൊക്കേഷൻ ദാതാവിനെ മാറ്റണോ?</string>
+    <string name="confirm_message">അടുത്ത പുനരാരംഭത്തിനായി %1$s തിരഞ്ഞെടുക്കണോ? നിങ്ങളുടെ ഫോൺ പുനരാരംഭിക്കുന്നത് വരെ റണ്ണിംഗ് പ്രൊവൈഡർ തുടരും.</string>
+    <string name="save_selection">തിരഞ്ഞെടുക്കൽ സംരക്ഷിക്കുക</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
+    <string name="country_evidence">അവസാന നെറ്റ്‌വർക്ക് നിരീക്ഷണം</string>
+    <string name="unknown">അജ്ഞാതം - രജിസ്റ്റർ ചെയ്ത രാജ്യ തെളിവുകളൊന്നുമില്ല</string>
+    <string name="evidence_cn">രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നെറ്റ്‌വർക്ക്: മെയിൻലാൻഡ് ചൈന</string>
+    <string name="evidence_other">രജിസ്റ്റർ ചെയ്ത മൊബൈൽ നെറ്റ്‌വർക്ക്: ചൈനയ്ക്ക് പുറത്ത്</string>
+    <string name="channel_name">നെറ്റ്‌വർക്ക് ലൊക്കേഷൻ നിർദ്ദേശങ്ങൾ</string>
+    <string name="notification_title">നെറ്റ്‌വർക്ക് ലൊക്കേഷൻ ദാതാവ്</string>
+    <string name="suggestion">ചൈനയിലെ പ്രധാന ഭൂപ്രദേശത്ത് Baidu NLP ഉപയോഗിക്കണോ?</string>
+    <string name="review">അവലോകനം</string>
+    <string name="not_now">ഇപ്പോഴില്ല</string>
+    <string name="configuration_failed">ദാതാവിൻ്റെ കോൺഫിഗറേഷൻ സംരക്ഷിക്കാൻ കഴിഞ്ഞില്ല. പുനരാരംഭിക്കുന്നതിന് മുമ്പ് തിരഞ്ഞെടുപ്പ് പരിശോധിക്കുക.</string>
+    <string name="provider_unavailable">തിരഞ്ഞെടുത്ത ദാതാവ് ലഭ്യമല്ല. പുനരാരംഭിക്കുന്നത് നഷ്‌ടമായതോ അപ്രാപ്‌തമാക്കിയതോ ആയ ഒരു സേവനത്തെ പരിഹരിച്ചേക്കില്ല.</string>
+</resources>

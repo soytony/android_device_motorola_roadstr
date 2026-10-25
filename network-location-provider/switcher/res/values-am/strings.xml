@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">የአውታረ መረብ አካባቢ አቅራቢ መቀየሪያ</string>
+    <string name="explanation">ዳግም ከተጀመረ በኋላ ጥቅም ላይ የዋለውን የአውታረ መረብ ቦታ እና የጂኦኮዲንግ አቅራቢን ይምረጡ። ምርጫህ ጂፒኤስን ወይም ጉግልን የራሱን የተዋሃደ አካባቢ አገልግሎቶችን አይለውጥም::</string>
+    <string name="provider_choice">ለቀጣይ ዳግም ማስጀመር አቅራቢ</string>
+    <string name="provider_google">ነባሪ (Google)</string>
+    <string name="automatic_detection">ራስ-ሰር ማግኘት</string>
+    <string name="detection_summary">የተመዘገበ የሞባይል አውታረ መረብ ዋና ቻይናን ሲያመለክት Baidu NLP ን ይጠቁሙ። መቀየር ሁልጊዜ የእርስዎን ማረጋገጫ እና ዳግም ማስጀመር ያስፈልገዋል። ዋይ ፋይ ብቻውን ሀገርዎን መመስረት አይችልም።</string>
+    <string name="boot_configuration">በመጨረሻ እንደገና ሲጀመር ማዋቀር</string>
+    <string name="pending_title">ዳግም ማስጀመር ያስፈልጋል</string>
+    <string name="reboot_reminder">የተመረጠውን አቅራቢ ለመተግበር ስልክዎን እንደገና ያስጀምሩት።</string>
+    <string name="restart_title">ምርጫዎን እንዴት እንደሚተገበሩ</string>
+    <string name="restart_message">የስልኩን የኃይል ምናሌ ይክፈቱ እና እንደገና አስጀምርን ይምረጡ። የተመረጠው አቅራቢ በሚቀጥለው ጅምር ላይ ይዋቀራል።</string>
+    <string name="confirm_title">የአውታረ መረብ አካባቢ አቅራቢ ይቀየር?</string>
+    <string name="confirm_message">ለሚቀጥለው ዳግም ማስጀመር %1$s ይምረጡ? ስልክዎን እንደገና እስኪያስጀምሩት ድረስ የሩጫ አቅራቢው ይቀጥላል።</string>
+    <string name="save_selection">ምርጫን አስቀምጥ</string>
+    <string name="cancel">ሰርዝ</string>
+    <string name="country_evidence">የመጨረሻው የአውታረ መረብ ምልከታ</string>
+    <string name="unknown">ያልታወቀ - ምንም የተመዘገበ የአገር ማስረጃ የለም።</string>
+    <string name="evidence_cn">የተመዘገበ የተንቀሳቃሽ ስልክ አውታረ መረብ: ዋና ቻይና</string>
+    <string name="evidence_other">የተመዘገበ የተንቀሳቃሽ ስልክ አውታረ መረብ: ከዋናው ቻይና ውጭ</string>
+    <string name="channel_name">የአውታረ መረብ አካባቢ ጥቆማዎች</string>
+    <string name="notification_title">የአውታረ መረብ አካባቢ አቅራቢ</string>
+    <string name="suggestion">በዋናው ቻይና ውስጥ Baidu NLP ይጠቀሙ?</string>
+    <string name="review">ግምገማ</string>
+    <string name="not_now">አሁን አይደለም</string>
+    <string name="configuration_failed">የአቅራቢውን ውቅረት ማስቀመጥ አልተቻለም። እንደገና ከመጀመርዎ በፊት ምርጫውን ያረጋግጡ።</string>
+    <string name="provider_unavailable">የተመረጠው አቅራቢ አይገኝም። ዳግም መጀመር የጎደለ ወይም የተሰናከለ አገልግሎት ላይፈታ ይችላል።</string>
+</resources>

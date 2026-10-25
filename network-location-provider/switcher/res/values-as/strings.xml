@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">নে\'টৱৰ্ক অৱস্থান প্ৰদানকাৰী চুইচাৰ</string>
+    <string name="explanation">পুনৰাৰম্ভ কৰাৰ পিছত ব্যৱহৃত নে\'টৱৰ্ক অৱস্থান আৰু জিঅ\'ক\'ডিং প্ৰদানকাৰী নিৰ্ব্বাচন কৰক। আপোনাৰ নিৰ্বাচনে GPS বা Google-ৰ নিজৰ ফিউজড-ল’কেচন সেৱাসমূহ সলনি নকৰে৷</string>
+    <string name="provider_choice">পৰৱৰ্তী পুনৰাৰম্ভৰ বাবে প্ৰদানকাৰী</string>
+    <string name="provider_google">অবিকল্পিত (গুগল)</string>
+    <string name="automatic_detection">স্বয়ংক্ৰিয় ধৰা পেলোৱা</string>
+    <string name="detection_summary">Baidu NLP ৰ পৰামৰ্শ দিয়ক যেতিয়া এটা পঞ্জীয়নভুক্ত মোবাইল নেটৱৰ্কে মূল চীনক সূচায়। চুইচিঙৰ বাবে সদায় আপোনাৰ নিশ্চিতকৰণ আৰু এটা পুনৰাৰম্ভৰ প্ৰয়োজন। কেৱল ৱাই-ফাইয়ে আপোনাৰ দেশ প্ৰতিষ্ঠা কৰিব নোৱাৰে।</string>
+    <string name="boot_configuration">শেষ পুনৰাৰম্ভত বিন্যাস</string>
+    <string name="pending_title">পুনৰাৰম্ভৰ প্ৰয়োজন</string>
+    <string name="reboot_reminder">নিৰ্বাচিত প্ৰদানকাৰী প্ৰয়োগ কৰিবলৈ আপোনাৰ ফোন পুনৰাৰম্ভ কৰক।</string>
+    <string name="restart_title">আপোনাৰ নিৰ্বাচন কেনেকৈ প্ৰয়োগ কৰিব</string>
+    <string name="restart_message">ফোনটোৰ পাৱাৰ মেনু খোলক আৰু পুনৰাৰম্ভ বাছক। নিৰ্বাচিত প্ৰদানকাৰীক পৰৱৰ্তী আৰম্ভণিত বিন্যাস কৰা হ\'ব।</string>
+    <string name="confirm_title">নে\'টৱৰ্ক অৱস্থান প্ৰদানকাৰী সলনি কৰক?</string>
+    <string name="confirm_message">পৰৱৰ্তী পুনৰাৰম্ভৰ বাবে %1$s নিৰ্ব্বাচন কৰক? আপুনি আপোনাৰ ফোন পুনৰাৰম্ভ নকৰালৈকে চলি থকা প্ৰদানকাৰী চলি থাকিব।</string>
+    <string name="save_selection">নিৰ্বাচন সংৰক্ষণ কৰক</string>
+    <string name="cancel">বাতিল কৰক</string>
+    <string name="country_evidence">শেষ নেটৱৰ্ক পৰ্যবেক্ষণ</string>
+    <string name="unknown">অজ্ঞাত — কোনো পঞ্জীয়নভুক্ত দেশৰ প্ৰমাণ নাই</string>
+    <string name="evidence_cn">পঞ্জীয়নভুক্ত মোবাইল নেটৱৰ্ক: মূল চীন</string>
+    <string name="evidence_other">পঞ্জীয়নভুক্ত মোবাইল নেটৱৰ্ক: মূল চীনৰ বাহিৰত</string>
+    <string name="channel_name">নেটৱৰ্ক অৱস্থানৰ পৰামৰ্শ</string>
+    <string name="notification_title">নে\'টৱৰ্ক অৱস্থান প্ৰদানকাৰী</string>
+    <string name="suggestion">মূল চীনত Baidu NLP ব্যৱহাৰ কৰেনে?</string>
+    <string name="review">পৰ্যালোচনা</string>
+    <string name="not_now">এতিয়া নহয়</string>
+    <string name="configuration_failed">প্ৰদানকাৰীৰ বিন্যাস সংৰক্ষণ কৰিব পৰা নগ\'ল । পুনৰাৰম্ভ কৰাৰ আগতে নিৰ্বাচন পৰীক্ষা কৰক।</string>
+    <string name="provider_unavailable">নিৰ্বাচিত প্ৰদানকাৰী উপলব্ধ নহয়। পুনৰাৰম্ভ কৰিলে এটা অনুপস্থিত বা নিষ্ক্ৰিয় সেৱা সমাধান নহ\'বও পাৰে।</string>
+</resources>

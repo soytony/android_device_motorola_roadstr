@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ကွန်ရက်တည်နေရာပံ့ပိုးပေးသူ Switcher</string>
+    <string name="explanation">ပြန်လည်စတင်ပြီးနောက် အသုံးပြုသည့် ကွန်ရက်တည်နေရာနှင့် ဘူမိကုဒ်ဝန်ဆောင်မှုပေးသူကို ရွေးပါ။ သင့်ရွေးချယ်မှုသည် GPS သို့မဟုတ် Google ၏ကိုယ်ပိုင်ပေါင်းစပ်တည်နေရာဝန်ဆောင်မှုများကို မပြောင်းလဲပါ။</string>
+    <string name="provider_choice">နောက်တစ်ကြိမ် ပြန်လည်စတင်ရန်အတွက် ပံ့ပိုးပေးသူ</string>
+    <string name="provider_google">မူရင်း (Google)</string>
+    <string name="automatic_detection">အလိုအလျောက် ထောက်လှမ်းခြင်း။</string>
+    <string name="detection_summary">မှတ်ပုံတင်ထားသော မိုဘိုင်းကွန်ရက်သည် တရုတ်ပြည်မကြီးကို ညွှန်ပြသောအခါ Baidu NLP ကို အကြံပြုပါ။ ကူးပြောင်းခြင်းသည် သင့်အတည်ပြုချက်နှင့် ပြန်လည်စတင်ရန် အမြဲလိုအပ်ပါသည်။ Wi-Fi တစ်ခုတည်းက သင့်နိုင်ငံကို ထူထောင်လို့မရပါဘူး။</string>
+    <string name="boot_configuration">နောက်ဆုံး restart မှာ ဖွဲ့စည်းမှု</string>
+    <string name="pending_title">ပြန်လည်စတင်ရန် လိုအပ်ပါသည်။</string>
+    <string name="reboot_reminder">ရွေးချယ်ထားသောဝန်ဆောင်မှုပေးသူကို အသုံးပြုရန် သင့်ဖုန်းကို ပြန်လည်စတင်ပါ။</string>
+    <string name="restart_title">မင်းရဲ့ရွေးချယ်မှုကို ဘယ်လိုအသုံးချမလဲ။</string>
+    <string name="restart_message">ဖုန်း၏ပါဝါမီနူးကိုဖွင့်ပြီး Restart ကိုရွေးချယ်ပါ။ ရွေးချယ်ထားသော ဝန်ဆောင်မှုပေးသူကို နောက်လာမည့်စတင်ချိန်တွင် စီစဉ်သတ်မှတ်ပါမည်။</string>
+    <string name="confirm_title">ကွန်ရက်တည်နေရာဝန်ဆောင်မှုပေးသူကို ပြောင်းမလား။</string>
+    <string name="confirm_message">နောက်တစ်ကြိမ် ပြန်လည်စတင်ရန်အတွက် %1$s ကို ရွေးမလား။ သင့်ဖုန်းကို ပြန်လည်စတင်သည်အထိ လုပ်ဆောင်ပေးသူသည် ဆက်လက်လုပ်ဆောင်နေပါမည်။</string>
+    <string name="save_selection">ရွေးချယ်မှုကို သိမ်းဆည်းပါ။</string>
+    <string name="cancel">မလုပ်တော့</string>
+    <string name="country_evidence">နောက်ဆုံး ကွန်ရက်ကြည့်ရှုမှု</string>
+    <string name="unknown">အမည်မသိ — မှတ်ပုံတင်ထားသောနိုင်ငံအထောက်အထားမရှိပါ။</string>
+    <string name="evidence_cn">မှတ်ပုံတင်ထားသော မိုဘိုင်းကွန်ရက်- တရုတ်ပြည်မကြီး</string>
+    <string name="evidence_other">မှတ်ပုံတင်ထားသော မိုဘိုင်းကွန်ရက်- တရုတ်ပြည်မကြီးပြင်ပ</string>
+    <string name="channel_name">ကွန်ရက်တည်နေရာ အကြံပြုချက်များ</string>
+    <string name="notification_title">ကွန်ရက်တည်နေရာပံ့ပိုးသူ</string>
+    <string name="suggestion">တရုတ်ပြည်မကြီးတွင် Baidu NLP ကို သုံးပါသလား။</string>
+    <string name="review">သုံးသပ်ချက်</string>
+    <string name="not_now">အခုမှမဟုတ်ဘူး။</string>
+    <string name="configuration_failed">ဝန်ဆောင်မှုပေးသူ ဖွဲ့စည်းမှုပုံစံကို မသိမ်းဆည်းနိုင်ခဲ့ပါ။ ပြန်လည်စတင်ခြင်းမပြုမီ ရွေးချယ်မှုကို စစ်ဆေးပါ။</string>
+    <string name="provider_unavailable">ရွေးချယ်ထားသော ဝန်ဆောင်မှုပေးသူကို မရရှိနိုင်ပါ။ ပြန်လည်စတင်ခြင်းသည် ပျောက်ဆုံးနေသော သို့မဟုတ် ပိတ်ထားသော ဝန်ဆောင်မှုကို မဖြေရှင်းနိုင်ပါ။</string>
+</resources>

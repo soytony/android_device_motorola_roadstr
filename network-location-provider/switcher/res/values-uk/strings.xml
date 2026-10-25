@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Перемикач постачальників мережевого місцезнаходження</string>
+    <string name="explanation">Після перезапуску виберіть мережеве розташування та постачальника геокодування. Ваш вибір не змінює GPS або власні служби визначення місцезнаходження Google.</string>
+    <string name="provider_choice">Постачальник для наступного перезапуску</string>
+    <string name="provider_google">За умовчанням (Google)</string>
+    <string name="automatic_detection">Автоматичне виявлення</string>
+    <string name="detection_summary">Запропонуйте Baidu NLP, якщо зареєстрована мобільна мережа вказує на материковий Китай. Перемикання завжди потребує вашого підтвердження та перезапуску. Тільки Wi-Fi не може встановити вашу країну.</string>
+    <string name="boot_configuration">Конфігурація під час останнього перезапуску</string>
+    <string name="pending_title">Потрібен перезапуск</string>
+    <string name="reboot_reminder">Перезавантажте телефон, щоб застосувати вибраного провайдера.</string>
+    <string name="restart_title">Як застосувати свій вибір</string>
+    <string name="restart_message">Відкрийте меню живлення телефону та виберіть Перезапустити. Вибраний провайдер буде налаштовано під час наступного запуску.</string>
+    <string name="confirm_title">Змінити постачальника мережевого місцезнаходження?</string>
+    <string name="confirm_message">Вибрати %1$s для наступного перезапуску? Запущений постачальник працюватиме, доки ви не перезавантажите телефон.</string>
+    <string name="save_selection">Зберегти вибір</string>
+    <string name="cancel">Скасувати</string>
+    <string name="country_evidence">Останнє мережеве спостереження</string>
+    <string name="unknown">Невідомо — немає зареєстрованих доказів країни</string>
+    <string name="evidence_cn">Зареєстрована мобільна мережа: материковий Китай</string>
+    <string name="evidence_other">Зареєстрована мобільна мережа: за межами материкового Китаю</string>
+    <string name="channel_name">Пропозиції щодо розташування мережі</string>
+    <string name="notification_title">Постачальник мережевого місцезнаходження</string>
+    <string name="suggestion">Використовувати Baidu NLP у Китаї?</string>
+    <string name="review">огляд</string>
+    <string name="not_now">Не зараз</string>
+    <string name="configuration_failed">Не вдалося зберегти конфігурацію постачальника. Перевірте вибір перед перезапуском.</string>
+    <string name="provider_unavailable">Вибраний провайдер недоступний. Перезапуск може не вирішити проблему з відсутньою або вимкненою службою.</string>
+</resources>

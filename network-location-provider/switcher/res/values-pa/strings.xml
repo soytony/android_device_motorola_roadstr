@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਪ੍ਰਦਾਤਾ ਸਵਿੱਚਰ</string>
+    <string name="explanation">ਰੀਸਟਾਰਟ ਕਰਨ ਤੋਂ ਬਾਅਦ ਵਰਤਿਆ ਜਾਣ ਵਾਲਾ ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਅਤੇ ਜੀਓਕੋਡਿੰਗ ਪ੍ਰਦਾਤਾ ਚੁਣੋ। ਤੁਹਾਡੀ ਚੋਣ GPS ਜਾਂ Google ਦੀਆਂ ਆਪਣੀਆਂ ਫਿਊਜ਼ਡ-ਟਿਕਾਣਾ ਸੇਵਾਵਾਂ ਨੂੰ ਨਹੀਂ ਬਦਲਦੀ ਹੈ।</string>
+    <string name="provider_choice">ਅਗਲੇ ਰੀਸਟਾਰਟ ਲਈ ਪ੍ਰਦਾਤਾ</string>
+    <string name="provider_google">ਪੂਰਵ-ਨਿਰਧਾਰਤ (Google)</string>
+    <string name="automatic_detection">ਆਟੋਮੈਟਿਕ ਖੋਜ</string>
+    <string name="detection_summary">Baidu NLP ਦਾ ਸੁਝਾਅ ਦਿਓ ਜਦੋਂ ਇੱਕ ਰਜਿਸਟਰਡ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ ਮੇਨਲੈਂਡ ਚੀਨ ਨੂੰ ਦਰਸਾਉਂਦਾ ਹੈ। ਸਵਿੱਚ ਕਰਨ ਲਈ ਹਮੇਸ਼ਾ ਤੁਹਾਡੀ ਪੁਸ਼ਟੀ ਅਤੇ ਮੁੜ-ਚਾਲੂ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। Wi-Fi ਇਕੱਲੇ ਤੁਹਾਡੇ ਦੇਸ਼ ਨੂੰ ਸਥਾਪਿਤ ਨਹੀਂ ਕਰ ਸਕਦਾ।</string>
+    <string name="boot_configuration">ਆਖਰੀ ਰੀਸਟਾਰਟ \'ਤੇ ਸੰਰਚਨਾ</string>
+    <string name="pending_title">ਮੁੜ-ਚਾਲੂ ਕਰਨ ਦੀ ਲੋੜ ਹੈ</string>
+    <string name="reboot_reminder">ਚੁਣੇ ਹੋਏ ਪ੍ਰਦਾਤਾ ਨੂੰ ਲਾਗੂ ਕਰਨ ਲਈ ਆਪਣੇ ਫ਼ੋਨ ਨੂੰ ਰੀਸਟਾਰਟ ਕਰੋ।</string>
+    <string name="restart_title">ਆਪਣੀ ਚੋਣ ਨੂੰ ਕਿਵੇਂ ਲਾਗੂ ਕਰਨਾ ਹੈ</string>
+    <string name="restart_message">ਫ਼ੋਨ ਦਾ ਪਾਵਰ ਮੀਨੂ ਖੋਲ੍ਹੋ ਅਤੇ ਰੀਸਟਾਰਟ ਚੁਣੋ। ਚੁਣੇ ਗਏ ਪ੍ਰਦਾਤਾ ਨੂੰ ਅਗਲੇ ਸਟਾਰਟਅੱਪ \'ਤੇ ਕੌਂਫਿਗਰ ਕੀਤਾ ਜਾਵੇਗਾ।</string>
+    <string name="confirm_title">ਕੀ ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਪ੍ਰਦਾਤਾ ਬਦਲਣਾ ਹੈ?</string>
+    <string name="confirm_message">ਅਗਲੀ ਰੀਸਟਾਰਟ ਲਈ %1$s ਨੂੰ ਚੁਣੋ? ਚੱਲਦਾ ਪ੍ਰਦਾਤਾ ਉਦੋਂ ਤੱਕ ਜਾਰੀ ਰਹੇਗਾ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਆਪਣਾ ਫ਼ੋਨ ਰੀਸਟਾਰਟ ਨਹੀਂ ਕਰਦੇ ਹੋ।</string>
+    <string name="save_selection">ਚੋਣ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰੋ</string>
+    <string name="cancel">ਰੱਦ ਕਰੋ</string>
+    <string name="country_evidence">ਆਖਰੀ ਨੈੱਟਵਰਕ ਨਿਰੀਖਣ</string>
+    <string name="unknown">ਅਗਿਆਤ — ਕੋਈ ਰਜਿਸਟਰਡ ਦੇਸ਼ ਸਬੂਤ ਨਹੀਂ</string>
+    <string name="evidence_cn">ਰਜਿਸਟਰਡ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ: ਮੇਨਲੈਂਡ ਚੀਨ</string>
+    <string name="evidence_other">ਰਜਿਸਟਰਡ ਮੋਬਾਈਲ ਨੈੱਟਵਰਕ: ਮੁੱਖ ਭੂਮੀ ਚੀਨ ਤੋਂ ਬਾਹਰ</string>
+    <string name="channel_name">ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਸੁਝਾਅ</string>
+    <string name="notification_title">ਨੈੱਟਵਰਕ ਟਿਕਾਣਾ ਪ੍ਰਦਾਤਾ</string>
+    <string name="suggestion">ਮੁੱਖ ਭੂਮੀ ਚੀਨ ਵਿੱਚ Baidu NLP ਦੀ ਵਰਤੋਂ ਕਰੋ?</string>
+    <string name="review">ਸਮੀਖਿਆ</string>
+    <string name="not_now">ਹੁਣ ਨਹੀਂ</string>
+    <string name="configuration_failed">ਪ੍ਰਦਾਤਾ ਸੰਰਚਨਾ ਨੂੰ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਮੁੜ-ਚਾਲੂ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਚੋਣ ਦੀ ਜਾਂਚ ਕਰੋ।</string>
+    <string name="provider_unavailable">ਚੁਣਿਆ ਪ੍ਰਦਾਤਾ ਅਣਉਪਲਬਧ ਹੈ। ਰੀਸਟਾਰਟ ਕਰਨ ਨਾਲ ਗੁੰਮ ਜਾਂ ਅਯੋਗ ਸੇਵਾ ਦਾ ਹੱਲ ਨਹੀਂ ਹੋ ਸਕਦਾ।</string>
+</resources>

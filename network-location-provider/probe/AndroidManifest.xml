@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.android.networklocationproviderswitcher.tests">
+    <uses-permission android:name="com.android.networklocationproviderswitcher.CONTROL_PROVIDERS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Test-only permission for inspecting the device-wide provider setting. -->
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <queries>
+        <package android:name="com.android.networklocationproviderswitcher" />
+        <provider android:authorities="com.android.networklocationproviderswitcher.control" />
+        <package android:name="com.baidu.map.location" />
+        <package android:name="com.google.android.gms" />
+        <package android:name="com.android.networklocationproviderbroker" />
+    </queries>
+    <application android:label="Location integration probe" android:allowBackup="false" />
+    <instrumentation android:name=".LocationProbeInstrumentation"
+        android:targetPackage="com.android.networklocationproviderswitcher.tests" android:label="Location integration probe" />
+</manifest>

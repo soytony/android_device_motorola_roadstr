@@ -1,0 +1,6 @@
+<resources>
+    <bool name="config_enableNetworkLocationOverlay">false</bool>
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.android.networklocationproviderbroker</string>
+    <bool name="config_enableGeocoderOverlay">false</bool>
+    <string name="config_geocoderProviderPackageName" translatable="false">com.android.networklocationproviderbroker</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">नेटवर्क स्थान प्रदाता स्विचर</string>
+    <string name="explanation">रीस्टार्ट केल्यानंतर वापरलेले नेटवर्क स्थान आणि जिओकोडिंग प्रदाता निवडा. तुमची निवड GPS किंवा Google च्या स्वतःच्या फ्यूज-लोकेशन सेवा बदलत नाही.</string>
+    <string name="provider_choice">पुढील रीस्टार्टसाठी प्रदाता</string>
+    <string name="provider_google">डीफॉल्ट (Google)</string>
+    <string name="automatic_detection">स्वयंचलित ओळख</string>
+    <string name="detection_summary">जेव्हा नोंदणीकृत मोबाइल नेटवर्क मुख्य भूप्रदेश चीन सूचित करते तेव्हा Baidu NLP सुचवा. स्विच करण्यासाठी नेहमी तुमची पुष्टी आणि रीस्टार्ट आवश्यक असते. केवळ वाय-फाय तुमचा देश स्थापित करू शकत नाही.</string>
+    <string name="boot_configuration">शेवटच्या रीस्टार्टवर कॉन्फिगरेशन</string>
+    <string name="pending_title">रीस्टार्ट करणे आवश्यक आहे</string>
+    <string name="reboot_reminder">निवडलेला प्रदाता लागू करण्यासाठी तुमचा फोन रीस्टार्ट करा.</string>
+    <string name="restart_title">तुमची निवड कशी लागू करावी</string>
+    <string name="restart_message">फोनचा पॉवर मेनू उघडा आणि रीस्टार्ट निवडा. निवडलेला प्रदाता पुढील स्टार्टअपवर कॉन्फिगर केला जाईल.</string>
+    <string name="confirm_title">नेटवर्क स्थान प्रदाता बदलायचा?</string>
+    <string name="confirm_message">पुढील रीस्टार्टसाठी %1$s निवडा? तुम्ही तुमचा फोन रीस्टार्ट करेपर्यंत चालू प्रदाता सुरू राहील.</string>
+    <string name="save_selection">निवड जतन करा</string>
+    <string name="cancel">रद्द करा</string>
+    <string name="country_evidence">शेवटचे नेटवर्क निरीक्षण</string>
+    <string name="unknown">अज्ञात - कोणताही नोंदणीकृत देश पुरावा नाही</string>
+    <string name="evidence_cn">नोंदणीकृत मोबाइल नेटवर्क: मुख्य भूप्रदेश चीन</string>
+    <string name="evidence_other">नोंदणीकृत मोबाइल नेटवर्क: मुख्य भूमी चीनच्या बाहेर</string>
+    <string name="channel_name">नेटवर्क स्थान सूचना</string>
+    <string name="notification_title">नेटवर्क स्थान प्रदाता</string>
+    <string name="suggestion">मुख्य भूमी चीनमध्ये Baidu NLP वापरायचे?</string>
+    <string name="review">पुनरावलोकन करा</string>
+    <string name="not_now">आता नाही</string>
+    <string name="configuration_failed">प्रदाता कॉन्फिगरेशन जतन करू शकलो नाही. रीस्टार्ट करण्यापूर्वी निवड तपासा.</string>
+    <string name="provider_unavailable">निवडलेला प्रदाता अनुपलब्ध आहे. रीस्टार्ट केल्याने कदाचित गहाळ किंवा अक्षम केलेल्या सेवेचे निराकरण होणार नाही.</string>
+</resources>

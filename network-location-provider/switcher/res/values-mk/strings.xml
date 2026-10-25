@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Преминувач на мрежна локација</string>
+    <string name="explanation">Изберете ја локацијата на мрежата и давателот на геокодирање што ќе се користат по рестартирањето. Вашиот избор не го менува GPS или сопствените услуги за споена локација на Google.</string>
+    <string name="provider_choice">Провајдер за следно рестартирање</string>
+    <string name="provider_google">Стандардно (Гугл)</string>
+    <string name="automatic_detection">Автоматско откривање</string>
+    <string name="detection_summary">Предложете го Baidu NLP кога регистрираната мобилна мрежа означува континентална Кина. За префрлување секогаш е потребна ваша потврда и рестартирање. Само Wi-Fi не може да ја утврди вашата земја.</string>
+    <string name="boot_configuration">Конфигурацијата на последното рестартирање</string>
+    <string name="pending_title">Потребно е рестартирање</string>
+    <string name="reboot_reminder">Рестартирајте го телефонот за да го примените избраниот провајдер.</string>
+    <string name="restart_title">Како да го примените вашиот избор</string>
+    <string name="restart_message">Отворете го менито за напојување на телефонот и изберете Рестарт. Избраниот провајдер ќе се конфигурира при следното стартување.</string>
+    <string name="confirm_title">Да се ​​смени давателот на мрежна локација?</string>
+    <string name="confirm_message">Изберете %1$s за следното рестартирање? Работниот провајдер ќе продолжи додека не го рестартирате телефонот.</string>
+    <string name="save_selection">Зачувај го изборот</string>
+    <string name="cancel">Откажи</string>
+    <string name="country_evidence">Последно мрежно набљудување</string>
+    <string name="unknown">Непознато - нема регистрирани докази за земјата</string>
+    <string name="evidence_cn">Регистрирана мобилна мрежа: континентална Кина</string>
+    <string name="evidence_other">Регистрирана мобилна мрежа: надвор од копното на Кина</string>
+    <string name="channel_name">Предлози за локација на мрежата</string>
+    <string name="notification_title">Обезбедувач на мрежна локација</string>
+    <string name="suggestion">Користете Baidu NLP во Кина?</string>
+    <string name="review">Преглед</string>
+    <string name="not_now">Не сега</string>
+    <string name="configuration_failed">Не може да се зачува конфигурацијата на провајдерот. Проверете го изборот пред да го рестартирате.</string>
+    <string name="provider_unavailable">Избраниот провајдер е недостапен. Рестартирањето може да не реши услуга што недостасува или е оневозможена.</string>
+</resources>

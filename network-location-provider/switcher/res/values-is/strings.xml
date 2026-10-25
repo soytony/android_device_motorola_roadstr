@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Skipti fyrir netstaðsetningarveitu</string>
+    <string name="explanation">Veldu netstaðsetningu og landkóðaþjónustu sem notað er eftir endurræsingu. Val þitt breytir ekki GPS eða eigin samruna staðsetningarþjónustu Google.</string>
+    <string name="provider_choice">Veitandi fyrir næstu endurræsingu</string>
+    <string name="provider_google">Sjálfgefið (Google)</string>
+    <string name="automatic_detection">Sjálfvirk uppgötvun</string>
+    <string name="detection_summary">Stingdu upp á Baidu NLP þegar skráð farsímakerfi gefur til kynna meginland Kína. Skipting þarf alltaf staðfestingu og endurræsingu. Wi-Fi eitt og sér getur ekki staðfest land þitt.</string>
+    <string name="boot_configuration">Stilling við síðustu endurræsingu</string>
+    <string name="pending_title">Endurræsa krafist</string>
+    <string name="reboot_reminder">Endurræstu símann til að nota valda þjónustuveituna.</string>
+    <string name="restart_title">Hvernig á að beita vali þínu</string>
+    <string name="restart_message">Opnaðu aflvalmynd símans og veldu Endurræsa. Valin veitandi verður stilltur við næstu ræsingu.</string>
+    <string name="confirm_title">Skipta um netstaðsetningarveitu?</string>
+    <string name="confirm_message">Veldu %1$s fyrir næstu endurræsingu? Þjónustuveitan sem er í gangi mun halda áfram þar til þú endurræsir símann þinn.</string>
+    <string name="save_selection">Vista val</string>
+    <string name="cancel">Hætta við</string>
+    <string name="country_evidence">Síðasta netathugun</string>
+    <string name="unknown">Óþekkt - engin skráð sönnunargögn í landinu</string>
+    <string name="evidence_cn">Skráð farsímanet: meginland Kína</string>
+    <string name="evidence_other">Skráð farsímakerfi: utan meginlands Kína</string>
+    <string name="channel_name">Tillögur um staðsetningu netkerfis</string>
+    <string name="notification_title">Staðsetningarveita netkerfisins</string>
+    <string name="suggestion">Nota Baidu NLP á meginlandi Kína?</string>
+    <string name="review">Upprifjun</string>
+    <string name="not_now">Ekki núna</string>
+    <string name="configuration_failed">Ekki tókst að vista stillingar þjónustuveitunnar. Athugaðu valið áður en þú endurræsir.</string>
+    <string name="provider_unavailable">Valin veitandi er ekki tiltækur. Endurræsing gæti ekki leyst týnda eða óvirka þjónustu.</string>
+</resources>

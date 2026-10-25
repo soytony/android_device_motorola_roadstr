@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Prepínač poskytovateľa sieťového umiestnenia</string>
+    <string name="explanation">Po reštarte vyberte sieťové umiestnenie a poskytovateľa geokódovania. Váš výber nezmení systém GPS ani vlastné služby spojeného určovania polohy spoločnosti Google.</string>
+    <string name="provider_choice">Poskytovateľ pre ďalší reštart</string>
+    <string name="provider_google">Predvolené (Google)</string>
+    <string name="automatic_detection">Automatická detekcia</string>
+    <string name="detection_summary">Navrhnite Baidu NLP, keď registrovaná mobilná sieť označuje pevninskú Čínu. Prepnutie vždy vyžaduje vaše potvrdenie a reštart. Samotné Wi-Fi nedokáže určiť vašu krajinu.</string>
+    <string name="boot_configuration">Konfigurácia pri poslednom reštarte</string>
+    <string name="pending_title">Vyžaduje sa reštart</string>
+    <string name="reboot_reminder">Ak chcete použiť vybraného poskytovateľa, reštartujte telefón.</string>
+    <string name="restart_title">Ako uplatniť svoj výber</string>
+    <string name="restart_message">Otvorte ponuku napájania telefónu a vyberte možnosť Reštartovať. Vybraný poskytovateľ bude nakonfigurovaný pri ďalšom spustení.</string>
+    <string name="confirm_title">Zmeniť poskytovateľa sieťového umiestnenia?</string>
+    <string name="confirm_message">Vybrať %1$s na ďalší reštart? Spustený poskytovateľ bude pokračovať, kým nereštartujete telefón.</string>
+    <string name="save_selection">Uložiť výber</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="country_evidence">Posledné pozorovanie siete</string>
+    <string name="unknown">Neznáme – žiadny registrovaný dôkaz o krajine</string>
+    <string name="evidence_cn">Registrovaná mobilná sieť: pevninská Čína</string>
+    <string name="evidence_other">Registrovaná mobilná sieť: mimo pevninskej Číny</string>
+    <string name="channel_name">Návrhy umiestnenia v sieti</string>
+    <string name="notification_title">Poskytovateľ sieťového umiestnenia</string>
+    <string name="suggestion">Používate Baidu NLP v pevninskej Číne?</string>
+    <string name="review">recenzia</string>
+    <string name="not_now">Teraz nie</string>
+    <string name="configuration_failed">Nepodarilo sa uložiť konfiguráciu poskytovateľa. Pred reštartovaním skontrolujte výber.</string>
+    <string name="provider_unavailable">Vybraný poskytovateľ je nedostupný. Reštartovanie nemusí vyriešiť chýbajúcu alebo zakázanú službu.</string>
+</resources>

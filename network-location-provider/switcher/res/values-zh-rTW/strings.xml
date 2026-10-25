@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">網路位置服務切換器</string>
+    <string name="explanation">選擇重新啟動後使用的網路定位與地理編碼服務。此設定不影響 GPS 或 Google 自身的融合定位服務。</string>
+    <string name="provider_choice">下次重新啟動使用的服務</string>
+    <string name="provider_google">預設（Google）</string>
+    <string name="automatic_detection">自動偵測</string>
+    <string name="detection_summary">已註冊的行動網路顯示位於中國大陸時，建議使用 Baidu NLP。變更一律需要您確認並重新啟動。僅連接 Wi-Fi 無法判斷所在國家或地區。</string>
+    <string name="boot_configuration">上次重新啟動時的設定</string>
+    <string name="pending_title">需要重新啟動</string>
+    <string name="reboot_reminder">請重新啟動手機以套用所選服務。</string>
+    <string name="restart_title">如何套用所選服務</string>
+    <string name="restart_message">開啟手機電源選單並選擇重新啟動。所選服務將在下次啟動時生效。</string>
+    <string name="confirm_title">變更網路定位服務？</string>
+    <string name="confirm_message">將 %1$s 設為下次重新啟動使用的服務？重新啟動前仍使用目前服務。</string>
+    <string name="save_selection">儲存選擇</string>
+    <string name="cancel">取消</string>
+    <string name="country_evidence">最近的行動網路資訊</string>
+    <string name="unknown">未知，尚無已註冊網路的國家或地區資訊</string>
+    <string name="evidence_cn">已註冊行動網路：中國大陸</string>
+    <string name="evidence_other">已註冊行動網路：中國大陸以外</string>
+    <string name="channel_name">網路定位服務建議</string>
+    <string name="notification_title">網路定位服務</string>
+    <string name="suggestion">在中國大陸使用 Baidu NLP？</string>
+    <string name="review">查看</string>
+    <string name="not_now">暫不變更</string>
+    <string name="configuration_failed">無法儲存服務設定。請在重新啟動前檢查所選服務。</string>
+    <string name="provider_unavailable">所選服務無法使用。服務遺失或已停用時，重新啟動可能無法解決問題。</string>
+    <string name="test_provider">測試目前服務</string>
+    <string name="test_provider_summary">檢查新位置與地理編碼。開始測試時將另行要求位置權限。</string>
+</resources>

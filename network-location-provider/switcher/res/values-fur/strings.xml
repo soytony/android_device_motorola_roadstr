@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Comutadôr di furnidôr di posizion de rêt</string>
+    <string name="explanation">Sielzi la posizion de rêt e il furnidôr di gjeocodificazion doprât dopo il riavviâ. La tô selezion no cambie il GPS o i servizis di localizazion fondude di Google.</string>
+    <string name="provider_choice">Furnidôr pal prossim riavviâ</string>
+    <string name="provider_google">Predefinît (Google)</string>
+    <string name="automatic_detection">Rilevament automatic</string>
+    <string name="detection_summary">Sugjeri Baidu NLP cuant che une rêt mobile regjistrade e indiche la Cine continentâl. Cambiâ al à simpri bisugne de conferme e di un riavviâ. Dome il Wi-Fi nol pues stabilî il to paîs.</string>
+    <string name="boot_configuration">Configurazion al ultin riavviâ</string>
+    <string name="pending_title">Riavviâ necessari</string>
+    <string name="reboot_reminder">Riavviâ il telefonin par aplicâ il furnidôr selezionât.</string>
+    <string name="restart_title">Come aplicâ la selezion</string>
+    <string name="restart_message">Viert il menût di alimentazion dal telefonin e sielzi Riavviâ. Il furnidôr selezionât al sarà configurât al prossim avviament.</string>
+    <string name="confirm_title">Cambiâ il furnidôr di posizion de rêt?</string>
+    <string name="confirm_message">Seleziona %1$s pal prossim riavviâ? Il furnidôr in cors al continuarà fin che no tu tornis a scomençâ il telefonin.</string>
+    <string name="save_selection">Salvâ la selezion</string>
+    <string name="cancel">Annulâ</string>
+    <string name="country_evidence">Ultime osservazion di rêt</string>
+    <string name="unknown">No cognossût - nissune prove di paîs regjistrade</string>
+    <string name="evidence_cn">Rêt mobile regjistrade: Cine continentâl</string>
+    <string name="evidence_other">Rêt mobile regjistrade: fûr de Cine continentâl</string>
+    <string name="channel_name">Sugjeriments di posizion de rêt</string>
+    <string name="notification_title">Furnidôr di posizion de rêt</string>
+    <string name="suggestion">Utilizâ Baidu NLP inte Cine continentâl?</string>
+    <string name="review">Recension</string>
+    <string name="not_now">No cumò</string>
+    <string name="configuration_failed">No si è rivât a salvâ la configurazion dal furnidôr. Controlâ la selezion prime di tornâ a scomençâ.</string>
+    <string name="provider_unavailable">Il furnidôr selezionât nol è disponibil. Il riavviâ al pues no risolvi un servizi mancjant o disabiltât.</string>
+</resources>

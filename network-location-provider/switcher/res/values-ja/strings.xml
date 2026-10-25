@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ネットワーク ロケーション プロバイダー スイッチャー</string>
+    <string name="explanation">再起動後に使用するネットワークの場所とジオコーディング プロバイダーを選択します。選択によって GPS や Google 独自の位置情報サービスが変更されることはありません。</string>
+    <string name="provider_choice">次回の再起動のためのプロバイダー</string>
+    <string name="provider_google">デフォルト（Google）</string>
+    <string name="automatic_detection">自動検出</string>
+    <string name="detection_summary">登録されたモバイル ネットワークが中国本土を示している場合は、Baidu NLP を提案します。切り替えるには常に確認と再起動が必要です。 Wi-Fi だけでは国を確立できません。</string>
+    <string name="boot_configuration">前回の再起動時の構成</string>
+    <string name="pending_title">再起動が必要です</string>
+    <string name="reboot_reminder">電話機を再起動して、選択したプロバイダーを適用します。</string>
+    <string name="restart_title">選択内容を適用する方法</string>
+    <string name="restart_message">電話機の電源メニューを開き、[再起動] を選択します。選択したプロバイダーは次回の起動時に構成されます。</string>
+    <string name="confirm_title">ネットワーク位置情報プロバイダーを変更しますか?</string>
+    <string name="confirm_message">次回の再起動には %1$s を選択しますか?実行中のプロバイダーは、電話機を再起動するまで継続します。</string>
+    <string name="save_selection">選択内容を保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="country_evidence">最後のネットワーク観察</string>
+    <string name="unknown">不明 — 登録された国の証拠がない</string>
+    <string name="evidence_cn">登録モバイルネットワーク: 中国本土</string>
+    <string name="evidence_other">登録済みモバイルネットワーク: 中国本土以外</string>
+    <string name="channel_name">ネットワークの場所の提案</string>
+    <string name="notification_title">ネットワークロケーションプロバイダー</string>
+    <string name="suggestion">中国本土で Baidu NLP を使用しますか?</string>
+    <string name="review">レビュー</string>
+    <string name="not_now">今ではありません</string>
+    <string name="configuration_failed">プロバイダー構成を保存できませんでした。再起動する前に選択内容を確認してください。</string>
+    <string name="provider_unavailable">選択したプロバイダーは利用できません。再起動しても、サービスの欠落または無効化が解決されない場合があります。</string>
+</resources>

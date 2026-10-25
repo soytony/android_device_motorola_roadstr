@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Εναλλαγή παρόχου τοποθεσίας δικτύου</string>
+    <string name="explanation">Επιλέξτε τη θέση δικτύου και τον πάροχο γεωκωδικοποίησης που θα χρησιμοποιηθεί μετά την επανεκκίνηση. Η επιλογή σας δεν αλλάζει το GPS ή τις υπηρεσίες ενοποιημένης τοποθεσίας της Google.</string>
+    <string name="provider_choice">Πάροχος για επόμενη επανεκκίνηση</string>
+    <string name="provider_google">Προεπιλογή (Google)</string>
+    <string name="automatic_detection">Αυτόματη ανίχνευση</string>
+    <string name="detection_summary">Προτείνετε Baidu NLP όταν ένα εγγεγραμμένο δίκτυο κινητής τηλεφωνίας υποδεικνύει την ηπειρωτική Κίνα. Η εναλλαγή χρειάζεται πάντα επιβεβαίωση και επανεκκίνηση. Το Wi-Fi από μόνο του δεν μπορεί να δημιουργήσει τη χώρα σας.</string>
+    <string name="boot_configuration">Διαμόρφωση σε τελευταία επανεκκίνηση</string>
+    <string name="pending_title">Απαιτείται επανεκκίνηση</string>
+    <string name="reboot_reminder">Επανεκκινήστε το τηλέφωνό σας για να εφαρμόσετε τον επιλεγμένο πάροχο.</string>
+    <string name="restart_title">Πώς να εφαρμόσετε την επιλογή σας</string>
+    <string name="restart_message">Ανοίξτε το μενού τροφοδοσίας του τηλεφώνου και επιλέξτε Επανεκκίνηση. Ο επιλεγμένος πάροχος θα διαμορφωθεί στην επόμενη εκκίνηση.</string>
+    <string name="confirm_title">Αλλαγή παρόχου τοποθεσίας δικτύου;</string>
+    <string name="confirm_message">Επιλέξτε %1$s για την επόμενη επανεκκίνηση; Ο πάροχος που λειτουργεί θα συνεχίσει μέχρι να επανεκκινήσετε το τηλέφωνό σας.</string>
+    <string name="save_selection">Αποθήκευση επιλογής</string>
+    <string name="cancel">Ακύρωση</string>
+    <string name="country_evidence">Τελευταία παρατήρηση δικτύου</string>
+    <string name="unknown">Άγνωστο — κανένα εγγεγραμμένο στοιχείο χώρας</string>
+    <string name="evidence_cn">Εγγεγραμμένο δίκτυο κινητής τηλεφωνίας: ηπειρωτική Κίνα</string>
+    <string name="evidence_other">Εγγεγραμμένο δίκτυο κινητής τηλεφωνίας: εκτός ηπειρωτικής Κίνας</string>
+    <string name="channel_name">Προτάσεις τοποθεσίας δικτύου</string>
+    <string name="notification_title">Πάροχος τοποθεσίας δικτύου</string>
+    <string name="suggestion">Χρησιμοποιείτε το Baidu NLP στην ηπειρωτική Κίνα;</string>
+    <string name="review">Επανεξέταση</string>
+    <string name="not_now">Όχι τώρα</string>
+    <string name="configuration_failed">Δεν ήταν δυνατή η αποθήκευση της διαμόρφωσης του παρόχου. Ελέγξτε την επιλογή πριν την επανεκκίνηση.</string>
+    <string name="provider_unavailable">Ο επιλεγμένος πάροχος δεν είναι διαθέσιμος. Η επανεκκίνηση ενδέχεται να μην επιλύσει μια υπηρεσία που λείπει ή είναι απενεργοποιημένη.</string>
+</resources>

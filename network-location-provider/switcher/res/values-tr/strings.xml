@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ağ Konumu Sağlayıcı Değiştirici</string>
+    <string name="explanation">Yeniden başlatmanın ardından kullanılan ağ konumunu ve coğrafi kodlama sağlayıcısını seçin. Seçiminiz GPS\'i veya Google\'ın kendi birleştirilmiş konum hizmetlerini değiştirmez.</string>
+    <string name="provider_choice">Bir sonraki yeniden başlatma için sağlayıcı</string>
+    <string name="provider_google">Varsayılan (Google)</string>
+    <string name="automatic_detection">Otomatik algılama</string>
+    <string name="detection_summary">Kayıtlı bir mobil ağ Çin ana karasını gösterdiğinde Baidu NLP\'yi önerin. Geçiş yapmak için her zaman onayınıza ve yeniden başlatmanıza ihtiyaç vardır. Wi-Fi tek başına ülkenizi belirleyemez.</string>
+    <string name="boot_configuration">Son yeniden başlatmada yapılandırma</string>
+    <string name="pending_title">Yeniden başlatma gerekli</string>
+    <string name="reboot_reminder">Seçilen sağlayıcıyı uygulamak için telefonunuzu yeniden başlatın.</string>
+    <string name="restart_title">Seçiminizi nasıl uygulayabilirsiniz?</string>
+    <string name="restart_message">Telefonun güç menüsünü açın ve Yeniden Başlat\'ı seçin. Seçilen sağlayıcı bir sonraki açılışta yapılandırılacaktır.</string>
+    <string name="confirm_title">Ağ konumu sağlayıcısı değiştirilsin mi?</string>
+    <string name="confirm_message">Bir sonraki yeniden başlatma için %1$s seçilsin mi? Çalışan sağlayıcı, siz telefonunuzu yeniden başlatana kadar devam edecektir.</string>
+    <string name="save_selection">Seçimi kaydet</string>
+    <string name="cancel">İptal</string>
+    <string name="country_evidence">Son ağ gözlemi</string>
+    <string name="unknown">Bilinmiyor – kayıtlı ülke kanıtı yok</string>
+    <string name="evidence_cn">Kayıtlı mobil ağ: Çin ana karası</string>
+    <string name="evidence_other">Kayıtlı mobil ağ: Çin ana karasının dışında</string>
+    <string name="channel_name">Ağ konumu önerileri</string>
+    <string name="notification_title">Ağ konum sağlayıcısı</string>
+    <string name="suggestion">Çin anakarasında Baidu NLP kullanılsın mı?</string>
+    <string name="review">İncele</string>
+    <string name="not_now">Şimdi değil</string>
+    <string name="configuration_failed">Sağlayıcı yapılandırması kaydedilemedi. Yeniden başlatmadan önce seçimi kontrol edin.</string>
+    <string name="provider_unavailable">Seçilen sağlayıcı kullanılamıyor. Yeniden başlatmak, eksik veya devre dışı bırakılmış bir hizmeti çözümlemeyebilir.</string>
+</resources>

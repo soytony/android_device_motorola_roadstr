@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Switcher for netværksplaceringsudbyder</string>
+    <string name="explanation">Vælg netværksplacering og geokodningsudbyder, der bruges efter genstart. Dit valg ændrer ikke GPS eller Googles egne fused-location-tjenester.</string>
+    <string name="provider_choice">Udbyder til næste genstart</string>
+    <string name="provider_google">Standard (Google)</string>
+    <string name="automatic_detection">Automatisk detektering</string>
+    <string name="detection_summary">Foreslå Baidu NLP, når et registreret mobilnetværk angiver det kinesiske fastland. Skift kræver altid din bekræftelse og en genstart. Wi-Fi alene kan ikke etablere dit land.</string>
+    <string name="boot_configuration">Konfiguration ved sidste genstart</string>
+    <string name="pending_title">Genstart påkrævet</string>
+    <string name="reboot_reminder">Genstart din telefon for at anvende den valgte udbyder.</string>
+    <string name="restart_title">Sådan anvender du dit valg</string>
+    <string name="restart_message">Åbn telefonens strømmenu, og vælg Genstart. Den valgte udbyder vil blive konfigureret ved næste opstart.</string>
+    <string name="confirm_title">Skift udbyder af netværksplacering?</string>
+    <string name="confirm_message">Vælg %1$s til næste genstart? Den kørende udbyder fortsætter, indtil du genstarter din telefon.</string>
+    <string name="save_selection">Gem valg</string>
+    <string name="cancel">Annuller</string>
+    <string name="country_evidence">Sidste netværksobservation</string>
+    <string name="unknown">Ukendt — ingen registrerede landebeviser</string>
+    <string name="evidence_cn">Registreret mobilnetværk: Kinas fastland</string>
+    <string name="evidence_other">Registreret mobilnetværk: uden for det kinesiske fastland</string>
+    <string name="channel_name">Forslag til netværksplacering</string>
+    <string name="notification_title">Netværksplaceringsudbyder</string>
+    <string name="suggestion">Brug Baidu NLP på det kinesiske fastland?</string>
+    <string name="review">Gennemgå</string>
+    <string name="not_now">Ikke nu</string>
+    <string name="configuration_failed">Kunne ikke gemme udbyderens konfiguration. Kontroller valget før genstart.</string>
+    <string name="provider_unavailable">Den valgte udbyder er ikke tilgængelig. Genstart løser muligvis ikke en manglende eller deaktiveret tjeneste.</string>
+</resources>

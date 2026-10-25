@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">નેટવર્ક સ્થાન પ્રદાતા સ્વિચર</string>
+    <string name="explanation">પુનઃપ્રારંભ કર્યા પછી ઉપયોગમાં લેવાતું નેટવર્ક સ્થાન અને જીઓકોડિંગ પ્રદાતા પસંદ કરો. તમારી પસંદગી GPS અથવા Google ની પોતાની ફ્યુઝ્ડ-લોકેશન સેવાઓને બદલતી નથી.</string>
+    <string name="provider_choice">આગામી પુનઃપ્રારંભ માટે પ્રદાતા</string>
+    <string name="provider_google">ડિફૉલ્ટ (Google)</string>
+    <string name="automatic_detection">આપોઆપ શોધ</string>
+    <string name="detection_summary">Baidu NLP સૂચવો જ્યારે નોંધાયેલ મોબાઇલ નેટવર્ક મેઇનલેન્ડ ચાઇના સૂચવે છે. સ્વિચ કરવા માટે હંમેશા તમારી પુષ્ટિ અને પુનઃપ્રારંભની જરૂર છે. એકલા Wi-Fi તમારા દેશને સ્થાપિત કરી શકતા નથી.</string>
+    <string name="boot_configuration">છેલ્લા પુનઃપ્રારંભ પર રૂપરેખાંકન</string>
+    <string name="pending_title">પુનઃપ્રારંભ જરૂરી</string>
+    <string name="reboot_reminder">પસંદ કરેલ પ્રદાતાને લાગુ કરવા માટે તમારો ફોન પુનઃપ્રારંભ કરો.</string>
+    <string name="restart_title">તમારી પસંદગી કેવી રીતે લાગુ કરવી</string>
+    <string name="restart_message">ફોનનું પાવર મેનૂ ખોલો અને રીસ્ટાર્ટ પસંદ કરો. પસંદ કરેલ પ્રદાતા આગામી સ્ટાર્ટઅપ પર ગોઠવવામાં આવશે.</string>
+    <string name="confirm_title">નેટવર્ક સ્થાન પ્રદાતા બદલો?</string>
+    <string name="confirm_message">આગલા પુનઃપ્રારંભ માટે %1$s પસંદ કરીએ? જ્યાં સુધી તમે તમારો ફોન પુનઃપ્રારંભ કરશો ત્યાં સુધી ચાલુ પ્રદાતા ચાલુ રહેશે.</string>
+    <string name="save_selection">પસંદગી સાચવો</string>
+    <string name="cancel">રદ કરો</string>
+    <string name="country_evidence">છેલ્લું નેટવર્ક અવલોકન</string>
+    <string name="unknown">અજ્ઞાત - કોઈ નોંધાયેલ દેશ પુરાવા નથી</string>
+    <string name="evidence_cn">નોંધાયેલ મોબાઇલ નેટવર્ક: મેઇનલેન્ડ ચાઇના</string>
+    <string name="evidence_other">નોંધાયેલ મોબાઇલ નેટવર્ક: મેઇનલેન્ડ ચીનની બહાર</string>
+    <string name="channel_name">નેટવર્ક સ્થાન સૂચનો</string>
+    <string name="notification_title">નેટવર્ક સ્થાન પ્રદાતા</string>
+    <string name="suggestion">મેઇનલેન્ડ ચાઇનામાં Baidu NLP નો ઉપયોગ કરો છો?</string>
+    <string name="review">સમીક્ષા</string>
+    <string name="not_now">અત્યારે નહિ</string>
+    <string name="configuration_failed">પ્રદાતા ગોઠવણી સાચવી શકાઈ નથી. પુનઃપ્રારંભ કરતા પહેલા પસંદગી તપાસો.</string>
+    <string name="provider_unavailable">પસંદ કરેલ પ્રદાતા અનુપલબ્ધ છે. પુનઃપ્રારંભ કરવાથી ગુમ થયેલ અથવા અક્ષમ સેવાનું નિરાકરણ નહીં આવે.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tagapagpalit ng Tagapagbigay ng Lokasyon ng Network</string>
+    <string name="explanation">Piliin ang lokasyon ng network at geocoding provider na ginamit pagkatapos mag-restart. Hindi binabago ng iyong pinili ang GPS o ang sariling fused-location na serbisyo ng Google.</string>
+    <string name="provider_choice">Provider para sa susunod na pag-restart</string>
+    <string name="provider_google">Default (Google)</string>
+    <string name="automatic_detection">Awtomatikong pagtuklas</string>
+    <string name="detection_summary">Imungkahi ang Baidu NLP kapag ang isang nakarehistrong mobile network ay nagpapahiwatig ng mainland China. Ang paglipat ay palaging nangangailangan ng iyong kumpirmasyon at pag-restart. Ang Wi-Fi lamang ay hindi makapagtatag ng iyong bansa.</string>
+    <string name="boot_configuration">Configuration sa huling restart</string>
+    <string name="pending_title">Kailangang i-restart</string>
+    <string name="reboot_reminder">I-restart ang iyong telepono para ilapat ang napiling provider.</string>
+    <string name="restart_title">Paano ilapat ang iyong pinili</string>
+    <string name="restart_message">Buksan ang power menu ng telepono at piliin ang I-restart. Ang napiling provider ay iko-configure sa susunod na startup.</string>
+    <string name="confirm_title">Baguhin ang provider ng lokasyon ng network?</string>
+    <string name="confirm_message">Piliin ang %1$s para sa susunod na pag-restart? Ang tumatakbong provider ay magpapatuloy hanggang sa i-restart mo ang iyong telepono.</string>
+    <string name="save_selection">I-save ang pagpili</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="country_evidence">Huling pagmamasid sa network</string>
+    <string name="unknown">Hindi kilala — walang rehistradong ebidensya ng bansa</string>
+    <string name="evidence_cn">Rehistradong mobile network: mainland China</string>
+    <string name="evidence_other">Rehistradong mobile network: sa labas ng mainland China</string>
+    <string name="channel_name">Mga mungkahi sa lokasyon ng network</string>
+    <string name="notification_title">Provider ng lokasyon ng network</string>
+    <string name="suggestion">Gumamit ng Baidu NLP sa mainland China?</string>
+    <string name="review">Balik-aral</string>
+    <string name="not_now">Hindi ngayon</string>
+    <string name="configuration_failed">Hindi ma-save ang configuration ng provider. Suriin ang pagpili bago i-restart.</string>
+    <string name="provider_unavailable">Hindi available ang napiling provider. Maaaring hindi malutas ng pag-restart ang isang nawawala o hindi pinaganang serbisyo.</string>
+</resources>

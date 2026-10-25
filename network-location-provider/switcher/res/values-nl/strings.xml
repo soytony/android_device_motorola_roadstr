@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Netwerklocatieproviderswitcher</string>
+    <string name="explanation">Kies de netwerklocatie en geocoderingsprovider die na het opnieuw opstarten worden gebruikt. Uw selectie heeft geen invloed op GPS of de eigen gefuseerde locatieservices van Google.</string>
+    <string name="provider_choice">Provider voor de volgende herstart</string>
+    <string name="provider_google">Standaard (Google)</string>
+    <string name="automatic_detection">Automatische detectie</string>
+    <string name="detection_summary">Stel Baidu NLP voor wanneer een geregistreerd mobiel netwerk het vasteland van China aangeeft. Voor het overstappen is altijd uw bevestiging en een herstart nodig. Wi-Fi alleen kan uw land niet vestigen.</string>
+    <string name="boot_configuration">Configuratie bij laatste herstart</string>
+    <string name="pending_title">Opnieuw opstarten vereist</string>
+    <string name="reboot_reminder">Start uw telefoon opnieuw op om de geselecteerde provider toe te passen.</string>
+    <string name="restart_title">Hoe u uw selectie kunt toepassen</string>
+    <string name="restart_message">Open het energiemenu van de telefoon en kies Opnieuw opstarten. Bij de volgende start wordt de geselecteerde provider geconfigureerd.</string>
+    <string name="confirm_title">Netwerklocatieprovider wijzigen?</string>
+    <string name="confirm_message">%1$s selecteren voor de volgende herstart? De actieve provider gaat door totdat u uw telefoon opnieuw opstart.</string>
+    <string name="save_selection">Selectie opslaan</string>
+    <string name="cancel">Annuleer</string>
+    <string name="country_evidence">Laatste netwerkobservatie</string>
+    <string name="unknown">Onbekend – geen geregistreerd landbewijs</string>
+    <string name="evidence_cn">Geregistreerd mobiel netwerk: vasteland van China</string>
+    <string name="evidence_other">Geregistreerd mobiel netwerk: buiten het vasteland van China</string>
+    <string name="channel_name">Suggesties voor netwerklocaties</string>
+    <string name="notification_title">Netwerklocatieprovider</string>
+    <string name="suggestion">Baidu NLP gebruiken op het vasteland van China?</string>
+    <string name="review">Beoordeling</string>
+    <string name="not_now">Niet nu</string>
+    <string name="configuration_failed">Kan de providerconfiguratie niet opslaan. Controleer de selectie voordat u opnieuw opstart.</string>
+    <string name="provider_unavailable">De geselecteerde aanbieder is niet beschikbaar. Het opnieuw opstarten lost een ontbrekende of uitgeschakelde service mogelijk niet op.</string>
+</resources>

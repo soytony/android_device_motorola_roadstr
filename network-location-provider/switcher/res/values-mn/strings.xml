@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Сүлжээний байршил нийлүүлэгч шилжүүлэгч</string>
+    <string name="explanation">Дахин эхлүүлсний дараа ашигласан сүлжээний байршил болон геокод үйлчилгээ үзүүлэгчийг сонгоно уу. Таны сонголт GPS эсвэл Google-ийн өөрийн нэгдсэн байршлын үйлчилгээг өөрчлөхгүй.</string>
+    <string name="provider_choice">Дараагийн дахин эхлүүлэх үйлчилгээ үзүүлэгч</string>
+    <string name="provider_google">Өгөгдмөл (Google)</string>
+    <string name="automatic_detection">Автомат илрүүлэх</string>
+    <string name="detection_summary">Бүртгэгдсэн гар утасны сүлжээ эх газрын Хятадыг зааж байгаа үед Baidu NLP-г санал болгох. Сэлгэхийн тулд таны баталгаажуулалт, дахин эхлүүлэх шаардлагатай. Wi-Fi дангаараа танай улсыг тогтоож чадахгүй.</string>
+    <string name="boot_configuration">Хамгийн сүүлд дахин эхлүүлэх тохиргоо</string>
+    <string name="pending_title">Дахин эхлүүлэх шаардлагатай</string>
+    <string name="reboot_reminder">Сонгосон үйлчилгээ үзүүлэгчийг ашиглахын тулд утсаа дахин эхлүүлнэ үү.</string>
+    <string name="restart_title">Сонголтоо хэрхэн хэрэгжүүлэх вэ</string>
+    <string name="restart_message">Утасны тэжээлийн цэсийг нээгээд дахин эхлүүлэхийг сонгоно уу. Сонгосон үйлчилгээ үзүүлэгчийг дараагийн эхлүүлэх үед тохируулах болно.</string>
+    <string name="confirm_title">Сүлжээний байршлын үйлчилгээ үзүүлэгчийг өөрчлөх үү?</string>
+    <string name="confirm_message">Дараагийн дахин эхлүүлэхийн тулд %1$s-г сонгох уу? Таныг утсаа дахин асаах хүртэл үйлчилгээ үзүүлэгч ажиллах болно.</string>
+    <string name="save_selection">Сонголтыг хадгалах</string>
+    <string name="cancel">Цуцлах</string>
+    <string name="country_evidence">Сүлжээний сүүлчийн ажиглалт</string>
+    <string name="unknown">Тодорхойгүй - бүртгэгдсэн улсын нотлох баримт байхгүй</string>
+    <string name="evidence_cn">Бүртгэгдсэн гар утасны сүлжээ: эх газрын Хятад</string>
+    <string name="evidence_other">Бүртгэгдсэн гар утасны сүлжээ: эх газрын Хятадаас гадуур</string>
+    <string name="channel_name">Сүлжээний байршлын зөвлөмжүүд</string>
+    <string name="notification_title">Сүлжээний байршлын үйлчилгээ үзүүлэгч</string>
+    <string name="suggestion">Baidu NLP-г эх газрын Хятадад ашиглах уу?</string>
+    <string name="review">Хяналт</string>
+    <string name="not_now">Одоо биш</string>
+    <string name="configuration_failed">Үйлчилгээ үзүүлэгчийн тохиргоог хадгалж чадсангүй. Дахин эхлүүлэхийн өмнө сонголтыг шалгана уу.</string>
+    <string name="provider_unavailable">Сонгосон үйлчилгээ үзүүлэгч боломжгүй байна. Дахин эхлүүлэх нь дутуу эсвэл идэвхгүй болсон үйлчилгээг шийдэж чадахгүй.</string>
+</resources>

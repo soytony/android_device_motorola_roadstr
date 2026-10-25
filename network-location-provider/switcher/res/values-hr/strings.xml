@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Prebacivač davatelja mrežne lokacije</string>
+    <string name="explanation">Nakon ponovnog pokretanja odaberite mrežnu lokaciju i pružatelja usluga geokodiranja. Vaš odabir ne mijenja GPS ili Googleove vlastite usluge spajanja lokacije.</string>
+    <string name="provider_choice">Davatelj za sljedeće ponovno pokretanje</string>
+    <string name="provider_google">Zadano (Google)</string>
+    <string name="automatic_detection">Automatsko otkrivanje</string>
+    <string name="detection_summary">Predloži Baidu NLP kada registrirana mobilna mreža označava kontinentalnu Kinu. Prebacivanje uvijek zahtijeva vašu potvrdu i ponovno pokretanje. Sam Wi-Fi ne može utvrditi vašu zemlju.</string>
+    <string name="boot_configuration">Konfiguracija pri zadnjem ponovnom pokretanju</string>
+    <string name="pending_title">Potrebno ponovno pokretanje</string>
+    <string name="reboot_reminder">Ponovno pokrenite telefon kako biste primijenili odabranog davatelja usluga.</string>
+    <string name="restart_title">Kako primijeniti svoj odabir</string>
+    <string name="restart_message">Otvorite izbornik napajanja telefona i odaberite Restart. Odabrani pružatelj bit će konfiguriran pri sljedećem pokretanju.</string>
+    <string name="confirm_title">Promijeniti pružatelja mrežne lokacije?</string>
+    <string name="confirm_message">Odaberite %1$s za sljedeće ponovno pokretanje? Aktivni pružatelj će nastaviti dok ponovno ne pokrenete telefon.</string>
+    <string name="save_selection">Spremi odabir</string>
+    <string name="cancel">Odustani</string>
+    <string name="country_evidence">Zadnje promatranje mreže</string>
+    <string name="unknown">Nepoznato — nema registriranih dokaza o zemlji</string>
+    <string name="evidence_cn">Registrirana mobilna mreža: kontinentalna Kina</string>
+    <string name="evidence_other">Registrirana mobilna mreža: izvan kontinentalne Kine</string>
+    <string name="channel_name">Prijedlozi mrežnih lokacija</string>
+    <string name="notification_title">Davatelj mrežne lokacije</string>
+    <string name="suggestion">Koristiti Baidu NLP u kontinentalnoj Kini?</string>
+    <string name="review">pregled</string>
+    <string name="not_now">Ne sad</string>
+    <string name="configuration_failed">Nije moguće spremiti konfiguraciju davatelja usluga. Provjerite odabir prije ponovnog pokretanja.</string>
+    <string name="provider_unavailable">Odabrani pružatelj usluga nije dostupan. Ponovno pokretanje možda neće riješiti uslugu koja nedostaje ili je onemogućena.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Veljar for nettverksstadteneste</string>
+    <string name="explanation">Vel nettverksstadtenesta og geokodingstenesta som skal brukast etter omstart. Valet endrar ikkje GPS eller Google sine eigne samla stadtenester.</string>
+    <string name="provider_choice">Teneste etter neste omstart</string>
+    <string name="provider_google">Standard (Google)</string>
+    <string name="automatic_detection">Automatisk oppdaging</string>
+    <string name="detection_summary">Føreslå Baidu NLP når eit registrert mobilnett viser Fastlands-Kina. Bytte krev alltid stadfesting og omstart. Wi-Fi åleine kan ikkje fastslå landet.</string>
+    <string name="boot_configuration">Oppsett ved førre omstart</string>
+    <string name="pending_title">Omstart krevst</string>
+    <string name="reboot_reminder">Start telefonen på nytt for å ta i bruk den valde tenesta.</string>
+    <string name="restart_title">Slik tek du i bruk valet</string>
+    <string name="restart_message">Opne straummenyen og vel Start på nytt. Den valde tenesta vert sett opp ved neste oppstart.</string>
+    <string name="confirm_title">Byta nettverksstadteneste?</string>
+    <string name="confirm_message">Velja %1$s etter neste omstart? Den noverande tenesta held fram til du startar telefonen på nytt.</string>
+    <string name="save_selection">Lagra valet</string>
+    <string name="cancel">Avbryt</string>
+    <string name="country_evidence">Siste nettverksobservasjon</string>
+    <string name="unknown">Ukjent – ingen landinformasjon frå registrert nett</string>
+    <string name="evidence_cn">Registrert mobilnett: Fastlands-Kina</string>
+    <string name="evidence_other">Registrert mobilnett: utanfor Fastlands-Kina</string>
+    <string name="channel_name">Framlegg om nettverksstadteneste</string>
+    <string name="notification_title">Nettverksstadteneste</string>
+    <string name="suggestion">Bruka Baidu NLP i Fastlands-Kina?</string>
+    <string name="review">Sjå gjennom</string>
+    <string name="not_now">Ikkje no</string>
+    <string name="configuration_failed">Kunne ikkje lagra tenesteoppsettet. Kontroller valet før omstart.</string>
+    <string name="provider_unavailable">Den valde tenesta er utilgjengeleg. Omstart løyser kanskje ikkje ei manglande eller deaktivert teneste.</string>
+</resources>

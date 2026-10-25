@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ ಪೂರೈಕೆದಾರ ಸ್ವಿಚರ್</string>
+    <string name="explanation">ಮರುಪ್ರಾರಂಭಿಸಿದ ನಂತರ ಬಳಸಿದ ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ ಮತ್ತು ಜಿಯೋಕೋಡಿಂಗ್ ಪೂರೈಕೆದಾರರನ್ನು ಆಯ್ಕೆಮಾಡಿ. ನಿಮ್ಮ ಆಯ್ಕೆಯು GPS ಅಥವಾ Google ನ ಸ್ವಂತ ಸಮ್ಮಿಳನ-ಸ್ಥಳ ಸೇವೆಗಳನ್ನು ಬದಲಾಯಿಸುವುದಿಲ್ಲ.</string>
+    <string name="provider_choice">ಮುಂದಿನ ಮರುಪ್ರಾರಂಭಕ್ಕಾಗಿ ಒದಗಿಸುವವರು</string>
+    <string name="provider_google">ಡೀಫಾಲ್ಟ್ (ಗೂಗಲ್)</string>
+    <string name="automatic_detection">ಸ್ವಯಂಚಾಲಿತ ಪತ್ತೆ</string>
+    <string name="detection_summary">ನೋಂದಾಯಿತ ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್ ಚೀನಾದ ಮುಖ್ಯ ಭೂಭಾಗವನ್ನು ಸೂಚಿಸಿದಾಗ Baidu NLP ಅನ್ನು ಸೂಚಿಸಿ. ಬದಲಾಯಿಸಲು ಯಾವಾಗಲೂ ನಿಮ್ಮ ದೃಢೀಕರಣ ಮತ್ತು ಮರುಪ್ರಾರಂಭದ ಅಗತ್ಯವಿದೆ. ವೈ-ಫೈ ಮಾತ್ರ ನಿಮ್ಮ ದೇಶವನ್ನು ಸ್ಥಾಪಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</string>
+    <string name="boot_configuration">ಕೊನೆಯ ಮರುಪ್ರಾರಂಭದಲ್ಲಿ ಕಾನ್ಫಿಗರೇಶನ್</string>
+    <string name="pending_title">ಮರುಪ್ರಾರಂಭಿಸುವ ಅಗತ್ಯವಿದೆ</string>
+    <string name="reboot_reminder">ಆಯ್ಕೆಮಾಡಿದ ಪೂರೈಕೆದಾರರನ್ನು ಅನ್ವಯಿಸಲು ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ.</string>
+    <string name="restart_title">ನಿಮ್ಮ ಆಯ್ಕೆಯನ್ನು ಹೇಗೆ ಅನ್ವಯಿಸಬೇಕು</string>
+    <string name="restart_message">ಫೋನ್‌ನ ಪವರ್ ಮೆನು ತೆರೆಯಿರಿ ಮತ್ತು ಮರುಪ್ರಾರಂಭಿಸಿ ಆಯ್ಕೆಮಾಡಿ. ಆಯ್ದ ಪೂರೈಕೆದಾರರನ್ನು ಮುಂದಿನ ಪ್ರಾರಂಭದಲ್ಲಿ ಕಾನ್ಫಿಗರ್ ಮಾಡಲಾಗುತ್ತದೆ.</string>
+    <string name="confirm_title">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ ಪೂರೈಕೆದಾರರನ್ನು ಬದಲಾಯಿಸುವುದೇ?</string>
+    <string name="confirm_message">ಮುಂದಿನ ಮರುಪ್ರಾರಂಭಕ್ಕಾಗಿ %1$s ಅನ್ನು ಆಯ್ಕೆ ಮಾಡುವುದೇ? ನಿಮ್ಮ ಫೋನ್ ಅನ್ನು ನೀವು ಮರುಪ್ರಾರಂಭಿಸುವವರೆಗೆ ಚಾಲನೆಯಲ್ಲಿರುವ ಪೂರೈಕೆದಾರರು ಮುಂದುವರಿಯುತ್ತಾರೆ.</string>
+    <string name="save_selection">ಆಯ್ಕೆಯನ್ನು ಉಳಿಸಿ</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="country_evidence">ಕೊನೆಯ ನೆಟ್‌ವರ್ಕ್ ವೀಕ್ಷಣೆ</string>
+    <string name="unknown">ಅಜ್ಞಾತ — ನೋಂದಾಯಿತ ದೇಶದ ಪುರಾವೆಗಳಿಲ್ಲ</string>
+    <string name="evidence_cn">ನೋಂದಾಯಿತ ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್: ಚೀನಾದ ಮುಖ್ಯ ಭೂಭಾಗ</string>
+    <string name="evidence_other">ನೋಂದಾಯಿತ ಮೊಬೈಲ್ ನೆಟ್‌ವರ್ಕ್: ಚೀನಾದ ಮುಖ್ಯ ಭೂಭಾಗದ ಹೊರಗೆ</string>
+    <string name="channel_name">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ ಸಲಹೆಗಳು</string>
+    <string name="notification_title">ನೆಟ್‌ವರ್ಕ್ ಸ್ಥಳ ಒದಗಿಸುವವರು</string>
+    <string name="suggestion">ಚೀನಾದ ಮುಖ್ಯ ಭೂಭಾಗದಲ್ಲಿ Baidu NLP ಬಳಸುವುದೇ?</string>
+    <string name="review">ವಿಮರ್ಶೆ</string>
+    <string name="not_now">ಈಗಲ್ಲ</string>
+    <string name="configuration_failed">ಒದಗಿಸುವವರ ಕಾನ್ಫಿಗರೇಶನ್ ಅನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಮರುಪ್ರಾರಂಭಿಸುವ ಮೊದಲು ಆಯ್ಕೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="provider_unavailable">ಆಯ್ಕೆಮಾಡಿದ ಪೂರೈಕೆದಾರರು ಲಭ್ಯವಿಲ್ಲ. ಮರುಪ್ರಾರಂಭಿಸುವುದರಿಂದ ಕಾಣೆಯಾದ ಅಥವಾ ನಿಷ್ಕ್ರಿಯಗೊಂಡ ಸೇವೆಯನ್ನು ಪರಿಹರಿಸಲಾಗುವುದಿಲ್ಲ.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Переключатель поставщика сетевых местоположений</string>
+    <string name="explanation">Выберите сетевое расположение и поставщика геокодирования, используемого после перезапуска. Ваш выбор не влияет на работу GPS или собственных служб определения местоположения Google.</string>
+    <string name="provider_choice">Поставщик для следующего перезапуска</string>
+    <string name="provider_google">По умолчанию (Google)</string>
+    <string name="automatic_detection">Автоматическое обнаружение</string>
+    <string name="detection_summary">Предложите Baidu NLP, если зарегистрированная мобильная сеть указывает на материковый Китай. Для переключения всегда требуется ваше подтверждение и перезагрузка. Сам по себе Wi-Fi не сможет установить вашу страну.</string>
+    <string name="boot_configuration">Конфигурация при последнем перезапуске</string>
+    <string name="pending_title">Требуется перезагрузка</string>
+    <string name="reboot_reminder">Перезагрузите телефон, чтобы применить выбранного провайдера.</string>
+    <string name="restart_title">Как применить свой выбор</string>
+    <string name="restart_message">Откройте меню питания телефона и выберите «Перезагрузить». Выбранный провайдер будет настроен при следующем запуске.</string>
+    <string name="confirm_title">Сменить поставщика сетевых местоположений?</string>
+    <string name="confirm_message">Выбрать %1$s для следующего перезапуска? Работающий провайдер будет продолжать работать до тех пор, пока вы не перезагрузите телефон.</string>
+    <string name="save_selection">Сохранить выбор</string>
+    <string name="cancel">Отмена</string>
+    <string name="country_evidence">Последнее сетевое наблюдение</string>
+    <string name="unknown">Неизвестно — нет зарегистрированных доказательств страны</string>
+    <string name="evidence_cn">Зарегистрированная мобильная сеть: материковый Китай.</string>
+    <string name="evidence_other">Зарегистрированная мобильная сеть: за пределами материкового Китая.</string>
+    <string name="channel_name">Рекомендации по расположению сети</string>
+    <string name="notification_title">Поставщик сетевого местоположения</string>
+    <string name="suggestion">Используете Baidu NLP в материковом Китае?</string>
+    <string name="review">Обзор</string>
+    <string name="not_now">Не сейчас</string>
+    <string name="configuration_failed">Не удалось сохранить конфигурацию поставщика. Проверьте выбор перед перезапуском.</string>
+    <string name="provider_unavailable">Выбранный провайдер недоступен. Перезапуск может не устранить отсутствующую или отключенную службу.</string>
+</resources>

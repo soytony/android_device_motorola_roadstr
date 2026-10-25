@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ქსელის მდებარეობის პროვაიდერის გადამრთველი</string>
+    <string name="explanation">აირჩიეთ ქსელის მდებარეობა და გეოკოდირების პროვაიდერი, რომელიც გამოიყენება გადატვირთვის შემდეგ. თქვენი არჩევანი არ ცვლის GPS-ს ან Google-ის შერწყმული მდებარეობის სერვისებს.</string>
+    <string name="provider_choice">პროვაიდერი შემდეგი გადატვირთვისთვის</string>
+    <string name="provider_google">ნაგულისხმევი (Google)</string>
+    <string name="automatic_detection">ავტომატური გამოვლენა</string>
+    <string name="detection_summary">შესთავაზეთ Baidu NLP, როდესაც რეგისტრირებული მობილური ქსელი მიუთითებს მატერიკულ ჩინეთზე. გადართვას ყოველთვის სჭირდება თქვენი დადასტურება და გადატვირთვა. მარტო Wi-Fi ვერ დაამკვიდრებს თქვენს ქვეყანას.</string>
+    <string name="boot_configuration">კონფიგურაცია ბოლო გადატვირთვისას</string>
+    <string name="pending_title">საჭიროა გადატვირთვა</string>
+    <string name="reboot_reminder">გადატვირთეთ თქვენი ტელეფონი არჩეული პროვაიდერის გამოსაყენებლად.</string>
+    <string name="restart_title">როგორ გამოვიყენოთ თქვენი არჩევანი</string>
+    <string name="restart_message">გახსენით ტელეფონის კვების მენიუ და აირჩიეთ გადატვირთვა. არჩეული პროვაიდერი კონფიგურირებული იქნება მომდევნო გაშვებისას.</string>
+    <string name="confirm_title">გსურთ ქსელის მდებარეობის პროვაიდერის შეცვლა?</string>
+    <string name="confirm_message">აირჩიეთ %1$s შემდეგი გადატვირთვისთვის? გაშვებული პროვაიდერი გაგრძელდება მანამ, სანამ ტელეფონს არ გადატვირთავთ.</string>
+    <string name="save_selection">შერჩევის შენახვა</string>
+    <string name="cancel">გაუქმება</string>
+    <string name="country_evidence">ბოლო ქსელის დაკვირვება</string>
+    <string name="unknown">უცნობი - არ არის რეგისტრირებული ქვეყნის მტკიცებულება</string>
+    <string name="evidence_cn">რეგისტრირებული მობილური ქსელი: კონტინენტური ჩინეთი</string>
+    <string name="evidence_other">რეგისტრირებული მობილური ქსელი: ჩინეთის გარეთ</string>
+    <string name="channel_name">ქსელის მდებარეობის შემოთავაზებები</string>
+    <string name="notification_title">ქსელის მდებარეობის პროვაიდერი</string>
+    <string name="suggestion">იყენებთ Baidu NLP-ს მატერიკულ ჩინეთში?</string>
+    <string name="review">მიმოხილვა</string>
+    <string name="not_now">ახლა არა</string>
+    <string name="configuration_failed">პროვაიდერის კონფიგურაციის შენახვა ვერ მოხერხდა. გადატვირთვამდე შეამოწმეთ არჩევანი.</string>
+    <string name="provider_unavailable">არჩეული პროვაიდერი მიუწვდომელია. გადატვირთვამ შეიძლება ვერ მოაგვაროს გამოტოვებული ან გამორთული სერვისი.</string>
+</resources>

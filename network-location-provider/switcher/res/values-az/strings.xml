@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Şəbəkə Məkan Provayderi dəyişdiricisi</string>
+    <string name="explanation">Yenidən başladıqdan sonra istifadə olunan şəbəkə yerini və coğrafi kodlaşdırma provayderini seçin. Seçiminiz GPS və ya Google-un birləşdirilmiş məkan xidmətlərini dəyişmir.</string>
+    <string name="provider_choice">Növbəti yenidən başlatma üçün provayder</string>
+    <string name="provider_google">Defolt (Google)</string>
+    <string name="automatic_detection">Avtomatik aşkarlama</string>
+    <string name="detection_summary">Qeydə alınmış mobil şəbəkə materik Çini göstərdikdə Baidu NLP təklif edin. Dəyişdirmə həmişə sizin təsdiqinizə və yenidən başlamanıza ehtiyac duyur. Yalnız Wi-Fi ölkənizi təyin edə bilməz.</string>
+    <string name="boot_configuration">Nəhayət yenidən başladıqda konfiqurasiya</string>
+    <string name="pending_title">Yenidən başlatma tələb olunur</string>
+    <string name="reboot_reminder">Seçilmiş provayderi tətbiq etmək üçün telefonunuzu yenidən başladın.</string>
+    <string name="restart_title">Seçiminizi necə tətbiq etmək olar</string>
+    <string name="restart_message">Telefonun güc menyusunu açın və Yenidən başladın seçin. Seçilmiş provayder növbəti başlanğıcda konfiqurasiya ediləcək.</string>
+    <string name="confirm_title">Şəbəkə məkanı provayderi dəyişdirilsin?</string>
+    <string name="confirm_message">Növbəti yenidən başlatma üçün %1$s seçilsin? Siz telefonunuzu yenidən başlatana qədər işləyən provayder davam edəcək.</string>
+    <string name="save_selection">Seçimi yadda saxla</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="country_evidence">Son şəbəkə müşahidəsi</string>
+    <string name="unknown">Naməlum — qeydə alınmış ölkə sübutu yoxdur</string>
+    <string name="evidence_cn">Qeydiyyatdan keçmiş mobil şəbəkə: materik Çin</string>
+    <string name="evidence_other">Qeydiyyatdan keçmiş mobil şəbəkə: Çin materikindən kənarda</string>
+    <string name="channel_name">Şəbəkə yeri təklifləri</string>
+    <string name="notification_title">Şəbəkə yerləşdirmə provayderi</string>
+    <string name="suggestion">Baidu NLP-ni materik Çində istifadə edin?</string>
+    <string name="review">Baxış</string>
+    <string name="not_now">İndi yox</string>
+    <string name="configuration_failed">Provayder konfiqurasiyasını saxlamaq mümkün olmadı. Yenidən başlamazdan əvvəl seçimi yoxlayın.</string>
+    <string name="provider_unavailable">Seçilmiş provayder əlçatan deyil. Yenidən başlatma çatışmayan və ya qeyri-aktiv edilmiş xidməti həll etməyə bilər.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Пераключальнік пастаўшчыка сеткавага месцазнаходжання</string>
+    <string name="explanation">Выберыце сеткавае месцазнаходжанне і пастаўшчыка геакадавання, які будзе выкарыстоўвацца пасля перазапуску. Ваш выбар не змяняе GPS або ўласныя службы аб\'яднанага месцазнаходжання Google.</string>
+    <string name="provider_choice">Пастаўшчык для наступнага перазапуску</string>
+    <string name="provider_google">Па змаўчанні (Google)</string>
+    <string name="automatic_detection">Аўтаматычнае вызначэнне</string>
+    <string name="detection_summary">Прапануйце Baidu NLP, калі зарэгістраваная сетка мабільнай сувязі паказвае мацерыковы Кітай. Пераключэнне заўсёды патрабуе вашага пацверджання і перазапуску. Толькі Wi-Fi не можа вызначыць вашу краіну.</string>
+    <string name="boot_configuration">Канфігурацыя пры апошнім перазапуску</string>
+    <string name="pending_title">Патрабуецца перазапуск</string>
+    <string name="reboot_reminder">Перазагрузіце тэлефон, каб прымяніць абранага правайдэра.</string>
+    <string name="restart_title">Як прымяніць свой выбар</string>
+    <string name="restart_message">Адкрыйце меню сілкавання тэлефона і абярыце Перазагрузка. Абраны правайдэр будзе настроены пры наступным запуску.</string>
+    <string name="confirm_title">Змяніць пастаўшчыка сеткавага месцазнаходжання?</string>
+    <string name="confirm_message">Выбраць %1$s для наступнага перазапуску? Працуючы правайдэр будзе працягвацца, пакуль вы не перазапусціце тэлефон.</string>
+    <string name="save_selection">Захаваць выбар</string>
+    <string name="cancel">Адмяніць</string>
+    <string name="country_evidence">Апошняе сеткавае назіранне</string>
+    <string name="unknown">Невядома — няма зарэгістраваных краінавых доказаў</string>
+    <string name="evidence_cn">Зарэгістраваная сетка мабільнай сувязі: мацерыковы Кітай</string>
+    <string name="evidence_other">Зарэгістраваная сетка мабільнай сувязі: за межамі мацерыковага Кітая</string>
+    <string name="channel_name">Прапановы па сеткавым размяшчэнні</string>
+    <string name="notification_title">Пастаўшчык сеткавага месцазнаходжання</string>
+    <string name="suggestion">Выкарыстоўваць Baidu NLP у Кітаі?</string>
+    <string name="review">Агляд</string>
+    <string name="not_now">Не цяпер</string>
+    <string name="configuration_failed">Не атрымалася захаваць канфігурацыю правайдэра. Перад перазапускам праверце выбар.</string>
+    <string name="provider_unavailable">Абраны правайдэр недаступны. Перазапуск можа не ліквідаваць адсутную або адключаную службу.</string>
+</resources>

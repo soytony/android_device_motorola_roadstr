@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Network Location Provider Switcher</string>
+    <string name="explanation">Choose the network location and geocoding provider used after restart. Your selection does not change GPS or Google’s own fused-location services.</string>
+    <string name="provider_choice">Provider for next restart</string>
+    <string name="provider_google">Default (Google)</string>
+    <string name="provider_baidu" translatable="false">Baidu NLP</string>
+    <string name="automatic_detection">Automatic detection</string>
+    <string name="detection_summary">Suggest Baidu NLP when a registered mobile network indicates mainland China. Switching always needs your confirmation and a restart. Wi-Fi alone cannot establish your country.</string>
+    <string name="boot_configuration">Configuration at last restart</string>
+    <string name="pending_title">Restart required</string>
+    <string name="reboot_reminder">Restart your phone to apply the selected provider.</string>
+    <string name="restart_title">How to apply your selection</string>
+    <string name="restart_message">Open the phone’s power menu and choose Restart. The selected provider will be configured at the next startup.</string>
+    <string name="confirm_title">Change network location provider?</string>
+    <string name="confirm_message">Select %1$s for the next restart? The running provider will continue until you restart your phone.</string>
+    <string name="save_selection">Save selection</string>
+    <string name="cancel">Cancel</string>
+    <string name="country_evidence">Last network observation</string>
+    <string name="unknown">Unknown — no registered country evidence</string>
+    <string name="evidence_cn">Registered mobile network: mainland China</string>
+    <string name="evidence_other">Registered mobile network: outside mainland China</string>
+    <string name="channel_name">Network location suggestions</string>
+    <string name="notification_title">Network location provider</string>
+    <string name="suggestion">Use Baidu NLP in mainland China?</string>
+    <string name="review">Review</string>
+    <string name="not_now">Not now</string>
+    <string name="configuration_failed">Could not save the provider configuration. Check the selection before restarting.</string>
+    <string name="provider_unavailable">The selected provider is unavailable. Restarting may not resolve a missing or disabled service.</string>
+    <string name="test_provider">Test current provider</string>
+    <string name="test_provider_summary">Check fresh positioning and geocoding. Location permission is requested separately when you start a test.</string>
+</resources>

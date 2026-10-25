@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Kibadilishaji cha Mtoa Mahali pa Mtandao</string>
+    <string name="explanation">Chagua eneo la mtandao na mtoaji wa misimbo ya kijiografia iliyotumiwa baada ya kuwasha tena. Chaguo lako halibadilishi GPS au huduma za mahali zilizounganishwa za Google.</string>
+    <string name="provider_choice">Mtoa huduma kwa ajili ya kuanzisha upya ijayo</string>
+    <string name="provider_google">Chaguomsingi (Google)</string>
+    <string name="automatic_detection">Utambuzi otomatiki</string>
+    <string name="detection_summary">Pendekeza Baidu NLP wakati mtandao wa simu uliosajiliwa utakapoonyesha Uchina Bara. Kubadilisha kila wakati kunahitaji uthibitisho wako na kuwasha upya. Wi-Fi pekee haiwezi kuanzisha nchi yako.</string>
+    <string name="boot_configuration">Usanidi wakati wa kuanza upya mwisho</string>
+    <string name="pending_title">Inahitajika kuanzisha upya</string>
+    <string name="reboot_reminder">Anzisha upya simu yako ili kutumia mtoa huduma uliyochagua.</string>
+    <string name="restart_title">Jinsi ya kutumia chaguo lako</string>
+    <string name="restart_message">Fungua menyu ya nguvu ya simu na uchague Anzisha tena. Mtoa huduma aliyechaguliwa atasanidiwa katika uanzishaji unaofuata.</string>
+    <string name="confirm_title">Ungependa kubadilisha mtoa huduma wa eneo la mtandao?</string>
+    <string name="confirm_message">Ungependa kuchagua %1$s ili uwashe tena? Mtoa huduma anayeendesha ataendelea hadi uwashe upya simu yako.</string>
+    <string name="save_selection">Hifadhi uteuzi</string>
+    <string name="cancel">Ghairi</string>
+    <string name="country_evidence">Uchunguzi wa mwisho wa mtandao</string>
+    <string name="unknown">Haijulikani - hakuna ushahidi wa nchi uliosajiliwa</string>
+    <string name="evidence_cn">Mtandao wa simu uliosajiliwa: China bara</string>
+    <string name="evidence_other">Mtandao wa simu uliosajiliwa: nje ya China bara</string>
+    <string name="channel_name">Mapendekezo ya eneo la mtandao</string>
+    <string name="notification_title">Mtoa huduma wa eneo la mtandao</string>
+    <string name="suggestion">Je, ungependa kutumia Baidu NLP katika Uchina?</string>
+    <string name="review">Kagua</string>
+    <string name="not_now">Si sasa</string>
+    <string name="configuration_failed">Haikuweza kuhifadhi usanidi wa mtoaji. Angalia uteuzi kabla ya kuanza upya.</string>
+    <string name="provider_unavailable">Mtoa huduma aliyechaguliwa hapatikani. Kuanzisha upya hakuwezi kutatua huduma inayokosekana au iliyozimwa.</string>
+</resources>

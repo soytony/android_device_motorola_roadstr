@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Võrgu asukoha pakkuja vahetaja</string>
+    <string name="explanation">Valige pärast taaskäivitamist kasutatav võrgu asukoht ja geokodeeringu pakkuja. Teie valik ei muuda GPS-i ega Google\'i enda ühendatud asukohateenuseid.</string>
+    <string name="provider_choice">Järgmise taaskäivituse pakkuja</string>
+    <string name="provider_google">Vaikimisi (Google)</string>
+    <string name="automatic_detection">Automaatne tuvastamine</string>
+    <string name="detection_summary">Soovitage Baidu NLP-d, kui registreeritud mobiilsidevõrk tähistab Mandri-Hiinat. Vahetamine vajab alati teie kinnitust ja taaskäivitamist. Ainult Wi-Fi ei saa teie riiki kindlaks teha.</string>
+    <string name="boot_configuration">Seadistamine viimasel taaskäivitamisel</string>
+    <string name="pending_title">Taaskäivitamine on vajalik</string>
+    <string name="reboot_reminder">Valitud teenusepakkuja rakendamiseks taaskäivitage telefon.</string>
+    <string name="restart_title">Kuidas oma valikut rakendada</string>
+    <string name="restart_message">Avage telefoni toitemenüü ja valige Taaskäivita. Valitud pakkuja konfigureeritakse järgmisel käivitamisel.</string>
+    <string name="confirm_title">Kas vahetada võrgu asukoha pakkuja?</string>
+    <string name="confirm_message">Kas valida %1$s järgmiseks taaskäivitamiseks? Töötav teenusepakkuja jätkab, kuni telefoni taaskäivitate.</string>
+    <string name="save_selection">Salvesta valik</string>
+    <string name="cancel">Tühista</string>
+    <string name="country_evidence">Viimane võrguvaatlus</string>
+    <string name="unknown">Teadmata – registreeritud riigi tõendeid pole</string>
+    <string name="evidence_cn">Registreeritud mobiilsidevõrk: Mandri-Hiina</string>
+    <string name="evidence_other">Registreeritud mobiilsidevõrk: väljaspool Mandri-Hiinat</string>
+    <string name="channel_name">Võrgu asukoha soovitused</string>
+    <string name="notification_title">Võrgu asukoha pakkuja</string>
+    <string name="suggestion">Kas kasutada Mandri-Hiinas Baidu NLP-d?</string>
+    <string name="review">Ülevaade</string>
+    <string name="not_now">Mitte praegu</string>
+    <string name="configuration_failed">Pakkuja konfiguratsiooni ei saanud salvestada. Enne taaskäivitamist kontrollige valikut.</string>
+    <string name="provider_unavailable">Valitud pakkuja pole saadaval. Taaskäivitamine ei pruugi puuduvat või keelatud teenust lahendada.</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Selettore provider di posizione di rete</string>
+    <string name="explanation">Scegli il percorso di rete e il provider di geocodifica utilizzati dopo il riavvio. La tua selezione non modifica il GPS o i servizi di localizzazione fusi di Google.</string>
+    <string name="provider_choice">Provider per il prossimo riavvio</string>
+    <string name="provider_google">Predefinito (Google)</string>
+    <string name="automatic_detection">Rilevamento automatico</string>
+    <string name="detection_summary">Suggerisci Baidu NLP quando una rete mobile registrata indica la Cina continentale. Il passaggio richiede sempre la tua conferma e un riavvio. Il solo Wi-Fi non può stabilire il tuo Paese.</string>
+    <string name="boot_configuration">Configurazione all\'ultimo riavvio</string>
+    <string name="pending_title">È necessario riavviare</string>
+    <string name="reboot_reminder">Riavvia il telefono per applicare il provider selezionato.</string>
+    <string name="restart_title">Come applicare la selezione</string>
+    <string name="restart_message">Apri il menu di accensione del telefono e scegli Riavvia. Il provider selezionato verrà configurato al successivo avvio.</string>
+    <string name="confirm_title">Cambiare il provider della posizione di rete?</string>
+    <string name="confirm_message">Selezionare %1$s per il prossimo riavvio? Il provider in esecuzione continuerà fino al riavvio del telefono.</string>
+    <string name="save_selection">Salva la selezione</string>
+    <string name="cancel">Annulla</string>
+    <string name="country_evidence">Ultima osservazione della rete</string>
+    <string name="unknown">Sconosciuto: nessuna prova nazionale registrata</string>
+    <string name="evidence_cn">Rete mobile registrata: Cina continentale</string>
+    <string name="evidence_other">Rete mobile registrata: fuori dalla Cina continentale</string>
+    <string name="channel_name">Suggerimenti sulla posizione della rete</string>
+    <string name="notification_title">Fornitore di percorsi di rete</string>
+    <string name="suggestion">Utilizzare Baidu NLP nella Cina continentale?</string>
+    <string name="review">Recensione</string>
+    <string name="not_now">Non ora</string>
+    <string name="configuration_failed">Impossibile salvare la configurazione del provider. Controllare la selezione prima di riavviare.</string>
+    <string name="provider_unavailable">Il fornitore selezionato non è disponibile. Il riavvio potrebbe non risolvere un servizio mancante o disabilitato.</string>
+</resources>

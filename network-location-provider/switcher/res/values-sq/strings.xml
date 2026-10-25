@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ndërruesi i ofruesit të vendndodhjes së rrjetit</string>
+    <string name="explanation">Zgjidhni vendndodhjen e rrjetit dhe ofruesin e gjeokodimit të përdorur pas rinisjes. Zgjedhja juaj nuk ndryshon GPS-në ose shërbimet e vendndodhjes së bashkuar të Google.</string>
+    <string name="provider_choice">Ofruesi për rinisjen e radhës</string>
+    <string name="provider_google">E parazgjedhur (Google)</string>
+    <string name="automatic_detection">Zbulimi automatik</string>
+    <string name="detection_summary">Sugjeroni Baidu NLP kur një rrjet celular i regjistruar tregon Kinën kontinentale. Ndërrimi gjithmonë ka nevojë për konfirmimin tuaj dhe një rinisje. Vetëm Wi-Fi nuk mund të krijojë vendin tuaj.</string>
+    <string name="boot_configuration">Konfigurimi në rinisjen e fundit</string>
+    <string name="pending_title">Kërkohet rinisja</string>
+    <string name="reboot_reminder">Rinisni telefonin tuaj për të aplikuar ofruesin e zgjedhur.</string>
+    <string name="restart_title">Si të aplikoni zgjedhjen tuaj</string>
+    <string name="restart_message">Hapni menunë e energjisë së telefonit dhe zgjidhni Rinisni. Ofruesi i zgjedhur do të konfigurohet në fillimin tjetër.</string>
+    <string name="confirm_title">Të ndryshohet ofruesi i vendndodhjes së rrjetit?</string>
+    <string name="confirm_message">Të zgjidhet %1$s për rinisjen tjetër? Ofruesi që funksionon do të vazhdojë derisa të rinisni telefonin tuaj.</string>
+    <string name="save_selection">Ruaj përzgjedhjen</string>
+    <string name="cancel">Anulo</string>
+    <string name="country_evidence">Vëzhgimi i fundit i rrjetit</string>
+    <string name="unknown">E panjohur - nuk ka dëshmi të regjistruar të vendit</string>
+    <string name="evidence_cn">Rrjeti celular i regjistruar: Kina kontinentale</string>
+    <string name="evidence_other">Rrjeti celular i regjistruar: jashtë Kinës kontinentale</string>
+    <string name="channel_name">Sugjerime për vendndodhjen e rrjetit</string>
+    <string name="notification_title">Ofruesi i vendndodhjes së rrjetit</string>
+    <string name="suggestion">Përdorni Baidu NLP në Kinën kontinentale?</string>
+    <string name="review">Rishikimi</string>
+    <string name="not_now">Jo tani</string>
+    <string name="configuration_failed">Nuk mund të ruhej konfigurimi i ofruesit. Kontrolloni përzgjedhjen përpara se të rinisni.</string>
+    <string name="provider_unavailable">Ofruesi i zgjedhur nuk është i disponueshëm. Rinisja mund të mos zgjidhë një shërbim të munguar ose të çaktivizuar.</string>
+</resources>

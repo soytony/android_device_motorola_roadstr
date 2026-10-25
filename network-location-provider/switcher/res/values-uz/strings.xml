@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tarmoq joylashuvi provayderi almashtirgich</string>
+    <string name="explanation">Qayta ishga tushirilgandan so\'ng foydalaniladigan tarmoq manzilini va geokod provayderini tanlang. Sizning tanlovingiz GPS yoki Google-ning birlashtirilgan joylashuv xizmatlarini o\'zgartirmaydi.</string>
+    <string name="provider_choice">Keyingi qayta ishga tushirish uchun provayder</string>
+    <string name="provider_google">Birlamchi (Google)</string>
+    <string name="automatic_detection">Avtomatik aniqlash</string>
+    <string name="detection_summary">Roʻyxatdan oʻtgan mobil tarmoq materik Xitoyni koʻrsatsa, Baidu NLP ni taklif qiling. Oʻtish uchun har doim sizning tasdiqlashingiz va qayta ishga tushirishingiz kerak. Faqat Wi-Fi sizning mamlakatingizni o\'rnatolmaydi.</string>
+    <string name="boot_configuration">Oxirgi qayta ishga tushirishda konfiguratsiya</string>
+    <string name="pending_title">Qayta ishga tushirish talab qilinadi</string>
+    <string name="reboot_reminder">Tanlangan provayderni qo\'llash uchun telefoningizni qayta yoqing.</string>
+    <string name="restart_title">Sizning tanlovingizni qanday qo\'llash kerak</string>
+    <string name="restart_message">Telefonning quvvat menyusini oching va Qayta ishga tushirish-ni tanlang. Tanlangan provayder keyingi ishga tushirilganda sozlanadi.</string>
+    <string name="confirm_title">Tarmoq joylashuvi provayderi almashtirilsinmi?</string>
+    <string name="confirm_message">Keyingi qayta ishga tushirish uchun %1$s tanlansinmi? Ishlayotgan provayder siz telefoningizni qayta yoqmaguningizcha davom etadi.</string>
+    <string name="save_selection">Tanlovni saqlash</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="country_evidence">So\'nggi tarmoq kuzatuvi</string>
+    <string name="unknown">Noma\'lum - ro\'yxatdan o\'tgan davlat dalillari yo\'q</string>
+    <string name="evidence_cn">Ro\'yxatdan o\'tgan mobil tarmoq: materik Xitoy</string>
+    <string name="evidence_other">Ro\'yxatdan o\'tgan mobil tarmoq: materik Xitoydan tashqarida</string>
+    <string name="channel_name">Tarmoq joylashuvi bo\'yicha takliflar</string>
+    <string name="notification_title">Tarmoq joylashuvi provayderi</string>
+    <string name="suggestion">Xitoyda Baidu NLP-dan foydalanasizmi?</string>
+    <string name="review">Ko‘rib chiqish</string>
+    <string name="not_now">Hozir emas</string>
+    <string name="configuration_failed">Provayder konfiguratsiyasi saqlanmadi. Qayta boshlashdan oldin tanlovni tekshiring.</string>
+    <string name="provider_unavailable">Tanlangan provayder mavjud emas. Qayta ishga tushirish etishmayotgan yoki o\'chirilgan xizmatni hal qilmasligi mumkin.</string>
+</resources>

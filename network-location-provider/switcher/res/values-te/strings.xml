@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">నెట్‌వర్క్ లొకేషన్ ప్రొవైడర్ స్విచ్చర్</string>
+    <string name="explanation">పునఃప్రారంభించిన తర్వాత ఉపయోగించిన నెట్‌వర్క్ స్థానాన్ని మరియు జియోకోడింగ్ ప్రొవైడర్‌ను ఎంచుకోండి. మీ ఎంపిక GPS లేదా Google స్వంత ఫ్యూజ్డ్-లొకేషన్ సేవలను మార్చదు.</string>
+    <string name="provider_choice">తదుపరి పునఃప్రారంభం కోసం ప్రొవైడర్</string>
+    <string name="provider_google">డిఫాల్ట్ (Google)</string>
+    <string name="automatic_detection">స్వయంచాలక గుర్తింపు</string>
+    <string name="detection_summary">నమోదిత మొబైల్ నెట్‌వర్క్ చైనా ప్రధాన భూభాగాన్ని సూచించినప్పుడు Baidu NLPని సూచించండి. మారడానికి ఎల్లప్పుడూ మీ నిర్ధారణ మరియు పునఃప్రారంభం అవసరం. Wi-Fi మాత్రమే మీ దేశాన్ని స్థాపించదు.</string>
+    <string name="boot_configuration">చివరి పునఃప్రారంభంలో కాన్ఫిగరేషన్</string>
+    <string name="pending_title">పునఃప్రారంభం అవసరం</string>
+    <string name="reboot_reminder">ఎంచుకున్న ప్రొవైడర్‌ను వర్తింపజేయడానికి మీ ఫోన్‌ని రీస్టార్ట్ చేయండి.</string>
+    <string name="restart_title">మీ ఎంపికను ఎలా దరఖాస్తు చేయాలి</string>
+    <string name="restart_message">ఫోన్ పవర్ మెనుని తెరిచి, పునఃప్రారంభించు ఎంచుకోండి. ఎంచుకున్న ప్రొవైడర్ తదుపరి స్టార్టప్‌లో కాన్ఫిగర్ చేయబడతారు.</string>
+    <string name="confirm_title">నెట్‌వర్క్ లొకేషన్ ప్రొవైడర్‌ని మార్చాలా?</string>
+    <string name="confirm_message">తదుపరి పునఃప్రారంభం కోసం %1$sని ఎంచుకోవాలా? మీరు మీ ఫోన్‌ని పునఃప్రారంభించే వరకు రన్నింగ్ ప్రొవైడర్ కొనసాగుతుంది.</string>
+    <string name="save_selection">ఎంపికను సేవ్ చేయండి</string>
+    <string name="cancel">రద్దు చేయి</string>
+    <string name="country_evidence">చివరి నెట్‌వర్క్ పరిశీలన</string>
+    <string name="unknown">తెలియదు — నమోదిత దేశం సాక్ష్యం లేదు</string>
+    <string name="evidence_cn">నమోదిత మొబైల్ నెట్‌వర్క్: ప్రధాన భూభాగం చైనా</string>
+    <string name="evidence_other">నమోదిత మొబైల్ నెట్‌వర్క్: చైనా ప్రధాన భూభాగం వెలుపల</string>
+    <string name="channel_name">నెట్‌వర్క్ స్థాన సూచనలు</string>
+    <string name="notification_title">నెట్‌వర్క్ లొకేషన్ ప్రొవైడర్</string>
+    <string name="suggestion">చైనా ప్రధాన భూభాగంలో Baidu NLPని ఉపయోగించాలా?</string>
+    <string name="review">సమీక్షించండి</string>
+    <string name="not_now">ఇప్పుడు కాదు</string>
+    <string name="configuration_failed">ప్రొవైడర్ కాన్ఫిగరేషన్‌ను సేవ్ చేయడం సాధ్యపడలేదు. పునఃప్రారంభించే ముందు ఎంపికను తనిఖీ చేయండి.</string>
+    <string name="provider_unavailable">ఎంచుకున్న ప్రొవైడర్ అందుబాటులో లేరు. పునఃప్రారంభించడం తప్పిపోయిన లేదా నిలిపివేయబడిన సేవను పరిష్కరించకపోవచ్చు.</string>
+</resources>

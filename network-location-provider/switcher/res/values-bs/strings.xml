@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Prebacivač mrežne lokacije</string>
+    <string name="explanation">Odaberite mrežnu lokaciju i provajdera geokodiranja koji se koristi nakon ponovnog pokretanja. Vaš odabir ne mijenja GPS ili Googleove vlastite usluge spojene lokacije.</string>
+    <string name="provider_choice">Provajder za sljedeće ponovno pokretanje</string>
+    <string name="provider_google">Zadano (Google)</string>
+    <string name="automatic_detection">Automatska detekcija</string>
+    <string name="detection_summary">Predložite Baidu NLP kada registrovana mobilna mreža označava kontinentalnu Kinu. Za prebacivanje je uvijek potrebna vaša potvrda i ponovno pokretanje. Wi-Fi sama po sebi ne može utvrditi vašu zemlju.</string>
+    <string name="boot_configuration">Konfiguracija pri posljednjem ponovnom pokretanju</string>
+    <string name="pending_title">Potrebno je ponovno pokretanje</string>
+    <string name="reboot_reminder">Ponovo pokrenite telefon da primijenite odabranog provajdera.</string>
+    <string name="restart_title">Kako primijeniti svoj odabir</string>
+    <string name="restart_message">Otvorite meni za napajanje telefona i odaberite Restart. Odabrani provajder će biti konfigurisan pri sljedećem pokretanju.</string>
+    <string name="confirm_title">Promijeniti dobavljača mrežne lokacije?</string>
+    <string name="confirm_message">Odaberite %1$s za sljedeće ponovno pokretanje? Pokrenuti provajder će nastaviti sve dok ponovo ne pokrenete telefon.</string>
+    <string name="save_selection">Sačuvaj odabir</string>
+    <string name="cancel">Otkaži</string>
+    <string name="country_evidence">Posljednje promatranje mreže</string>
+    <string name="unknown">Nepoznato — nema registrovanih dokaza o zemlji</string>
+    <string name="evidence_cn">Registrirana mobilna mreža: kontinentalna Kina</string>
+    <string name="evidence_other">Registrirana mobilna mreža: izvan kontinentalne Kine</string>
+    <string name="channel_name">Prijedlozi mrežne lokacije</string>
+    <string name="notification_title">Provajder mrežne lokacije</string>
+    <string name="suggestion">Koristiti Baidu NLP u Kini?</string>
+    <string name="review">Pregled</string>
+    <string name="not_now">Ne sada</string>
+    <string name="configuration_failed">Nije moguće sačuvati konfiguraciju provajdera. Provjerite odabir prije ponovnog pokretanja.</string>
+    <string name="provider_unavailable">Odabrani provajder je nedostupan. Ponovno pokretanje možda neće riješiti uslugu koja nedostaje ili je onemogućena.</string>
+</resources>

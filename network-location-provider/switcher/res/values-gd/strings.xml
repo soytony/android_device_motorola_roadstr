@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Switcher Solaraiche Àite Lìonra</string>
+    <string name="explanation">Tagh an t-àite lìonra agus an solaraiche geocoding a thèid a chleachdadh às deidh ath-thòiseachadh. Chan atharraich an taghadh agad GPS no seirbheisean àite aonaichte Google fhèin.</string>
+    <string name="provider_choice">Solaraiche airson an ath ath-thòiseachadh</string>
+    <string name="provider_google">Bunaiteach (Google)</string>
+    <string name="automatic_detection">Dearbhadh fèin-ghluasadach</string>
+    <string name="detection_summary">Mol Baidu NLP nuair a tha lìonra gluasadach clàraichte a’ comharrachadh tìr-mòr Shìona. Feumaidh atharrachadh an-còmhnaidh do dhearbhadh agus ath-thòiseachadh. Chan urrainn dha Wi-Fi leis fhèin do dhùthaich a stèidheachadh.</string>
+    <string name="boot_configuration">Rèiteachadh aig ath-thòiseachadh mu dheireadh</string>
+    <string name="pending_title">Ath-thòiseachadh a dhìth</string>
+    <string name="reboot_reminder">Ath-thòisich am fòn agad gus an solaraiche taghte a chuir an sàs.</string>
+    <string name="restart_title">Mar a chuireas tu do roghainn an sàs</string>
+    <string name="restart_message">Fosgail clàr cumhachd an fhòn agus tagh Ath-thòiseachadh. Thèid an solaraiche taghte a rèiteachadh aig an ath thòiseachadh.</string>
+    <string name="confirm_title">Atharraich solaraiche ionad lìonraidh?</string>
+    <string name="confirm_message">Tagh %1$s airson an ath-thòisich? Leanaidh an solaraiche ruith gus an ath-thòisich thu am fòn agad.</string>
+    <string name="save_selection">Sàbhail taghadh</string>
+    <string name="cancel">Sguir dheth</string>
+    <string name="country_evidence">An sgrùdadh lìonra mu dheireadh</string>
+    <string name="unknown">Neo-aithnichte - chan eil fianais dùthaich clàraichte</string>
+    <string name="evidence_cn">Lìonra gluasadach clàraichte: tìr-mòr Shìona</string>
+    <string name="evidence_other">Lìonra gluasadach clàraichte: taobh a-muigh tìr-mòr Shìona</string>
+    <string name="channel_name">Molaidhean àite lìonraidh</string>
+    <string name="notification_title">Solaraiche suidheachadh lìonra</string>
+    <string name="suggestion">Cleachd Baidu NLP air tìr-mòr Shìona?</string>
+    <string name="review">Lèirmheas</string>
+    <string name="not_now">Chan ann a-nis</string>
+    <string name="configuration_failed">Cha b\' urrainn dhuinn rèiteachadh an t-solaraiche a shàbhaladh. Thoir sùil air an taghadh mus tòisich thu air ais.</string>
+    <string name="provider_unavailable">Chan eil an solaraiche taghte ri fhaighinn. Is dòcha nach fhuasgail ath-thòiseachadh seirbheis a tha a dhìth no ciorramach.</string>
+</resources>

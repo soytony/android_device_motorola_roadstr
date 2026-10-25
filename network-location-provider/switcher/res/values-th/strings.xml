@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ตัวสลับผู้ให้บริการตำแหน่งเครือข่าย</string>
+    <string name="explanation">เลือกตำแหน่งเครือข่ายและผู้ให้บริการ geocoding ที่ใช้หลังจากรีสตาร์ท การเลือกของคุณจะไม่เปลี่ยน GPS หรือบริการระบุตำแหน่งของ Google เอง</string>
+    <string name="provider_choice">ผู้ให้บริการสำหรับการรีสตาร์ทครั้งถัดไป</string>
+    <string name="provider_google">ค่าเริ่มต้น (Google)</string>
+    <string name="automatic_detection">การตรวจจับอัตโนมัติ</string>
+    <string name="detection_summary">แนะนำ Baidu NLP เมื่อเครือข่ายมือถือที่ลงทะเบียนบ่งชี้ถึงจีนแผ่นดินใหญ่ การสลับต้องการการยืนยันและการรีสตาร์ทจากคุณเสมอ Wi-Fi เพียงอย่างเดียวไม่สามารถระบุประเทศของคุณได้</string>
+    <string name="boot_configuration">การกำหนดค่าเมื่อรีสตาร์ทครั้งล่าสุด</string>
+    <string name="pending_title">จำเป็นต้องรีสตาร์ท</string>
+    <string name="reboot_reminder">รีสตาร์ทโทรศัพท์ของคุณเพื่อใช้ผู้ให้บริการที่เลือก</string>
+    <string name="restart_title">วิธีใช้การเลือกของคุณ</string>
+    <string name="restart_message">เปิดเมนูพลังงานของโทรศัพท์แล้วเลือกรีสตาร์ท ผู้ให้บริการที่เลือกจะได้รับการกำหนดค่าในการเริ่มต้นครั้งถัดไป</string>
+    <string name="confirm_title">เปลี่ยนผู้ให้บริการตำแหน่งเครือข่ายหรือไม่</string>
+    <string name="confirm_message">เลือก %1$s สำหรับการรีสตาร์ทครั้งถัดไปใช่ไหม ผู้ให้บริการที่ทำงานอยู่จะดำเนินต่อไปจนกว่าคุณจะรีสตาร์ทโทรศัพท์</string>
+    <string name="save_selection">บันทึกการเลือก</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="country_evidence">การสังเกตเครือข่ายครั้งสุดท้าย</string>
+    <string name="unknown">ไม่ทราบ — ไม่มีหลักฐานของประเทศที่จดทะเบียน</string>
+    <string name="evidence_cn">เครือข่ายมือถือที่ลงทะเบียน: จีนแผ่นดินใหญ่</string>
+    <string name="evidence_other">เครือข่ายมือถือที่ลงทะเบียน: นอกจีนแผ่นดินใหญ่</string>
+    <string name="channel_name">ข้อเสนอแนะตำแหน่งเครือข่าย</string>
+    <string name="notification_title">ผู้ให้บริการตำแหน่งเครือข่าย</string>
+    <string name="suggestion">ใช้ Baidu NLP ในจีนแผ่นดินใหญ่หรือไม่</string>
+    <string name="review">รีวิว</string>
+    <string name="not_now">ไม่ใช่ตอนนี้</string>
+    <string name="configuration_failed">ไม่สามารถบันทึกการกำหนดค่าผู้ให้บริการได้ ตรวจสอบการเลือกก่อนรีสตาร์ท</string>
+    <string name="provider_unavailable">ผู้ให้บริการที่เลือกไม่พร้อมใช้งาน การรีสตาร์ทอาจไม่สามารถแก้ไขบริการที่ขาดหายไปหรือถูกปิดใช้งานได้</string>
+</resources>

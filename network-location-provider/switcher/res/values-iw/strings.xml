@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">מחליף ספק מיקום רשת</string>
+    <string name="explanation">בחר את מיקום הרשת ואת ספק הקידוד הגיאוגרפי שבו נעשה שימוש לאחר ההפעלה מחדש. הבחירה שלך לא משנה את ה-GPS או את שירותי המיקום הממוזגים של Google עצמה.</string>
+    <string name="provider_choice">ספק להפעלה מחדש הבאה</string>
+    <string name="provider_google">ברירת מחדל (גוגל)</string>
+    <string name="automatic_detection">זיהוי אוטומטי</string>
+    <string name="detection_summary">הצע את Baidu NLP כאשר רשת סלולרית רשומה מציינת את סין היבשתית. המעבר תמיד צריך את האישור שלך והפעלה מחדש. Wi-Fi לבדו לא יכול לבסס את המדינה שלך.</string>
+    <string name="boot_configuration">תצורה בהפעלה מחדש האחרונה</string>
+    <string name="pending_title">נדרשת הפעלה מחדש</string>
+    <string name="reboot_reminder">הפעל מחדש את הטלפון כדי להחיל את הספק שנבחר.</string>
+    <string name="restart_title">כיצד ליישם את הבחירה שלך</string>
+    <string name="restart_message">פתח את תפריט ההפעלה של הטלפון ובחר הפעל מחדש. הספק הנבחר יוגדר בהפעלה הבאה.</string>
+    <string name="confirm_title">להחליף ספק מיקום רשת?</string>
+    <string name="confirm_message">לבחור %1$s להפעלה מחדש הבאה? הספק הפועל ימשיך עד שתפעיל מחדש את הטלפון.</string>
+    <string name="save_selection">שמור את הבחירה</string>
+    <string name="cancel">בטל</string>
+    <string name="country_evidence">תצפית רשת אחרונה</string>
+    <string name="unknown">לא ידוע - אין עדות רשומה במדינה</string>
+    <string name="evidence_cn">רשת סלולרית רשומה: סין היבשתית</string>
+    <string name="evidence_other">רשת סלולרית רשומה: מחוץ ליבשת סין</string>
+    <string name="channel_name">הצעות למיקום רשת</string>
+    <string name="notification_title">ספק מיקום רשת</string>
+    <string name="suggestion">האם להשתמש ב-Baidu NLP בסין?</string>
+    <string name="review">סקירה</string>
+    <string name="not_now">לא עכשיו</string>
+    <string name="configuration_failed">לא ניתן לשמור את תצורת הספק. בדוק את הבחירה לפני הפעלה מחדש.</string>
+    <string name="provider_unavailable">הספק שנבחר אינו זמין. ייתכן שהפעלה מחדש לא תפתור שירות חסר או מושבת.</string>
+</resources>

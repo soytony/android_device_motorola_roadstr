@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sare-kokapen-hornitzaileen aldatzailea</string>
+    <string name="explanation">Aukeratu berrabiarazi ondoren erabilitako sareko kokapena eta geokodetze hornitzailea. Zure hautapenak ez ditu aldatzen GPS edo Google-ren kokapen bateratu-zerbitzuak.</string>
+    <string name="provider_choice">Hurrengo berrabiarazterako hornitzailea</string>
+    <string name="provider_google">Lehenetsia (Google)</string>
+    <string name="automatic_detection">Detekzio automatikoa</string>
+    <string name="detection_summary">Iradoki Baidu NLP erregistratutako sare mugikor batek Txina kontinentala adierazten duenean. Aldatzeak beti behar du zure berrespena eta berrabiarazi. Wi-Fi-ak bakarrik ezin du zure herrialdea ezarri.</string>
+    <string name="boot_configuration">Konfigurazioa azken berrabiaraztean</string>
+    <string name="pending_title">Berrabiarazi behar da</string>
+    <string name="reboot_reminder">Berrabiarazi telefonoa hautatutako hornitzailea aplikatzeko.</string>
+    <string name="restart_title">Nola aplikatu zure hautapena</string>
+    <string name="restart_message">Ireki telefonoaren pizteko menua eta aukeratu Berrabiarazi. Aukeratutako hornitzailea hurrengo abiaraztean konfiguratuko da.</string>
+    <string name="confirm_title">Sareko kokapen-hornitzailea aldatu?</string>
+    <string name="confirm_message">Hurrengo berrabiarazterako %1$s hautatu nahi duzu? Exekutatzen ari den hornitzaileak jarraituko du telefonoa berrabiarazi arte.</string>
+    <string name="save_selection">Gorde hautapena</string>
+    <string name="cancel">Utzi</string>
+    <string name="country_evidence">Azken sarearen behaketa</string>
+    <string name="unknown">Ezezaguna - ez dago erregistratutako herrialdeko frogarik</string>
+    <string name="evidence_cn">Erregistratutako sare mugikorra: Txina kontinentala</string>
+    <string name="evidence_other">Erregistratutako sare mugikorra: Txina kontinentaletik kanpo</string>
+    <string name="channel_name">Sareko kokapen iradokizunak</string>
+    <string name="notification_title">Sareko kokapen hornitzailea</string>
+    <string name="suggestion">Erabili Baidu NLP Txina kontinentalean?</string>
+    <string name="review">Berrikuspena</string>
+    <string name="not_now">Orain ez</string>
+    <string name="configuration_failed">Ezin izan da hornitzailearen konfigurazioa gorde. Egiaztatu aukeraketa berrabiarazi aurretik.</string>
+    <string name="provider_unavailable">Hautatutako hornitzailea ez dago erabilgarri. Baliteke berrabiarazten den zerbitzua falta edo desgaituta dagoen bat ez konpontzea.</string>
+</resources>

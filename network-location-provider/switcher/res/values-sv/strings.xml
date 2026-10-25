@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Växlare för nätverksplatsleverantör</string>
+    <string name="explanation">Välj nätverksplats och geokodningsleverantör som används efter omstart. Ditt val ändrar inte GPS eller Googles egna fused-location-tjänster.</string>
+    <string name="provider_choice">Leverantör för nästa omstart</string>
+    <string name="provider_google">Standard (Google)</string>
+    <string name="automatic_detection">Automatisk detektering</string>
+    <string name="detection_summary">Föreslå Baidu NLP när ett registrerat mobilnät indikerar Kinas fastland. Byte kräver alltid din bekräftelse och en omstart. Enbart Wi-Fi kan inte fastställa ditt land.</string>
+    <string name="boot_configuration">Konfiguration vid senaste omstart</string>
+    <string name="pending_title">Omstart krävs</string>
+    <string name="reboot_reminder">Starta om telefonen för att använda den valda leverantören.</string>
+    <string name="restart_title">Hur du tillämpar ditt val</string>
+    <string name="restart_message">Öppna telefonens strömmeny och välj Starta om. Den valda leverantören kommer att konfigureras vid nästa uppstart.</string>
+    <string name="confirm_title">Byt nätverksplatsleverantör?</string>
+    <string name="confirm_message">Välj %1$s för nästa omstart? Den aktiva leverantören fortsätter tills du startar om telefonen.</string>
+    <string name="save_selection">Spara valet</string>
+    <string name="cancel">Avbryt</string>
+    <string name="country_evidence">Sista nätverksobservation</string>
+    <string name="unknown">Okänd — inga registrerade landsbevis</string>
+    <string name="evidence_cn">Registrerat mobilnät: Kinas fastland</string>
+    <string name="evidence_other">Registrerat mobilnät: utanför Kinas fastland</string>
+    <string name="channel_name">Förslag på nätverksplats</string>
+    <string name="notification_title">Nätverksplatsleverantör</string>
+    <string name="suggestion">Använd Baidu NLP på Kinas fastland?</string>
+    <string name="review">Granska</string>
+    <string name="not_now">Inte nu</string>
+    <string name="configuration_failed">Det gick inte att spara leverantörskonfigurationen. Kontrollera valet innan du startar om.</string>
+    <string name="provider_unavailable">Den valda leverantören är inte tillgänglig. Omstart kanske inte löser en saknad eller inaktiverad tjänst.</string>
+</resources>

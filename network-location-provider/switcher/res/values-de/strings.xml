@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Netzwerk-Standortanbieter-Umschalter</string>
+    <string name="explanation">Wählen Sie den Netzwerkstandort und Geokodierungsanbieter aus, der nach dem Neustart verwendet wird. Ihre Auswahl ändert weder GPS noch Googles eigene Fused-Location-Dienste.</string>
+    <string name="provider_choice">Anbieter für den nächsten Neustart</string>
+    <string name="provider_google">Standard (Google)</string>
+    <string name="automatic_detection">Automatische Erkennung</string>
+    <string name="detection_summary">Schlagen Sie Baidu NLP vor, wenn ein registriertes Mobilfunknetz Festlandchina anzeigt. Der Wechsel erfordert immer Ihre Bestätigung und einen Neustart. Wi-Fi allein kann Ihr Land nicht identifizieren.</string>
+    <string name="boot_configuration">Konfiguration beim letzten Neustart</string>
+    <string name="pending_title">Neustart erforderlich</string>
+    <string name="reboot_reminder">Starten Sie Ihr Telefon neu, um den ausgewählten Anbieter zu übernehmen.</string>
+    <string name="restart_title">So wenden Sie Ihre Auswahl an</string>
+    <string name="restart_message">Öffnen Sie das Power-Menü des Telefons und wählen Sie „Neustart“. Der ausgewählte Anbieter wird beim nächsten Start konfiguriert.</string>
+    <string name="confirm_title">Netzwerkstandortanbieter wechseln?</string>
+    <string name="confirm_message">%1$s für den nächsten Neustart auswählen? Der laufende Anbieter bleibt bestehen, bis Sie Ihr Telefon neu starten.</string>
+    <string name="save_selection">Auswahl speichern</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="country_evidence">Letzte Netzwerkbeobachtung</string>
+    <string name="unknown">Unbekannt – keine registrierten Ländernachweise</string>
+    <string name="evidence_cn">Registriertes Mobilfunknetz: Festlandchina</string>
+    <string name="evidence_other">Registriertes Mobilfunknetz: außerhalb des chinesischen Festlandes</string>
+    <string name="channel_name">Vorschläge für Netzwerkstandorte</string>
+    <string name="notification_title">Netzwerkstandortanbieter</string>
+    <string name="suggestion">Baidu NLP auf dem chinesischen Festland verwenden?</string>
+    <string name="review">Rezension</string>
+    <string name="not_now">Nicht jetzt</string>
+    <string name="configuration_failed">Die Anbieterkonfiguration konnte nicht gespeichert werden. Überprüfen Sie die Auswahl vor dem Neustart.</string>
+    <string name="provider_unavailable">Der ausgewählte Anbieter ist nicht verfügbar. Durch einen Neustart kann ein fehlender oder deaktivierter Dienst möglicherweise nicht behoben werden.</string>
+</resources>

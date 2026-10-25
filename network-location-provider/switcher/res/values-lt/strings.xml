@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tinklo vietos teikėjo perjungiklis</string>
+    <string name="explanation">Pasirinkite tinklo vietą ir geografinio kodavimo teikėją, naudojamą po paleidimo iš naujo. Jūsų pasirinkimas nepakeičia GPS ar pačios „Google“ suderintos vietos nustatymo paslaugų.</string>
+    <string name="provider_choice">Teikėjas kitam paleidimui iš naujo</string>
+    <string name="provider_google">Numatytasis (Google)</string>
+    <string name="automatic_detection">Automatinis aptikimas</string>
+    <string name="detection_summary">Pasiūlykite „Baidu NLP“, kai registruotas mobiliojo ryšio tinklas nurodo žemyninę Kiniją. Perjungimui visada reikia patvirtinimo ir paleisti iš naujo. Vien tik „Wi-Fi“ negali nustatyti jūsų šalies.</string>
+    <string name="boot_configuration">Konfigūracija paskutinio paleidimo metu</string>
+    <string name="pending_title">Būtina paleisti iš naujo</string>
+    <string name="reboot_reminder">Iš naujo paleiskite telefoną, kad pritaikytumėte pasirinktą teikėją.</string>
+    <string name="restart_title">Kaip pritaikyti savo pasirinkimą</string>
+    <string name="restart_message">Atidarykite telefono maitinimo meniu ir pasirinkite Paleisti iš naujo. Pasirinktas teikėjas bus sukonfigūruotas kitą kartą paleidžiant.</string>
+    <string name="confirm_title">Keisti tinklo vietos teikėją?</string>
+    <string name="confirm_message">Pasirinkti %1$s kitam paleidimui iš naujo? Teikėjas veiks tol, kol iš naujo paleisite telefoną.</string>
+    <string name="save_selection">Išsaugoti pasirinkimą</string>
+    <string name="cancel">Atšaukti</string>
+    <string name="country_evidence">Paskutinis tinklo stebėjimas</string>
+    <string name="unknown">Nežinoma – nėra registruotų šalies įrodymų</string>
+    <string name="evidence_cn">Registruotas mobiliojo ryšio tinklas: žemyninė Kinija</string>
+    <string name="evidence_other">Registruotas mobiliojo ryšio tinklas: už žemyninės Kinijos ribų</string>
+    <string name="channel_name">Tinklo vietos pasiūlymai</string>
+    <string name="notification_title">Tinklo vietos teikėjas</string>
+    <string name="suggestion">Naudoti „Baidu NLP“ žemyninėje Kinijoje?</string>
+    <string name="review">Apžvalga</string>
+    <string name="not_now">Ne dabar</string>
+    <string name="configuration_failed">Nepavyko išsaugoti teikėjo konfigūracijos. Prieš paleisdami iš naujo patikrinkite pasirinkimą.</string>
+    <string name="provider_unavailable">Pasirinktas teikėjas nepasiekiamas. Paleidus iš naujo gali nepavykti išspręsti trūkstamos arba išjungtos paslaugos.</string>
+</resources>

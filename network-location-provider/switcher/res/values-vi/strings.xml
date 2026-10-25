@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Bộ chuyển đổi nhà cung cấp vị trí mạng</string>
+    <string name="explanation">Chọn vị trí mạng và nhà cung cấp mã hóa địa lý được sử dụng sau khi khởi động lại. Lựa chọn của bạn không thay đổi GPS hoặc các dịch vụ vị trí hợp nhất của Google.</string>
+    <string name="provider_choice">Nhà cung cấp cho lần khởi động lại tiếp theo</string>
+    <string name="provider_google">Mặc định (Google)</string>
+    <string name="automatic_detection">Tự động phát hiện</string>
+    <string name="detection_summary">Đề xuất Baidu NLP khi mạng di động đã đăng ký chỉ ra Trung Quốc đại lục. Việc chuyển đổi luôn cần sự xác nhận của bạn và khởi động lại. Chỉ riêng Wi-Fi không thể xây dựng nên đất nước của bạn.</string>
+    <string name="boot_configuration">Cấu hình ở lần khởi động lại cuối cùng</string>
+    <string name="pending_title">Yêu cầu khởi động lại</string>
+    <string name="reboot_reminder">Khởi động lại điện thoại của bạn để áp dụng nhà cung cấp đã chọn.</string>
+    <string name="restart_title">Cách áp dụng lựa chọn của bạn</string>
+    <string name="restart_message">Mở menu nguồn của điện thoại và chọn Khởi động lại. Nhà cung cấp đã chọn sẽ được cấu hình ở lần khởi động tiếp theo.</string>
+    <string name="confirm_title">Thay đổi nhà cung cấp vị trí mạng?</string>
+    <string name="confirm_message">Chọn %1$s cho lần khởi động lại tiếp theo? Nhà cung cấp đang chạy sẽ tiếp tục cho đến khi bạn khởi động lại điện thoại.</string>
+    <string name="save_selection">Lưu lựa chọn</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="country_evidence">Quan sát mạng lần cuối</string>
+    <string name="unknown">Không rõ - không có bằng chứng quốc gia đã đăng ký</string>
+    <string name="evidence_cn">Mạng di động đã đăng ký: Trung Quốc đại lục</string>
+    <string name="evidence_other">Mạng di động đã đăng ký: bên ngoài Trung Quốc đại lục</string>
+    <string name="channel_name">Đề xuất vị trí mạng</string>
+    <string name="notification_title">Nhà cung cấp vị trí mạng</string>
+    <string name="suggestion">Sử dụng Baidu NLP ở Trung Quốc đại lục?</string>
+    <string name="review">Xem lại</string>
+    <string name="not_now">Không phải bây giờ</string>
+    <string name="configuration_failed">Không thể lưu cấu hình nhà cung cấp. Kiểm tra lựa chọn trước khi khởi động lại.</string>
+    <string name="provider_unavailable">Nhà cung cấp đã chọn không có sẵn. Việc khởi động lại có thể không giải quyết được dịch vụ bị thiếu hoặc bị vô hiệu hóa.</string>
+</resources>

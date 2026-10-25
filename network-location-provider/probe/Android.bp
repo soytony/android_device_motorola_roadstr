@@ -1,0 +1,8 @@
+android_test {
+    name: "NetworkLocationProviderIntegrationTests",
+    srcs: ["src/**/*.java"],
+    platform_apis: true,
+    certificate: "platform",
+    optimize: { enabled: false },
+    test_suites: ["device-tests"],
+}

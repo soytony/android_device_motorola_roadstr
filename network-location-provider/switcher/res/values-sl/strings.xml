@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Preklopnik ponudnika omrežne lokacije</string>
+    <string name="explanation">Izberite omrežno lokacijo in ponudnika geokodiranja, uporabljenega po ponovnem zagonu. Vaša izbira ne spremeni GPS-a ali Googlovih lastnih storitev združene lokacije.</string>
+    <string name="provider_choice">Ponudnik za naslednji ponovni zagon</string>
+    <string name="provider_google">Privzeto (Google)</string>
+    <string name="automatic_detection">Samodejno zaznavanje</string>
+    <string name="detection_summary">Predlagajte Baidu NLP, ko registrirano mobilno omrežje označuje celinsko Kitajsko. Preklop vedno zahteva vašo potrditev in ponovni zagon. Samo Wi-Fi ne more določiti vaše države.</string>
+    <string name="boot_configuration">Konfiguracija ob zadnjem ponovnem zagonu</string>
+    <string name="pending_title">Potreben je ponovni zagon</string>
+    <string name="reboot_reminder">Znova zaženite telefon, da uporabite izbranega ponudnika.</string>
+    <string name="restart_title">Kako uporabiti svojo izbiro</string>
+    <string name="restart_message">Odprite meni za napajanje telefona in izberite Restart. Izbrani ponudnik bo konfiguriran ob naslednjem zagonu.</string>
+    <string name="confirm_title">Spremeniti ponudnika omrežne lokacije?</string>
+    <string name="confirm_message">Želite izbrati %1$s za naslednji ponovni zagon? Ponudnik v teku se bo nadaljeval, dokler znova ne zaženete telefona.</string>
+    <string name="save_selection">Shrani izbor</string>
+    <string name="cancel">Prekliči</string>
+    <string name="country_evidence">Zadnje opazovanje omrežja</string>
+    <string name="unknown">Neznano — ni registriranih dokazov o državi</string>
+    <string name="evidence_cn">Registrirano mobilno omrežje: celinska Kitajska</string>
+    <string name="evidence_other">Registrirano mobilno omrežje: zunaj celinske Kitajske</string>
+    <string name="channel_name">Predlogi za omrežno lokacijo</string>
+    <string name="notification_title">Ponudnik omrežne lokacije</string>
+    <string name="suggestion">Uporabljate Baidu NLP na celinski Kitajski?</string>
+    <string name="review">Pregled</string>
+    <string name="not_now">Ne zdaj</string>
+    <string name="configuration_failed">Konfiguracije ponudnika ni bilo mogoče shraniti. Pred ponovnim zagonom preverite izbiro.</string>
+    <string name="provider_unavailable">Izbrani ponudnik ni na voljo. Ponovni zagon morda ne bo rešil manjkajoče ali onemogočene storitve.</string>
+</resources>

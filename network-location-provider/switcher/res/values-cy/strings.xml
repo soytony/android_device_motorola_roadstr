@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Newidiwr Darparwr Lleoliad Rhwydwaith</string>
+    <string name="explanation">Dewiswch leoliad y rhwydwaith a darparwr geocoding a ddefnyddir ar ôl ailgychwyn. Nid yw eich dewisiad yn newid GPS na gwasanaethau lleoliad cyfun Google ei hun.</string>
+    <string name="provider_choice">Darparwr ar gyfer ailgychwyn nesaf</string>
+    <string name="provider_google">Rhagosodedig (Google)</string>
+    <string name="automatic_detection">Canfod awtomatig</string>
+    <string name="detection_summary">Awgrymu Baidu NLP pan fydd rhwydwaith symudol cofrestredig yn nodi tir mawr Tsieina. Mae newid bob amser angen eich cadarnhad ac ailgychwyn. Ni all Wi-Fi yn unig sefydlu\'ch gwlad.</string>
+    <string name="boot_configuration">Ffurfweddiad o\'r ailgychwyn diwethaf</string>
+    <string name="pending_title">Angen ailgychwyn</string>
+    <string name="reboot_reminder">Ailgychwyn eich ffôn i gymhwyso\'r darparwr a ddewiswyd.</string>
+    <string name="restart_title">Sut i gymhwyso\'ch dewis</string>
+    <string name="restart_message">Agorwch ddewislen pŵer y ffôn a dewis Ailgychwyn. Bydd y darparwr a ddewiswyd yn cael ei ffurfweddu yn y cychwyn nesaf.</string>
+    <string name="confirm_title">Newid darparwr lleoliad rhwydwaith?</string>
+    <string name="confirm_message">Dewiswch %1$s ar gyfer yr ailgychwyn nesaf? Bydd y darparwr rhedeg yn parhau nes i chi ailgychwyn eich ffôn.</string>
+    <string name="save_selection">Cadw dewis</string>
+    <string name="cancel">Canslo</string>
+    <string name="country_evidence">Arsylwad rhwydwaith diwethaf</string>
+    <string name="unknown">Anhysbys — dim tystiolaeth gwlad gofrestredig</string>
+    <string name="evidence_cn">Rhwydwaith symudol cofrestredig: tir mawr Tsieina</string>
+    <string name="evidence_other">Rhwydwaith symudol cofrestredig: y tu allan i dir mawr Tsieina</string>
+    <string name="channel_name">Awgrymiadau lleoliad rhwydwaith</string>
+    <string name="notification_title">Darparwr lleoliad rhwydwaith</string>
+    <string name="suggestion">Defnyddio Baidu NLP ar dir mawr Tsieina?</string>
+    <string name="review">Adolygu</string>
+    <string name="not_now">Ddim nawr</string>
+    <string name="configuration_failed">Methu cadw ffurfweddiad y darparwr. Gwiriwch y dewis cyn ailgychwyn.</string>
+    <string name="provider_unavailable">Nid yw\'r darparwr a ddewiswyd ar gael. Mae\'n bosibl na fydd ailgychwyn yn datrys gwasanaeth coll neu anabl.</string>
+</resources>

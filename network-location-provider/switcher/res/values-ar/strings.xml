@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">محول موفر موقع الشبكة</string>
+    <string name="explanation">اختر موقع الشبكة وموفر الترميز الجغرافي المستخدم بعد إعادة التشغيل. لا يؤدي تحديدك إلى تغيير نظام تحديد المواقع العالمي (GPS) أو خدمات تحديد الموقع المدمجة الخاصة بشركة Google.</string>
+    <string name="provider_choice">مزود لإعادة التشغيل المقبل</string>
+    <string name="provider_google">الافتراضي (جوجل)</string>
+    <string name="automatic_detection">الكشف التلقائي</string>
+    <string name="detection_summary">اقترح Baidu NLP عندما تشير شبكة الهاتف المحمول المسجلة إلى البر الرئيسي للصين. يحتاج التبديل دائمًا إلى تأكيدك وإعادة التشغيل. لا تستطيع شبكة Wi-Fi وحدها إنشاء بلدك.</string>
+    <string name="boot_configuration">التكوين عند إعادة التشغيل الأخير</string>
+    <string name="pending_title">إعادة التشغيل مطلوبة</string>
+    <string name="reboot_reminder">أعد تشغيل هاتفك لتطبيق الموفر المحدد.</string>
+    <string name="restart_title">كيفية تطبيق اختيارك</string>
+    <string name="restart_message">افتح قائمة الطاقة بالهاتف واختر إعادة التشغيل. سيتم تكوين الموفر المحدد عند بدء التشغيل التالي.</string>
+    <string name="confirm_title">هل تريد تغيير مزود موقع الشبكة؟</string>
+    <string name="confirm_message">حدد %1$s لإعادة التشغيل التالية؟ سيستمر موفر التشغيل حتى تقوم بإعادة تشغيل هاتفك.</string>
+    <string name="save_selection">حفظ التحديد</string>
+    <string name="cancel">إلغاء</string>
+    <string name="country_evidence">آخر مراقبة للشبكة</string>
+    <string name="unknown">غير معروف - لا يوجد دليل دولة مسجلة</string>
+    <string name="evidence_cn">شبكة الهاتف المحمول المسجلة: البر الرئيسي للصين</string>
+    <string name="evidence_other">شبكة الهاتف المحمول المسجلة: خارج الصين القارية</string>
+    <string name="channel_name">اقتراحات موقع الشبكة</string>
+    <string name="notification_title">مزود موقع الشبكة</string>
+    <string name="suggestion">هل تستخدم Baidu NLP في الصين القارية؟</string>
+    <string name="review">مراجعة</string>
+    <string name="not_now">ليس الآن</string>
+    <string name="configuration_failed">لا يمكن حفظ تكوين الموفر. تحقق من الاختيار قبل إعادة التشغيل.</string>
+    <string name="provider_unavailable">الموفر المحدد غير متاح. قد لا تؤدي إعادة التشغيل إلى حل خدمة مفقودة أو معطلة.</string>
+</resources>
