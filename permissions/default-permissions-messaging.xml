@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<exceptions>
+    <!-- Keep this runtime grant revocable by the user. -->
+    <exception package="com.google.android.apps.messaging">
+        <permission name="android.permission.READ_PHONE_NUMBERS" fixed="false" />
+    </exception>
+</exceptions>
