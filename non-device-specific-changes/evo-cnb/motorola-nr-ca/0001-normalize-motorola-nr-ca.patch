@@ -1,0 +1,132 @@
+diff --git a/src/java/com/android/internal/telephony/CellularNetworkService.java b/src/java/com/android/internal/telephony/CellularNetworkService.java
+index 39ec1fe7f6..15a155106c 100644
+--- a/src/java/com/android/internal/telephony/CellularNetworkService.java
++++ b/src/java/com/android/internal/telephony/CellularNetworkService.java
+@@ -81,6 +81,9 @@ public class CellularNetworkService extends NetworkService {
+     // From 24.008 6.1.3.0 and 10.5.6.2 the maximum number of PDP Contexts is 16.
+     private static final int MAX_DATA_CALLS = 16;
+ 
++    // Private Motorola extension; keep it out of the standard network-type API.
++    private static final int MOTO_RIL_RADIO_TECHNOLOGY_NR_CA = 30;
++
+     private static final Map<Class<? extends CellIdentity>, List<Integer>> sNetworkTypes;
+ 
+     static {
+@@ -467,7 +470,9 @@ public class CellularNetworkService extends NetworkService {
+                             "RIL Missing Reg Fail Reason", mPhone.getCarrierId());
+             }
+ 
+-            int networkType = ServiceState.rilRadioTechnologyToNetworkType(regResult.rat);
++            final boolean isMotoNrCa = regResult.rat == MOTO_RIL_RADIO_TECHNOLOGY_NR_CA;
++            int networkType = isMotoNrCa ? TelephonyManager.NETWORK_TYPE_NR
++                    : ServiceState.rilRadioTechnologyToNetworkType(regResult.rat);
+             if (networkType == TelephonyManager.NETWORK_TYPE_LTE_CA) {
+                 networkType = TelephonyManager.NETWORK_TYPE_LTE;
+             }
+@@ -550,17 +555,19 @@ public class CellularNetworkService extends NetworkService {
+             }
+ 
+             // build the result based on the domain for the request
++            NetworkRegistrationInfo registrationInfo;
+             switch (domain) {
+                 case NetworkRegistrationInfo.DOMAIN_CS:
+-                    return new NetworkRegistrationInfo(domain, transportType, regState,
++                    registrationInfo = new NetworkRegistrationInfo(domain, transportType, regState,
+                             networkType, reasonForDenial, isEmergencyOnly, availableServices,
+                             cellIdentity, rplmn, cssSupported, roamingIndicator, systemIsInPrl,
+                             defaultRoamingIndicator);
++                    break;
+                 default:
+                     loge("Unknown domain passed to CellularNetworkService= " + domain);
+                     // fall through
+                 case NetworkRegistrationInfo.DOMAIN_PS:
+-                    return new NetworkRegistrationInfo.Builder()
++                    registrationInfo = new NetworkRegistrationInfo.Builder()
+                         .setDomain(domain)
+                         .setTransportType(transportType)
+                         .setRegistrationState(regState)
+@@ -583,7 +590,10 @@ public class CellularNetworkService extends NetworkService {
+                                      .setLteAttachExtraInfo(lteAttachExtraInfo)
+                                      .build())
+                         .build();
++                    break;
+             }
++            registrationInfo.setIsUsingCarrierAggregation(isMotoNrCa);
++            return registrationInfo;
+         }
+ 
+         private @NonNull NetworkRegistrationInfo getNetworkRegistrationInfo1_6(
+diff --git a/tests/telephonytests/src/com/android/internal/telephony/CellularNetworkServiceTest.java b/tests/telephonytests/src/com/android/internal/telephony/CellularNetworkServiceTest.java
+index c970db06ec..b5a52bf417 100644
+--- a/tests/telephonytests/src/com/android/internal/telephony/CellularNetworkServiceTest.java
++++ b/tests/telephonytests/src/com/android/internal/telephony/CellularNetworkServiceTest.java
+@@ -63,6 +63,7 @@ import org.junit.Test;
+ import org.junit.runner.RunWith;
+ import org.junit.runners.Parameterized;
+ import org.junit.runners.Parameterized.Parameters;
++import org.mockito.ArgumentCaptor;
+ 
+ import java.util.ArrayList;
+ import java.util.Arrays;
+@@ -141,6 +142,61 @@ public class CellularNetworkServiceTest extends TelephonyTest {
+         super.tearDown();
+     }
+ 
++    @Test
++    public void testAidlMotoNrCaPreservesAggregation() throws RemoteException {
++        assertAidlRadioTechnology(30, TelephonyManager.NETWORK_TYPE_NR, true);
++    }
++
++    @Test
++    public void testAidlStandardNrDoesNotImplyAggregation() throws RemoteException {
++        assertAidlRadioTechnology(ServiceState.RIL_RADIO_TECHNOLOGY_NR,
++                TelephonyManager.NETWORK_TYPE_NR, false);
++    }
++
++    @Test
++    public void testAidlLteUnchanged() throws RemoteException {
++        assertAidlRadioTechnology(ServiceState.RIL_RADIO_TECHNOLOGY_LTE,
++                TelephonyManager.NETWORK_TYPE_LTE, false);
++    }
++
++    @Test
++    public void testAidlLteCaNormalizationUnchanged() throws RemoteException {
++        assertAidlRadioTechnology(ServiceState.RIL_RADIO_TECHNOLOGY_LTE_CA,
++                TelephonyManager.NETWORK_TYPE_LTE, false);
++    }
++
++    @Test
++    public void testAidlOtherUnknownRatRemainsUnknown() throws RemoteException {
++        assertAidlRadioTechnology(31, TelephonyManager.NETWORK_TYPE_UNKNOWN, false);
++    }
++
++    private void assertAidlRadioTechnology(int rat, int expectedNetworkType,
++            boolean expectedAggregation) throws RemoteException {
++        android.hardware.radio.network.RegStateResult result =
++                new android.hardware.radio.network.RegStateResult();
++        result.regState = NetworkRegistrationInfo.REGISTRATION_STATE_HOME;
++        result.rat = rat;
++        result.cellIdentity = new android.hardware.radio.network.CellIdentity();
++        result.registeredPlmn = "";
++        result.accessTechnologySpecificInfo =
++                android.hardware.radio.network.AccessTechnologySpecificInfo.noinit(false);
++        mSimulatedCommands.setVoiceRegStateResult(result);
++        mSimulatedCommands.setDataRegStateResult(result);
++
++        for (int domain : new int[] {NetworkRegistrationInfo.DOMAIN_CS,
++                NetworkRegistrationInfo.DOMAIN_PS}) {
++            INetworkServiceCallback callback = mock(INetworkServiceCallback.class);
++            ArgumentCaptor<NetworkRegistrationInfo> info =
++                    ArgumentCaptor.forClass(NetworkRegistrationInfo.class);
++            mBinder.requestNetworkRegistrationInfo(0, domain, callback);
++            verify(callback, timeout(1000)).onRequestNetworkRegistrationInfoComplete(
++                    eq(NetworkServiceCallback.RESULT_SUCCESS), info.capture());
++            assertEquals(domain, info.getValue().getDomain());
++            assertEquals(expectedNetworkType, info.getValue().getAccessNetworkTechnology());
++            assertEquals(expectedAggregation, info.getValue().isUsingCarrierAggregation());
++        }
++    }
++
+     @Test
+     @MediumTest
+     public void testGetNetworkRegistrationInfo() {

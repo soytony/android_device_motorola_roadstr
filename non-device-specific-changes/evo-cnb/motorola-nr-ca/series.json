@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "repositories": [
+    {
+      "repo": "frameworks/opt/telephony",
+      "base_commit": "2a7c5f7541a1b286ff967eb67a34c7c984d01458",
+      "patches": [
+        {
+          "file": "0001-normalize-motorola-nr-ca.patch"
+        },
+        {
+          "file": "0002-display-nr-aggregation-as-5g-plus.patch"
+        }
+      ],
+      "result_tree": "ff551c1c3af61fdffd38cfdf5f7bfcee078c0715",
+      "verification": "Sequential cached application in isolated index reproduced the archived NR_CA source snapshot; subsequent shared commit e0cdd3338ff29979c03607f41c46ac7adcc21ad8 also includes modem icon-hint handling"
+    }
+  ]
+}

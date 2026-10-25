@@ -1,5 +1,9 @@
 # Evolution-X cnb / Android 17 series
 
+The later [Motorola NR_CA supplement](motorola-nr-ca/README.md) records
+the AIDL registration compatibility and NR aggregation display patches
+separately from this historical committed snapshot.
+
 This is the authoritative series for the shared working-tree changes captured
 on 2026-10-18. It covers all 16 shared repositories identified in the audit.
 The parent directories retain historical Lineage ports and optional features;

@@ -1,0 +1,118 @@
+diff --git a/src/java/com/android/internal/telephony/NetworkTypeController.java b/src/java/com/android/internal/telephony/NetworkTypeController.java
+index 947a562f41..a919fde63f 100644
+--- a/src/java/com/android/internal/telephony/NetworkTypeController.java
++++ b/src/java/com/android/internal/telephony/NetworkTypeController.java
+@@ -1867,9 +1867,14 @@ public class NetworkTypeController extends StateMachine {
+             return false;
+         }
+ 
+-        // If all above tests passed, then check if the device is using millimeter wave bands or
+-        // carrier designated bands.
+-        return isNrMmwave() || isAdditionalNrAdvancedBand(bands);
++        // NR registration can explicitly report aggregation (e.g. normalized Motorola NR_CA).
++        // Use PS/WWAN registration, not ServiceState's aggregate/forced LTE CA indication.
++        NetworkRegistrationInfo nri = mServiceState.getNetworkRegistrationInfo(
++                NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
++        boolean nrCarrierAggregation = nri != null
++                && nri.getAccessNetworkTechnology() == TelephonyManager.NETWORK_TYPE_NR
++                && nri.isUsingCarrierAggregation();
++        return nrCarrierAggregation || isNrMmwave() || isAdditionalNrAdvancedBand(bands);
+     }
+ 
+     private boolean isNrMmwave() {
+diff --git a/tests/telephonytests/src/com/android/internal/telephony/NetworkTypeControllerTest.java b/tests/telephonytests/src/com/android/internal/telephony/NetworkTypeControllerTest.java
+index e939dcb532..736095a3a7 100644
+--- a/tests/telephonytests/src/com/android/internal/telephony/NetworkTypeControllerTest.java
++++ b/tests/telephonytests/src/com/android/internal/telephony/NetworkTypeControllerTest.java
+@@ -35,6 +35,7 @@ import android.os.IThermalService;
+ import android.os.Looper;
+ import android.os.PersistableBundle;
+ import android.os.PowerManager;
++import android.telephony.AccessNetworkConstants;
+ import android.telephony.CarrierConfigManager;
+ import android.telephony.CellInfo;
+ import android.telephony.NetworkRegistrationInfo;
+@@ -185,6 +186,83 @@ public class NetworkTypeControllerTest extends TelephonyTest {
+                 mNetworkTypeController.getOverrideNetworkType());
+     }
+ 
++    @Test
++    public void testUpdateOverrideNetworkTypeNrSaCarrierAggregation() throws Exception {
++        setNrSaCarrierAggregation();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NR_ADVANCED,
++                mNetworkTypeController.getOverrideNetworkType());
++
++        mNetworkRegistrationInfo.setIsUsingCarrierAggregation(false);
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    @Test
++    public void testNrSaDoesNotUseServiceStateAggregationOverride() throws Exception {
++        setNrSaCarrierAggregation();
++        mNetworkRegistrationInfo.setIsUsingCarrierAggregation(false);
++        doReturn(true).when(mServiceState).isUsingCarrierAggregation();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    @Test
++    public void testLteAggregationDoesNotImplyNrAdvanced() throws Exception {
++        setNrSaCarrierAggregation();
++        mNetworkRegistrationInfo.setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_LTE);
++        doReturn(NetworkRegistrationInfo.NR_STATE_CONNECTED).when(mServiceState).getNrState();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NR_NSA,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    @Test
++    public void testNrSaAggregationRespectsRoamingRestriction() throws Exception {
++        setNrSaCarrierAggregation();
++        mBundle.putBoolean(CarrierConfigManager.KEY_ENABLE_NR_ADVANCED_WHILE_ROAMING_BOOL, false);
++        sendCarrierConfigChanged();
++        doReturn(true).when(mServiceState).getDataRoaming();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    @Test
++    public void testNrSaAggregationRespectsPcoRestriction() throws Exception {
++        setNrSaCarrierAggregation();
++        mBundle.putInt(CarrierConfigManager.KEY_NR_ADVANCED_CAPABLE_PCO_ID_INT, 0xFF03);
++        sendCarrierConfigChanged();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    @Test
++    public void testNrSaAggregationRespectsBandwidthThreshold() throws Exception {
++        setNrSaCarrierAggregation();
++        mBundle.putInt(CarrierConfigManager.KEY_NR_ADVANCED_THRESHOLD_BANDWIDTH_KHZ_INT, 20000);
++        sendCarrierConfigChanged();
++        updateOverrideNetworkType();
++        assertEquals(TelephonyDisplayInfo.OVERRIDE_NETWORK_TYPE_NONE,
++                mNetworkTypeController.getOverrideNetworkType());
++    }
++
++    private void setNrSaCarrierAggregation() {
++        mNetworkRegistrationInfo = new NetworkRegistrationInfo.Builder()
++                .setDomain(NetworkRegistrationInfo.DOMAIN_PS)
++                .setTransportType(AccessNetworkConstants.TRANSPORT_TYPE_WWAN)
++                .setAccessNetworkTechnology(TelephonyManager.NETWORK_TYPE_NR)
++                .setRegistrationState(NetworkRegistrationInfo.REGISTRATION_STATE_HOME)
++                .build();
++        mNetworkRegistrationInfo.setIsUsingCarrierAggregation(true);
++        doReturn(mNetworkRegistrationInfo).when(mServiceState).getNetworkRegistrationInfo(
++                NetworkRegistrationInfo.DOMAIN_PS, AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
++        doReturn(ServiceState.FREQUENCY_RANGE_LOW).when(mServiceState).getNrFrequencyRange();
++    }
++
+     @Test
+     public void testUpdateOverrideNetworkTypeNrSaMmwave() throws Exception {
+         // not NR
