@@ -190,15 +190,6 @@ Sets common product to add `libtinyxml2_vendor` only when
 
 Uses the HAL-owned preview path needed by RoadSTR face enrollment.
 
-### RETAIN: eUICC without GMS
-
-**Source:** `packages/apps/EuiccPolicy`  
-**Original:** `df4707ecbd70b68a1416b64c19ce7978658dcb6c`  
-**Patch:** `packages-apps-EuiccPolicy/0001-euiccpolicy-no-gms-gate.patch`
-
-Allows LPA policy when Google Play services are absent. Apply only for builds
-that ship and use eUICC without GMS.
-
 ### OPTIONAL: Global icon-shape overlay
 
 **Source:** `packages/apps/ThemePicker`

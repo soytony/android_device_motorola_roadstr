@@ -25,7 +25,6 @@ repository, then port the same intent when source context differs.
 - `hardware-qcom-caf-sm8750-display-hal/` composer memory compatibility.
 - `external-tinyxml2/` CFI workaround for the stock-linked library.
 - `packages-apps-Settings/` HAL-owned face enrollment preview.
-- `packages-apps-EuiccPolicy/` LPA without Google Play services.
 - `packages-apps-Launcher3/` custom icon-shape launch animation.
 - `packages-apps-ThemePicker/` global dynamic icon-shape overlay.
 
