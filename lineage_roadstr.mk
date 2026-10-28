@@ -9,9 +9,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 # Inherit AOSP full phone product config
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Keep normal-system ADB authorization-free while boot debugging.
-WITH_ADB_INSECURE := true
-
 # Stock MotCamera5 is bundled for RoadSTR, so do not inherit Lineage Aperture.
 PRODUCT_NO_CAMERA := true
 

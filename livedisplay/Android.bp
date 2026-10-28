@@ -1,0 +1,18 @@
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.roadstr",
+    vendor: true,
+    relative_install_path: "hw",
+    srcs: ["AntiFlicker.cpp"],
+    init_rc: ["vendor.lineage.livedisplay-service.roadstr.rc"],
+    vintf_fragments: ["vendor.lineage.livedisplay-service.roadstr.xml"],
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "liblog",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}

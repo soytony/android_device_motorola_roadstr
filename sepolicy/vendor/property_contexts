@@ -10,3 +10,6 @@ ro.boot.adb_early                        u:object_r:vendor_mot_boot_prop:s0
 ro.boot.secure_hardware                  u:object_r:vendor_mot_boot_prop:s0
 ro.boot.usbcontroller                    u:object_r:vendor_mot_boot_prop:s0
 ro.vendor.boot.cid                       u:object_r:vendor_mot_boot_prop:s0
+
+# Last requested DC mode, restored after panel power-up.
+persist.vendor.roadstr.dc_enabled        u:object_r:vendor_roadstr_dc_prop:s0 exact bool

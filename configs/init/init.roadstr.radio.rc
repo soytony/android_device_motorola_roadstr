@@ -1,0 +1,5 @@
+# RoadSTR uses modern FBE, so vold.decrypt=trigger_restart_framework never fires.
+# Start common Qualcomm radio setup after /data is available; this launches
+# qcrild and qcrild2 for the stock DSDS modem.
+on post-fs-data
+    start qcom-c_main-sh

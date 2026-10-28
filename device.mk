@@ -8,7 +8,7 @@ TARGET_SCREEN_HEIGHT := 2712
 TARGET_SCREEN_WIDTH := 1220
 
 # Screen
-TARGET_SCREEN_DENSITY := 501
+TARGET_SCREEN_DENSITY := 513
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -35,6 +35,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
     $(LOCAL_PATH)/configs/init/init.roadstr.power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.power.rc \
+    $(LOCAL_PATH)/configs/init/init.roadstr.radio.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.radio.rc \
     $(LOCAL_PATH)/configs/seccomp_policy/perfservice.policy:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/seccomp_policy/perfservice.policy
 
 # Inherit from sm7750-common
@@ -76,6 +77,7 @@ PRODUCT_PACKAGES += \
     moto-framework-roadstr-permissions \
     MotoResRoadstr \
     roadstr-udfps-hbm \
+    vendor.lineage.livedisplay-service.roadstr \
     ReFra \
     FrameworksResQcomCommon \
     FrameworksResRoadstr \

@@ -6,6 +6,7 @@
 /data/vendor/tetras_data(/.*)? u:object_r:vendor_biometricsface_data_file:s0
 
 /vendor/bin/roadstr-udfps-hbm          u:object_r:hal_fingerprint_default_exec:s0
+/vendor/bin/hw/vendor\.lineage\.livedisplay-service\.roadstr u:object_r:hal_lineage_livedisplay_roadstr_exec:s0
 
 # Motorola boot scripts need dedicated domains.  Without these labels init
 # executes them directly and inherits their vendor-specific access requests.

@@ -1,0 +1,13 @@
+type hal_lineage_livedisplay_roadstr, domain;
+type hal_lineage_livedisplay_roadstr_exec, exec_type, vendor_file_type, file_type;
+vendor_internal_prop(vendor_roadstr_dc_prop)
+
+init_daemon_domain(hal_lineage_livedisplay_roadstr)
+hal_server_domain(hal_lineage_livedisplay_roadstr, hal_lineage_livedisplay)
+binder_use(hal_lineage_livedisplay_roadstr)
+
+# Read actual DC state; all mode changes go through Motorola's panel HAL.
+r_dir_file(hal_lineage_livedisplay_roadstr, vendor_sysfs_graphics)
+allow hal_lineage_livedisplay_roadstr hal_moto_panel_aidl_service:service_manager find;
+binder_call(hal_lineage_livedisplay_roadstr, hal_moto_panel_default)
+set_prop(hal_lineage_livedisplay_roadstr, vendor_roadstr_dc_prop)

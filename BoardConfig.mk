@@ -5,6 +5,10 @@
 
 include device/motorola/sm7750-common/BoardConfigCommon.mk
 
+# Do not register early ADB on RoadSTR. USB ADB starts only through normal
+# Android authorization after boot. Keep this override device-specific.
+BOARD_BOOTCONFIG := $(filter-out androidboot.adb_early=1,$(BOARD_BOOTCONFIG))
+
 DEVICE_PATH := device/motorola/roadstr
 
 # Locally supplied release signing settings are deliberately optional so that
@@ -15,8 +19,8 @@ DEVICE_PATH := device/motorola/roadstr
 TARGET_BOOTLOADER_BOARD_NAME := roadstr
 
 # Display
-# 1220 px * 160 / 501 dpi = 389.6 dp minimum width.
-TARGET_SCREEN_DENSITY := 501
+# 1220 px * 160 / 513 dpi = 380.5 dp minimum width.
+TARGET_SCREEN_DENSITY := 513
 
 # Fingerprint
 # Stock anc.hal imports ion_close from libdmabufheap. Retain its legacy ION
