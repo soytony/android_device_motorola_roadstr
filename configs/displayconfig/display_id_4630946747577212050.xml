@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stock Motorola SDR/HDR ratio calibration; leave panel HBM disabled. -->
+<displayConfiguration>
+    <highBrightnessMode enabled="false">
+        <transitionPoint>0.988189</transitionPoint>
+        <minimumLux>0</minimumLux>
+        <timing>
+            <timeWindowSecs>86400</timeWindowSecs>
+            <timeMaxSecs>1800</timeMaxSecs>
+            <timeMinSecs>60</timeMinSecs>
+        </timing>
+        <allowInLowPowerMode>false</allowInLowPowerMode>
+        <minimumHdrPercentOfScreen>0.5</minimumHdrPercentOfScreen>
+        <sdrHdrRatioMap>
+            <point><sdrNits>1</sdrNits><hdrRatio>7</hdrRatio></point>
+            <point><sdrNits>2</sdrNits><hdrRatio>7</hdrRatio></point>
+            <point><sdrNits>3</sdrNits><hdrRatio>7</hdrRatio></point>
+            <point><sdrNits>5</sdrNits><hdrRatio>5</hdrRatio></point>
+            <point><sdrNits>10</sdrNits><hdrRatio>3.3</hdrRatio></point>
+            <point><sdrNits>20.017</sdrNits><hdrRatio>2.5</hdrRatio></point>
+            <point><sdrNits>30.34</sdrNits><hdrRatio>2.6</hdrRatio></point>
+            <point><sdrNits>40.152</sdrNits><hdrRatio>2.816</hdrRatio></point>
+            <point><sdrNits>50.369</sdrNits><hdrRatio>3.1</hdrRatio></point>
+            <point><sdrNits>60.586</sdrNits><hdrRatio>3.15</hdrRatio></point>
+            <point><sdrNits>70.803</sdrNits><hdrRatio>3.35</hdrRatio></point>
+            <point><sdrNits>80.02</sdrNits><hdrRatio>3.51</hdrRatio></point>
+            <point><sdrNits>90.237</sdrNits><hdrRatio>3.655</hdrRatio></point>
+            <point><sdrNits>100.455</sdrNits><hdrRatio>3.77</hdrRatio></point>
+            <point><sdrNits>110.672</sdrNits><hdrRatio>3.91</hdrRatio></point>
+            <point><sdrNits>120.889</sdrNits><hdrRatio>4.098</hdrRatio></point>
+            <point><sdrNits>130.106</sdrNits><hdrRatio>4.185</hdrRatio></point>
+            <point><sdrNits>140.106</sdrNits><hdrRatio>4.335</hdrRatio></point>
+            <point><sdrNits>150.106</sdrNits><hdrRatio>4.435</hdrRatio></point>
+            <point><sdrNits>160.106</sdrNits><hdrRatio>4.535</hdrRatio></point>
+            <point><sdrNits>170.323</sdrNits><hdrRatio>4.643</hdrRatio></point>
+            <point><sdrNits>180.323</sdrNits><hdrRatio>4.743</hdrRatio></point>
+            <point><sdrNits>190.54</sdrNits><hdrRatio>4.84</hdrRatio></point>
+            <point><sdrNits>200.54</sdrNits><hdrRatio>5</hdrRatio></point>
+            <point><sdrNits>250.975</sdrNits><hdrRatio>4.4</hdrRatio></point>
+            <point><sdrNits>300.192</sdrNits><hdrRatio>4</hdrRatio></point>
+            <point><sdrNits>350.061</sdrNits><hdrRatio>3.57</hdrRatio></point>
+            <point><sdrNits>400.278</sdrNits><hdrRatio>3.25</hdrRatio></point>
+            <point><sdrNits>450</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>500</sdrNits><hdrRatio>2.78</hdrRatio></point>
+            <point><sdrNits>600</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>700.146</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>800</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>1000</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>1500</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>2000</sdrNits><hdrRatio>3</hdrRatio></point>
+            <point><sdrNits>3000</sdrNits><hdrRatio>3</hdrRatio></point>
+        </sdrHdrRatioMap>
+    </highBrightnessMode>
+</displayConfiguration>

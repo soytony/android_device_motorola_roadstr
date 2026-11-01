@@ -30,6 +30,11 @@ ROADSTR_TFA_CONTAINER := $(LOCAL_PATH)/audio/tfa98xx.cnt
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/init.setupwizardext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.setupwizardext.rc
 
+# Load RoadSTR's stock HDR ratio curve without enabling HBM or replacing the
+# active brightness curve or refresh-rate configuration.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/displayconfig/display_id_4630946747577212050.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/display_id_4630946747577212050.xml
+
 # Select RoadSTR's GPU operating points and LLCC monitor before common
 # inheritance. The common power hints target different hardware resources.
 PRODUCT_COPY_FILES += \
