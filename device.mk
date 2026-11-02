@@ -39,6 +39,7 @@ PRODUCT_COPY_FILES += \
 # inheritance. The common power hints target different hardware resources.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json \
+    $(LOCAL_PATH)/configs/init/init.roadstr.charging.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.charging.rc \
     $(LOCAL_PATH)/configs/init/init.roadstr.power.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.power.rc \
     $(LOCAL_PATH)/configs/init/init.roadstr.radio.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.roadstr.radio.rc \
     $(LOCAL_PATH)/configs/seccomp_policy/perfservice.policy:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/seccomp_policy/perfservice.policy

@@ -1,0 +1,9 @@
+# Copyright (C) 2026 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# The stock driver creates this write-only toggle as root; the Lineage HAL runs
+# as system. Keep the driver's write-only mode instead of exposing a fake read.
+on boot
+    wait /sys/class/power_supply/battery/device/force_charging_disable
+    chown system system /sys/class/power_supply/battery/device/force_charging_disable
+    chmod 0200 /sys/class/power_supply/battery/device/force_charging_disable
