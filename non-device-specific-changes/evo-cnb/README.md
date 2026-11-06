@@ -4,6 +4,10 @@ The later [Motorola NR_CA supplement](motorola-nr-ca/README.md) records
 the AIDL registration compatibility and NR aggregation display patches
 separately from this historical committed snapshot.
 
+The [required predictive-back touch supplement](#required-predictive-back-touch-supplement)
+must also be applied for the validated RoadSTR Android 17 stack. It supersedes
+the initial baseline's deferral; it is not an optional animation feature.
+
 This is the authoritative series for the shared working-tree changes captured
 on 2026-10-18. It covers all 16 shared repositories identified in the audit.
 The parent directories retain historical Lineage ports and optional features;
@@ -298,3 +302,44 @@ and zero HAL deaths. After physical unlock testing the user reported “it
 worked fine.” This is user validation, not a measured long-term failure rate.
 Evidence is recorded in `documents/roadstr-udfps-timing-20261025.md` and
 `documents/roadstr-udfps-capture-context-20261025.md` in the Android checkout.
+
+## Required predictive-back touch supplement
+
+[Trust the cross-activity back scrim](frameworks-base/0004-trust-cross-activity-back-scrim.patch)
+ports historical fix `57a58aeb95756bd2d1f6d293e1ce8f8792a07108` to Android 17.
+It marks only WM Shell's system-owned visual scrim as trusted; global untrusted
+touch protection remains unchanged. **Required / must-have for RoadSTR Evo-cnb**:
+the user reproduced dropped touches after back gestures and confirmed this fix
+resolved them. The initial baseline's deferred status is obsolete.
+
+The mail patch is exported from framework commit
+`a76c7b974f4a0bb75fe07e380b4327338252352b`. The separate manifest
+[`predictive-back-touch.json`](predictive-back-touch.json) records exact base
+`a2976ce97c12942e1c05807cf5e16313f8f8e837` and result tree; the historical
+`series.json` remains unchanged. The supplement excludes the pre-existing
+biometric layout working-tree edit even though the local SystemUI build
+includes it.
+
+From the Android root, with a clean framework checkout at the recorded base:
+
+```sh
+patch="$PWD/device/motorola/roadstr/non-device-specific-changes/evo-cnb/frameworks-base/0004-trust-cross-activity-back-scrim.patch"
+git -C frameworks/base apply --check "$patch"
+git -C frameworks/base am "$patch"
+python3 device/motorola/roadstr/non-device-specific-changes/evo-cnb/verify.py --series predictive-back-touch.json
+```
+
+Do not reapply if the commit or equivalent trusted-overlay call is already
+present. Port deliberately if the base differs. Isolated-index verification
+reproduces the committed result tree without modifying the source or index.
+
+Deployment requires rebuilt `system_ext` and a signed `vbmeta_system` with its
+system_ext descriptor replaced, preserving other descriptors and chain keys.
+Build/flash/runtime status is recorded in
+`documents/roadstr-predictive-back-touch-patch-status-20261106.md`.
+
+The `-j5` build, packaged DEX/APK/signature audit, guarded slot-A flash of
+system_ext/vbmeta_system, and post-boot package/SELinux/SystemUI stability checks
+passed on 2026-11-07. The user then manually tested and reported “it works fine,”
+confirming the reported symptom resolved on this build. No claim of a measured
+long-term fix rate is made.

@@ -3,6 +3,7 @@
 > Evolution-X `cnb`: use the [verified Android 17 series](evo-cnb/README.md)
 > and its `series.json`. The older patches below are historical references;
 > do not apply both sets.
+> Also apply the [required predictive-back touch supplement](evo-cnb/README.md#required-predictive-back-touch-supplement).
 
 Status labels:
 
@@ -10,6 +11,7 @@ Status labels:
 - **OPTIONAL**: feature or panel policy; apply only when device configuration
   needs it.
 - **COMPANION**: shared patch needs a device-tree or product definition.
+- **REQUIRED**: validated correctness fix; must be included in the RoadSTR stack.
 
 ## COMPANION: Configurable minimum refresh-rate default
 
@@ -136,11 +138,21 @@ for the RoadSTR brightness implementation.
 
 Exports the current sensor manager instance used by the device sensor path.
 
-### RETAIN: Predictive-back touch response
+### REQUIRED: Predictive-back touch response
 
 **Source:** `frameworks/base`
 **Original:** `57a58aeb95756bd2d1f6d293e1ce8f8792a07108`
 **Patch:** `frameworks-base/0008-wm-shell-trust-cross-activity-back-scrim.patch`
+
+**Evo-cnb port:** `evo-cnb/frameworks-base/0004-trust-cross-activity-back-scrim.patch`
+**Evo commit:** `a76c7b974f4a0bb75fe07e380b4327338252352b`
+**Verification manifest:** `evo-cnb/predictive-back-touch.json`
+
+Must-have for RoadSTR Evo Android 17, not deferred or optional. The `-j5`
+build, packaged-code/signature audits, system_ext/vbmeta_system flash and boot
+checks passed; the user manually confirmed the touch issue resolved on
+2026-11-07. Keep the historical Lineage patch as reference; apply only the
+matching Android 17 port on Evo.
 
 Marks WM Shell's system-owned cross-activity-back scrim as a trusted overlay.
 The scrim has no input channel, so it must not invalidate the next visible

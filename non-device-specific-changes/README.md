@@ -2,6 +2,8 @@
 
 > Evolution-X `cnb`: use the [verified Android 17 series](evo-cnb/README.md)
 > and its `series.json`, plus the [validated UDFPS timing supplement](evo-cnb/README.md#validated-udfps-timing-supplement).
+> The [required predictive-back touch supplement](evo-cnb/README.md#required-predictive-back-touch-supplement)
+> is a user-validated must-have for RoadSTR Android 17, not a deferred patch.
 > The older patches below are historical references;
 > do not apply both sets.
 

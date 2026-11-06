@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "status": "required",
+  "repositories": [
+    {
+      "repo": "frameworks/base",
+      "base_commit": "a2976ce97c12942e1c05807cf5e16313f8f8e837",
+      "patches": [
+        {
+          "file": "frameworks-base/0004-trust-cross-activity-back-scrim.patch",
+          "commit": "a76c7b974f4a0bb75fe07e380b4327338252352b",
+          "subject": "fix(wm-shell): trust predictive-back scrim"
+        }
+      ],
+      "result_tree": "555a1f1b742f57ad2ac99603204cd862363c2323",
+      "result_commit": "a76c7b974f4a0bb75fe07e380b4327338252352b",
+      "verification": "Required touch-response fix; -j5 build, packaged DEX and signature audits, system_ext/vbmeta_system flash, boot checks and user manual testing passed on 2026-11-07"
+    }
+  ]
+}

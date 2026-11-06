@@ -1,0 +1,27 @@
+From a76c7b974f4a0bb75fe07e380b4327338252352b Mon Sep 17 00:00:00 2001
+From: tonyfan <waterwet@outlook.com>
+Date: Sat, 7 Nov 2026 00:29:43 +0800
+Subject: [PATCH] fix(wm-shell): trust predictive-back scrim
+
+Mark the system-owned cross-activity back scrim as a trusted overlay
+so post-commit animation does not cause underlying touches to be
+rejected. Keep untrusted-touch protection unchanged for other layers.
+
+Port the Lineage fix to Android 17. RoadSTR image build, flash and
+manual touch-response testing passed.
+---
+ .../src/com/android/wm/shell/back/CrossActivityBackAnimation.kt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt b/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
+index c7827b80bd..f290c12d5e 100644
+--- a/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
++++ b/libs/WindowManager/Shell/src/com/android/wm/shell/back/CrossActivityBackAnimation.kt
+@@ -485,5 +485,7 @@ abstract class CrossActivityBackAnimation(
+             .setCrop(scrimLayer!!, scrimCrop)
+             .setTaskAlignedCornerRadius(scrimLayer!!)
+             .setRelativeLayer(scrimLayer!!, closingTarget!!.leash, -1)
++            // This system-owned visual layer must not block touches to the visible activity.
++            .setTrustedOverlay(scrimLayer!!, true)
+             .show(scrimLayer)
+     }
