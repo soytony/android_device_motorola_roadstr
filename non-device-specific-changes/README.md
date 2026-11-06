@@ -4,6 +4,8 @@
 > and its `series.json`, plus the [validated UDFPS timing supplement](evo-cnb/README.md#validated-udfps-timing-supplement).
 > The [required predictive-back touch supplement](evo-cnb/README.md#required-predictive-back-touch-supplement)
 > is a user-validated must-have for RoadSTR Android 17, not a deferred patch.
+> The [optional STK expressive-style supplement](evo-cnb/README.md#optional-stk-expressive-style-supplement)
+> carries the Android 17 port with build, flash and basic UI smoke-test coverage.
 > The older patches below are historical references;
 > do not apply both sets.
 

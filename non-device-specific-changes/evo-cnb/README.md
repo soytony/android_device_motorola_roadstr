@@ -8,6 +8,9 @@ The [required predictive-back touch supplement](#required-predictive-back-touch-
 must also be applied for the validated RoadSTR Android 17 stack. It supersedes
 the initial baseline's deferral; it is not an optional animation feature.
 
+The [optional STK expressive-style supplement](#optional-stk-expressive-style-supplement)
+is separate from that required fix and from the historical series.
+
 This is the authoritative series for the shared working-tree changes captured
 on 2026-10-18. It covers all 16 shared repositories identified in the audit.
 The parent directories retain historical Lineage ports and optional features;
@@ -343,3 +346,55 @@ system_ext/vbmeta_system, and post-boot package/SELinux/SystemUI stability check
 passed on 2026-11-07. The user then manually tested and reported “it works fine,”
 confirming the reported symptom resolved on this build. No claim of a measured
 long-term fix rate is made.
+
+## Optional STK expressive-style supplement
+
+[The Android 17 STK port](packages-apps-Stk/0001-port-settings-expressive-design.patch)
+adapts [Lineage Gerrit 494889, patch set 2](https://review.lineageos.org/c/LineageOS/android_packages_apps_Stk/+/494889),
+`d9d52a1cdd41bb6901a12781403ab371c98c0fa6`, authored by tonyfan. Upstream remains
+unmerged and unapproved. The port adds SettingsLib expressive toolbars and
+dialogs, RecyclerView menus and Material input widgets. It preserves Evo's
+legacy launcher icon instead of undoing the separate icon revert.
+
+Compatibility fixes beyond the proposal preserve pending-response guards for
+button/gesture/toolbar Back, avoid SettingsLib's unconditional legacy Back
+finish, capture Help context positions at menu creation, retain the progress
+action and activity state, and avoid truncating SIM menu labels. Command routing,
+terminal response IDs, timeouts, permissions, package and shared phone UID remain
+unchanged. No framework-wide source change is needed.
+
+**Optional UI feature, not a required hardware patch.** This supersedes the old
+STK entry in OMITTED.md. The exact tested raw diff includes the new toolbar
+progress layout; it is not a mail patch and must not be applied with `git am`.
+[`stk-style.json`](stk-style.json) records the Evo base, upstream provenance,
+patch SHA256 and exact result tree. The STK source changes remain uncommitted;
+no result commit is claimed. Historical `series.json` is unchanged.
+
+From the Android root, with a clean STK checkout at
+`0c7c29561ad125d6553b19f05029a429fac4eaff`:
+
+```sh
+patch="$PWD/device/motorola/roadstr/non-device-specific-changes/evo-cnb/packages-apps-Stk/0001-port-settings-expressive-design.patch"
+git -C packages/apps/Stk apply --check --whitespace=error "$patch"
+git -C packages/apps/Stk apply "$patch"
+python3 device/motorola/roadstr/non-device-specific-changes/evo-cnb/verify.py --series stk-style.json
+```
+
+The verifier uses an isolated index and compares the full result tree. Do not
+reapply to an already styled checkout; port deliberately if the base differs.
+Deployment requires rebuilt `system` and signed `vbmeta_system`, replacing only
+system's descriptor and preserving product/system_ext descriptors and chain keys.
+The validated predictive-back SystemUI/system_ext remains unchanged.
+
+Validation on 2026-11-07 passed: `-j5` system-image build, extracted APK and
+signer audit, AVB verification, guarded system_a/vbmeta_system_a flash, boot,
+SELinux Enforcing, installed APK hash and phone-process stability. UI Automator
+confirmed the expressive toolbar/RecyclerView; button Back reached the parent
+menu and a completed edge Back gesture exited STK. No service item was selected,
+and no purchase, provisioning or manual SIM/network change was exercised.
+
+Still pending: physical appearance/accessibility review, dark mode, multi-SIM
+picker, canceled gestures, Help, input/yes-no dialogs, timeouts, tone and
+open-channel confirmations. These smoke tests do not certify every carrier's
+proactive-command behavior. Evidence and exact build/flash artifacts are recorded
+in `documents/roadstr-stk-style-port-20261107.md` in the source checkout.

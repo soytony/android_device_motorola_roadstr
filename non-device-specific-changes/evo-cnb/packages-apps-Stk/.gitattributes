@@ -1,0 +1,2 @@
+# Preserve diff context; validate source additions with git apply --whitespace=error.
+*.patch -whitespace

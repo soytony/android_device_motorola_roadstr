@@ -225,6 +225,26 @@ shape. Removes transient circular mismatch before `FloatingIconView` applies
 the exact path. Companion to global icon-shape support; retain when custom
 shapes are enabled.
 
+### OPTIONAL: STK Settings expressive design
+
+**Source:** `packages/apps/Stk`
+**Upstream:** [Gerrit 494889, patch set 2](https://review.lineageos.org/c/LineageOS/android_packages_apps_Stk/+/494889)
+**Original:** `d9d52a1cdd41bb6901a12781403ab371c98c0fa6`
+**Evo-cnb patch:** `evo-cnb/packages-apps-Stk/0001-port-settings-expressive-design.patch`
+**Verification manifest:** `evo-cnb/stk-style.json`
+
+Adds SettingsLib expressive toolbars, RecyclerView menus, Material inputs and
+expressive dialogs. The Android 17 port keeps Evo's launcher icon, preserves
+pending-response Back guards, fixes Help context positions and progress-menu
+visibility, and avoids truncating SIM menu labels. This supersedes the earlier
+STK omission, but remains optional styling, not a required RoadSTR hardware fix.
+
+Raw diff: apply with `git apply`, not `git am`; follow the Evo README supplement.
+The five-job build, image/APK/signature audits, system/vbmeta_system flash and
+basic menu/button-back/gesture-back smoke tests passed. The shared phone process
+remained stable. Broader carrier-command, dialog and multi-SIM testing remains
+pending; no STK source commit or user manual acceptance is claimed.
+
 ## COMPANION: Optical capture after HBM readiness
 
 **Source:** `frameworks/base`

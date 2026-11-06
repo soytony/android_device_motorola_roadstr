@@ -6,6 +6,8 @@
 > Include the [required predictive-back touch supplement](evo-cnb/README.md#required-predictive-back-touch-supplement)
 > and verify it with `verify.py --series predictive-back-touch.json`. Its earlier
 > baseline deferral is obsolete after successful RoadSTR build/flash/user testing.
+> For STK styling, follow the [optional STK supplement](evo-cnb/README.md#optional-stk-expressive-style-supplement):
+> use `git apply` (raw diff), then `verify.py --series stk-style.json`.
 
 Run commands from an Android source checkout. Apply each directory to its
 matching repository; do not apply all directories from the top level.

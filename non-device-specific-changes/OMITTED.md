@@ -12,11 +12,17 @@ bootconfig logging, recovery logs, and service-specific logcat instead.
 
 ## Reverted or unrelated
 
-The `frameworks/base` ALS iterations and their reverts, `build/release` ranging
-permission, and `packages/apps/Stk` restyle do not belong in RoadSTR build
-patches. The WM Shell predictive-back scrim fix is retained in this bundle.
+The `frameworks/base` ALS iterations and their reverts and `build/release`
+ranging permission remain omitted. The WM Shell predictive-back scrim fix is
+retained as a required fix in the Evo-cnb supplement.
 
 ## Feature-only
+
+The earlier omission of the STK restyle is superseded: the user requested an
+Android 17 port of Gerrit 494889. The [optional STK expressive-style supplement](evo-cnb/README.md#optional-stk-expressive-style-supplement)
+now carries that port and its compatibility fixes. Build, flash and basic UI
+smoke tests passed; it is not a required hardware fix or a fully certified
+carrier-command implementation. Evo's separate launcher-icon revert is retained.
 
 Assist Button changes across `frameworks/base`, `lineage-sdk`, and
 `packages/apps/LineageParts` are optional product features. Device overlays or

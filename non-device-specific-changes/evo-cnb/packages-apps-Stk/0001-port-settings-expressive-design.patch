@@ -1,0 +1,1167 @@
+diff --git a/Android.bp b/Android.bp
+index f95642d..0d9bcc2 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -9,8 +9,10 @@ android_app {
+     name: "Stk",
+     libs: ["telephony-common"],
+     static_libs: [
++        "SettingsLibCollapsingToolbarBaseActivity",
+         "com.google.android.material_material",
+         "androidx.legacy_legacy-support-core-utils",
++        "androidx.recyclerview_recyclerview",
+     ],
+     srcs: ["**/*.java"],
+     platform_apis: true,
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index d1bd883..7a56b96 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -57,7 +57,8 @@
+         </activity>
+ 
+         <activity android:name="StkLauncherActivity"
+-            android:theme="@android:style/Theme.DeviceDefault.DayNight"
++            android:theme="@style/Theme.Stk"
++            android:enableOnBackInvokedCallback="true"
+             android:label="@string/app_name"
+             android:exported="false"
+             android:autoRemoveFromRecents="true"
+@@ -70,7 +71,8 @@
+         </activity>
+ 
+         <activity android:name="StkMenuActivity"
+-            android:theme="@android:style/Theme.DeviceDefault.DayNight"
++            android:theme="@style/Theme.Stk"
++            android:enableOnBackInvokedCallback="true"
+             android:icon="@drawable/ic_launcher_sim_toolkit"
+             android:label="@string/app_name"
+             android:configChanges="orientation|locale|screenSize|keyboardHidden|mnc|mcc"
+@@ -87,7 +89,8 @@
+         <activity android:name="StkInputActivity"
+             android:label="@string/app_name"
+             android:icon="@drawable/ic_launcher_sim_toolkit"
+-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
++            android:theme="@style/Theme.Stk"
++            android:enableOnBackInvokedCallback="true"
+             android:configChanges="orientation|locale|screenSize|keyboardHidden"
+             android:exported="false"
+             android:autoRemoveFromRecents="true"
+diff --git a/res/layout/stk_input.xml b/res/layout/stk_input.xml
+index 6461ca8..d3fb55f 100644
+--- a/res/layout/stk_input.xml
++++ b/res/layout/stk_input.xml
+@@ -16,40 +16,47 @@
+ 
+ <LinearLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:fitsSystemWindows="true"
+     android:layout_width="match_parent"
+-    android:layout_height="wrap_content"
++    android:layout_height="match_parent"
+     android:orientation="vertical">
+-    <androidx.appcompat.widget.Toolbar
++    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+-       android:layout_height="?attr/actionBarSize"
+-       android:background="?android:attr/colorBackground"
+-       android:elevation="4dp"
+-       android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
++       android:layout_height="64dp"
++       android:background="?attr/colorSurface"
++       android:elevation="0dp"
++       android:minHeight="64dp" />
+     <ImageButton
+         style="@style/Widget.AppCompat.ActionButton.Overflow"
+         android:id="@+id/more"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="48dp"
++        android:layout_height="48dp"
++        android:background="?attr/selectableItemBackgroundBorderless"
++        android:contentDescription="@string/more"
+         android:gravity="center_horizontal"
+         android:layout_gravity="end"
+         android:visibility="gone" />
+     <ScrollView
+         xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="match_parent"
+-        android:layout_height="wrap_content">
++        android:layout_height="0dp"
++        android:layout_weight="1"
++        android:clipToPadding="false"
++        android:fillViewport="true">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+-            android:padding="20dip"
++            android:paddingStart="24dp"
++            android:paddingTop="24dp"
++            android:paddingEnd="24dp"
++            android:paddingBottom="32dp"
+             android:layout_gravity="center_horizontal">
+             <ImageView
+                 android:id="@+id/icon"
+                 android:visibility="gone"
+-                android:layout_width="@android:dimen/notification_large_icon_width"
+-                android:layout_height="@android:dimen/notification_large_icon_height"
++                android:layout_width="72dp"
++                android:layout_height="72dp"
+                 android:adjustViewBounds="true"
+                 android:layout_gravity="center"
+                 android:scaleType="fitCenter"/>
+@@ -58,9 +65,9 @@
+                 android:visibility="gone"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+-                android:textAppearance="?android:attr/textAppearanceMedium"
++                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                 android:textColor="?android:attr/textColorPrimary"
+-                android:paddingBottom="30dip" />
++                android:paddingBottom="24dp" />
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+@@ -71,10 +78,11 @@
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+                     <com.google.android.material.textfield.TextInputLayout
++                        style="@style/Widget.Stk.TextInputLayout"
+                         android:id="@+id/text_input_layout"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+-                        android:layout_marginBottom="16dip"
++                        android:layout_marginBottom="24dp"
+                         android:orientation="vertical">
+                         <com.google.android.material.textfield.TextInputEditText
+                             android:id="@+id/in_text"
+@@ -90,18 +98,18 @@
+                         android:orientation="horizontal">
+                         <Button
+                             android:id="@+id/button_cancel"
+-                            android:layout_height="48dip"
++                            android:layout_height="48dp"
+                             android:layout_width="wrap_content"
+                             android:layout_weight="1"
+                             android:gravity="center_vertical"
+                             android:paddingStart="0dip"
+-                            style="@style/Widget.AppCompat.Button.Borderless.Colored"
++                            style="@style/Widget.Stk.Button.Text"
+                             android:text="@string/button_cancel" />
+                         <Button
+                             android:id="@+id/button_ok"
+-                            android:layout_height="48dip"
++                            android:layout_height="48dp"
+                             android:layout_width="wrap_content"
+-                            style="@style/Widget.AppCompat.Button.Colored"
++                            style="@style/Widget.Stk.Button"
+                             android:text="@string/button_ok" />
+                     </LinearLayout>
+                 </LinearLayout>
+@@ -116,13 +124,13 @@
+                         android:id="@+id/button_no"
+                         android:layout_height="wrap_content"
+                         android:layout_width="wrap_content"
+-                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
++                        style="@style/Widget.Stk.Button.Text"
+                         android:text="@string/button_no" />
+                     <Button
+                         android:id="@+id/button_yes"
+                         android:layout_height="wrap_content"
+                         android:layout_width="wrap_content"
+-                        style="@style/Widget.AppCompat.Button.Colored"
++                        style="@style/Widget.Stk.Button"
+                         android:text="@string/button_yes" />
+                 </LinearLayout>
+             </LinearLayout>
+diff --git a/res/layout/stk_menu_item.xml b/res/layout/stk_menu_item.xml
+index bfddb81..635efe4 100644
+--- a/res/layout/stk_menu_item.xml
++++ b/res/layout/stk_menu_item.xml
+@@ -16,29 +16,29 @@
+ 
+ 
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-	android:layout_width="match_parent"
+-	android:layout_height="match_parent"
+-	android:gravity="center"
+-	android:orientation="horizontal">
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:layout_marginBottom="2dp"
++    android:gravity="center_vertical"
++    android:minHeight="72dp"
++    android:orientation="horizontal"
++    android:paddingStart="32dp"
++    android:paddingEnd="32dp">
+ 
+ 	<ImageView
+-	    android:id="@+id/icon"
++        android:id="@+id/icon"
+         android:scaleType="fitCenter"
+-        android:layout_width="@android:dimen/app_icon_size"
+-        android:layout_height="@android:dimen/app_icon_size"
+-        android:layout_gravity="center_vertical"
+-        android:layout_marginLeft="5dip"
+-    />
++        android:layout_width="40dp"
++        android:layout_height="40dp"
++        android:layout_marginEnd="12dp"
++        android:contentDescription="@null" />
+ 
+ 	<TextView
+-	    android:id="@+id/text"
+-	    android:layout_width="match_parent"
++        android:id="@+id/text"
++        android:layout_width="0dp"
+         android:layout_height="wrap_content"
++        android:layout_weight="1"
+         android:maxLength="234"
+-        android:minHeight="?android:attr/listPreferredItemHeight"
+-	    android:textAppearance="?android:attr/textAppearanceLarge"
+-	    android:gravity="center_vertical"
+-	    android:layout_marginLeft="9dip"
+-	/>
++        android:textAppearance="@style/TextAppearance.SettingsLib.PreferenceTitle" />
+ 
+ </LinearLayout>
+diff --git a/res/layout/stk_menu_list.xml b/res/layout/stk_menu_list.xml
+index 45e894d..1d0a736 100755
+--- a/res/layout/stk_menu_list.xml
++++ b/res/layout/stk_menu_list.xml
+@@ -15,23 +15,28 @@
+ -->
+ 
+ 
+- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+- 	android:layout_width="match_parent"
+-    android:layout_height="wrap_content"
+-    android:orientation="vertical" >
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
+ 
+-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@android:id/list"
+         android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:orientation="vertical">
+-
+-	    <ListView android:id="@android:id/list"
+-	        android:layout_width="match_parent"
+-	        android:layout_height="match_parent" />
+-
+-	    <TextView android:id="@android:id/empty"
+-	         android:layout_width="match_parent"
+-	         android:layout_height="match_parent"
+-	         android:textSize="12sp" />
+-    </LinearLayout>
+-</LinearLayout>
++        android:layout_height="match_parent"
++        android:clipToPadding="false"
++        android:nestedScrollingEnabled="true"
++        android:paddingTop="8dp"
++        android:paddingBottom="16dp"
++        android:scrollbarStyle="outsideOverlay" />
++
++    <TextView
++        android:id="@android:id/empty"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:gravity="center"
++        android:padding="24dp"
++        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
++        android:textColor="?android:attr/textColorSecondary"
++        android:visibility="gone" />
++
++</FrameLayout>
+diff --git a/res/layout/stk_msg_dialog.xml b/res/layout/stk_msg_dialog.xml
+index 8f0c23c..69aa017 100755
+--- a/res/layout/stk_msg_dialog.xml
++++ b/res/layout/stk_msg_dialog.xml
+@@ -18,29 +18,30 @@
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+-    android:orientation="vertical">
++    android:orientation="vertical"
++    android:paddingStart="24dp"
++    android:paddingEnd="24dp">
+ 
+     <ImageView
+         android:id="@+id/icon"
+-        android:layout_width="@android:dimen/notification_large_icon_width"
+-        android:layout_height="@android:dimen/notification_large_icon_height"
++        android:layout_width="64dp"
++        android:layout_height="64dp"
+         android:adjustViewBounds="true"
+         android:layout_gravity="center"
+-        android:paddingTop="10dip"
++        android:layout_marginTop="8dp"
+         android:scaleType="fitCenter"/>
+ 
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:paddingTop="2dip"
+-        android:paddingBottom="12dip"
+-        android:paddingStart="14dip"
+-        android:paddingEnd="10dip">
++        android:paddingTop="16dp"
++        android:paddingBottom="8dp">
+         <TextView android:id="@+id/message"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+-            android:padding="5dip"
+-            android:textAppearance="?android:attr/textAppearanceMedium"/>
++            android:textAppearance="@style/TextAppearance.SettingsLib.BodyLarge"
++            android:textIsSelectable="true"
++            android:textColor="@color/settingslib_materialColorOnSurfaceVariant"/>
+     </ScrollView>
+ 
+-</LinearLayout>
+\ No newline at end of file
++</LinearLayout>
+diff --git a/res/layout/stk_tone_dialog.xml b/res/layout/stk_tone_dialog.xml
+index 391ef1a..6e8d16e 100644
+--- a/res/layout/stk_tone_dialog.xml
++++ b/res/layout/stk_tone_dialog.xml
+@@ -22,12 +22,15 @@
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:orientation="vertical"
+-    android:padding="14dip">
++    android:paddingStart="24dp"
++    android:paddingTop="16dp"
++    android:paddingEnd="24dp"
++    android:paddingBottom="24dp">
+ 
+     <ImageView
+         android:id="@+id/icon"
+         android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
++        android:layout_height="64dp"
+         android:scaleType="fitCenter"
+         android:gravity="center" />
+ 
+@@ -35,10 +38,10 @@
+         android:id="@+id/message"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:layout_marginTop="14dip"
++        android:layout_marginTop="16dp"
+         android:gravity="center"
+-        android:textAppearance="?android:attr/textAppearanceMedium" />
++        android:textAppearance="@style/TextAppearance.SettingsLib.BodyLarge"
++        android:textIsSelectable="true"
++        android:textColor="@color/settingslib_materialColorOnSurfaceVariant" />
+ 
+ </LinearLayout>
+-
+-
+diff --git a/res/values/strings.xml b/res/values/strings.xml
+index 3e62a6e..0d7d1c4 100644
+--- a/res/values/strings.xml
++++ b/res/values/strings.xml
+@@ -23,6 +23,9 @@
+     <string name="help">Help</string>
+     <!-- Menu button option to navigate back to the previous screen -->
+     <string name="menu_back">Back</string>
++    <string name="more">More options</string>
++    <!-- Accessibility label for the toolbar progress indicator -->
++    <string name="loading">Loading</string>
+     <!-- Settings entry which describes the current SIM Toolkit service on the device -->
+     <string name="service_name">Service name</string>
+     <!-- Default description for service_name when no STK service is available -->
+diff --git a/res/values/styles.xml b/res/values/styles.xml
+index 7d43798..5b9f178 100644
+--- a/res/values/styles.xml
++++ b/res/values/styles.xml
+@@ -15,13 +15,35 @@
+ -->
+ 
+ <resources>
+-    <style name="Transparent" parent="@android:style/Theme.DeviceDefault.DayNight">
++    <style name="Theme.Stk" parent="Theme.Material3.DynamicColors.DayNight">
++        <item name="android:fontFamily">sans</item>
++        <item name="windowActionBar">false</item>
++        <item name="windowNoTitle">true</item>
++        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
++        <item name="android:statusBarColor">@android:color/transparent</item>
++        <item name="android:navigationBarColor">@android:color/transparent</item>
++        <item name="windowActionModeOverlay">true</item>
++        <item name="colorSurface">?android:attr/colorBackground</item>
++        <item name="alertDialogTheme">@style/Theme.AlertDialog.SettingsLib.Expressive</item>
++        <item name="android:alertDialogTheme">@style/Theme.DeviceDefault.AlertDialog.SettingsLib.Expressive</item>
++        <item name="materialAlertDialogTheme">@style/Theme.AlertDialog.SettingsLib.Expressive</item>
++    </style>
++
++    <style name="Transparent" parent="Theme.Stk">
+         <item name="android:windowIsTranslucent">true</item>
+         <item name="android:windowBackground">@android:color/transparent</item>
+         <item name="android:windowContentOverlay">@null</item>
+         <item name="android:windowNoTitle">true</item>
+         <item name="android:windowIsFloating">true</item>
+         <item name="android:backgroundDimEnabled">true</item>
++        <item name="android:backgroundDimAmount">0.32</item>
+         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+     </style>
++
++    <style name="Widget.Stk.TextInputLayout"
++        parent="Widget.Material3.TextInputLayout.FilledBox" />
++
++    <style name="Widget.Stk.Button" parent="Widget.Material3.Button" />
++
++    <style name="Widget.Stk.Button.Text" parent="Widget.Material3.Button.TextButton" />
+ </resources>
+diff --git a/src/com/android/stk/StkAppService.java b/src/com/android/stk/StkAppService.java
+index 4d26fa6..2f80bfd 100644
+--- a/src/com/android/stk/StkAppService.java
++++ b/src/com/android/stk/StkAppService.java
+@@ -23,7 +23,6 @@ import static com.android.internal.telephony.cat.CatCmdMessage.SetupEventListCon
+ import android.app.Activity;
+ import android.app.ActivityManager;
+ import android.app.ActivityManager.RunningTaskInfo;
+-import android.app.AlertDialog;
+ import android.app.HomeVisibilityListener;
+ import android.app.KeyguardManager;
+ import android.app.Notification;
+@@ -69,6 +68,8 @@ import android.widget.ImageView;
+ import android.widget.TextView;
+ import android.widget.Toast;
+ 
++import androidx.appcompat.app.AlertDialog;
++
+ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+ 
+ import com.android.internal.telephony.GsmAlphabet;
+@@ -2341,7 +2342,8 @@ public class StkAppService extends Service implements Runnable {
+             msg.text = getResources().getString(R.string.default_open_channel_msg);
+         }
+ 
+-        mAlertDialog = new AlertDialog.Builder(mContext)
++        mAlertDialog = new AlertDialog.Builder(mContext,
++                    R.style.Theme_AlertDialog_SettingsLib_Expressive)
+                     .setIconAttribute(android.R.attr.alertDialogIcon)
+                     .setTitle(msg.title)
+                     .setMessage(msg.text)
+@@ -2384,7 +2386,8 @@ public class StkAppService extends Service implements Runnable {
+ 
+         msg.title = getResources().getString(R.string.stk_dialog_title);
+ 
+-        final AlertDialog dialog = new AlertDialog.Builder(mContext)
++        final AlertDialog dialog = new AlertDialog.Builder(mContext,
++                    R.style.Theme_AlertDialog_SettingsLib_Expressive)
+                     .setIconAttribute(android.R.attr.alertDialogIcon)
+                     .setTitle(msg.title)
+                     .setMessage(msg.text)
+diff --git a/src/com/android/stk/StkDialogActivity.java b/src/com/android/stk/StkDialogActivity.java
+index 4c937d9..eb8e058 100644
+--- a/src/com/android/stk/StkDialogActivity.java
++++ b/src/com/android/stk/StkDialogActivity.java
+@@ -18,7 +18,6 @@ package com.android.stk;
+ 
+ import android.app.Activity;
+ import android.app.AlarmManager;
+-import android.app.AlertDialog;
+ import android.content.Context;
+ import android.content.DialogInterface;
+ import android.content.Intent;
+@@ -31,6 +30,8 @@ import android.view.View;
+ import android.widget.ImageView;
+ import android.widget.TextView;
+ 
++import androidx.appcompat.app.AlertDialog;
++
+ import com.android.internal.telephony.cat.CatLog;
+ import com.android.internal.telephony.cat.TextMessage;
+ import com.android.internal.telephony.util.TelephonyUtils;
+@@ -78,7 +79,8 @@ public class StkDialogActivity extends Activity {
+         // New Dialog is created - set to no response sent
+         mIsResponseSent = false;
+ 
+-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
++        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,
++                R.style.Theme_AlertDialog_SettingsLib_Expressive);
+ 
+         alertDialogBuilder.setPositiveButton(R.string.button_ok, new
+                 DialogInterface.OnClickListener() {
+diff --git a/src/com/android/stk/StkInputActivity.java b/src/com/android/stk/StkInputActivity.java
+index 1cb6cae..970b70a 100644
+--- a/src/com/android/stk/StkInputActivity.java
++++ b/src/com/android/stk/StkInputActivity.java
+@@ -164,7 +164,14 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
+         // Set the layout for this activity.
+         setContentView(R.layout.stk_input);
+         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+-
++        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
++        getOnBackPressedDispatcher().addCallback(this,
++                new androidx.activity.OnBackPressedCallback(true) {
++                    @Override
++                    public void handleOnBackPressed() {
++                        handleBackNavigation();
++                    }
++                });
+         if (getResources().getBoolean(R.bool.show_menu_title_only_on_menu)) {
+             getSupportActionBar().hide();
+ 
+@@ -269,7 +276,7 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
+         switch (keyCode) {
+         case KeyEvent.KEYCODE_BACK:
+             CatLog.d(LOG_TAG, "onKeyDown - KEYCODE_BACK");
+-            sendResponse(StkAppService.RES_ID_BACKWARD, null, false);
++            handleBackNavigation();
+             return true;
+         }
+         return super.onKeyDown(keyCode, event);
+@@ -334,12 +341,22 @@ public class StkInputActivity extends AppCompatActivity implements View.OnClickL
+ 
+     @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
++        if (item.getItemId() == android.R.id.home) {
++            handleBackNavigation();
++            return true;
++        }
+         if (optionsItemSelectedInternal(item)) {
+             return true;
+         }
+         return super.onOptionsItemSelected(item);
+     }
+ 
++    private void handleBackNavigation() {
++        if (!mIsResponseSent) {
++            sendResponse(StkAppService.RES_ID_BACKWARD, null, false);
++        }
++    }
++
+     private boolean optionsItemSelectedInternal(MenuItem item) {
+         if (mIsResponseSent) {
+             CatLog.d(LOG_TAG, "Already responded");
+diff --git a/src/com/android/stk/StkLauncherActivity.java b/src/com/android/stk/StkLauncherActivity.java
+index 3ee1869..e8c3d65 100644
+--- a/src/com/android/stk/StkLauncherActivity.java
++++ b/src/com/android/stk/StkLauncherActivity.java
+@@ -16,17 +16,10 @@
+ 
+ package com.android.stk;
+ 
+-import android.app.ActionBar;
+-import android.app.ListActivity;
+ import android.content.Context;
+ import android.content.Intent;
+ import android.os.Bundle;
+-import android.view.View;
+-import android.view.KeyEvent;
+ import android.view.WindowManager;
+-import android.widget.ImageView;
+-import android.widget.ListView;
+-import android.widget.TextView;
+ import android.graphics.Bitmap;
+ import android.graphics.BitmapFactory;
+ 
+@@ -38,14 +31,18 @@ import android.telephony.TelephonyManager;
+ 
+ import java.util.ArrayList;
+ 
++import androidx.activity.OnBackPressedCallback;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.android.settingslib.collapsingtoolbar.CollapsingToolbarAppCompatActivity;
++
+ /**
+  * Launcher class. Serve as the app's MAIN activity, send an intent to the
+  * StkAppService and finish.
+  *
+  */
+-public class StkLauncherActivity extends ListActivity {
+-    private TextView mTitleTextView = null;
+-    private ImageView mTitleIconView = null;
++public class StkLauncherActivity extends CollapsingToolbarAppCompatActivity {
+     private static final String LOG_TAG = StkLauncherActivity.class.getSimpleName();
+     private ArrayList<Item> mStkMenuList = null;
+     private int mSingleSimId = -1;
+@@ -53,11 +50,11 @@ public class StkLauncherActivity extends ListActivity {
+     private TelephonyManager mTm = null;
+     private Bitmap mBitMap = null;
+     private boolean mAcceptUsersInput = true;
++    private RecyclerView mListView;
+ 
+     @Override
+     public void onCreate(Bundle icicle) {
+         super.onCreate(icicle);
+-        StkApp.setupEdgeToEdge(this);
+         getWindow().addSystemFlags(
+                 WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+         CatLog.d(LOG_TAG, "onCreate+");
+@@ -65,14 +62,20 @@ public class StkLauncherActivity extends ListActivity {
+         mTm = (TelephonyManager) mContext.getSystemService(
+                 Context.TELEPHONY_SERVICE);
+ 
+-        ActionBar actionBar = getActionBar();
+-        actionBar.setCustomView(R.layout.stk_title);
+-        actionBar.setDisplayShowCustomEnabled(true);
+-
+         setContentView(R.layout.stk_menu_list);
+-        mTitleTextView = (TextView) findViewById(R.id.title_text);
+-        mTitleIconView = (ImageView) findViewById(R.id.title_icon);
+-        mTitleTextView.setText(R.string.app_name);
++        setTitle(R.string.app_name);
++        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
++        if (getAppBarLayout() != null) {
++            getAppBarLayout().setExpanded(false, false);
++        }
++        mListView = findViewById(android.R.id.list);
++        mListView.setLayoutManager(new LinearLayoutManager(this));
++        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
++            @Override
++            public void handleOnBackPressed() {
++                handleBackNavigation();
++            }
++        });
+         mBitMap = BitmapFactory.decodeResource(getResources(),
+                 R.drawable.ic_launcher_sim_toolkit);
+     }
+@@ -82,9 +85,7 @@ public class StkLauncherActivity extends ListActivity {
+         super.onNewIntent(intent);
+     }
+ 
+-    @Override
+-    protected void onListItemClick(ListView l, View v, int position, long id) {
+-        super.onListItemClick(l, v, position, id);
++    protected void onListItemClick(int position) {
+         if (!mAcceptUsersInput) {
+             CatLog.d(LOG_TAG, "mAcceptUsersInput:false");
+             return;
+@@ -103,19 +104,22 @@ public class StkLauncherActivity extends ListActivity {
+     }
+ 
+     @Override
+-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+-        CatLog.d(LOG_TAG, "mAcceptUsersInput: " + mAcceptUsersInput);
++    public boolean onSupportNavigateUp() {
++        handleBackNavigation();
++        return true;
++    }
++
++    @Override
++    public void onBackPressed() {
++        handleBackNavigation();
++    }
++
++    private void handleBackNavigation() {
+         if (!mAcceptUsersInput) {
+-            return true;
+-        }
+-        switch (keyCode) {
+-            case KeyEvent.KEYCODE_BACK:
+-                CatLog.d(LOG_TAG, "KEYCODE_BACK.");
+-                mAcceptUsersInput = false;
+-                finish();
+-                return true;
++            return;
+         }
+-        return super.onKeyDown(keyCode, event);
++        mAcceptUsersInput = false;
++        finish();
+     }
+ 
+     @Override
+@@ -208,9 +212,9 @@ public class StkLauncherActivity extends ListActivity {
+         if (mStkMenuList != null && mStkMenuList.size() > 0) {
+             if (mStkMenuList.size() > 1) {
+                 StkMenuAdapter adapter = new StkMenuAdapter(this,
+-                        mStkMenuList, false);
++                        mStkMenuList, false, this::onListItemClick, null, null);
+                 // Bind menu list to the new adapter.
+-                this.setListAdapter(adapter);
++                mListView.setAdapter(adapter);
+             }
+             return mStkMenuList.size();
+         } else {
+diff --git a/src/com/android/stk/StkMenuActivity.java b/src/com/android/stk/StkMenuActivity.java
+index ad18bb7..c8dd16c 100644
+--- a/src/com/android/stk/StkMenuActivity.java
++++ b/src/com/android/stk/StkMenuActivity.java
+@@ -16,50 +16,53 @@
+ 
+ package com.android.stk;
+ 
+-import android.app.ActionBar;
+ import android.app.AlarmManager;
+-import android.app.ListActivity;
+ import android.content.BroadcastReceiver;
+ import android.content.Context;
+ import android.content.Intent;
+ import android.content.IntentFilter;
++import android.graphics.drawable.BitmapDrawable;
+ import android.os.Bundle;
+ import android.os.SystemClock;
+ import android.telephony.SubscriptionManager;
+ import android.view.ContextMenu;
+ import android.view.ContextMenu.ContextMenuInfo;
+-import android.view.KeyEvent;
+ import android.view.MenuItem;
+ import android.view.View;
+ import android.view.WindowManager;
+-import android.widget.AdapterView;
+-import android.widget.ImageView;
+-import android.widget.ListView;
+ import android.widget.ProgressBar;
+-import android.widget.TextView;
+ 
++import androidx.activity.OnBackPressedCallback;
++import androidx.appcompat.widget.Toolbar;
+ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
++import androidx.recyclerview.widget.LinearLayoutManager;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.android.settingslib.collapsingtoolbar.CollapsingToolbarAppCompatActivity;
+ 
+ import com.android.internal.telephony.cat.CatLog;
+ import com.android.internal.telephony.cat.Item;
+ import com.android.internal.telephony.cat.Menu;
+ 
+ /**
+- * ListActivity used for displaying STK menus. These can be SET UP MENU and
++ * Activity used for displaying STK menus. These can be SET UP MENU and
+  * SELECT ITEM menus. This activity is started multiple times with different
+  * menu content.
+  *
+  */
+-public class StkMenuActivity extends ListActivity implements View.OnCreateContextMenuListener {
++public class StkMenuActivity extends CollapsingToolbarAppCompatActivity implements
++        View.OnCreateContextMenuListener {
+     private Menu mStkMenu = null;
+     private int mState = STATE_MAIN;
+     private boolean mAcceptUsersInput = true;
+     private int mSlotId = -1;
+     private boolean mIsResponseSent = false;
+ 
+-    private TextView mTitleTextView = null;
+-    private ImageView mTitleIconView = null;
+     private ProgressBar mProgressView = null;
++    private MenuItem mProgressItem;
++    private boolean mProgressVisible;
++    private RecyclerView mListView;
++    private int mContextMenuPosition = RecyclerView.NO_POSITION;
+ 
+     private static final String LOG_TAG = StkMenuActivity.class.getSimpleName();
+ 
+@@ -89,18 +92,13 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+                 WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
+         CatLog.d(LOG_TAG, "onCreate");
+ 
+-        ActionBar actionBar = getActionBar();
+-        actionBar.setCustomView(R.layout.stk_title);
+-        actionBar.setDisplayShowCustomEnabled(true);
+-
+-        StkApp.setupEdgeToEdge(this);
+         // Set the layout for this activity.
+         setContentView(R.layout.stk_menu_list);
+-        mTitleTextView = (TextView) findViewById(R.id.title_text);
+-        mTitleIconView = (ImageView) findViewById(R.id.title_icon);
+-        mProgressView = (ProgressBar) findViewById(R.id.progress_bar);
+-        getListView().setOnCreateContextMenuListener(this);
+-
++        mListView = findViewById(android.R.id.list);
++        mListView.setLayoutManager(new LinearLayoutManager(this));
++        if (getAppBarLayout() != null) {
++            getAppBarLayout().setExpanded(false, false);
++        }
+         // appService can be null if this activity is automatically recreated by the system
+         // with the saved instance state right after the phone process is killed.
+         if (appService == null) {
+@@ -112,6 +110,13 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+         LocalBroadcastManager.getInstance(this).registerReceiver(mLocalBroadcastReceiver,
+                 new IntentFilter(StkAppService.SESSION_ENDED));
+         initFromIntent(getIntent());
++        getSupportActionBar().setDisplayHomeAsUpEnabled(mState == STATE_SECONDARY);
++        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
++            @Override
++            public void handleOnBackPressed() {
++                handleBackNavigation();
++            }
++        });
+         if (!SubscriptionManager.isValidSlotIndex(mSlotId)) {
+             finish();
+             return;
+@@ -121,10 +126,7 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+         }
+     }
+ 
+-    @Override
+-    protected void onListItemClick(ListView l, View v, int position, long id) {
+-        super.onListItemClick(l, v, position, id);
+-
++    protected void onListItemClick(int position) {
+         if (!mAcceptUsersInput) {
+             CatLog.d(LOG_TAG, "mAcceptUsersInput:false");
+             return;
+@@ -142,28 +144,26 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+     }
+ 
+     @Override
+-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+-        CatLog.d(LOG_TAG, "mAcceptUsersInput: " + mAcceptUsersInput);
++    public boolean onSupportNavigateUp() {
++        handleBackNavigation();
++        return true;
++    }
++
++    @Override
++    public void onBackPressed() {
++        // The SettingsLib base otherwise finishes even while a SIM response is pending.
++        handleBackNavigation();
++    }
++
++    private void handleBackNavigation() {
+         if (!mAcceptUsersInput) {
+-            return true;
++            return;
+         }
+-
+-        switch (keyCode) {
+-        case KeyEvent.KEYCODE_BACK:
+-            CatLog.d(LOG_TAG, "KEYCODE_BACK - mState[" + mState + "]");
+-            switch (mState) {
+-            case STATE_SECONDARY:
+-                CatLog.d(LOG_TAG, "STATE_SECONDARY");
+-                sendResponse(StkAppService.RES_ID_BACKWARD);
+-                return true;
+-            case STATE_MAIN:
+-                CatLog.d(LOG_TAG, "STATE_MAIN");
+-                finish();
+-                return true;
+-            }
+-            break;
++        if (mState == STATE_SECONDARY) {
++            sendResponse(StkAppService.RES_ID_BACKWARD);
++        } else {
++            finish();
+         }
+-        return super.onKeyDown(keyCode, event);
+     }
+ 
+     @Override
+@@ -223,7 +223,6 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+ 
+     @Override
+     public void onDestroy() {
+-        getListView().setOnCreateContextMenuListener(null);
+         super.onDestroy();
+         CatLog.d(LOG_TAG, "onDestroy" + ", " + mState);
+         if (appService == null || !SubscriptionManager.isValidSlotIndex(mSlotId)) {
+@@ -246,6 +245,11 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+     @Override
+     public boolean onCreateOptionsMenu(android.view.Menu menu) {
+         super.onCreateOptionsMenu(menu);
++        mProgressItem = menu.add(0, android.view.Menu.NONE, 0, R.string.loading);
++        mProgressItem.setActionView(R.layout.stk_toolbar_progress);
++        mProgressItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
++        mProgressItem.setVisible(mProgressVisible);
++        mProgressView = mProgressItem.getActionView().findViewById(R.id.progress_bar);
+         menu.add(0, StkApp.MENU_ID_END_SESSION, 1, R.string.menu_end_session);
+         return true;
+     }
+@@ -261,7 +265,7 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+ 
+         menu.findItem(StkApp.MENU_ID_END_SESSION).setVisible(mainVisible);
+ 
+-        return mainVisible;
++        return true;
+     }
+ 
+     @Override
+@@ -297,15 +301,15 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+ 
+     @Override
+     public boolean onContextItemSelected(MenuItem item) {
+-        AdapterView.AdapterContextMenuInfo info;
+-        try {
+-            info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+-        } catch (ClassCastException e) {
+-            return false;
++        if (!mAcceptUsersInput) {
++            return true;
+         }
+         switch (item.getItemId()) {
+             case CONTEXT_MENU_HELP:
+-                int position = info.position;
++                int position = mContextMenuPosition;
++                if (position == RecyclerView.NO_POSITION) {
++                    return false;
++                }
+                 CatLog.d(LOG_TAG, "Position:" + position);
+                 Item stkItem = getSelectedItem(position);
+                 if (stkItem != null) {
+@@ -321,6 +325,7 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+ 
+     @Override
+     protected void onSaveInstanceState(Bundle outState) {
++        super.onSaveInstanceState(outState);
+         CatLog.d(LOG_TAG, "onSaveInstanceState: " + mSlotId);
+         outState.putInt(STATE_KEY, mState);
+         outState.putBoolean(ACCEPT_USERS_INPUT_KEY, mAcceptUsersInput);
+@@ -379,37 +384,49 @@ public class StkMenuActivity extends ListActivity implements View.OnCreateContex
+ 
+         if (mStkMenu != null) {
+             String title = mStkMenu.title == null ? getString(R.string.app_name) : mStkMenu.title;
+-            // Display title & title icon
++            Toolbar toolbar = findViewById(R.id.support_action_bar);
+             if (mStkMenu.titleIcon != null) {
+-                mTitleIconView.setImageBitmap(mStkMenu.titleIcon);
+-                mTitleIconView.setVisibility(View.VISIBLE);
+-                mTitleTextView.setVisibility(View.INVISIBLE);
++                toolbar.setLogo(new BitmapDrawable(getResources(), mStkMenu.titleIcon));
++                toolbar.setLogoDescription(title);
+                 if (!mStkMenu.titleIconSelfExplanatory) {
+-                    mTitleTextView.setText(title);
+-                    mTitleTextView.setVisibility(View.VISIBLE);
++                    setTitle(title);
++                } else {
++                    setTitle("");
+                 }
+             } else {
+-                mTitleIconView.setVisibility(View.GONE);
+-                mTitleTextView.setVisibility(View.VISIBLE);
+-                mTitleTextView.setText(title);
++                toolbar.setLogo(null);
++                toolbar.setLogoDescription(null);
++                setTitle(title);
+             }
++            int defaultItem = mStkMenu.defaultItem >= 0
++                    && mStkMenu.defaultItem < mStkMenu.items.size()
++                    ? mStkMenu.defaultItem : RecyclerView.NO_POSITION;
+             // create an array adapter for the menu list
+             StkMenuAdapter adapter = new StkMenuAdapter(this,
+-                    mStkMenu.items, mStkMenu.itemsIconSelfExplanatory);
++                    mStkMenu.items, mStkMenu.itemsIconSelfExplanatory,
++                    this::onListItemClick, position -> mContextMenuPosition = position,
++                    this);
+             // Bind menu list to the new adapter.
+-            setListAdapter(adapter);
++            mListView.setAdapter(adapter);
+             // Set default item
+-            setSelection(mStkMenu.defaultItem);
++            if (defaultItem != RecyclerView.NO_POSITION) {
++                mListView.scrollToPosition(defaultItem);
++            }
+         }
+     }
+ 
+     private void showProgressBar(boolean show) {
++        mProgressVisible = show;
++        if (mProgressItem != null) {
++            mProgressItem.setVisible(show);
++        }
++        if (mProgressView == null) {
++            return;
++        }
+         if (show) {
+             mProgressView.setIndeterminate(true);
+-            mProgressView.setVisibility(View.VISIBLE);
+         } else {
+             mProgressView.setIndeterminate(false);
+-            mProgressView.setVisibility(View.GONE);
+         }
+     }
+ 
+diff --git a/src/com/android/stk/StkMenuAdapter.java b/src/com/android/stk/StkMenuAdapter.java
+index c53b3ac..a403e6a 100644
+--- a/src/com/android/stk/StkMenuAdapter.java
++++ b/src/com/android/stk/StkMenuAdapter.java
+@@ -22,39 +22,59 @@ import android.content.Context;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+-import android.widget.ArrayAdapter;
+ import android.widget.ImageView;
+ import android.widget.TextView;
+ 
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++
+ import java.util.List;
+ 
+ /**
+  * Icon list view adapter to show the list of STK items.
+  */
+-public class StkMenuAdapter extends ArrayAdapter<Item> {
++public class StkMenuAdapter extends RecyclerView.Adapter<StkMenuAdapter.ViewHolder> {
++    interface OnItemClickListener {
++        void onItemClick(int position);
++    }
++
++    interface OnItemLongClickListener {
++        void onItemLongClick(int position);
++    }
++
+     private final LayoutInflater mInflater;
++    private final List<Item> mItems;
+     private boolean mIcosSelfExplanatory = false;
++    private final OnItemClickListener mClickListener;
++    private final OnItemLongClickListener mLongClickListener;
++    private final View.OnCreateContextMenuListener mContextMenuListener;
+ 
+     public StkMenuAdapter(Context context, List<Item> items,
+-            boolean icosSelfExplanatory) {
+-        super(context, 0, items);
++            boolean icosSelfExplanatory, OnItemClickListener clickListener,
++            OnItemLongClickListener longClickListener,
++            View.OnCreateContextMenuListener contextMenuListener) {
+         mInflater = LayoutInflater.from(context);
++        mItems = items;
+         mIcosSelfExplanatory = icosSelfExplanatory;
++        mClickListener = clickListener;
++        mLongClickListener = longClickListener;
++        mContextMenuListener = contextMenuListener;
+     }
+ 
+     @Override
+-    public View getView(int position, View convertView, ViewGroup parent) {
+-        final Item item = getItem(position);
++    @NonNull
++    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        return new ViewHolder(mInflater.inflate(R.layout.stk_menu_item, parent, false));
++    }
+ 
+-        if (convertView == null) {
+-            convertView = mInflater.inflate(R.layout.stk_menu_item, parent,
+-                    false);
+-        }
++    @Override
++    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
++        final Item item = mItems.get(position);
++        final View itemView = holder.itemView;
++        TextView textView = itemView.findViewById(R.id.text);
++        textView.setText(!mIcosSelfExplanatory || item.icon == null ? item.text : null);
+ 
+-        if (!mIcosSelfExplanatory || (mIcosSelfExplanatory && item.icon == null)) {
+-            ((TextView) convertView.findViewById(R.id.text)).setText(item.text);
+-        }
+-        ImageView imageView = ((ImageView) convertView.findViewById(R.id.icon));
++        ImageView imageView = itemView.findViewById(R.id.icon);
+         if (item.icon == null) {
+             imageView.setVisibility(View.GONE);
+         } else {
+@@ -62,6 +82,45 @@ public class StkMenuAdapter extends ArrayAdapter<Item> {
+             imageView.setVisibility(View.VISIBLE);
+         }
+ 
+-        return convertView;
++        final int count = getItemCount();
++        final int background;
++        if (count == 1) {
++            background = R.drawable.settingslib_round_background;
++        } else if (position == 0) {
++            background = R.drawable.settingslib_round_background_top;
++        } else if (position == count - 1) {
++            background = R.drawable.settingslib_round_background_bottom;
++        } else {
++            background = R.drawable.settingslib_round_background_center;
++        }
++        itemView.setBackgroundResource(background);
++        itemView.setClipToOutline(true);
++        itemView.setOnCreateContextMenuListener(mContextMenuListener == null ? null
++                : (menu, view, info) -> {
++                    int adapterPosition = holder.getBindingAdapterPosition();
++                    if (adapterPosition != RecyclerView.NO_POSITION) {
++                        if (mLongClickListener != null) {
++                            mLongClickListener.onItemLongClick(adapterPosition);
++                        }
++                        mContextMenuListener.onCreateContextMenu(menu, view, info);
++                    }
++                });
++        itemView.setOnClickListener(view -> {
++            int adapterPosition = holder.getBindingAdapterPosition();
++            if (adapterPosition != RecyclerView.NO_POSITION) {
++                mClickListener.onItemClick(adapterPosition);
++            }
++        });
++    }
++
++    @Override
++    public int getItemCount() {
++        return mItems == null ? 0 : mItems.size();
++    }
++
++    static class ViewHolder extends RecyclerView.ViewHolder {
++        ViewHolder(View itemView) {
++            super(itemView);
++        }
+     }
+ }
+diff --git a/src/com/android/stk/ToneDialog.java b/src/com/android/stk/ToneDialog.java
+index 47cd61e..7b80921 100644
+--- a/src/com/android/stk/ToneDialog.java
++++ b/src/com/android/stk/ToneDialog.java
+@@ -17,7 +17,6 @@
+ package com.android.stk;
+ 
+ import android.app.Activity;
+-import android.app.AlertDialog;
+ import android.content.BroadcastReceiver;
+ import android.content.Context;
+ import android.content.DialogInterface;
+@@ -30,9 +29,11 @@ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.widget.ImageView;
+ import android.widget.TextView;
++
++import androidx.appcompat.app.AlertDialog;
++
+ import com.android.internal.telephony.cat.CatLog;
+ import com.android.internal.telephony.cat.TextMessage;
+-import com.android.internal.telephony.cat.CatLog;
+ 
+ /**
+  * Activity used to display tone dialog.
+@@ -56,7 +57,8 @@ public class ToneDialog extends Activity {
+         filter.addAction(StkAppService.FINISH_TONE_ACTIVITY_ACTION);
+         registerReceiver(mFinishActivityReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+ 
+-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
++        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this,
++                R.style.Theme_AlertDialog_SettingsLib_Expressive);
+         LayoutInflater inflater = this.getLayoutInflater();
+         View dialogView = inflater.inflate(R.layout.stk_tone_dialog, null);
+         alertDialogBuilder.setView(dialogView);
+diff --git a/res/layout/stk_toolbar_progress.xml b/res/layout/stk_toolbar_progress.xml
+new file mode 100644
+index 0000000..44c6f58
+--- /dev/null
++++ b/res/layout/stk_toolbar_progress.xml
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!-- Copyright (C) 2026 The Android Open Source Project
++
++     Licensed under the Apache License, Version 2.0 (the "License");
++     you may not use this file except in compliance with the License.
++     You may obtain a copy of the License at
++
++          http://www.apache.org/licenses/LICENSE-2.0
++
++     Unless required by applicable law or agreed to in writing, software
++     distributed under the License is distributed on an "AS IS" BASIS,
++     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++     See the License for the specific language governing permissions and
++     limitations under the License.
++-->
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="48dp"
++    android:layout_height="48dp"
++    android:contentDescription="@string/loading">
++
++    <ProgressBar
++        android:id="@+id/progress_bar"
++        style="?android:attr/progressBarStyleSmall"
++        android:layout_width="24dp"
++        android:layout_height="24dp"
++        android:layout_gravity="center"
++        android:indeterminate="true" />
++</FrameLayout>

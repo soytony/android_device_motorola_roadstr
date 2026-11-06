@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "status": "optional",
+  "repositories": [
+    {
+      "repo": "packages/apps/Stk",
+      "base_commit": "0c7c29561ad125d6553b19f05029a429fac4eaff",
+      "patches": [
+        {
+          "file": "packages-apps-Stk/0001-port-settings-expressive-design.patch",
+          "format": "raw-diff",
+          "subject": "Port Settings expressive STK design to Evo Android 17",
+          "sha256": "eec040d468b5d7be40fd3ba23b905a0a1950991e06de16f4a922d32590ef3aa9",
+          "upstream_review": "https://review.lineageos.org/c/LineageOS/android_packages_apps_Stk/+/494889",
+          "upstream_patch_set": 2,
+          "upstream_commit": "d9d52a1cdd41bb6901a12781403ab371c98c0fa6",
+          "upstream_change_id": "I1d638aaabe3c02a07b682586da220e85b6cd2b56",
+          "upstream_author": "tonyfan <waterwet@outlook.com>",
+          "upstream_assisted_by": "Codex:GPT-5"
+        }
+      ],
+      "source_state": "Tested uncommitted STK worktree; this manifest does not claim a source result commit",
+      "result_tree": "54a9e1738729d6e081261d57f629d4aebc6a0c96",
+      "verification": "-j5 system image build, extracted APK/signature and AVB audits, system_a/vbmeta_system_a flash, boot/SELinux/package checks and menu/button-back/gesture-back smoke tests passed on 2026-11-07; comprehensive carrier-command testing remains pending"
+    }
+  ]
+}
