@@ -35,6 +35,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/displayconfig/display_id_4630946747577212050.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/displayconfig/display_id_4630946747577212050.xml
 
+# Exclude the stock camera's cover-display launch alias on this single-display
+# device, without modifying the APK or normal/secure camera handlers.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sysconfig/motcamera-component-overrides.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/motcamera-component-overrides.xml
+
 # Select RoadSTR's GPU operating points and LLCC monitor before common
 # inheritance. The common power hints target different hardware resources.
 PRODUCT_COPY_FILES += \
@@ -90,6 +95,7 @@ PRODUCT_PACKAGES += \
     Launcher3ResRoadstr \
     LineageSdkRoadstr \
     LineagePartsActionButtonRoadstr \
+    MotoCameraIconRoadstr \
     SystemGalleryOverlayRoadstr \
     SettingsAdaptiveColorsRoadstr \
     SettingsResRoadstr \

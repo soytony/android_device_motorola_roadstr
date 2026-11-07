@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.motorola.camera5.overlay.icon.roadstr">
+    <overlay android:targetPackage="com.motorola.camera5"
+             android:resourcesMap="@xml/overlays"
+             android:isStatic="true"
+             android:priority="701" />
+</manifest>

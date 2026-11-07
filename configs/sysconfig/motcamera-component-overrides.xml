@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<config>
+    <!-- RoadSTR has no cover display. The CLI launch alias duplicates the normal
+         Motorola capture intents even when CliCameraActivity is disabled. Keep
+         normal and secure main-display camera entry points unchanged. -->
+    <component-override package="com.motorola.camera5">
+        <component class="com.motorola.camera.LaunchActionCli" enabled="false" />
+    </component-override>
+</config>
