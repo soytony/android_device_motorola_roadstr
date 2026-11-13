@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string-array name="accessibility_text_cursor_blink_labels">
+            <item>150%</item>
+            <item>140%</item>
+            <item>130%</item>
+            <item>120%</item>
+            <item>110%</item>
+            <item>100%（預設）</item>
+            <item>90%</item>
+            <item>80%</item>
+            <item>70%</item>
+            <item>60%</item>
+            <item>50%</item>
+        </string-array>
+
+
+        <string-array name="theming_defaults">
+            <item>*|TONAL_SPOT|home_wallpaper</item>
+        </string-array>
+
+        <string-array name="theming_legacy_overlays">
+            <item>com.android.systemui|neutral</item>
+            <item>com.android.systemui|accent</item>
+            <item>com.android.systemui|dynamic</item>
+        </string-array>
+
+
+
+
+        <string name="identity_check_settings_package_name">com\u002eandroid\u002esettings</string>
+
+
+        <string name="lock_pattern_view_aspect">square</string>
+
+        <string name="vcn_management_service">VCN 管理服務</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

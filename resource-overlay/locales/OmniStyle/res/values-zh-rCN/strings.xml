@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="browse_theme_walls">主题壁纸</string>
+        <string name="browse_theme_header">主题页眉</string>
+        <string name="pick_header">选择页眉</string>
+        <string name="sort_by_creator_menu">按创建者排序</string>
+        <string name="sort_by_tag_menu">按标签排序</string>
+        <string name="sort_by_default_menu">按名称排序</string>
+        <string name="download_header_notice">正在下载页眉</string>
+        <string name="download_header_failed_notice">下载页眉失败</string>
+        <string name="header_location_local">本地</string>
+        <string name="header_location_online">在线</string>
+</resources>

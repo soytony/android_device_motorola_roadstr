@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="wifi_hotspot_client_limit_summary">
+        <item quantity="other">このホットスポットには最大 %1$d 台のデバイスを接続できます</item>
+        <item quantity="one">このホットスポットには最大 %1$d 台のデバイスを接続できます</item>
+    </plurals>
+    <string name="always_on_display_schedule_mixed_sunrise">指定した時刻から日の出までオンになります</string>
+    <string name="always_on_display_schedule_mixed_sunset">日の入りから指定した時刻までオンになります</string>
+    <string name="always_on_display_schedule_sunrise">日の出</string>
+    <string name="always_on_display_schedule_sunset">日の入り</string>
+    <string name="always_on_display_schedule_title">常時表示のスケジュール</string>
+    <string name="app_lock_authentication_dialog_title">ロック解除</string>
+    <string name="app_lock_biometrics_allowed_title">ロック解除に生体認証を使用</string>
+    <string name="app_lock_footer_text">タイムアウト後、バブルは自動的に閉じられます</string>
+    <string name="app_lock_notifications_disabled_summary">まずアプリを保護してください</string>
+    <string name="app_lock_notifications_summary">選択したアプリがロックされている間、その通知内容は非表示になり折りたたまれます。ヘッドアップ通知は自動的に無効になります。</string>
+    <string name="app_lock_notifications_title">通知内容を隠す</string>
+    <string name="app_lock_packages_summary">生体認証またはデバイスの認証情報で保護するアプリを選択</string>
+    <string name="app_lock_packages_title">保護されたアプリ</string>
+    <string name="app_lock_timeout_summary">ロック解除されたアプリがバックグラウンドで再ロックされるまでの時間</string>
+    <string name="app_lock_timeout_title">自動ロックのタイムアウト</string>
+    <string name="app_lock_title">アプリロック</string>
+    <string name="app_volume">アプリの音量</string>
+    <string name="app_volume_summary">音量ダイアログにアプリ別の音量ボタンを表示</string>
+    <string name="app_volume_title">アプリ別音量コントロール</string>
+    <string name="back_gesture_arrow_summary">「戻る」ジェスチャーでアニメーション矢印を表示</string>
+    <string name="back_gesture_arrow_title">「戻る」ジェスチャーのアニメーション</string>
+    <string name="back_height_high_label">下部</string>
+    <string name="back_height_low_label">全体</string>
+    <string name="back_height_summary">「戻る」ジェスチャーが有効な画面の高さ</string>
+    <string name="back_height_title">「戻る」ジェスチャーの高さ</string>
+    <string name="battery_saver_refresh_rate_summary">バッテリーセーバーがオンのとき、画面のリフレッシュレートを 60 Hz にして消費電力を抑えます</string>
+    <string name="battery_saver_refresh_rate_title">リフレッシュレートを下げる</string>
+    <string name="bluetooth_timeout">Bluetooth タイムアウト</string>
+    <string name="bluetooth_timeout_summary">Bluetooth を自動でオフにしない</string>
+    <string name="bluetooth_timeout_summary_auto">デバイスが接続されていない場合、%1$s 後に Bluetooth がオフになります</string>
+    <string name="build_maintainer">ビルドメンテナー</string>
+    <string name="clipboard_auto_clear_enabled_title">クリップボードの自動消去を使用</string>
+    <string name="clipboard_auto_clear_summary">設定した時間にクリップボードを自動的に消去します</string>
+    <string name="clipboard_auto_clear_timeout_disable_clipboard">クリップボードを無効にする</string>
+    <string name="clipboard_auto_clear_timeout_title">クリップボード自動消去のタイムアウト</string>
+    <string name="clipboard_auto_clear_title">クリップボードの自動消去</string>
+    <string name="copied_to_clipboard">クリップボードにコピーしました</string>
+    <string name="custom_timeout_summary_10mins">10 分</string>
+    <string name="custom_timeout_summary_10secs">10 秒</string>
+    <string name="custom_timeout_summary_12hours">12 時間</string>
+    <string name="custom_timeout_summary_15secs">15 秒</string>
+    <string name="custom_timeout_summary_1hour">1 時間</string>
+    <string name="custom_timeout_summary_1hour_def">1 時間（デフォルト）</string>
+    <string name="custom_timeout_summary_1min">1 分</string>
+    <string name="custom_timeout_summary_20mins">20 分</string>
+    <string name="custom_timeout_summary_24hours">24 時間</string>
+    <string name="custom_timeout_summary_2hours">2 時間</string>
+    <string name="custom_timeout_summary_2mins">2 分</string>
+    <string name="custom_timeout_summary_30mins">30 分</string>
+    <string name="custom_timeout_summary_30secs">30 秒</string>
+    <string name="custom_timeout_summary_36hours">36 時間</string>
+    <string name="custom_timeout_summary_48hours">48 時間</string>
+    <string name="custom_timeout_summary_4hours">4 時間</string>
+    <string name="custom_timeout_summary_5mins">5 分</string>
+    <string name="custom_timeout_summary_5secs">5 秒</string>
+    <string name="custom_timeout_summary_72hours">72 時間</string>
+    <string name="custom_timeout_summary_8hours">8 時間</string>
+    <string name="custom_timeout_summary_never">しない</string>
+    <string name="custom_vibration_pattern_summary">カスタム振動パターンを設定</string>
+    <string name="custom_vibration_pattern_title">カスタムパターン</string>
+    <string name="device_market_name">マーケット名</string>
+    <string name="disable_debugging">デバッグを無効にする</string>
+    <string name="double_tap_title">ダブルタップ</string>
+    <string name="doze_double_tap_summary">ダブルタップで通知を一時的に表示</string>
+    <string name="doze_double_tap_title">ダブルタップでスマートフォンを確認</string>
+    <string name="doze_gesture_ambient_summary">画面を完全に起動せず、アンビエント表示を表示します</string>
+    <string name="doze_gesture_ambient_title">アンビエント表示を表示</string>
+    <string name="doze_on_charge_summary">デバイスの充電中に情報を表示</string>
+    <string name="doze_on_charge_title">充電中は常に表示</string>
+    <string name="enable_debugging">デバッグを有効にする</string>
+    <string name="enable_protection">保護を有効にする</string>
+    <string name="evolution_license_title">Evolution X 法的情報</string>
+    <string name="fingerprint_lockout_summary">指紋によるロック解除に複数回失敗した後の 30 秒のタイムアウトと永続的なロックアウトを解除します</string>
+    <string name="fingerprint_lockout_title">指紋ロックアウトを無効にする</string>
+    <string name="force_lte_ca_summary">対応バンドを集約して LTE の帯域幅を強化します</string>
+    <string name="game_space_summary">ゲーム体験を向上させます</string>
+    <string name="game_space_title">ゲームスペース</string>
+    <string name="gesture_wake">完全に起動</string>
+    <string name="gesture_wake_ambient">アンビエント表示を表示</string>
+    <string name="hide_from_launcher_summary">このアプリがどのランチャーにも表示されないようにします。変更を反映するにはランチャーの再起動が必要です。</string>
+    <string name="hide_from_launcher_title">ランチャーから隠す</string>
+    <string name="incall_vibrate_call_wait_title">コールウェイティング時に振動</string>
+    <string name="incall_vibrate_connect_title">接続時に振動</string>
+    <string name="incall_vibrate_disconnect_title">切断時に振動</string>
+    <string name="incall_vibration_category">通話中の振動オプション</string>
+    <string name="lock_screen_auto_pin_confirm_summary_custom">正しい PIN を入力すると自動的にロック解除されます。Enter キーをタップして確認する方法よりもやや安全性が低下します。</string>
+    <string name="longpress_to_clipboard">長押しでコピー</string>
+    <string name="no_storage_restrict_summary">Storage Access Framework でフォルダを選択する際の制限を解除します。便利な場合がありますが、プライバシー漏洩につながる可能性があります。</string>
+    <string name="no_storage_restrict_title">ストレージ制限なし</string>
+    <string name="pattern_custom">カスタム</string>
+    <string name="prevent_ringing_option_cycle">モードを循環</string>
+    <string name="prevent_ringing_option_cycle_summary">オン（モードを循環）</string>
+    <string name="pulse_on_new_tracks_summary">新しい曲の再生時にアンビエント表示を表示します</string>
+    <string name="pulse_on_new_tracks_title">ミュージックティッカー</string>
+    <string name="radio_info_title">無線情報</string>
+    <string name="screenshot_shutter_sound_title">スクリーンショット音</string>
+    <string name="show_clipboard_overlay_summary">クリップボードにコピーされたとき、画面の左下にオーバーレイを表示します</string>
+    <string name="show_clipboard_overlay_title">クリップボードのオーバーレイを表示</string>
+    <string name="smart_5g_summary">バッテリー消費を抑えるため 5G と 4G を自動的に切り替えます</string>
+    <string name="smart_5g_title">スマート 5G</string>
+    <string name="status_sleep_time">ディープスリープ</string>
+    <string name="string_disabled">無効</string>
+    <string name="total_ram">RAM 合計</string>
+    <string name="usb_default_config_summary">USB 経由でデバイスに接続したときのデフォルトの動作を選択</string>
+    <string name="usb_default_config_title">USB 設定</string>
+    <string name="vibration_pattern_title">着信音のバイブレーションパターン</string>
+    <string name="vpn_enforce_dns_summary">VPN 接続時はプライベート DNS を無効にします\n切断時に元に戻ります</string>
+    <string name="vpn_enforce_dns_title">VPN では無効にする</string>
+    <string name="wifi_do_not_validate_eap_server">検証しない</string>
+    <string name="wifi_do_not_validate_eap_server_warning">証明書が指定されていません。この接続はプライベートではなくなります。</string>
+    <string name="wifi_hotspot_block_client_dialog_text">この操作を行うと「%1$s」はこのデバイスから切断され、ブロックリストに追加されます</string>
+    <string name="wifi_hotspot_block_client_dialog_title">デバイスをブロック</string>
+    <string name="wifi_hotspot_blocked_clients_list_title">ブロックされたデバイス</string>
+    <string name="wifi_hotspot_client_limit_title">接続デバイス数の上限</string>
+    <string name="wifi_hotspot_client_manager_footer_text">現在利用可能なクライアントはありません。接続済みおよびブロックされたデバイスがここに一覧表示されます。</string>
+    <string name="wifi_hotspot_client_manager_list_only_summary">ホットスポットに接続されたデバイスを一覧表示</string>
+    <string name="wifi_hotspot_client_manager_summary">ホットスポットに接続されたデバイスの一覧表示と管理</string>
+    <string name="wifi_hotspot_client_manager_title">接続済みデバイス</string>
+    <string name="wifi_hotspot_connected_clients_list_title">接続済みデバイス</string>
+    <string name="wifi_hotspot_hidden_ssid_summary">モバイル ホットスポットの名前は、利用可能な Wi-Fi ネットワークのリストに表示されません。</string>
+    <string name="wifi_hotspot_hidden_ssid_title">非表示ネットワーク</string>
+    <string name="wifi_hotspot_unblock_client_dialog_text">「%1$s」はこのホットスポットに接続できるようになります</string>
+    <string name="wifi_hotspot_unblock_client_dialog_title">デバイスのブロックを解除</string>
+    <string name="wifi_timeout">Wi-Fi タイムアウト</string>
+    <string name="wifi_timeout_summary">Wi-Fi を自動でオフにしない</string>
+    <string name="wifi_timeout_summary_auto">ネットワークに接続されていない場合、%1$s 後に Wi-Fi がオフになります</string>
+    <string-array name="wifi_privacy_entries_ext">
+            <item>接続ごとにランダム MAC アドレスを使用（デフォルト）</item>
+            <item>ネットワークごとにランダム MAC アドレスを使用</item>
+            <item>デバイスの MAC アドレスを使用</item>
+        </string-array>
+
+        <string-array name="ingress_rate_limit_entries">
+            <item>制限なし</item>
+            <item>128kbps</item>
+            <item>256kbps</item>
+            <item>1Mbps</item>
+            <item>5Mbps</item>
+            <item>15Mbps</item>
+        </string-array>
+
+    
+        <string-array name="temperature_units">
+            <item>default</item>
+            <item>celsius</item>
+            <item>fahrenhe</item>
+        </string-array>
+
+    
+        <string-array name="first_day_of_week">
+            <item>default</item>
+            <item>sun</item>
+            <item>mon</item>
+            <item>tue</item>
+            <item>wed</item>
+            <item>thu</item>
+            <item>fri</item>
+            <item>sat</item>
+        </string-array>
+
+    
+        <string-array name="measurement_system">
+            <item>default</item>
+            <item>metric</item>
+            <item>ussystem</item>
+            <item>uksystem</item>
+        </string-array>
+
+    
+        <string-array name="terms_of_address">
+            <item>指定しない</item>
+            <item>普通</item>
+            <item>女性</item>
+            <item>男性</item>
+        </string-array>
+
+    
+        <string-array name="fingerprint_acquired_vendor">
+            <item>指紋が動いていません</item>
+        </string-array>
+
+
+    
+        <string-array name="app_lock_relock_behavior_entries">
+            <item>タイムアウト後</item>
+            <item>画面オフ時</item>
+        </string-array>
+
+        <string-array name="app_lock_grace_period_entries">
+            <item>すぐに</item>
+            <item>5 秒</item>
+            <item>15 秒</item>
+            <item>30 秒</item>
+            <item>1 分</item>
+            <item>5 分</item>
+        </string-array>
+
+        <plurals name="app_lock_summary_count">
+            <item quantity="one">1 個のアプリをロック中</item>
+            <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> 個のアプリをロック中</item>
+        </plurals>
+    <string name="build_maintainer_label">メンテナー</string>
+        <string name="maintainer_link_github">GitHub プロフィール</string>
+        <string name="maintainer_link_donate">寄付</string>
+        <string name="device_name">デバイス</string>
+
+    
+        <string name="hardware_platform_label">プラットフォーム</string>
+        <string name="hardware_sku">ハードウェア SKU</string>
+
+    
+        <string name="security_settings_face_enroll_finish_description_with_bp">これで、顔を使ってスマートフォンのロックを解除したり、アプリへのログインや購入の承認などで本人確認を行ったりできるようになります</string>
+
+    
+        <string name="face_down_sleep_title">下向き検出</string>
+    
+        <string name="face_down_sleep_summary">デバイスを伏せた状態でしばらくすると画面をオフにします</string>
+
+    
+        <string name="doze_gesture_vibrate_title">触覚フィードバック</string>
+        <string name="doze_gesture_vibrate_summary">このジェスチャーの実行時に振動します</string>
+
+    
+        <string name="show_ime_space_title">IME ボタンのスペースを表示</string>
+        <string name="show_ime_space_summary">入力方法のクイック切り替え機能を有効にすると、入力中に画面下部の機能バーから入力方法を切り替えたり、オンスクリーン キーボードを非表示にしたりできます</string>
+
+    
+        <string name="display_engine_category">ディスプレイ エンジン</string>
+        <string name="display_engine_mode_title">Reality ディスプレイ エンジン</string>
+        <string name="x_reality_engine_mode_title">X-Reality エンジン</string>
+        <string name="vivid_engine_mode_title">鮮やか表示</string>
+        <string name="triluminous_engine_mode_title">Triluminous ディスプレイ</string>
+        <string name="natural_engine_mode_title">ナチュラル表示</string>
+        <string name="cinema_engine_mode_title">シネマ表示</string>
+        <string name="reading_engine_mode_title">快適表示（読書モード）</string>
+        <string name="display_engine_default">デフォルト</string>
+        <string name="display_engine_mode_footer_text">Sony\'s Bravia/X-Reality エンジンに着想を得たディスプレイ エンジンは、輝度と色の鮮やかさを高める鮮やかモード、ディテールと色精度を向上させる X-Reality モード、より広い色域を実現する Triluminous モードを備えています。</string>
+
+    
+       <string name="double_tap_screen_to_sleep_summary">ロック画面の空いている場所をダブルタップすると画面がオフになります。</string>
+       <string name="double_tap_screen_to_sleep_title">ダブルタップで画面をオフ</string>
+       <string name="keywords_double_tap_screen_to_sleep">ダブルタップでスリープ, ロック画面</string>
+
+    
+        <string name="back_gesture_haptic_title">戻るジェスチャーの触覚フィードバック</string>
+        <string name="back_gesture_haptic_summary">戻るジェスチャーの実行時に振動します</string>
+
+    
+        <string name="advanced_vpn_preference_group_title">内蔵</string>
+        <string name="vpn_preference_group_title">その他</string>
+
+    
+        <string name="force_lte_ca_title">キャリアアグリゲーション</string>
+        <string name="multi_audio_focus_title">マルチ オーディオ フォーカス</string>
+        <string name="multi_audio_focus_summary">複数のアプリが同時に音声を再生できるようにします</string>
+
+    
+        <string name="doze_brightness_force_title">明るさの値を強制</string>
+        <string name="doze_brightness_force_summary">画面の明るさではなくカスタムの明るさ値を使用します</string>
+        <string name="ambient_pulse_brightness_title">アンビエント表示の明るさ</string>
+        <string name="ambient_doze_brightness_title">常時表示の明るさ</string>
+
+    
+        <string name="background_processes_settings_title">バックグラウンド プロセス</string>
+
+    
+        <string name="per_app_config_empty_text">現在の設定をサポートするインストール済みアプリはありません</string>
+
+    
+        <string name="per_app_refresh_rate_title">アプリごとのリフレッシュ レート設定</string>
+        <string name="per_app_refresh_rate_summary">アプリごとにリフレッシュ レートを個別に設定します</string>
+        <string name="per_app_refresh_rate_default">システムに従う</string>
+
+    
+        <string name="screen_refresh_rate_title">画面のリフレッシュ レート</string>
+        <string name="battery_saver_refresh_rate_disabled_summary">エクストリーム リフレッシュ レートがオンです</string>
+
+    
+        <string name="extreme_refresh_rate_title">エクストリーム リフレッシュ レート</string>
+        <string name="extreme_refresh_rate_summary">すべてのアプリに最高リフレッシュ レートを強制します</string>
+        <string name="extreme_refresh_rate_warning">ユーザーが選択した設定やアプリが優先するオプションを無視して、システムが最高のリフレッシュ レートを選択するようになります。特定のリフレッシュ レートを必要とするアプリは正常に動作しない場合があります。</string>
+
+    
+        <string name="confirm_before_enable_title">有効にしますか？</string>
+
+    
+        <string name="vehicle_motion_cues_title">車両モーションキュー</string>
+        <string name="vehicle_motion_cues_summary">車両の動きに合わせて動くアニメーション ドットを画面の端に表示し、乗り物酔いの防止に役立てます</string>
+        <string name="vehicle_motion_cues_dot_size_title">ドットのサイズ</string>
+        <string name="vehicle_motion_cues_dot_size_summary">アニメーションで動くモーションキュー ドットのサイズ</string>
+        <string name="vehicle_motion_cues_sensitivity_title">モーション感度</string>
+        <string name="vehicle_motion_cues_sensitivity_summary">車両の力に対するドットの移動量</string>
+        <string name="vehicle_motion_cues_dot_count_title">ドットの数</string>
+        <string name="vehicle_motion_cues_dot_count_summary">画面の端に表示されるモーションキュー ドットの数</string>
+
+    
+        <string name="local_app_backup_restore_title">ローカル アプリのバックアップと復元</string>
+        <string name="local_app_backup_restore_summary">APK とアプリ データを通常の tar アーカイブとして内部ストレージに保存します</string>
+
+    
+        <string name="app_lock_summary">デバイスの認証情報でアプリを保護します</string>
+        <string name="app_lock_search_placeholder">アプリを検索…</string>
+        <string name="app_lock_show_system">システムアプリを表示</string>
+        <string name="app_lock_dashboard_card_title">アプリロック</string>
+        <string name="app_lock_dashboard_card_summary_none">保護されているアプリはありません</string>
+        <string name="app_lock_dashboard_card_summary_multiple"><xliff:g id="count" example="3">%d</xliff:g> 個のアプリを保護中</string>
+        <string name="app_lock_not_secure_title">画面ロックを設定</string>
+        <string name="app_lock_not_secure_summary">アプリロックを使用するには、まず「設定」で安全な画面ロック（PIN、パターン、パスワード）を設定する必要があります。</string>
+        <string name="app_lock_not_secure_button">画面ロックを設定</string>
+        <string name="app_lock_timeout_immediately">すぐに</string>
+        <string name="app_lock_timeout_5s">5 秒（デフォルト）</string>
+        <string name="app_lock_timeout_30s">30 秒</string>
+        <string name="app_lock_timeout_1m">1 分</string>
+        <string name="app_lock_timeout_5m">5 分</string>
+        <string name="app_lock_timeout_screen_lock">画面がロックされたときのみ</string>
+
+    
+        <string name="app_lock_settings_title">アプリロックの設定</string>
+        <string name="app_lock_settings_summary">ロックのタイムアウトと認証方法を設定します</string>
+        <string name="app_lock_method_title">アプリロックの方法</string>
+        <string name="app_lock_method_device_lock">デバイスロック</string>
+        <string name="app_lock_method_device_lock_summary">システム画面ロックの PIN/パターン/パスワード &amp; 生体認証を使用</string>
+        <string name="app_lock_method_pin">PIN</string>
+        <string name="app_lock_method_pin_summary">4 桁のコード</string>
+        <string name="app_lock_method_password">パスワード</string>
+        <string name="app_lock_method_password_summary">英数字のパスワード</string>
+        <string name="app_lock_method_pattern">パターン</string>
+        <string name="app_lock_method_pattern_summary">パターンを描いてロック解除</string>
+        <string name="app_lock_setup_pin_title">アプリロックの PIN を設定</string>
+        <string name="app_lock_confirm_pin_title">アプリロックの PIN を確認</string>
+        <string name="app_lock_setup_password_title">アプリロックのパスワードを設定</string>
+        <string name="app_lock_confirm_password_title">アプリロックのパスワードを確認</string>
+        <string name="app_lock_setup_pattern_title">アプリロックのパターンを描画</string>
+        <string name="app_lock_confirm_pattern_title">アプリロックのパターンを確認</string>
+        <string name="app_lock_credential_mismatch">認証情報が一致しません。もう一度お試しください。</string>
+        <string name="app_lock_credential_incorrect">PIN、パスワード、またはパターンが正しくありません。</string>
+        <string name="app_lock_biometrics_title">生体認証を許可</string>
+        <string name="app_lock_biometrics_summary">カスタム ロックを有効にしている場合、指紋または顔認証でロックされたアプリのロックを解除します</string>
+
+    
+        <string name="override_mock_location_title">モック位置情報の制限をオーバーライド</string>
+        <string name="override_mock_location_summary">有効にすると、アプリがモック位置情報を検出できなくなります</string>
+
+    
+        <string name="bluetooth_details_audio_codec_title">オーディオ コーデック</string>
+    
+        <string name="bluetooth_details_audio_codec_unavailable">利用不可</string>
+
+    
+        <string name="installed_app_detail_settings_screen_purpose">指定されたインストール済みアプリの詳細情報と管理オプション（権限、ストレージ、通知、状態など）を提供します。</string>
+        <string name="installed_app_detail_unused_apps_switch_purpose">有効にすると、アプリが長期間使用されていない場合に、権限の削除、一時ファイルの削除、通知の停止、アプリのアーカイブを行います。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_disabled_globally">\'未使用アプリの管理\' 機能は現在、デバイス レベルで無効になっています。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_archived_app">アーカイブされたアプリは未使用として管理できません。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_exempt_app">このアプリは重要なシステムアプリであり、\'未使用アプリの管理\' 機能の対象外です。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_null_app">指定されたアプリがデバイス上に見つかりませんでした。</string>
+        <string name="non_carrier_app_data_usage_screen_purpose">アプリがモバイルデータと Wi-Fi 接続で使用したデータ量を表示します</string>
+        <string name="status_iccid">ICCID</string>
+    
+        <string name="testing_sim_toolkit">SIM ツールキット</string>
+
+    
+        <string name="power_audio">音声</string>
+        <string name="power_video">動画</string>
+        <string name="power_sensors">センサー</string>
+        <string name="power_memory">メモリ</string>
+        <string name="power_idle">待機</string>
+
+    
+        <string name="storage_percentage_format" translation_description="Percentage of storage used (e.g., 16%). For RTL languages like Persian, ensure the percentage symbol is correctly placed on the visual left of the numeral.">
+            <xliff:g id="percentage" example="16%">%1$s%%</xliff:g>
+        </string>
+
+    
+        <string name="platform_compat_target_sdk_title">targetSdkVersion &gt;= <xliff:g id="number" example="29">%d</xliff:g> で有効</string>
+    
+        <string name="personal_context_title">パーソナル コンテキスト マネージャー</string>
+    
+        <string-array name="themes_boot_animation_entries">
+            <item>Evolution X</item>
+            <item>Evolution X (Reveal)</item>
+            <item>AOKP</item>
+            <item>CyanogenMod</item>
+            <item>ctOS</item>
+            <item>Cyberpunk</item>
+            <item>Dirty Unicorns</item>
+            <item>Google</item>
+            <item>PAC-ROM</item>
+            <item>Resurrection Remix</item>
+            <item>SlimRoms</item>
+            <item>Valorant</item>
+            <item>カスタム</item>
+        </string-array>
+
+    
+        <string-array name="wallpaper_effect_entries">
+            <item>なし</item>
+            <item>ブラーグレイン</item>
+            <item>色収差</item>
+            <item>ビネット</item>
+            <item>モザイク</item>
+            <item>彩度</item>
+            <item>セピア</item>
+            <item>シャープ</item>
+            <item>グレースケール</item>
+            <item>ネガ</item>
+            <item>放射状ブラー</item>
+            <item>ポスタリゼーション</item>
+        </string-array>
+    
+        <string-array name="nowplaying_icon_style_entries">
+            <item>無効</item>
+            <item>アプリ アイコン</item>
+            <item>音符アイコン</item>
+        </string-array>
+
+        <string-array name="charging_animation_style_entries">
+            <item>バブル ストリーム</item>
+            <item>ネオングロー スプレー</item>
+            <item>ビーム エフェクト</item>
+            <item>プラズマ エフェクト</item>
+            <item>クオンタム スパーク</item>
+            <item>ネビュラ拡散</item>
+            <item>デジタル マトリックス</item>
+            <item>ジオフロー</item>
+        </string-array>
+
+        <string-array name="charging_color_mode_entries">
+            <item>デフォルトの緑</item>
+            <item>アクセント カラー</item>
+            <item>レインボー</item>
+        </string-array>
+
+        <string-array name="perapp_spoof_profile_labels">
+            <item>Black Shark 4 (中国)</item>
+            <item>Poco F5</item>
+            <item>Samsung Galaxy S25 Ultra</item>
+            <item>Samsung Galaxy Z Fold 5</item>
+            <item>Honor Magic V2 RSR</item>
+            <item>Lenovo Legion Y700</item>
+            <item>Xiaomi 11T Pro</item>
+            <item>Xiaomi 13</item>
+            <item>Xiaomi 13 Pro</item>
+            <item>Xiaomi 14 Pro</item>
+            <item>OnePlus 12</item>
+            <item>OnePlus 13</item>
+            <item>Pixel 11 Pro XL</item>
+            <item>REDMAGIC 9 Pro</item>
+            <item>REDMAGIC 10 Pro</item>
+            <item>Realme 15 Pro 5G</item>
+            <item>ROG Phone 9 Pro</item>
+            <item>なし</item>
+        </string-array>
+
+    
+        <string-array name="cutout_progress_finish_style_entries">
+            <item>ポップ</item>
+            <item>セグメント カスケード</item>
+            <item>スナップ（即時）</item>
+        </string-array>
+
+        <string-array name="cutout_progress_easing_entries">
+            <item>リニア</item>
+            <item>加速</item>
+            <item>減速</item>
+            <item>イーズイン–アウト</item>
+        </string-array>
+
+        <string-array name="cutout_progress_position_entries">
+            <item>右</item>
+            <item>左</item>
+            <item>上</item>
+            <item>下</item>
+            <item>右上</item>
+            <item>左上</item>
+            <item>右下</item>
+            <item>左下</item>
+        </string-array>
+
+        <string-array name="cutout_progress_truncate_entries">
+            <item>中央</item>
+            <item>先頭</item>
+            <item>末尾</item>
+        </string-array>
+    
+        <string-array name="lock_glymps_source_entries">
+            <item>ランダムな壁紙（Picsum）</item>
+            <item>カスタム URL リスト</item>
+            <item>ローカル フォルダ</item>
+        </string-array>
+
+        <string-array name="lock_glymps_cache_size_entries">
+            <item>壁紙 3 枚（約 30MB）</item>
+            <item>壁紙 5 枚（約 50MB）</item>
+            <item>壁紙 10 枚（約 100MB）</item>
+        </string-array>
+
+        <string-array name="lock_glymps_change_on_entries">
+            <item>画面オン時</item>
+            <item>画面オフ時（推奨）</item>
+            <item>タイマーで定期実行</item>
+        </string-array>
+
+        <string-array name="lock_glymps_timer_entries">
+            <item>5 分</item>
+            <item>10 分</item>
+            <item>15 分</item>
+            <item>30 分</item>
+            <item>1 時間</item>
+            <item>2 時間</item>
+            <item>3 時間</item>
+            <item>6 時間</item>
+            <item>12 時間</item>
+            <item>24 時間</item>
+        </string-array>
+
+        <string-array name="quick_settings_data_usage_window_entries">
+            <item>毎日</item>
+            <item>毎週</item>
+        </string-array>
+
+        <plurals name="ts_added_installed_count">
+            <item quantity="one">ターゲットに %d 個のアプリを追加しました</item>
+            <item quantity="other">ターゲットに %d 個のアプリを追加しました</item>
+        </plurals>
+    <string name="boot_animation_style_unknown">不明</string>
+
+    
+        <string name="app_info_install_time">インストール: %1$s</string>
+        <string name="app_info_update_time">アップデート: %1$s</string>
+</resources>

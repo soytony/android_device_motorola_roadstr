@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="browse_header">頁首圖</string>
+    <string name="browse_walls">桌布</string>
+    <string name="custom_header_image_notice">已設定頁首圖片</string>
+    <string name="download_wallpaper_failed_notice">下載桌布失敗</string>
+    <string name="download_wallpaper_list_failed_notice">載入桌布目錄失敗</string>
+    <string name="download_wallpaper_notice">正在下載桌布</string>
+    <string name="header_creator_label">作者：</string>
+    <string name="no_crop_activity_dialog_text">設定桌布需要 Omni 圖庫應用程式</string>
+    <string name="no_crop_activity_dialog_title">缺少圖庫</string>
+    <string name="no_network_message">無網路連線</string>
+    <string name="omni_walls">WaterSlides</string>
+    <string name="scrolling_wall_dialog_text">要將桌布裁剪成螢幕大小嗎？</string>
+    <string name="scrolling_wall_dialog_title">裁剪桌布</string>
+    <string name="scrolling_wall_no">是</string>
+    <string name="scrolling_wall_yes">否</string>
+    <string name="wallpaper_default_name">桌布</string>
+    <string name="wallpaper_location_local">本機</string>
+    <string name="wallpaper_location_remote">線上</string>
+    <string name="wallpaper_type_both">主畫面和鎖定畫面</string>
+    <string name="wallpaper_type_dialog_title">設定桌布</string>
+    <string name="wallpaper_type_lock">鎖定畫面</string>
+    <string name="wallpaper_type_system">主畫面</string>
+    <string name="browse_theme_walls">主題桌布</string>
+        <string name="browse_theme_header">主題頁首</string>
+        <string name="pick_header">選取頁首</string>
+        <string name="sort_by_creator_menu">按創作者排序</string>
+        <string name="sort_by_tag_menu">按標籤排序</string>
+        <string name="sort_by_default_menu">按名稱排序</string>
+        <string name="download_header_notice">正在下載頁首</string>
+        <string name="download_header_failed_notice">下載頁首失敗</string>
+        <string name="header_location_local">本機</string>
+        <string name="header_location_online">線上</string>
+</resources>

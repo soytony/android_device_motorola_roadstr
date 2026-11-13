@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="blocked_update_dialog_message_custom">このアップデートはアップデーターアプリではインストールできません。リカバリーからアップデートをインストールしてみてください。</string>
+        <string name="maintainer_name">メンテナー: <xliff:g id="maintainer" example="Maintainer Name">%1$s</xliff:g></string>
+        <string name="support_links">サポートリンク:</string>
+        <string name="current_build_date">現在のビルド日: <xliff:g id="build_date" example="Date">%1$s</xliff:g></string>
+</resources>

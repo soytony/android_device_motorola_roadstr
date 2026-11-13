@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="quick_settings_internet_hotspot_summary_num_devices">
+        <item quantity="one">%d 台のデバイスが接続中</item>
+        <item quantity="other">%d 台のデバイスが接続中</item>
+    </plurals>
+    <string name="accessibility_assistant_button">AI アシスタント</string>
+    <string name="accessibility_battery_level_battery_saver_with_percent">バッテリー残量 %d%%。バッテリーセーバーがオンです。</string>
+    <string name="auto_mode_label">自動</string>
+    <string name="data_disabled_icon_title">データ無効アイコン</string>
+    <string name="enable_fiveg">5G を有効にする</string>
+    <string name="face_unlock_recognizing">顔を認識しています…</string>
+    <string name="force_stop_dlg_text">アプリを強制停止すると、正常に動作しなくなる可能性があります。</string>
+    <string name="force_stop_dlg_title">強制停止しますか？</string>
+    <string name="fps_text_placeholder">FPS: %1$d</string>
+    <string name="gigabitspersecond_short">Gb/s</string>
+    <string name="gigabytespersecond_short">GB/s</string>
+    <string name="global_action_onthego">On-The-Go</string>
+    <string name="global_action_restart_systemui">SystemUI</string>
+    <string name="kilobitspersecond_short">kb/s</string>
+    <string name="kilobytespersecond_short">kB/s</string>
+    <string name="location_privacy_indicator_title">位置情報プライバシーインジケーター</string>
+    <string name="megabitspersecond_short">Mb/s</string>
+    <string name="megabytespersecond_short">MB/s</string>
+    <string name="mic_camera_privacy_indicator_title">マイクとカメラのプライバシーインジケーター</string>
+    <string name="onthego_channel_name">メイン</string>
+    <string name="onthego_notif_camera_changed">カメラモードが変更されました</string>
+    <string name="onthego_notif_error">On-The-Go を開始できません</string>
+    <string name="onthego_notif_options">オプション</string>
+    <string name="onthego_notif_restart">On-The-Go を再起動</string>
+    <string name="onthego_notif_stop">停止</string>
+    <string name="onthego_notif_ticker">On-The-Go が有効になりました</string>
+    <string name="onthego_notif_title">On-The-Go が有効です</string>
+    <string name="onthego_service_toggle">サービスを自動的に再起動</string>
+    <string name="projection_privacy_indicator_title">メディアプロジェクションのプライバシーインジケーター</string>
+    <string name="qs_data_switch_label">データカードを切り替え</string>
+    <string name="quick_settings_autobrightness_label">自動調整</string>
+    <string name="quick_settings_compass_E">東</string>
+    <string name="quick_settings_compass_N">北</string>
+    <string name="quick_settings_compass_NE">北東</string>
+    <string name="quick_settings_compass_NW">北西</string>
+    <string name="quick_settings_compass_S">南</string>
+    <string name="quick_settings_compass_SE">南東</string>
+    <string name="quick_settings_compass_SW">南西</string>
+    <string name="quick_settings_compass_W">西</string>
+    <string name="quick_settings_compass_init">初期化しています…</string>
+    <string name="quick_settings_compass_label">コンパス</string>
+    <string name="quick_settings_compass_value">%1$.0f° %2$s</string>
+    <string name="quick_settings_cpuinfo_label">CPU 情報</string>
+    <string name="quick_settings_fpsinfo_label">FPS 情報</string>
+    <string name="quick_settings_locale_label">言語</string>
+    <string name="quick_settings_locale_more_locales_toast">先に複数の言語を設定してください</string>
+    <string name="quick_settings_preferred_network_label">優先ネットワーク</string>
+    <string name="quick_settings_preferred_network_unsupported">非対応</string>
+    <string name="quick_settings_sound_label">サウンド</string>
+    <string name="quick_settings_sound_mute">ミュート</string>
+    <string name="quick_settings_sound_ring">着信音</string>
+    <string name="quick_settings_sound_vibrate">バイブレーション</string>
+    <string name="quick_settings_volume_panel_label">音量パネル</string>
+    <string name="refresh_rate_tile_label">リフレッシュレート</string>
+    <string name="screenshot_long_press">長押し - 選択した範囲</string>
+    <string name="show_fourg_icon_title">4G アイコン</string>
+    <string name="status_bar_call_strength">通話信号強度</string>
+    <string name="status_bar_data_saver">データセーバー</string>
+    <string name="status_bar_hd_calling">HD 通話（VoLTE/VoNR）</string>
+    <string name="status_bar_nfc">NFC</string>
+    <string name="status_bar_roaming">ローミングインジケーター</string>
+    <string name="status_bar_vowifi">Wi-Fi 通話（VoWiFi）</string>
+    <string name="usage_data">今日使用</string>
+    <string name="usage_data_default_suffix">データ通信</string>
+    <string name="usage_data_weekly">今週使用</string>
+    <string name="usage_wifi_default_suffix">Wi-Fi</string>
+    <string name="vpn_tethering_changed_off">VPN テザリングをオフにしました。</string>
+    <string name="vpn_tethering_changed_on">VPN テザリングをオンにしました。</string>
+    <string name="vpn_tethering_label">VPN テザリング</string>
+    <string name="wifi_standard_icon_title">Wi-Fi 規格</string>
+    <string name="now_playing_track_and_artist_description">再生中: %2$s の %1$s</string>
+    <string name="flashlight_strength_title">懐中電灯の明るさ</string>
+        <string name="flashlight_strength_turn_off">オフにする</string>
+        <string name="flashlight_strength_turn_on">オンにする</string>
+
+
+        <string name="keyguard_indication_dash_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Dash Charging（フル充電まで <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g>）</string>
+        <string name="keyguard_plugged_in_dash_charging"><xliff:g id="percentage">%s</xliff:g> • Dash Charging</string>
+
+        <string name="keyguard_indication_warp_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • Warp Charging（フル充電まで <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g>）</string>
+        <string name="keyguard_plugged_in_warp_charging"><xliff:g id="percentage">%s</xliff:g> • Warp Charging</string>
+
+        <string name="keyguard_indication_vooc_charging_time"><xliff:g id="percentage">%2$s</xliff:g> • VOOC Charging（フル充電まで <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g>）</string>
+        <string name="keyguard_plugged_in_vooc_charging"><xliff:g id="percentage">%s</xliff:g> • VOOC Charging</string>
+
+        <string name="keyguard_indication_turbo_power_time"><xliff:g id="percentage">%2$s</xliff:g> • Turbo Charging（フル充電まで <xliff:g id="charging_time_left" example="4 hours and 2 minutes">%1$s</xliff:g>）</string>
+        <string name="keyguard_plugged_in_turbo_charging"><xliff:g id="percentage">%s</xliff:g> • Turbo Charging</string>
+
+
+        <string name="quick_settings_smart_pixels_label">スマートピクセル</string>
+        <string name="quick_settings_smart_pixels_on">オン</string>
+        <string name="quick_settings_smart_pixels_off">オフ</string>
+        <string name="smart_pixels_percent_label">ピクセルの割合</string>
+        <string name="smart_pixels_percent_format"><xliff:g id="percent" example="25">%d</xliff:g>%%</string>
+
+
+        <string name="usb_mode_picker_title">USB モードの選択</string>
+        <string name="usb_mode_file_transfer">ファイル転送</string>
+        <string name="usb_mode_tethering">USB テザリング</string>
+        <string name="usb_mode_midi">MIDI</string>
+        <string name="usb_mode_photo_transfer">写真・動画の転送</string>
+        <string name="usb_mode_webcam">USB ウェブカメラ</string>
+        <string name="usb_mode_charging_only">充電のみ</string>
+        <string name="usb_charging_status">USB 充電がオンです</string>
+
+
+        <string name="onthego_dialog_title">On-The-Go</string>
+        <string name="onthego_opacity_title">カメラの不透明度</string>
+        <string name="onthego_restart_title">カメラ切り替え時に再起動</string>
+        <string name="onthego_restart_summary">カメラが切り替わったときにプレビューを一時的に再起動します</string>
+        <string name="onthego_front_camera_title">前面カメラ</string>
+        <string name="onthego_front_camera_summary">背面カメラではなく前面カメラを使用します</string>
+
+
+        <string name="ax_dynamic_bar_timer">タイマー</string>
+        <string name="ax_dynamic_bar_stopwatch">ストップウォッチ</string>
+        <string name="ax_dynamic_bar_alarm">アラーム</string>
+        <string name="ax_dynamic_bar_flashlight">懐中電灯</string>
+        <string name="ax_dynamic_bar_hotspot">テザリング</string>
+        <string name="ax_dynamic_bar_hotspot_active">テザリングが有効</string>
+        <string name="ax_dynamic_bar_vpn_active">VPN が有効</string>
+        <string name="ax_dynamic_bar_screen_recording">画面録画</string>
+        <string name="ax_dynamic_bar_now_playing">再生中</string>
+        <string name="ax_dynamic_bar_media_output">メディア出力</string>
+        <string name="ax_dynamic_bar_sound_mode">サウンドモード</string>
+        <string name="ax_dynamic_bar_silent">サイレント</string>
+        <string name="ax_dynamic_bar_vibrate">バイブ</string>
+        <string name="ax_dynamic_bar_ring">着信音</string>
+        <string name="ax_dynamic_bar_charging">充電中</string>
+        <string name="ax_dynamic_bar_wireless">ワイヤレス</string>
+        <string name="ax_dynamic_bar_saver">節電</string>
+        <string name="ax_dynamic_bar_music">音楽</string>
+        <string name="ax_dynamic_bar_copied">コピーしました</string>
+        <string name="ax_dynamic_bar_copied_feedback">コピーしました！</string>
+        <string name="ax_dynamic_bar_image_copied">画像をコピーしました</string>
+        <string name="ax_dynamic_bar_copy_image">画像をコピー</string>
+        <string name="ax_dynamic_bar_clipboard_image_desc">クリップボードの画像</string>
+        <string name="ax_dynamic_bar_image">画像</string>
+        <string name="ax_dynamic_bar_url">URL</string>
+        <string name="ax_dynamic_bar_dismiss">閉じる</string>
+        <string name="ax_dynamic_bar_open">開く</string>
+        <string name="ax_dynamic_bar_stop">停止</string>
+        <string name="ax_dynamic_bar_stop_recording">録画を停止</string>
+        <string name="ax_dynamic_bar_reset">リセット</string>
+        <string name="ax_dynamic_bar_clear_all">すべて消去</string>
+        <string name="ax_dynamic_bar_show_more">もっと見る</string>
+        <string name="ax_dynamic_bar_show_less">表示を減らす</string>
+        <string name="ax_dynamic_bar_play">再生</string>
+        <string name="ax_dynamic_bar_pause">一時停止</string>
+        <string name="ax_dynamic_bar_paused">一時停止中</string>
+        <string name="ax_dynamic_bar_saved">保存しました</string>
+        <string name="ax_dynamic_bar_recording">録画中</string>
+        <string name="ax_dynamic_bar_done">完了</string>
+        <string name="ax_dynamic_bar_ringing">着信中</string>
+        <string name="ax_dynamic_bar_running">実行中</string>
+        <string name="ax_dynamic_bar_on">オン</string>
+        <string name="ax_dynamic_bar_recents">履歴</string>
+        <string name="ax_dynamic_bar_kill_app">アプリを強制終了</string>
+        <string name="ax_dynamic_bar_unlocked">ロック解除</string>
+        <string name="ax_dynamic_bar_device_unlocked">デバイスのロックが解除されました</string>
+        <string name="ax_dynamic_bar_progress">進捗</string>
+        <string name="ax_dynamic_bar_casting_to">キャスト先:</string>
+        <string name="ax_dynamic_bar_camera_mic">カメラとマイク</string>
+        <string name="ax_dynamic_bar_camera">カメラ</string>
+        <string name="ax_dynamic_bar_microphone">マイク</string>
+        <string name="ax_dynamic_bar_camera_mic_short">カメラ・マイク</string>
+        <string name="ax_dynamic_bar_hotspot_devices"><xliff:g id="count" example="3">%d</xliff:g> 台のデバイス</string>
+        <string name="ax_dynamic_bar_wireless_charging">ワイヤレス充電中</string>
+        <string name="ax_dynamic_bar_until_full">でフル充電</string>
+        <string name="ax_dynamic_bar_battery_saver">バッテリーセーバー</string>
+        <string name="ax_dynamic_bar_call">通話</string>
+        <string name="ax_dynamic_bar_incoming_call">着信</string>
+        <string name="ax_dynamic_bar_connected">接続済み</string>
+        <string name="ax_dynamic_bar_disconnect">切断</string>
+        <string name="ax_dynamic_bar_no_devices">デバイスなし</string>
+        <string name="ax_dynamic_bar_one_device_connected">1 台のデバイスが接続中</string>
+        <string name="ax_dynamic_bar_devices_connected"><xliff:g id="count" example="3">%d</xliff:g> 台のデバイスが接続中</string>
+        <string name="ax_dynamic_bar_vpn_connected">VPN 接続済み</string>
+        <string name="ax_dynamic_bar_secured">保護済み</string>
+        <string name="ax_dynamic_bar_connecting">接続中…</string>
+        <string name="ax_dynamic_bar_one_device">1 台のデバイス</string>
+        <string name="ax_dynamic_bar_bluetooth_device">Bluetooth デバイス</string>
+        <string name="ax_dynamic_bar_left_earbud">左イヤホン</string>
+        <string name="ax_dynamic_bar_right_earbud">右イヤホン</string>
+        <string name="ax_dynamic_bar_earbuds_case">ケース</string>
+        <string name="ax_dynamic_bar_apps_count"><xliff:g id="count" example="2">%d</xliff:g> 個のアプリ</string>
+        <string name="ax_dynamic_bar_just_now">たった今</string>
+        <string name="ax_dynamic_bar_mins_ago"><xliff:g id="count" example="5">%d</xliff:g> 分前</string>
+        <string name="ax_dynamic_bar_hours_ago"><xliff:g id="count" example="2">%d</xliff:g> 時間前</string>
+        <string name="ax_dynamic_bar_days_ago"><xliff:g id="count" example="3">%d</xliff:g> 日前</string>
+        <string name="ax_dynamic_bar_weeks_ago"><xliff:g id="count" example="1">%d</xliff:g> 週間前</string>
+        <string name="ax_dynamic_bar_resume">再開</string>
+        <string name="ax_dynamic_bar_clipboard">クリップボード</string>
+        <string name="ax_dynamic_bar_previous">前の曲</string>
+        <string name="ax_dynamic_bar_next">次の曲</string>
+        <string name="ax_dynamic_bar_shuffle">シャッフル</string>
+        <string name="ax_dynamic_bar_output">出力</string>
+        <string name="ax_dynamic_bar_rec_short">録画</string>
+        <string name="ax_dynamic_bar_cast_short">キャスト</string>
+        <string name="ax_dynamic_bar_active">使用中</string>
+        <string name="ax_dynamic_bar_biometric">生体認証</string>
+        <string name="ax_dynamic_bar_trust">Trust</string>
+        <string name="ax_dynamic_bar_alignment">位置合わせ</string>
+        <string name="ax_dynamic_bar_cam_short">カメラ</string>
+        <string name="ax_dynamic_bar_mic_short">マイク</string>
+        <string name="ax_dynamic_bar_recent_apps">最近のアプリ</string>
+        <string name="ax_dynamic_bar_count_running"><xliff:g id="count" example="3">%d</xliff:g> 個実行中</string>
+        <string name="ax_dynamic_bar_sports_live">ライブ</string>
+        <string name="ax_dynamic_bar_sports_final">試合終了</string>
+        <string name="ax_dynamic_bar_sports_halftime">ハーフタイム</string>
+        <string name="ax_dynamic_bar_sports_upcoming">まもなく開始</string>
+
+
+        <string name="quick_settings_screenshot_label">スクリーンショット</string>
+
+
+        <string name="reevaluating_system_theme">システムテーマを再評価しています…数秒お待ちください</string>
+
+
+        <string name="weather_condition_clouds">曇り</string>
+        <string name="weather_condition_rain">雨</string>
+        <string name="weather_condition_clear">快晴</string>
+        <string name="weather_condition_storm">嵐</string>
+        <string name="weather_condition_snow">雪</string>
+        <string name="weather_condition_wind">風</string>
+        <string name="weather_condition_mist">霧</string>
+
+
+        <string name="omnijaws_service_error">天気データの読み込みに失敗しました</string>
+        <string name="omnijaws_service_unknown">天気データがありません</string>
+        <string name="omnijaws_label_default">天気</string>
+
+
+        <string name="clock_ide_weather_data_unavailable">null</string>
+
+
+        <string name="screenshot_save_to_storage_label">ストレージに保存</string>
+
+
+        <string name="screenshot_lens_label">Lens</string>
+
+
+        <string name="quick_settings_blur_label">ぼかし</string>
+
+
+        <string name="app_volume_panel_title">アプリの音量</string>
+        <string name="app_volume_panel_subtitle_idle">音声を再生中の各アプリの音量を調整します</string>
+        <plurals name="app_volume_panel_subtitle_active">
+            <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> 個のアプリが音声を再生中</item>
+            <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> 個のアプリが音声を再生中</item>
+        </plurals>
+        <string name="app_volume_panel_empty">現在、音声を再生しているアプリはありません</string>
+
+        <string name="app_volume_panel_percent"><xliff:g id="percent" example="50">%d</xliff:g>%%</string>
+    <string name="camera">カメラ</string>
+        <string name="calculator">電卓</string>
+        <string name="gallery">ギャラリー</string>
+        <string name="no_default_app_found">デフォルトの %1$s アプリが見つかりません</string>
+        <string name="weather_data_unavailable">データがありません</string>
+        <string name="omnijaws_weather">OmniJaws</string>
+        <string name="quick_settings_data_label">モバイルデータ</string>
+        <string name="quick_settings_ringer_label">着信音モード</string>
+        <string name="torch_active">懐中電灯がオン</string>
+        <string name="google_wallet">Google Wallet</string>
+    <string name="quick_settings_screensaver_label">スクリーンセーバー</string>
+
+        <string name="zen_alarm_warning_indef">オフにしないと、次のアラーム（<xliff:g id="when" example="at 7:00 AM">%1$s</xliff:g>）の音が聞こえません</string>
+
+
+        <string name="app_info_install_time">インストール日時: %1$s</string>
+        <string name="app_info_update_time">アップデート日時: %1$s</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

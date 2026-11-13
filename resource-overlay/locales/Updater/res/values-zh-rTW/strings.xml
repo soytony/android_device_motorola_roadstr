@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="welcome_message">請注意，若有多個可用更新，無需逐個依序更新——您可以直接安裝最新版本，然後安全刪除舊更新以釋放儲存空間。</string>
+    <string name="welcome_title">歡迎</string>
+    <string name="blocked_update_dialog_message_custom">無法使用更新程式安裝此更新。請嘗試透過復原模式安裝更新。</string>
+        <string name="maintainer_name">維護者：<xliff:g id="maintainer" example="Maintainer Name">%1$s</xliff:g></string>
+        <string name="support_links">支援連結：</string>
+        <string name="current_build_date">目前建置日期：<xliff:g id="build_date" example="Date">%1$s</xliff:g></string>
+</resources>

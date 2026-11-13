@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="browse_header">ヘッダー</string>
+    <string name="browse_walls">壁紙</string>
+    <string name="custom_header_image_notice">ヘッダー画像を設定しました</string>
+    <string name="download_wallpaper_failed_notice">壁紙のダウンロードに失敗しました</string>
+    <string name="download_wallpaper_list_failed_notice">壁紙ディレクトリの読み込みに失敗しました</string>
+    <string name="download_wallpaper_notice">壁紙をダウンロードしています</string>
+    <string name="header_creator_label">作成者: </string>
+    <string name="no_crop_activity_dialog_text">壁紙を設定するには Omni ギャラリーアプリが必要です</string>
+    <string name="no_crop_activity_dialog_title">ギャラリーがありません</string>
+    <string name="no_network_message">ネットワークに接続されていません</string>
+    <string name="omni_walls">WaterSlides</string>
+    <string name="scrolling_wall_dialog_text">壁紙を画面サイズに切り抜きますか？</string>
+    <string name="scrolling_wall_dialog_title">壁紙を切り抜き</string>
+    <string name="scrolling_wall_no">はい</string>
+    <string name="scrolling_wall_yes">いいえ</string>
+    <string name="wallpaper_default_name">壁紙</string>
+    <string name="wallpaper_location_local">ローカル</string>
+    <string name="wallpaper_location_remote">オンライン</string>
+    <string name="wallpaper_type_both">ホーム画面とロック画面</string>
+    <string name="wallpaper_type_dialog_title">壁紙を設定</string>
+    <string name="wallpaper_type_lock">ロック画面</string>
+    <string name="wallpaper_type_system">ホーム画面</string>
+    <string name="browse_theme_walls">テーマ壁紙</string>
+        <string name="browse_theme_header">テーマヘッダー</string>
+        <string name="pick_header">ヘッダーを選択</string>
+        <string name="sort_by_creator_menu">作成者順に並べ替え</string>
+        <string name="sort_by_tag_menu">タグ順に並べ替え</string>
+        <string name="sort_by_default_menu">名前順に並べ替え</string>
+        <string name="download_header_notice">ヘッダーをダウンロード中</string>
+        <string name="download_header_failed_notice">ヘッダーのダウンロードに失敗しました</string>
+        <string name="header_location_local">ローカル</string>
+        <string name="header_location_online">オンライン</string>
+</resources>

@@ -108,7 +108,20 @@ PRODUCT_PACKAGES += \
     NetworkLocationProviderSwitcher \
     NetworkStackResMcc460Roadstr \
     NetworkStackGoogleResMcc460Roadstr \
-    NfcResRoadstr
+    NfcResRoadstr \
+    ContactsBackupLocales \
+    DeviceSettingsLocales \
+    FrameworkResLocales \
+    LineagePartsLocales \
+    LunarisDolbyLocales \
+    NetworkLocationProviderLocales \
+    OmniStyleLocales \
+    PrintSpoolerLocales \
+    SandboxLocales \
+    SeedvaultLocales \
+    SettingsLocales \
+    SystemUILocales \
+    UpdaterLocales
 
 # Broker defaults to Google on all SKUs; confirmed choices apply after reboot.
 # Preserve the stock Baidu permissions, including its legacy storage prerequisite.

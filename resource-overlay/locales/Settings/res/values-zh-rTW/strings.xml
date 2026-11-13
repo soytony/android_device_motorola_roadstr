@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="wifi_hotspot_client_limit_summary">
+        <item quantity="other">最多可有 %1$d 部裝置連線到此熱點</item>
+        <item quantity="one">最多可有 %1$d 部裝置連線到此熱點</item>
+    </plurals>
+    <string name="always_on_display_schedule_mixed_sunrise">從指定時間開啟，直至日出</string>
+    <string name="always_on_display_schedule_mixed_sunset">從日落開啟，直至指定時間</string>
+    <string name="always_on_display_schedule_sunrise">日出</string>
+    <string name="always_on_display_schedule_sunset">日落</string>
+    <string name="always_on_display_schedule_title">隨顯螢幕時間表</string>
+    <string name="app_lock_authentication_dialog_title">解鎖</string>
+    <string name="app_lock_biometrics_allowed_title">啟用生物識別解鎖</string>
+    <string name="app_lock_footer_text">逾時後對話泡會自動消失</string>
+    <string name="app_lock_notifications_disabled_summary">請先保護一個應用程式</string>
+    <string name="app_lock_notifications_summary">所選應用程式鎖定時，其通知內容將被隱藏並摺疊，浮動通知將自動停用。</string>
+    <string name="app_lock_notifications_title">隱藏通知內容</string>
+    <string name="app_lock_packages_summary">選擇要透過生物識別或裝置憑證保護的應用程式</string>
+    <string name="app_lock_packages_title">受保護的應用程式</string>
+    <string name="app_lock_timeout_summary">已解鎖的應用程式退到背景後經過此時間將重新鎖定</string>
+    <string name="app_lock_timeout_title">自動鎖定逾時</string>
+    <string name="app_lock_title">應用程式鎖定</string>
+    <string name="app_volume">應用程式音量</string>
+    <string name="app_volume_summary">在音量對話框中顯示個別應用程式音量按鈕</string>
+    <string name="app_volume_title">個別應用程式音量控制</string>
+    <string name="back_gesture_arrow_summary">為返回手勢顯示動畫箭頭</string>
+    <string name="back_gesture_arrow_title">返回手勢動畫</string>
+    <string name="back_height_high_label">底部</string>
+    <string name="back_height_low_label">全螢幕</string>
+    <string name="back_height_summary">返回手勢生效的螢幕高度範圍</string>
+    <string name="back_height_title">返回手勢高度</string>
+    <string name="battery_saver_refresh_rate_summary">省電模式開啟時使用 60 Hz 螢幕更新率以節省電量</string>
+    <string name="battery_saver_refresh_rate_title">降低更新率</string>
+    <string name="bluetooth_timeout">藍牙逾時</string>
+    <string name="bluetooth_timeout_summary">不自動關閉藍牙</string>
+    <string name="bluetooth_timeout_summary_auto">若無裝置連線，藍牙將在 %1$s 後關閉</string>
+    <string name="build_maintainer">建置維護者</string>
+    <string name="clipboard_auto_clear_enabled_title">使用剪貼簿自動清除</string>
+    <string name="clipboard_auto_clear_summary">在排定的時間自動清除剪貼簿</string>
+    <string name="clipboard_auto_clear_timeout_disable_clipboard">停用剪貼簿</string>
+    <string name="clipboard_auto_clear_timeout_title">剪貼簿自動清除逾時</string>
+    <string name="clipboard_auto_clear_title">剪貼簿自動清除</string>
+    <string name="copied_to_clipboard">已複製到剪貼簿</string>
+    <string name="custom_timeout_summary_10mins">10 分鐘</string>
+    <string name="custom_timeout_summary_10secs">10 秒</string>
+    <string name="custom_timeout_summary_12hours">12 小時</string>
+    <string name="custom_timeout_summary_15secs">15 秒</string>
+    <string name="custom_timeout_summary_1hour">1 小時</string>
+    <string name="custom_timeout_summary_1hour_def">1 小時（預設）</string>
+    <string name="custom_timeout_summary_1min">1 分鐘</string>
+    <string name="custom_timeout_summary_20mins">20 分鐘</string>
+    <string name="custom_timeout_summary_24hours">24 小時</string>
+    <string name="custom_timeout_summary_2hours">2 小時</string>
+    <string name="custom_timeout_summary_2mins">2 分鐘</string>
+    <string name="custom_timeout_summary_30mins">30 分鐘</string>
+    <string name="custom_timeout_summary_30secs">30 秒</string>
+    <string name="custom_timeout_summary_36hours">36 小時</string>
+    <string name="custom_timeout_summary_48hours">48 小時</string>
+    <string name="custom_timeout_summary_4hours">4 小時</string>
+    <string name="custom_timeout_summary_5mins">5 分鐘</string>
+    <string name="custom_timeout_summary_5secs">5 秒</string>
+    <string name="custom_timeout_summary_72hours">72 小時</string>
+    <string name="custom_timeout_summary_8hours">8 小時</string>
+    <string name="custom_timeout_summary_never">永不</string>
+    <string name="custom_vibration_pattern_summary">設定自訂振動模式</string>
+    <string name="custom_vibration_pattern_title">自訂模式</string>
+    <string name="device_market_name">市場名稱</string>
+    <string name="disable_debugging">停用偵錯</string>
+    <string name="double_tap_title">輕觸兩下</string>
+    <string name="doze_double_tap_summary">輕觸兩下以短暫顯示通知</string>
+    <string name="doze_double_tap_title">輕觸兩下查看手機</string>
+    <string name="doze_gesture_ambient_summary">顯示環境顯示，而非完全喚醒螢幕</string>
+    <string name="doze_gesture_ambient_title">顯示環境顯示</string>
+    <string name="doze_on_charge_summary">裝置充電時顯示資訊</string>
+    <string name="doze_on_charge_title">充電時一律顯示</string>
+    <string name="enable_debugging">啟用偵錯</string>
+    <string name="enable_protection">啟用保護</string>
+    <string name="evolution_license_title">Evolution X 法律資訊</string>
+    <string name="fingerprint_lockout_summary">停用多次指紋解鎖失敗後的 30 秒逾時及永久鎖定</string>
+    <string name="fingerprint_lockout_title">停用指紋鎖定</string>
+    <string name="force_lte_ca_summary">透過聚合支援的頻段提升 LTE 頻寬</string>
+    <string name="game_space_summary">提升您的遊戲體驗</string>
+    <string name="game_space_title">遊戲空間</string>
+    <string name="gesture_wake">完全喚醒</string>
+    <string name="gesture_wake_ambient">顯示環境顯示</string>
+    <string name="hide_from_launcher_summary">防止此應用程式出現在任何啟動器中。變更需重新啟動啟動器後才會生效。</string>
+    <string name="hide_from_launcher_title">從啟動器隱藏</string>
+    <string name="incall_vibrate_call_wait_title">來電等待時振動</string>
+    <string name="incall_vibrate_connect_title">接通時振動</string>
+    <string name="incall_vibrate_disconnect_title">掛斷時振動</string>
+    <string name="incall_vibration_category">通話中振動選項</string>
+    <string name="lock_screen_auto_pin_confirm_summary_custom">輸入正確的 PIN 碼後將自動解鎖。這比按下 Enter 鍵確認略不安全。</string>
+    <string name="longpress_to_clipboard">長按複製</string>
+    <string name="no_storage_restrict_summary">移除透過儲存空間存取架構選擇資料夾時的限制。某些情況下較為方便，但可能導致隱私外洩。</string>
+    <string name="no_storage_restrict_title">無儲存空間限制</string>
+    <string name="pattern_custom">自訂</string>
+    <string name="prevent_ringing_option_cycle">循環切換模式</string>
+    <string name="prevent_ringing_option_cycle_summary">開啟（循環切換模式）</string>
+    <string name="pulse_on_new_tracks_summary">播放新曲目時顯示環境顯示</string>
+    <string name="pulse_on_new_tracks_title">音樂提示</string>
+    <string name="radio_info_title">無線資訊</string>
+    <string name="screenshot_shutter_sound_title">螢幕截圖音效</string>
+    <string name="show_clipboard_overlay_summary">當內容複製到剪貼簿時，在螢幕左下角顯示覆疊層</string>
+    <string name="show_clipboard_overlay_title">顯示剪貼簿覆疊層</string>
+    <string name="smart_5g_summary">在 5G 和 4G 之間自動切換以降低耗電量</string>
+    <string name="smart_5g_title">智慧 5G</string>
+    <string name="status_sleep_time">深度休眠</string>
+    <string name="string_disabled">已停用</string>
+    <string name="total_ram">記憶體總量</string>
+    <string name="usb_default_config_summary">選擇透過 USB 連接裝置時的預設行為</string>
+    <string name="usb_default_config_title">USB 設定</string>
+    <string name="vibration_pattern_title">鈴聲振動模式</string>
+    <string name="vpn_enforce_dns_summary">連線到 VPN 時停用私人 DNS\n中斷連線後將還原</string>
+    <string name="vpn_enforce_dns_title">為 VPN 停用</string>
+    <string name="wifi_do_not_validate_eap_server">不驗證</string>
+    <string name="wifi_do_not_validate_eap_server_warning">未指定憑證。您的連線將無法確保私密性。</string>
+    <string name="wifi_hotspot_block_client_dialog_text">此操作將中斷「%1$s」與此裝置的連線，並將其加入封鎖清單</string>
+    <string name="wifi_hotspot_block_client_dialog_title">封鎖裝置</string>
+    <string name="wifi_hotspot_blocked_clients_list_title">已封鎖的裝置</string>
+    <string name="wifi_hotspot_client_limit_title">連線裝置數量上限</string>
+    <string name="wifi_hotspot_client_manager_footer_text">目前沒有用戶端。已連線和已封鎖的裝置可用時將列在此處。</string>
+    <string name="wifi_hotspot_client_manager_list_only_summary">列出已連線到熱點的裝置</string>
+    <string name="wifi_hotspot_client_manager_summary">列出並管理已連線到熱點的裝置</string>
+    <string name="wifi_hotspot_client_manager_title">已連線的裝置</string>
+    <string name="wifi_hotspot_connected_clients_list_title">已連線的裝置</string>
+    <string name="wifi_hotspot_hidden_ssid_summary">您的行動熱點名稱不會出現在可用 Wi-Fi 網路清單中。</string>
+    <string name="wifi_hotspot_hidden_ssid_title">隱藏網路</string>
+    <string name="wifi_hotspot_unblock_client_dialog_text">裝置「%1$s」將能夠連線到此熱點</string>
+    <string name="wifi_hotspot_unblock_client_dialog_title">解除封鎖裝置</string>
+    <string name="wifi_timeout">Wi-Fi 逾時</string>
+    <string name="wifi_timeout_summary">不自動關閉 Wi-Fi</string>
+    <string name="wifi_timeout_summary_auto">若無網路連線，Wi-Fi 將在 %1$s 後關閉</string>
+    <string-array name="wifi_privacy_entries_ext">
+            <item>使用每次連線隨機產生的 MAC 位址 (預設)</item>
+            <item>使用每個網路隨機產生的 MAC 位址</item>
+            <item>使用裝置 MAC 位址</item>
+        </string-array>
+
+        <string-array name="ingress_rate_limit_entries">
+            <item>無限制</item>
+            <item>128kbps</item>
+            <item>256kbps</item>
+            <item>1Mbps</item>
+            <item>5Mbps</item>
+            <item>15Mbps</item>
+        </string-array>
+
+    
+        <string-array name="temperature_units">
+            <item>default</item>
+            <item>celsius</item>
+            <item>fahrenhe</item>
+        </string-array>
+
+    
+        <string-array name="first_day_of_week">
+            <item>default</item>
+            <item>sun</item>
+            <item>mon</item>
+            <item>tue</item>
+            <item>wed</item>
+            <item>thu</item>
+            <item>fri</item>
+            <item>sat</item>
+        </string-array>
+
+    
+        <string-array name="measurement_system">
+            <item>default</item>
+            <item>metric</item>
+            <item>ussystem</item>
+            <item>uksystem</item>
+        </string-array>
+
+    
+        <string-array name="terms_of_address">
+            <item>未指定</item>
+            <item>普通</item>
+            <item>女性</item>
+            <item>男性</item>
+        </string-array>
+
+    
+        <string-array name="fingerprint_acquired_vendor">
+            <item>指紋未移動</item>
+        </string-array>
+
+
+    
+        <string-array name="app_lock_relock_behavior_entries">
+            <item>逾時後</item>
+            <item>螢幕關閉時</item>
+        </string-array>
+
+        <string-array name="app_lock_grace_period_entries">
+            <item>立即</item>
+            <item>5 秒</item>
+            <item>15 秒</item>
+            <item>30 秒</item>
+            <item>1 分鐘</item>
+            <item>5 分鐘</item>
+        </string-array>
+
+        <plurals name="app_lock_summary_count">
+            <item quantity="one">已鎖定 1 個應用程式</item>
+            <item quantity="other">已鎖定 <xliff:g id="count" example="3">%d</xliff:g> 個應用程式</item>
+        </plurals>
+    <string name="build_maintainer_label">維護者</string>
+        <string name="maintainer_link_github">GitHub 個人資料</string>
+        <string name="maintainer_link_donate">贊助</string>
+        <string name="device_name">裝置</string>
+
+    
+        <string name="hardware_platform_label">平台</string>
+        <string name="hardware_sku">硬體 SKU</string>
+
+    
+        <string name="security_settings_face_enroll_finish_description_with_bp">現在你可以使用臉部解鎖手機或驗證身分，例如登入應用程式或核准購買時</string>
+
+    
+        <string name="face_down_sleep_title">翻面偵測</string>
+    
+        <string name="face_down_sleep_summary">裝置翻面後，稍候片刻即關閉螢幕</string>
+
+    
+        <string name="doze_gesture_vibrate_title">觸覺回饋</string>
+        <string name="doze_gesture_vibrate_summary">觸發此手勢時震動</string>
+
+    
+        <string name="show_ime_space_title">顯示輸入法按鈕空間</string>
+        <string name="show_ime_space_summary">啟用輸入法快速切換功能，可在輸入時透過螢幕底部的功能列切換輸入法或隱藏螢幕鍵盤</string>
+
+    
+        <string name="display_engine_category">顯示引擎</string>
+        <string name="display_engine_mode_title">Reality 顯示引擎</string>
+        <string name="x_reality_engine_mode_title">X-Reality 引擎</string>
+        <string name="vivid_engine_mode_title">鮮豔顯示</string>
+        <string name="triluminous_engine_mode_title">Triluminous 顯示</string>
+        <string name="natural_engine_mode_title">自然顯示</string>
+        <string name="cinema_engine_mode_title">劇院顯示</string>
+        <string name="reading_engine_mode_title">舒適顯示 (閱讀模式)</string>
+        <string name="display_engine_default">預設</string>
+        <string name="display_engine_mode_footer_text">顯示引擎的靈感源自 Sony\'s Bravia/X-Reality 引擎：鮮豔模式可增強亮度和色彩飽和度，X-Reality 模式可提升細節與色彩準確度，Triluminous 模式可提供更廣的色域。</string>
+
+    
+       <string name="double_tap_screen_to_sleep_summary">輕觸兩下鎖定畫面上的空白區域即可關閉螢幕。</string>
+       <string name="double_tap_screen_to_sleep_title">輕觸兩下關閉螢幕</string>
+       <string name="keywords_double_tap_screen_to_sleep">輕觸兩下關閉螢幕, 鎖定畫面</string>
+
+    
+        <string name="back_gesture_haptic_title">返回手勢觸覺回饋</string>
+        <string name="back_gesture_haptic_summary">執行返回手勢時震動</string>
+
+    
+        <string name="advanced_vpn_preference_group_title">內建</string>
+        <string name="vpn_preference_group_title">其他</string>
+
+    
+        <string name="force_lte_ca_title">載波聚合</string>
+        <string name="multi_audio_focus_title">多重音訊焦點</string>
+        <string name="multi_audio_focus_summary">允許多個應用程式同時播放音訊</string>
+
+    
+        <string name="doze_brightness_force_title">強制亮度值</string>
+        <string name="doze_brightness_force_summary">使用自訂亮度值取代螢幕亮度</string>
+        <string name="ambient_pulse_brightness_title">環境顯示亮度</string>
+        <string name="ambient_doze_brightness_title">Always-On Display 亮度</string>
+
+    
+        <string name="background_processes_settings_title">背景處理程序</string>
+
+    
+        <string name="per_app_config_empty_text">沒有已安裝的應用程式支援目前的設定</string>
+
+    
+        <string name="per_app_refresh_rate_title">個別應用程式刷新率設定</string>
+        <string name="per_app_refresh_rate_summary">個別設定每個應用程式的刷新率</string>
+        <string name="per_app_refresh_rate_default">跟隨系統</string>
+
+    
+        <string name="screen_refresh_rate_title">螢幕刷新率</string>
+        <string name="battery_saver_refresh_rate_disabled_summary">極限刷新率已開啟</string>
+
+    
+        <string name="extreme_refresh_rate_title">極限刷新率</string>
+        <string name="extreme_refresh_rate_summary">強制所有應用程式使用最高刷新率</string>
+        <string name="extreme_refresh_rate_warning">這將確保系統選擇最高刷新率，並忽略使用者選取及應用程式偏好的選項。需要特定刷新率的應用程式可能會運作異常。</string>
+
+    
+        <string name="confirm_before_enable_title">繼續啟用？</string>
+
+    
+        <string name="vehicle_motion_cues_title">車輛動態提示</string>
+        <string name="vehicle_motion_cues_summary">在螢幕邊緣顯示會隨車輛動態移動的動畫圓點，協助預防暈車</string>
+        <string name="vehicle_motion_cues_dot_size_title">圓點大小</string>
+        <string name="vehicle_motion_cues_dot_size_summary">動畫動態提示圓點的大小</string>
+        <string name="vehicle_motion_cues_sensitivity_title">動態靈敏度</string>
+        <string name="vehicle_motion_cues_sensitivity_summary">圓點相對於車輛作用力的移動強度</string>
+        <string name="vehicle_motion_cues_dot_count_title">圓點數量</string>
+        <string name="vehicle_motion_cues_dot_count_summary">螢幕邊緣顯示的動畫動態提示圓點數量</string>
+
+    
+        <string name="local_app_backup_restore_title">本機應用程式備份與還原</string>
+        <string name="local_app_backup_restore_summary">將 APK 和應用程式資料以一般 tar 封存檔儲存到內部儲存空間</string>
+
+    
+        <string name="app_lock_summary">使用裝置憑證保護應用程式</string>
+        <string name="app_lock_search_placeholder">搜尋應用程式…</string>
+        <string name="app_lock_show_system">顯示系統應用程式</string>
+        <string name="app_lock_dashboard_card_title">應用程式鎖定</string>
+        <string name="app_lock_dashboard_card_summary_none">沒有受保護的應用程式</string>
+        <string name="app_lock_dashboard_card_summary_multiple">已保護 <xliff:g id="count" example="3">%d</xliff:g> 個應用程式</string>
+        <string name="app_lock_not_secure_title">設定螢幕鎖定</string>
+        <string name="app_lock_not_secure_summary">如要使用應用程式鎖定，請先在「設定」中設定安全的螢幕鎖定方式 (PIN 碼、圖案或密碼)。</string>
+        <string name="app_lock_not_secure_button">設定螢幕鎖定</string>
+        <string name="app_lock_timeout_immediately">立即</string>
+        <string name="app_lock_timeout_5s">5 秒 (預設)</string>
+        <string name="app_lock_timeout_30s">30 秒</string>
+        <string name="app_lock_timeout_1m">1 分鐘</string>
+        <string name="app_lock_timeout_5m">5 分鐘</string>
+        <string name="app_lock_timeout_screen_lock">僅當螢幕鎖定時</string>
+
+    
+        <string name="app_lock_settings_title">應用程式鎖定設定</string>
+        <string name="app_lock_settings_summary">設定鎖定逾時與憑證驗證方式</string>
+        <string name="app_lock_method_title">應用程式鎖定方式</string>
+        <string name="app_lock_method_device_lock">裝置鎖定</string>
+        <string name="app_lock_method_device_lock_summary">使用系統螢幕鎖定 PIN 碼/圖案/密碼 &amp; 生物辨識</string>
+        <string name="app_lock_method_pin">PIN 碼</string>
+        <string name="app_lock_method_pin_summary">4 位數字代碼</string>
+        <string name="app_lock_method_password">密碼</string>
+        <string name="app_lock_method_password_summary">英數密碼</string>
+        <string name="app_lock_method_pattern">圖案</string>
+        <string name="app_lock_method_pattern_summary">繪製圖案解鎖</string>
+        <string name="app_lock_setup_pin_title">設定應用程式鎖定 PIN 碼</string>
+        <string name="app_lock_confirm_pin_title">確認應用程式鎖定 PIN 碼</string>
+        <string name="app_lock_setup_password_title">設定應用程式鎖定密碼</string>
+        <string name="app_lock_confirm_password_title">確認應用程式鎖定密碼</string>
+        <string name="app_lock_setup_pattern_title">繪製應用程式鎖定圖案</string>
+        <string name="app_lock_confirm_pattern_title">確認應用程式鎖定圖案</string>
+        <string name="app_lock_credential_mismatch">憑證不相符，請再試一次。</string>
+        <string name="app_lock_credential_incorrect">PIN 碼、密碼或圖案不正確。</string>
+        <string name="app_lock_biometrics_title">允許生物辨識</string>
+        <string name="app_lock_biometrics_summary">啟用自訂鎖定時，可使用指紋或臉部解鎖已鎖定的應用程式</string>
+
+    
+        <string name="override_mock_location_title">覆寫模擬位置限制</string>
+        <string name="override_mock_location_summary">啟用後，應用程式將無法偵測模擬位置</string>
+
+    
+        <string name="bluetooth_details_audio_codec_title">音訊編解碼器</string>
+    
+        <string name="bluetooth_details_audio_codec_unavailable">無法使用</string>
+
+    
+        <string name="installed_app_detail_settings_screen_purpose">提供指定已安裝應用程式的詳細資訊與管理選項，包括權限、儲存空間、通知與狀態。</string>
+        <string name="installed_app_detail_unused_apps_switch_purpose">啟用後，若應用程式長時間未使用，將移除其權限、刪除暫存檔案、停止通知並封存該應用程式。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_disabled_globally">\'管理未使用的應用程式\' 功能目前在裝置層級停用。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_archived_app">已封存的應用程式無法作為未使用應用程式進行管理。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_exempt_app">此應用程式是重要的系統應用程式，不受 \'管理未使用的應用程式\' 功能限制。</string>
+        <string name="installed_app_detail_manage_app_unused_precondition_null_app">在裝置上找不到指定的應用程式。</string>
+        <string name="non_carrier_app_data_usage_screen_purpose">顯示應用程式透過行動數據和 Wi-Fi 連線使用的資料量</string>
+        <string name="status_iccid">ICCID</string>
+    
+        <string name="testing_sim_toolkit">SIM 卡工具組</string>
+
+    
+        <string name="power_audio">音訊</string>
+        <string name="power_video">影片</string>
+        <string name="power_sensors">感測器</string>
+        <string name="power_memory">記憶體</string>
+        <string name="power_idle">手機閒置</string>
+
+    
+        <string name="storage_percentage_format" translation_description="Percentage of storage used (e.g., 16%). For RTL languages like Persian, ensure the percentage symbol is correctly placed on the visual left of the numeral.">
+            <xliff:g id="percentage" example="16%">%1$s%%</xliff:g>
+        </string>
+
+    
+        <string name="platform_compat_target_sdk_title">已針對 targetSdkVersion &gt;= <xliff:g id="number" example="29">%d</xliff:g> 啟用</string>
+    
+        <string name="personal_context_title">個人情境管理工具</string>
+    
+        <string-array name="themes_boot_animation_entries">
+            <item>Evolution X</item>
+            <item>Evolution X (Reveal)</item>
+            <item>AOKP</item>
+            <item>CyanogenMod</item>
+            <item>ctOS</item>
+            <item>Cyberpunk</item>
+            <item>Dirty Unicorns</item>
+            <item>Google</item>
+            <item>PAC-ROM</item>
+            <item>Resurrection Remix</item>
+            <item>SlimRoms</item>
+            <item>Valorant</item>
+            <item>自訂</item>
+        </string-array>
+
+    
+        <string-array name="wallpaper_effect_entries">
+            <item>無</item>
+            <item>模糊顆粒</item>
+            <item>色差</item>
+            <item>暗角</item>
+            <item>像素化</item>
+            <item>飽和度</item>
+            <item>褐色調</item>
+            <item>銳化</item>
+            <item>灰階</item>
+            <item>負片</item>
+            <item>放射模糊</item>
+            <item>色調分離</item>
+        </string-array>
+    
+        <string-array name="nowplaying_icon_style_entries">
+            <item>已停用</item>
+            <item>應用程式圖示</item>
+            <item>音符圖示</item>
+        </string-array>
+
+        <string-array name="charging_animation_style_entries">
+            <item>泡泡串流</item>
+            <item>霓虹噴繪</item>
+            <item>光束效果</item>
+            <item>等離子效果</item>
+            <item>量子火花</item>
+            <item>星雲擴散</item>
+            <item>數位矩陣</item>
+            <item>地紋流光</item>
+        </string-array>
+
+        <string-array name="charging_color_mode_entries">
+            <item>預設綠色</item>
+            <item>強調色</item>
+            <item>彩虹</item>
+        </string-array>
+
+        <string-array name="perapp_spoof_profile_labels">
+            <item>Black Shark 4 (中國)</item>
+            <item>Poco F5</item>
+            <item>Samsung Galaxy S25 Ultra</item>
+            <item>Samsung Galaxy Z Fold 5</item>
+            <item>Honor Magic V2 RSR</item>
+            <item>Lenovo Legion Y700</item>
+            <item>Xiaomi 11T Pro</item>
+            <item>Xiaomi 13</item>
+            <item>Xiaomi 13 Pro</item>
+            <item>Xiaomi 14 Pro</item>
+            <item>OnePlus 12</item>
+            <item>OnePlus 13</item>
+            <item>Pixel 11 Pro XL</item>
+            <item>REDMAGIC 9 Pro</item>
+            <item>REDMAGIC 10 Pro</item>
+            <item>Realme 15 Pro 5G</item>
+            <item>ROG Phone 9 Pro</item>
+            <item>無</item>
+        </string-array>
+
+    
+        <string-array name="cutout_progress_finish_style_entries">
+            <item>彈出</item>
+            <item>分段串聯</item>
+            <item>吸附 (即時)</item>
+        </string-array>
+
+        <string-array name="cutout_progress_easing_entries">
+            <item>線性</item>
+            <item>加速</item>
+            <item>減速</item>
+            <item>緩入–緩出</item>
+        </string-array>
+
+        <string-array name="cutout_progress_position_entries">
+            <item>右側</item>
+            <item>左側</item>
+            <item>頂部</item>
+            <item>底部</item>
+            <item>右上</item>
+            <item>左上</item>
+            <item>右下</item>
+            <item>左下</item>
+        </string-array>
+
+        <string-array name="cutout_progress_truncate_entries">
+            <item>中間</item>
+            <item>開頭</item>
+            <item>結尾</item>
+        </string-array>
+    
+        <string-array name="lock_glymps_source_entries">
+            <item>隨機桌布 (Picsum)</item>
+            <item>自訂 URL 清單</item>
+            <item>本機資料夾</item>
+        </string-array>
+
+        <string-array name="lock_glymps_cache_size_entries">
+            <item>3 張桌布 (約 30MB)</item>
+            <item>5 張桌布 (約 50MB)</item>
+            <item>10 張桌布 (約 100MB)</item>
+        </string-array>
+
+        <string-array name="lock_glymps_change_on_entries">
+            <item>螢幕開啟時</item>
+            <item>螢幕關閉時 (建議)</item>
+            <item>依計時器</item>
+        </string-array>
+
+        <string-array name="lock_glymps_timer_entries">
+            <item>5 分鐘</item>
+            <item>10 分鐘</item>
+            <item>15 分鐘</item>
+            <item>30 分鐘</item>
+            <item>1 小時</item>
+            <item>2 小時</item>
+            <item>3 小時</item>
+            <item>6 小時</item>
+            <item>12 小時</item>
+            <item>24 小時</item>
+        </string-array>
+
+        <string-array name="quick_settings_data_usage_window_entries">
+            <item>每日</item>
+            <item>每週</item>
+        </string-array>
+
+        <plurals name="ts_added_installed_count">
+            <item quantity="one">已將 %d 個應用程式加入目標</item>
+            <item quantity="other">已將 %d 個應用程式加入目標</item>
+        </plurals>
+    <string name="status_bar_clock_period_separator_title">句點分隔符</string>
+        <string name="status_bar_clock_period_separator_summary">以句點取代冒號顯示時間 (顯示 10.45 而非 10:45)</string>
+        <string name="status_bar_clock_bold_title">粗體時鐘</string>
+        <string name="status_bar_clock_bold_summary">以粗體顯示狀態列時鐘</string>
+        <string name="dynamic_bar_event_call">通話中</string>
+        <string name="dynamic_bar_event_call_summary">來電與進行中的通話</string>
+        <string name="notification_heads_up_timeout_title">顯示時間</string>
+        <string name="notification_heads_up_timeout_summary">浮動通知的顯示時間</string>
+        <string name="pif_vending_finger_custom_summary">自訂指紋：%1$s</string>
+        <string name="pif_spoof_build_title">偽裝建置欄位</string>
+        <string name="pif_spoof_build_summary">向 DroidGuard 提供 fingerprint\'s Build 欄位 (model、device、fingerprint…)</string>
+        <string name="pif_spoof_props_title">偽裝系統屬性</string>
+        <string name="pif_spoof_props_summary">向 DroidGuard 提供 fingerprint\'s build id、安全性修補程式、API 級別和產品識別</string>
+        <string name="pif_spoof_provider_title">偽裝 keystore 提供者</string>
+        <string name="pif_spoof_provider_summary">使 DroidGuard\'s 憑證鏈要求失敗。這會繞過 keybox 認證，因此在使用 keybox 時請保持關閉</string>
+        <string name="pif_spoof_signature_title">偽裝 ROM 簽名</string>
+        <string name="pif_spoof_signature_summary">實驗性功能。繞過 DroidGuard 的 test-key ROM 禁令</string>
+        <string name="pif_reset_advanced_title">重設進階偽裝</string>
+        <string name="pif_reset_advanced_summary">還原上述所有開關的預設值，指紋將保留</string>
+        <string name="pif_reset_advanced_message">要將所有進階偽裝選項重設為預設值嗎？目前的指紋將保留。</string>
+        <string name="sound_preview_play">播放預覽</string>
+        <string name="sound_preview_stop">停止預覽</string>
+        <string name="qs_show_volume_slider_below">音量滑桿位於亮度滑桿下方</string>
+        <string name="wallpaper_zoom_title">桌布縮放</string>
+        <string name="wallpaper_zoom_summary">關閉即可顯示未經額外縮放的桌布</string>
+</resources>
