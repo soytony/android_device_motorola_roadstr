@@ -21,7 +21,10 @@ PRODUCT_SHIPPING_API_LEVEL := 36
 # Characteristics
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Attenuate only the top amplifier during speaker playback.
+# Mildly attenuate the top amplifier (TDMSPKG) and cap its boost-voltage
+# ceiling (DCVOS) during speaker playback to stop high-volume crackle while
+# keeping top/bottom loudness balanced. See
+# documents/roadstr-tfa-top-speaker-clamp.md.
 ROADSTR_TFA_CONTAINER := $(LOCAL_PATH)/audio/tfa98xx.cnt
 
 # Override the stock setup init script before common inheritance: Evo's Pixel
