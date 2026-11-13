@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "branch": "cnb",
+  "repositories": [
+    {
+      "repo": "vendor/lunaris/dolby",
+      "base_commit": "79f67d249ddfc5346dd435afded74415171f57a9",
+      "patches": [
+        {
+          "file": "0001-install-dolby-privapp-permissions.patch"
+        }
+      ],
+      "result_tree": "2cf5b611942f07dd426bc08dc779943bc304f4a0",
+      "verification": "Diff of the vendored checkout against upstream base 79f67d2 isolated the Android.bp module addition as the only local delta; result tree computed by applying the patch on the upstream clone"
+    }
+  ]
+}

@@ -4,6 +4,10 @@ The later [Motorola NR_CA supplement](motorola-nr-ca/README.md) records
 the AIDL registration compatibility and NR aggregation display patches
 separately from this historical committed snapshot.
 
+The [Lunaris Dolby supplement](vendor-lunaris-dolby/README.md) records
+the privapp-permissions module added to the vendored, manifest-untracked
+`vendor/lunaris/dolby` checkout required by `lunaris-dolby.mk`.
+
 The [required predictive-back touch supplement](#required-predictive-back-touch-supplement)
 must also be applied for the validated RoadSTR Android 17 stack. It supersedes
 the initial baseline's deferral; it is not an optional animation feature.

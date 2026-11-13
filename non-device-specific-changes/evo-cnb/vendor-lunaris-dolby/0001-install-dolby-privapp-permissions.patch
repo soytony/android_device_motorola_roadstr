@@ -1,0 +1,19 @@
+diff --git a/Android.bp b/Android.bp
+index 95a12b9..cdc631c 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -3,6 +3,14 @@
+ soong_namespace {
+ }
+ 
++prebuilt_etc {
++    name: "LunarisDolbyPrivappPermissions",
++    src: "configs/permissions/privapp-permissions-dolby.xml",
++    filename_from_src: true,
++    sub_dir: "permissions",
++    system_ext_specific: true,
++}
++
+ 
+ cc_prebuilt_library_shared {
+     name: "libdapparamstorage_v3_6",
